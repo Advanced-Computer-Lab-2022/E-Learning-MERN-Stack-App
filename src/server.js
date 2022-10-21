@@ -8,10 +8,14 @@ const mongoose = require('mongoose');
 
 // routes
 const guestRoutes = require('./routes/guest');
+const adminRoutes = require('./routes/admin');
+
 
 // app.use
 app.use(express.json());
 app.use('/api', guestRoutes);
+
+app.use('/api', adminRoutes);
 
 
 // server listening
