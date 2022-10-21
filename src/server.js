@@ -34,7 +34,7 @@ mongoose.connect(
 const path = require("path");
 app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', (req, res, next) => {
-    res.sendFile(path.join(__dirname + '/views/index.html'));
+    res.sendFile(path.join(__dirname + '/views/homepage.html'));
 });
 app.post('/data', (req, res, next) => {
     res.status(200).json({ message: req.body });
