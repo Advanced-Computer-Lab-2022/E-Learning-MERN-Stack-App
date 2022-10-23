@@ -63,3 +63,9 @@ exports.signin = (req, res) => {
 
     });
 }
+exports.requireSignin = (req, res, next) => {
+    const token = req.headers.authorization;
+    const guest = jwt.verify(token, process.env.JWT_SECRET);
+    req.guest = guest;
+    next();
+}

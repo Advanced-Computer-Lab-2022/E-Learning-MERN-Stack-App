@@ -8,7 +8,7 @@ const mongoose = require('mongoose');
 // routes
 const guestRoutes = require('./routes/guest');
 const categoryRoutes = require('./routes/category');
-
+   
 // app.use
 app.use(express.json());  
 app.use('/api', guestRoutes);

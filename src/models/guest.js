@@ -35,6 +35,11 @@ const guestSchema = new mongoose.Schema({
      hash_password : {
          type : String,
          required : true
+     }, 
+     role: {
+         type: String,
+         enum: ['normalTrainee', 'corpTrainee'],
+         default:'normalTrainee'
      },
      gender : {
          type : String,
@@ -58,4 +63,4 @@ guestSchema.virtual('fullname').get(function(){
  };
 
 
-module.exports = mongoose.model('guest', guestSchema); 
+module.exports = mongoose.model('Guest', guestSchema); 
