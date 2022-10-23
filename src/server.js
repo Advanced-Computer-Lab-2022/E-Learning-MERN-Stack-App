@@ -2,16 +2,17 @@ const { json } = require('body-parser');
 const express = require('express');
 const env = require('dotenv').config();
 const port = process.env.PORT ;
-const bodyParser = require('body-parser');
 const app = express();
 const mongoose = require('mongoose');
 
 // routes
 const guestRoutes = require('./routes/guest');
+const categoryRoutes = require('./routes/category');
 
 // app.use
-app.use(express.json());
+app.use(express.json());  
 app.use('/api', guestRoutes);
+app.use('/api',categoryRoutes);
 
 
 // server listening
