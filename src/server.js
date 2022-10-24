@@ -7,12 +7,14 @@ const mongoose = require('mongoose');
 
 // routes
 const guestRoutes = require('./routes/guest');
+const adminRoutes = require('./routes/admin/admin');
 const categoryRoutes = require('./routes/category');
    
 // app.use
 app.use(express.json());  
 app.use('/api', guestRoutes);
 app.use('/api',categoryRoutes);
+app.use('/api',adminRoutes);
 
 
 // server listening
