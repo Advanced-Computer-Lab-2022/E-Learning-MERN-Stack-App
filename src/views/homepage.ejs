@@ -7,7 +7,13 @@
     <link rel="stylesheet" href="/css/homepageStyle.css" />
   </head>
   <body>
-    <h1>Test</h1>
+    <p><span style="color: red"> Name: </span><%= testCourse.name %></p>
+    <p>
+      <span style="color: red"> Instructor Name: </span><%=
+      testCourse.instructor %>
+    </p>
+    <p><span style="color: red"> Price: </span><%= testCourse.price %></p>
+    <p><span style="color: red"> Rating: </span><%= testCourse.rating %></p>
     <script src="/javascript/homepageHandler.js"></script>
   </body>
 </html>

@@ -30,11 +30,18 @@ mongoose.connect(
 });
 
 
-
+app.set('view engine', 'ejs');
 const path = require("path");
 app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', (req, res, next) => {
-    res.sendFile(path.join(__dirname + '/views/homepage.html'));
+    // Until integrated with the backend to retrive actual data
+    const testCourse = {
+        name: "Test Course 1",
+        price: "0.99$",
+        instructor: "Instructor Name",
+        rating: "4.2/5.0 (189 Reviews)"
+    }
+    res.render(path.join(__dirname + '/views/homepage.ejs'), { testCourse: testCourse });
 });
 app.post('/data', (req, res, next) => {
     res.status(200).json({ message: req.body });
