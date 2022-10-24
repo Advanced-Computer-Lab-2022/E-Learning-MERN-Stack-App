@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
+const { stringify } = require('nodemon/lib/utils');
 const adminSchema = new mongoose.Schema({
     firstName : {
         type : String,
@@ -24,6 +25,15 @@ const adminSchema = new mongoose.Schema({
         lowercase : true
        
     },
+    role: {
+        type:String,
+        default:'admin'
+    },
+    country:{
+        type:String,
+        trim:true,
+        required:false
+    },
     // type may be changed later
     email : {
         type : String,
@@ -36,11 +46,7 @@ const adminSchema = new mongoose.Schema({
          type : String,
          required : true
      }, 
-     role: {
-         type: String,
-         enum: ['normalTrainee', 'corpTrainee'],
-         default:'normalTrainee'
-     },
+  
      gender : {
          type : String,
          enum : ['male', 'female', 'prefere not to say']

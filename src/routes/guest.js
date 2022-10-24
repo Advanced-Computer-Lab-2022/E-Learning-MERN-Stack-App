@@ -1,16 +1,16 @@
 const express = require('express');
-const { signup, signin, requireSignin } = require('../controller/guest');
+const { signup, signin } = require('../controller/guest');
 const router = express.Router();
 
 
 
-router.post('/signup', signup);
-router.post('/signin', signin);
-router.post('/profile', requireSignin, (req, res) => {
-    res.status(200).json({guest: 'profile'})
-});
+router.post('/guest/signup', signup);
+router.post('/guest/signin', signin);
+// router.post('/profile', requireSignin, (req, res) => {
+//     res.status(200).json({guest: 'profile'})
+// });
 
-module.exports = router;
+// module.exports = router;
 
 
 

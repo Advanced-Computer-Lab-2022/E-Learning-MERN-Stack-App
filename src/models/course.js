@@ -1,6 +1,5 @@
-const { links } = require('express/lib/response');
 const mongoose = require('mongoose');
-const { stringify } = require('nodemon/lib/utils');
+
 /*
 course schema:
     1) about page
@@ -68,7 +67,8 @@ const courseSchema = new mongoose.Schema({
     rating: Number,
     reviews: [{
         review: String,
-        reviewerId: mongoose.Schema.Types.ObjectId, ref: 'Guest'
+        reviewerId:{type: mongoose.Schema.Types.ObjectId, ref: 'Guest'},
+        reviewerId:{type: mongoose.Schema.Types.ObjectId, ref: 'OrgGuest'}
     }],
     category:{type: mongoose.Schema.Types.ObjectId, ref: 'Category'},
     createdBy: {type: mongoose.Schema.Types.ObjectId, ref: 'Instructor'},
@@ -77,7 +77,7 @@ const courseSchema = new mongoose.Schema({
     chapters: String
 
 }, {timestamps: true});
-module.exports = mongoose.model('Course', categorySchema)
+module.exports = mongoose.model('Course', courseSchema)
 
 
 

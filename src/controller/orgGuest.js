@@ -1,9 +1,9 @@
-const Admin = require('../../models/admin.js');
+const OrgGuest = require('../models/orgGuest');
 const jwt = require('jsonwebtoken');
 exports.signup = (req, res) => {
-    Admin.findOne({email: req.body.email})
-   .exec((error, admin) => {
-       if(admin) return res.status(400).json({
+    OrgGuest.findOne({email: req.body.email})
+   .exec((error, orgGuest) => {
+       if(orgGuest) return res.status(400).json({
            message: 'User already registered' 
        });
        const {
@@ -14,16 +14,16 @@ exports.signup = (req, res) => {
            password,
            gender
        } = req.body;
-       const _admin = new Admin({
+       const _orgGuest = new OrgGuest({
            firstName,
            lastName,
            userName: Math.random().toString(),
            email,
            password,
            gender,
-           role:'admin'
+           role:'corpTrainee'
        });
-       _admin.save((error, data) => {
+       _orgGuest.save((error, data) => {
            if(error){
            return res.status(400).json({
                message: 'Something went wrong'
@@ -31,7 +31,7 @@ exports.signup = (req, res) => {
        }
        if(data){
            return res.status(201).json({
-               message:'Admin created  successfuly..!'
+               message:'User created  successfuly..!'
            })
        }
     });
@@ -40,16 +40,16 @@ exports.signup = (req, res) => {
 }
 
 exports.signin = (req, res) => {
-    Admin.findOne({email: req.body.email})
-    .exec((error, admin) =>{
+    OrgGuest.findOne({email: req.body.email})
+    .exec((error, orgGuest) =>{
         if(error) return res.status(400).json({error});
-        if(admin){
-            if(admin.authenticate(req.body.password)){
-                const token = jwt.sign({_id:admin._id, role: admin.role}, process.env.JWT_SECRET, {expiresIn: '1h'});
-                const{_id, firstName, lastName, fullName, email, role, gender} = admin;
+        if(orgGuest){
+            if(orgGuest.authenticate(req.body.password)){
+                const token = jwt.sign({_id:orgGuest._id, role: orgGuest.role}, process.env.JWT_SECRET, {expiresIn: '1h'});
+                const{_id, firstName, lastName, fullName, email, gender, role} = orgGuest;
                 res.status(200).json({
                     token,
-                    admin: {_id, firstName, lastName, fullName, email, gender, role}
+                    orgGuest: {_id, firstName, lastName, fullName, email, gender, role}
                 });
 
             }
@@ -63,4 +63,4 @@ exports.signin = (req, res) => {
         else return res.status(400).json({message: 'something went wrong'});
 
     });
-}
+};
