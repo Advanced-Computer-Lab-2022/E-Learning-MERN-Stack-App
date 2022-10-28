@@ -1,4 +1,4 @@
-const Admin = require('../../models/admin.js');
+const Admin = require('../../models/admin');
 const jwt = require('jsonwebtoken');
 exports.signup = (req, res) => {
     Admin.findOne({email: req.body.email})

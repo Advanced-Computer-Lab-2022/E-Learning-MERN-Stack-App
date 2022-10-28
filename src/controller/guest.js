@@ -9,7 +9,6 @@ exports.signup = (req, res) => {
        const {
            firstName, 
            lastName,
-           userName,
            email,
            password,
            gender
@@ -21,7 +20,6 @@ exports.signup = (req, res) => {
            email,
            password,
            gender,
-           role:'normalTrainee'
        });
        _guest.save((error, data) => {
            if(error){

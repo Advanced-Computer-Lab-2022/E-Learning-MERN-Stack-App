@@ -1,6 +1,6 @@
+const env = require('dotenv').config();
 const { json } = require('body-parser');
 const express = require('express');
-const env = require('dotenv').config();
 const port = process.env.PORT ;
 const app = express();
 const mongoose = require('mongoose');
@@ -10,14 +10,13 @@ const guestRoutes = require('./routes/guest');
 const orgGuest = require('./routes/orgGuest');
 const adminRoutes = require('./routes/admin/admin');
 const categoryRoutes = require('./routes/category');
-const courseRoutes = require('./routes/course');
+
    
 // app.use
 app.use(express.json());  
 app.use('/api', guestRoutes);
 app.use('/api',categoryRoutes);
 app.use('/api',adminRoutes);
-app.use('/api',courseRoutes);
 app.use('/api', orgGuest);
 
 

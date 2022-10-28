@@ -10,7 +10,7 @@ router.post('/guest/signin', signin);
 //     res.status(200).json({guest: 'profile'})
 // });
 
-// module.exports = router;
+ module.exports = router;
 
 
 

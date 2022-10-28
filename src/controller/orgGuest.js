@@ -6,7 +6,7 @@ exports.signup = (req, res) => {
        if(orgGuest) return res.status(400).json({
            message: 'User already registered' 
        });
-       const {
+       const  {
            firstName, 
            lastName,
            userName,
