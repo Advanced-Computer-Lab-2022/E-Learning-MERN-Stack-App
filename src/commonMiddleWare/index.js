@@ -18,6 +18,13 @@ exports.isAdmin = (req, res, next) => {
     next();
 
 };
+exports.isGuest = (req, res, next) => {
+    if(req.user.role !== 'guest' || req.user.role !== 'corpTrainee'){
+        return res.status(400).json({message: 'Access Denied'});
+    }
+    next();
+
+};
 // exports.isInstructor = (req, res, next) => {
 //     if(req.user.role !== 'instructor'){
 //         return res.status(400).json({message: 'Access Denied'});

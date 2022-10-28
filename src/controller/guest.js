@@ -20,6 +20,7 @@ exports.signup = (req, res) => {
            email,
            password,
            gender,
+           role: 'guest'
        });
        _guest.save((error, data) => {
            if(error){
