@@ -29,6 +29,7 @@ const guestSchema = new mongoose.Schema({
         trim:true,
         required:false
     },
+    courses:[{type:mongoose.Schema.Types.ObjectId, ref:"course"}],
     // type may be changed later
     email : {
         type : String,

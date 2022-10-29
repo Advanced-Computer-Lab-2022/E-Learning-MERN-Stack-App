@@ -32,7 +32,7 @@ const instructorSchema = new mongoose.Schema({
     country:{
         type:String,
         trim:true,
-        required:false
+        required:true
     },
     // type may be changed later
     email : {
@@ -54,7 +54,7 @@ const instructorSchema = new mongoose.Schema({
      ,rating: Number,
      numberOfCourses: Number,
      numberOfStudents:Number,
-     totalEarnings:Number
+     totalEarnings:Number,
 }, {timestamps : true});
 
 

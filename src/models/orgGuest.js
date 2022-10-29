@@ -8,6 +8,7 @@ const orgGuestSchema = new mongoose.Schema({
         min : 2,
         max : 25
     },
+    
     lastName : {
         type : String,
         required : true,
@@ -24,7 +25,7 @@ const orgGuestSchema = new mongoose.Schema({
         lowercase : true
        
     },
-    org:String,
+    company:{type: mongoose.Schema.Types.ObjectId, ref: 'Company'},
     country:{
         type:String,
         trim:true,
@@ -46,6 +47,7 @@ const orgGuestSchema = new mongoose.Schema({
          type: String,
          default:'corpTrainee'
      },
+     courses:[{type:mongoose.Schema.Types.ObjectId, ref:"course"}],
      gender : {
          type : String,
          enum : ['male', 'female', 'prefere not to say']
