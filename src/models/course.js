@@ -20,14 +20,9 @@ const courseSchema = new mongoose.Schema({
         type:String,
         required: true
     },
-    shortVid: {
+    shortVideo: {
         type:String,
         required: true
-    },
-    slug:{
-        type: String,
-        required: true,
-        unique:true
     },
     price:{
         type:Number,
@@ -47,7 +42,6 @@ const courseSchema = new mongoose.Schema({
     }],
     category:{type: mongoose.Schema.Types.ObjectId, ref: 'Category'},
     createdBy: {type: mongoose.Schema.Types.ObjectId, ref: 'Instructor'},
-    enrolled:this.students.count(),
    chapters: [{
            videos:[String],
            text: [String],
@@ -60,6 +54,9 @@ companies:[{ type:mongoose.Schema.Types.ObjectId,ref:"Company"}],
 
 
 }, {timestamps: true});
+courseSchema.virtual('enrollled').get(function(){
+    return this.students.length;
+});
 module.exports = mongoose.model('Course', courseSchema);
 
 

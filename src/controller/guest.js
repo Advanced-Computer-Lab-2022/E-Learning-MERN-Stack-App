@@ -6,20 +6,14 @@ exports.signup = (req, res) => {
        if(guest) return res.status(400).json({
            message: 'User already registered' 
        });
-       const {
-           firstName, 
-           lastName,
-           email,
-           password,
-           gender
-       } = req.body;
+
        const _guest = new Guest({
-           firstName,
-           lastName,
+           firstName: req.body.firstName,
+           lastName: req.body.lastName,
            userName: Math.random().toString(),
-           email,
-           password,
-           gender,
+           email: req.body.email,
+           password: req.body.password
+ 
        });
        _guest.save((error, data) => {
            if(error){
@@ -43,11 +37,10 @@ exports.signin = (req, res) => {
         if(error) return res.status(400).json({error});
         if(guest){
             if(guest.authenticate(req.body.password)){
-                const token = jwt.sign({_id:guest._id, role: guest.role}, process.env.JWT_SECRET, {expiresIn: '1d'});
-                const{_id, firstName, lastName, fullName, email, gender, role} = guest;
+                const token = jwt.sign({_id:guest._id}, process.env.JWT_SECRET, {expiresIn: '1d'});
                 res.status(200).json({
                     token,
-                    guest: {_id, firstName, lastName, fullName, email, gender, role}
+                    guest
                 });
 
             }

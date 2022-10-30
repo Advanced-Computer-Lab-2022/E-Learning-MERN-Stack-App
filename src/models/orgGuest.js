@@ -8,7 +8,6 @@ const orgGuestSchema = new mongoose.Schema({
         min : 2,
         max : 25
     },
-    
     lastName : {
         type : String,
         required : true,
@@ -23,13 +22,13 @@ const orgGuestSchema = new mongoose.Schema({
         unique : true,
         index : true,
         lowercase : true
-       
     },
-    company:{type: mongoose.Schema.Types.ObjectId, ref: 'Company'},
+    company:{type: mongoose.Schema.Types.ObjectId, ref: 'company'},
     country:{
         type:String,
         trim:true,
-        required:false
+        required: false
+
     },
     // type may be changed later
     email : {
@@ -41,11 +40,11 @@ const orgGuestSchema = new mongoose.Schema({
      },
      hash_password : {
          type : String,
-         required : true
+         required : true,
      }, 
      role: {
          type: String,
-         default:'corpTrainee'
+         default:'corpTrainee',
      },
      courses:[{type:mongoose.Schema.Types.ObjectId, ref:"course"}],
      gender : {

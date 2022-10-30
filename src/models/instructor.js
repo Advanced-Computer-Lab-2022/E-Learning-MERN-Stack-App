@@ -32,7 +32,7 @@ const instructorSchema = new mongoose.Schema({
     country:{
         type:String,
         trim:true,
-        required:true
+        required:false
     },
     // type may be changed later
     email : {
@@ -42,6 +42,7 @@ const instructorSchema = new mongoose.Schema({
         unique : true,
         lowercase : true
      },
+     about: String,
      hash_password : {
          type : String,
          required : true
@@ -50,8 +51,9 @@ const instructorSchema = new mongoose.Schema({
      gender : {
          type : String,
          enum : ['male', 'female', 'prefere not to say']
-     }
-     ,rating: Number,
+     },
+     courses:[{type:mongoose.Schema.Types.ObjectId, ref:"course"}],
+     rating: Number,
      numberOfCourses: Number,
      numberOfStudents:Number,
      totalEarnings:Number,
