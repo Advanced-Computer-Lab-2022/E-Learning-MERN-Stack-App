@@ -9,7 +9,6 @@ exports.signup = (req, res) => {
        const {
            firstName, 
            lastName,
-           userName,
            email,
            password,
            gender
@@ -20,7 +19,7 @@ exports.signup = (req, res) => {
            userName: Math.random().toString(),
            email,
            password,
-           gender
+           gender,
        });
        _guest.save((error, data) => {
            if(error){
@@ -44,11 +43,11 @@ exports.signin = (req, res) => {
         if(error) return res.status(400).json({error});
         if(guest){
             if(guest.authenticate(req.body.password)){
-                const token = jwt.sign({_id:guest._id}, process.env.JWT_SECRET, {expiresIn: '1h'});
-                const{_id, firstName, lastName, fullName, email, gender} = guest;
+                const token = jwt.sign({_id:guest._id, role: guest.role}, process.env.JWT_SECRET, {expiresIn: '1d'});
+                const{_id, firstName, lastName, fullName, email, gender, role} = guest;
                 res.status(200).json({
                     token,
-                    guest: {_id, firstName, lastName, fullName, email, gender}
+                    guest: {_id, firstName, lastName, fullName, email, gender, role}
                 });
 
             }
@@ -62,4 +61,4 @@ exports.signin = (req, res) => {
         else return res.status(400).json({message: 'something went wrong'});
 
     });
-}
+};
