@@ -1,7 +1,7 @@
 const express = require('express');
 const {signup, signin, addCompany, addOrgGuest, addInstructor,
-     addCategory} = require('../../controller/admin/admin');
-const {requireSignin, isAdmin} = require('../../commonMiddleWare/index');
+     addCategory, isAdmin} = require('../../controller/admin/admin');
+const {requireSignin} = require('../../commonMiddleWare/index');
 const router = express.Router();
 
 

@@ -11,17 +11,4 @@ exports.requireSignin = (req, res, next) => {
     next();
 }
 
-exports.isAdmin = (req, res, next) => {
-    if(req.user.role !== 'admin'){
-        return res.status(400).json({message: 'Access Denied'});
-    }
-    next();
 
-};
-// exports.isInstructor = (req, res, next) => {
-//     if(req.user.role !== 'instructor'){
-//         return res.status(400).json({message: 'Access Denied'});
-//     }
-//     next();
-
-// };

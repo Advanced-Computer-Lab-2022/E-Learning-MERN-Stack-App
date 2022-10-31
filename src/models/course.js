@@ -33,8 +33,14 @@ const courseSchema = new mongoose.Schema({
         enum: ['Payed Course', 'Free Course'],
         default: 'Payed Course'
     },
-    offer: Number,
-    rating: Number,
+    offer:{
+        type:Number,
+        default:0
+    },
+    rating:{
+        type:Number,
+        default:0
+    },
     reviews: [{
         review: String,
         reviewerId:{type: mongoose.Schema.Types.ObjectId, ref: 'Guest'},
@@ -50,7 +56,7 @@ const courseSchema = new mongoose.Schema({
     students: [{type:mongoose.Schema.Types.ObjectId, ref: "Guest"},
     {type:mongoose.Schema.Types.ObjectId, ref: "OrgGuest"}
 ],
-companies:[{ type:mongoose.Schema.Types.ObjectId,ref:"Company"}],
+companies:[{type:mongoose.Schema.Types.ObjectId,ref:"Company"}],
 
 
 }, {timestamps: true});

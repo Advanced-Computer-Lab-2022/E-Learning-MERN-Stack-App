@@ -6,7 +6,13 @@ const Category = require('../../models/category');
 const jwt = require('jsonwebtoken');
 
 
+exports.isAdmin = (req, res, next) => {
+    if(req.user.role !== 'admin'){
+        return res.status(400).json({message: 'Access Denied'});
+    }
+    next();
 
+};
 exports.signup = (req, res) => {
     Admin.findOne({email: req.body.email})
    .exec((error, admin) => {
