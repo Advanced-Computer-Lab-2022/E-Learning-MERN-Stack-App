@@ -7,8 +7,6 @@
 
 
  module.exports = router;
-/*
-addinng a course through through the database for now until Instructor.addcourse works
 
 
 
@@ -20,4 +18,4 @@ addinng a course through through the database for now until Instructor.addcourse
 
 
 
-*/
+

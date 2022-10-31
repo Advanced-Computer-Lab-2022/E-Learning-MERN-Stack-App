@@ -46,7 +46,7 @@ const guestSchema = new mongoose.Schema({
      gender : {
          type : String,
          enum : ['male', 'female', 'prefere not to say']
-     }
+     },
 }, {timestamps : true});
 
 

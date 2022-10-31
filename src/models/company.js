@@ -19,5 +19,5 @@ companySchema.virtual('password')
 .set(function(password) {
     this.hash_password = bcrypt.hashSync(password, 10);
 
-});
+},{timestamps: true});
 module.exports = mongoose.model('Company', companySchema);

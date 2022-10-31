@@ -11,7 +11,8 @@ const orgGuest = require('./routes/orgGuest');
 const adminRoutes = require('./routes/admin/admin');
 const categoryRoutes = require('./routes/category');
 const instructorRoutes = require('./routes/instructor');
-// const courseRoutes = require('./routes/course');
+//const courseRoutes = require('./routes/course');
+// const cartRoutes = require('./routes/cart');
 
    
 // app.use
@@ -22,6 +23,7 @@ app.use('/api', adminRoutes);
 app.use('/api', orgGuest);
 app.use('/api', instructorRoutes);
 // app.use('/api', courseRoutes);
+// app.use('/api', cartRoutes);
 
 
 // server listening
