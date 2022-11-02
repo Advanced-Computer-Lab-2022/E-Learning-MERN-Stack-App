@@ -1,8 +1,6 @@
 const Instructor = require('../models/instructor');
 const Course = require('../models/course');
 const jwt = require('jsonwebtoken');
-const { isObjectIdOrHexString, default: mongoose } = require('mongoose');
-const { system } = require('nodemon/lib/config');
 
 exports.isInstructor = (req, res, next) => {
     if(req.user.role !== 'instructor'){

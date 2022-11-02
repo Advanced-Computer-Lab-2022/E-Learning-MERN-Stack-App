@@ -57,7 +57,7 @@ guestSchema.virtual('password')
 });
 guestSchema.virtual('fullname').get(function(){
     return `${this.firstName} ${this.lastName}`;
-})
+});
  guestSchema.methods = {
      authenticate : function(password) {
          return bcrypt.compareSync(password, this.hash_password)
