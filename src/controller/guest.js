@@ -1,6 +1,7 @@
 const Guest = require('../models/guest');
 const Cart = require('../models/cart');
 const jwt = require('jsonwebtoken');
+const Course = require('../models/course');
 exports.signup = (req, res) => {
     Guest.findOne({email: req.body.email})
    .exec((error, guest) => {
@@ -78,6 +79,10 @@ exports.addToCart = (req, res) => {
 
 
 };
+
+
+
+
 // exports.removeFromCart = (req, res) => {
 //     const course = req.body.item;
 //     Cart.findOneAndUpdate({owner: req.user._id, "items.course": course},  {

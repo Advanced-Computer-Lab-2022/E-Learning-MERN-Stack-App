@@ -1,10 +1,9 @@
   const express = require('express');
-  const {getCourse} = require('../controller/course');
+  const { requireSignin } = require('../commonMiddleWare');
+  const {viewMyCourses} = require('../controller/course');
   const router = express.Router();
   
-  router.get('/getCourse',getCourse);
-
-
+  router.get('/viewMyCourses',requireSignin, viewMyCourses);
 
  module.exports = router;
 

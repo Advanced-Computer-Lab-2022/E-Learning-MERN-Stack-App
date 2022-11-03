@@ -53,8 +53,12 @@ exports.createCourse = (req, res) => {
           if(error) res.status(400).json({message:"an error occured"});
           if(course) res.status(201).json({message: "course created successfuly...!"});
         });
+};
 
-
-
-    
- }
+exports.getCourses = (req, res) => {
+    Course.find({createdBy: req.body._id})
+        .exec((error, course) => {
+            if(error) res.status(400).json({message:"an error occured"});
+            if(course) res.status(200).json(course);
+        });
+}
