@@ -6,7 +6,7 @@ import FooterNewsletter from './FooterNewsletter'
 
 const Footer = () => {
     return (
-        <footer class="text-center bg-gray-900 text-white">
+        <footer class="text-center bg-blue-500 text-white">
             <div class="container px-6 pt-6">
                 <FooterLogos />
                 <FooterNewsletter />
