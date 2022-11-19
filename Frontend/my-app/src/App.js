@@ -6,18 +6,19 @@ import Sections from "./components/courseSections/Sections";
 import Faqs from "./components/faq/Faqs";
 import LandingPage from "./components/landing/LandingPage";
 import Pricing from "./components/pricing/Pricing";
+import Layout from "./components/Layout";
 
 function App() {
   return (
     <div className="App">
-      <Navbar />
-      <LandingPage />
-      <Pricing />
-      <Homepage />
-      <Sections />
-      <Faqs />
-      <Reviews />
-      <Footer />
+      <Layout>
+        <LandingPage />
+        <Pricing />
+        <Homepage />
+        <Sections />
+        <Faqs />
+        <Reviews />
+      </Layout>
     </div>
   );
 }
