@@ -14,11 +14,13 @@ const Reviews = () => {
                     description={"Lorem ipsum dolor sit amet eos adipisci, consectetur adipisicing elit sed ut perspiciatis unde omnis."}
                     reviewerName={"Cat"}
                     imgsrc="https://mdbootstrap.com/img/Photos/Avatars/img%20(21).jpg"
+                    rating={1}
                 />
                 <ReviewCard
                     description={"Lorem ipsum dolor sit amet eos adipisci, consectetur adipisicing elit sed ut perspiciatis unde omnis."}
                     reviewerName={"Anna Morian"}
                     imgsrc="https://mdbootstrap.com/img/Photos/Avatars/img%20(6).jpg"
+                    rating={4}
                 />
             </ReviewsWrapper>
         </section>
