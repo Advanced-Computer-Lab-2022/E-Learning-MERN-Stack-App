@@ -13,7 +13,7 @@ const Pricing = () => {
                 <PricingItem
                     text={"Starter"}
                     price={"FREE"}
-                    selected={selectedPricing == 0}
+                    selected={selectedPricing === 0}
                     description={"Full access to all features and no credit card required"}
                     myIdx={0}
                     setSelectedPricing={setSelectedPricing}
@@ -21,7 +21,7 @@ const Pricing = () => {
                 <PricingItem
                     text={"Personal"}
                     price={"$18"}
-                    selected={selectedPricing == 1}
+                    selected={selectedPricing === 1}
                     description={"Unlimited products features and dedicated support channels"}
                     myIdx={1}
                     setSelectedPricing={setSelectedPricing}
@@ -29,7 +29,7 @@ const Pricing = () => {
                 <PricingItem
                     text={"Team"}
                     price={"$18"}
-                    selected={selectedPricing == 2}
+                    selected={selectedPricing === 2}
                     description={"Unlimited products features and dedicated support channels"}
                     myIdx={2}
                     setSelectedPricing={setSelectedPricing}
