@@ -6,6 +6,7 @@ import LandingPage from "./components/landing/LandingPage";
 import Pricing from "./components/pricing/Pricing";
 import Layout from "./components/Layout";
 import { useState } from 'react';
+import ContactUs from './components/contactus/ContactUs';
 function App() {
   const [navActiveState, setNavActiveState] = useState(0);
   return (
@@ -20,6 +21,7 @@ function App() {
         <Faqs visible={navActiveState === 1} />
         <Reviews visible={navActiveState === 1} />
         <Pricing visible={navActiveState === 2} />
+        <ContactUs visible={navActiveState === 4} />
       </Layout>
     </div>
   );
