@@ -2,10 +2,13 @@ import React from 'react'
 import Footer from './footer/Footer'
 import Navbar from './navbar/Navbar'
 
-const Layout = ({ children }) => {
+const Layout = ({ children, navActiveState, setNavActiveState }) => {
     return (
         <>
-            <Navbar />
+            <Navbar
+                navActiveState={navActiveState}
+                setNavActiveState={setNavActiveState}
+            />
             {children}
             <Footer />
         </>
