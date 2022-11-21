@@ -7,6 +7,7 @@ import Pricing from "./components/pricing/Pricing";
 import Layout from "./components/Layout";
 import { useState } from 'react';
 import ContactUs from './components/contactus/ContactUs';
+import Features from './components/landing/Features';
 function App() {
   const [navActiveState, setNavActiveState] = useState(0);
   return (
@@ -16,6 +17,7 @@ function App() {
         setNavActiveState={setNavActiveState}
       >
         <LandingPage visible={navActiveState === 0} />
+        <Features visible={navActiveState === 0} />
         <Homepage visible={navActiveState === 1} />
         <Sections visible={navActiveState === 1} />
         <Faqs visible={navActiveState === 1} />
