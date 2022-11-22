@@ -17,7 +17,10 @@ const Navbar = ({ navActiveState, setNavActiveState }) => {
                     navActiveState={navActiveState}
                     setNavActiveState={setNavActiveState}
                 />
-                <MainNavCTAButtons />
+                <MainNavCTAButtons
+                    navActiveState={navActiveState}
+                    setNavActiveState={setNavActiveState}
+                />
             </nav>
             <SmallScreenMenu isActive={activeSmallScreen} setActiveSmallScreen={setActiveSmallScreen} />
         </>

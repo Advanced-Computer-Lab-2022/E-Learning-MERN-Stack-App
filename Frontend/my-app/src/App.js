@@ -8,6 +8,8 @@ import Layout from "./components/Layout";
 import { useState } from 'react';
 import ContactUs from './components/contactus/ContactUs';
 import Features from './components/landing/Features';
+import Login from './components/login/Login';
+import Signup from './components/signup/Signup';
 function App() {
   const [navActiveState, setNavActiveState] = useState(0);
   return (
@@ -24,6 +26,8 @@ function App() {
         <Reviews visible={navActiveState === 1} />
         <Pricing visible={navActiveState === 2} />
         <ContactUs visible={navActiveState === 4} />
+        <Login visible={navActiveState === 5} />
+        <Signup visible={navActiveState === 6} />
       </Layout>
     </div>
   );
