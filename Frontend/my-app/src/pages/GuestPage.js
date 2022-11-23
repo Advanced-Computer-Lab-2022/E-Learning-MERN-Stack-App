@@ -1,7 +1,4 @@
 import Homepage from '../components/homepage/Homepage'
-import Reviews from "../components/reviews/Reviews";
-import Sections from "../components/courseSections/Sections";
-import Faqs from "../components/faq/Faqs";
 import LandingPage from "../components/landing/LandingPage";
 import Pricing from "../components/pricing/Pricing";
 import Layout from "../components/Layout";
@@ -9,22 +6,19 @@ import ContactUs from '../components/contactus/ContactUs';
 import Features from '../components/landing/Features';
 import Login from '../components/login/Login';
 import Signup from '../components/signup/Signup';
-const GuestPage = ({ navActiveState, setNavActiveState }) => {
+import { useContext } from 'react';
+import NavStateContext from '../context/NavStateContext';
+const GuestPage = () => {
+    const { navIdx } = useContext(NavStateContext);
     return (
-        <Layout
-            navActiveState={navActiveState}
-            setNavActiveState={setNavActiveState}
-        >
-            <LandingPage visible={navActiveState === 0} />
-            <Features visible={navActiveState === 0} />
-            <Homepage visible={navActiveState === 1} />
-            <Sections visible={navActiveState === 1} />
-            <Faqs visible={navActiveState === 1} />
-            <Reviews visible={navActiveState === 1} />
-            <Pricing visible={navActiveState === 2} />
-            <ContactUs visible={navActiveState === 4} />
-            <Login visible={navActiveState === 5} />
-            <Signup visible={navActiveState === 6} />
+        <Layout>
+            <LandingPage visible={navIdx === 0} />
+            <Features visible={navIdx === 0} />
+            <Homepage visible={navIdx === 1} />
+            <Pricing visible={navIdx === 2} />
+            <ContactUs visible={navIdx === 4} />
+            <Login visible={navIdx === 5} />
+            <Signup visible={navIdx === 6} />
         </Layout>
 
     )

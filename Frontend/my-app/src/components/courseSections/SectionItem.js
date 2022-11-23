@@ -5,7 +5,7 @@ const SectionItem = ({ text, description }) => {
     if (hidden)
         return (
 
-            <div class="bg-white border border-gray-200 hover:border-blue-500" onClick={() => setHidden(false)}>
+            <div class="rounded-lg bg-white border border-gray-200 hover:border-gray-500" onClick={() => setHidden(false)}>
 
                 <h2 class=" mb-0" id="headingOne">
 
@@ -16,8 +16,9 @@ const SectionItem = ({ text, description }) => {
                             w-full
                             py-4
                             px-5
-                            text-xl
-                            font-bold text-blue-500  text-left
+                            text-xl leading-8  text-gray-900
+                            h-10
+                            text-left
                             bg-white
                             border-0
                             rounded-none
@@ -35,7 +36,7 @@ const SectionItem = ({ text, description }) => {
         )
     else
         return (
-            <div class="bg-white border border-gray-200 hover:border-blue-500" onClick={() => setHidden(true)}>
+            <div class="rounded-lg bg-white border border-gray-200 hover:border-blue-500" onClick={() => setHidden(true)}>
                 <h2 class=" mb-0" id="headingOne">
                     <button class="
                             relative

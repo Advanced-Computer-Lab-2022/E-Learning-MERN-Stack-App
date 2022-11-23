@@ -6,21 +6,15 @@ import MainNavList from './MainNavList'
 import NavBarLogo from './NavBarLogo'
 import SmallScreenMenu from './SmallScreenMenu'
 
-const Navbar = ({ navActiveState, setNavActiveState }) => {
+const Navbar = () => {
     const [activeSmallScreen, setActiveSmallScreen] = useState(false);
     return (
         <>
             <nav class="relative px-4 py-4 flex justify-between items-center bg-white">
-                <NavBarLogo setNavActiveState={setNavActiveState} />
+                <NavBarLogo />
                 <BurgerMenu setActiveSmallScreen={setActiveSmallScreen} />
-                <MainNavList
-                    navActiveState={navActiveState}
-                    setNavActiveState={setNavActiveState}
-                />
-                <MainNavCTAButtons
-                    navActiveState={navActiveState}
-                    setNavActiveState={setNavActiveState}
-                />
+                <MainNavList />
+                <MainNavCTAButtons />
             </nav>
             <SmallScreenMenu isActive={activeSmallScreen} setActiveSmallScreen={setActiveSmallScreen} />
         </>
