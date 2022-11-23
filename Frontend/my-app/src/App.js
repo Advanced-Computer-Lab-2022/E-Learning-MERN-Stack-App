@@ -4,12 +4,16 @@ import GuestPage from './pages/GuestPage';
 import { useState } from 'react';
 import React from 'react';
 import NavStateContext from './context/NavStateContext';
+import CurrentViewContext from './context/CurrentViewContext';
+import CourseInfoContext from './context/CourseInfoContext'
 function App() {
   const [navIdx, setNavIdx] = useState(0);
-  const value = { navIdx, setNavIdx };
+  const navIdxValue = { navIdx, setNavIdx };
+  const [view, setView] = useState("guest");
+  const viewValue = { view, setView };
   return (
     <div className="App">
-      <NavStateContext.Provider value={value}>
+      {/* <NavStateContext.Provider value={value}>
         <BrowserRouter>
           <Routes>
             <Route path="/"
@@ -26,6 +30,14 @@ function App() {
             />
           </Routes>
         </BrowserRouter>
+      </NavStateContext.Provider> */}
+      <NavStateContext.Provider value={navIdxValue}>
+        <CurrentViewContext.Provider value={viewValue}>
+          <GuestPage />
+          <CourseInfoContext.Provider>
+            <CoursePage />
+          </CourseInfoContext.Provider>
+        </CurrentViewContext.Provider>
       </NavStateContext.Provider>
     </div>
   );
