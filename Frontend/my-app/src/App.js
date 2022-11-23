@@ -6,6 +6,7 @@ import React from 'react';
 import NavStateContext from './context/NavStateContext';
 import CurrentViewContext from './context/CurrentViewContext';
 import CourseInfoContext from './context/CourseInfoContext'
+import CheckoutPage from './pages/CheckoutPage';
 function App() {
   const [navIdx, setNavIdx] = useState(0);
   const navIdxValue = { navIdx, setNavIdx };
@@ -37,6 +38,7 @@ function App() {
           <CourseInfoContext.Provider>
             <CoursePage />
           </CourseInfoContext.Provider>
+          <CheckoutPage />
         </CurrentViewContext.Provider>
       </NavStateContext.Provider>
     </div>
