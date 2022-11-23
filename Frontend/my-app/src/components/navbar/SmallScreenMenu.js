@@ -4,6 +4,7 @@ import SmallScreenHeader from './SmallScreenHeader'
 import SmallScreenList from './SmallScreenList'
 
 const SmallScreenMenu = ({ isActive, setActiveSmallScreen }) => {
+
     return (
         <div className={isActive ? "navbar-menu relative z-50" : "navbar-menu relative z-50 hidden"} >
             <div class="navbar-backdrop fixed inset-0 bg-gray-800 opacity-25"></div>
