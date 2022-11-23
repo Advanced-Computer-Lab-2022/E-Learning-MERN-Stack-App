@@ -1,34 +1,25 @@
-import Homepage from './components/homepage/Homepage'
-import Reviews from "./components/reviews/Reviews";
-import Sections from "./components/courseSections/Sections";
-import Faqs from "./components/faq/Faqs";
-import LandingPage from "./components/landing/LandingPage";
-import Pricing from "./components/pricing/Pricing";
-import Layout from "./components/Layout";
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import CoursePage from './pages/CoursePage';
+import GuestPage from './pages/GuestPage';
 import { useState } from 'react';
-import ContactUs from './components/contactus/ContactUs';
-import Features from './components/landing/Features';
-import Login from './components/login/Login';
-import Signup from './components/signup/Signup';
 function App() {
   const [navActiveState, setNavActiveState] = useState(0);
   return (
     <div className="App">
-      <Layout
-        navActiveState={navActiveState}
-        setNavActiveState={setNavActiveState}
-      >
-        <LandingPage visible={navActiveState === 0} />
-        <Features visible={navActiveState === 0} />
-        <Homepage visible={navActiveState === 1} />
-        <Sections visible={navActiveState === 1} />
-        <Faqs visible={navActiveState === 1} />
-        <Reviews visible={navActiveState === 1} />
-        <Pricing visible={navActiveState === 2} />
-        <ContactUs visible={navActiveState === 4} />
-        <Login visible={navActiveState === 5} />
-        <Signup visible={navActiveState === 6} />
-      </Layout>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/"
+            element=
+            {
+              <GuestPage
+                navActiveState={navActiveState}
+                setNavActiveState={setNavActiveState}
+              />
+            } />
+          <Route path="/course"
+            element={<CoursePage />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
