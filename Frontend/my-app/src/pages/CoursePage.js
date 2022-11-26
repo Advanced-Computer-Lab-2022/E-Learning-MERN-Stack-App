@@ -21,9 +21,10 @@ const CoursePage = ({ navActiveState, setNavActiveState }) => {
                         <iframe className='w-full rounded-2xl' width="520" height="340" src="https://www.youtube.com/embed/rfscVS0vtbw" title="Learn Python - Full Course for Beginners [Tutorial]" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                 </div>
-                <Faqs visible={true} />
                 <Sections visible={true} />
                 <Reviews visible={true} />
+                <Faqs visible={true} />
+
             </Layout>
         )
 }
