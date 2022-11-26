@@ -24,12 +24,12 @@ const SmallScreenList = ({ setActiveSmallScreen }) => {
             }}>
                 <SmallScreenListItem text={"Services"} href="#" myIdx={2} />
             </div>
-            <div onClick={() => {
+            {/* <div onClick={() => {
                 setActiveSmallScreen(false)
                 setView('guest')
             }}>
                 <SmallScreenListItem text={"Teach With Us"} href="#" myIdx={3} />
-            </div>
+            </div> */}
             <div onClick={() => {
                 setActiveSmallScreen(false)
                 setView('guest')

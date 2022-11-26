@@ -21,12 +21,12 @@ const MainNavList = () => {
                 myIdx={2}
             />
             <MainNavListSeparator />
-            <MainNavListItem
+            {/* <MainNavListItem
                 text={"Teach With Us"}
                 href="#"
                 myIdx={3}
-            />
-            <MainNavListSeparator />
+            /> */}
+            {/* <MainNavListSeparator /> */}
             <MainNavListItem
                 text={"Contact Us"}
                 href="#"
