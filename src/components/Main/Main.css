@@ -1,0 +1,9 @@
+.fakeImageContainer {
+    height: 250px;
+}
+
+
+.fakeImage {
+    background-color: whitesmoke;
+    padding: 5px;
+}
