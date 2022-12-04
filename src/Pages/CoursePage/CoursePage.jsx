@@ -1,29 +1,38 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
+import AddChapter from '../../components/AddChapter/AddChapter.jsx'
+import Chapters from '../../components/Chapters/Chapters.jsx'
 import Reviews from '../../components/Reviews/Reviews.jsx'
 
-export default function CoursePage() {
+export default function CoursePage(props) {
     return (
         <>
             <div className="container-fluid">
                 <div className="row">
 
-                    <section className="col-9 vh-100">
-                        <h1>Course Title</h1>
+                    <section className="col-4 vh-100">
+                        <ul>
+                            <li>Course Name: {props.course.name}</li>
+                            <li>Course Title: {props.course.title}</li>
+                            <li>Course Description: {props.course.description}</li>
+                            <li>Course Price: {props.course.price}</li>
+                            <li>Course Category: {props.course.category}</li>
+                            <li>
+                                Course Short Video:
+                                <div class="embed-responsive embed-responsive-16by9">
+                                    <iframe title="vid1" className="embed-responsive-item" src={props.course.shortVideo} allowfullscreen></iframe>
+                                </div>
+                            </li>
+                        </ul>
                         <Reviews />
                     </section>
 
-                    <aside className="col-3 vh-100 text-center">
-                        <div className="rightNavBar overflow-hidden">
-                            <div class="list-group" id="myList" role="tablist">
-                                <a class="list-group-item list-group-item-action active ms-0" data-toggle="list" href="#home" role="tab">Create an MCQ Exam</a>
-                                <a class="list-group-item list-group-item-action ms-0" data-toggle="list" href="#settings" role="tab">Add Promotion</a>
-                            </div>
+                    <section className='col-5'>
+                        <Chapters />
+                    </section>
 
-                            <div class="tab-content">
-                                <div class="tab-pane" id="mcq" role="tabpanel">.love..</div>
-                                <div class="tab-pane" id="promotion" role="tabpanel">...</div>
-                            </div>
-                        </div>
+                    <aside className="col-3 vh-100 text-center">
+                        <AddChapter />
                     </aside>
 
                 </div>
