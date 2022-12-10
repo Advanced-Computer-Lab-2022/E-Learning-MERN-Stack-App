@@ -5,6 +5,6 @@ const router = express.Router();
 
 router.post('/instructor/signin', signin);
  router.post('/instructor/createCourse',requireSignin, isInstructor, createCourse);
- router.post('/instructor/getCourses',requireSignin, isInstructor, getCourses);
+ router.get('/instructor/getCourses',requireSignin, isInstructor, getCourses);
 
 module.exports = router;

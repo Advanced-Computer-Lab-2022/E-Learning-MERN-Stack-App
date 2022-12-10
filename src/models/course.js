@@ -33,10 +33,6 @@ const courseSchema = new mongoose.Schema({
         enum: ['Payed Course', 'Free Course'],
         default: 'Payed Course'
     },
-    hours:{
-        type: Number,
-        required: true
-    },
     offer:{
         type:Number,
         default:0
