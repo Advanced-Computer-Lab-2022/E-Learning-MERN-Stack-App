@@ -6,21 +6,37 @@ import MoneyOwed from './components/MoneyOwed/MoneyOwed';
 import { Route, Routes } from 'react-router-dom';
 import RightNavBar from './components/RightNavBar/RightNavBar';
 import CoursePage from './Pages/CoursePage/CoursePage';
-import Chapters from './components/Chapters/Chapters';
+import CoursesContextProvider from './Contexts/CoursesContext';
+import React from 'react';
+
 
 function App() {
     return (
         <>
-            {/* <CoursePage /> */}
-            {/* <Chapters /> */}
-            <Routes>
-                <Route path='/' element={<InstructorPage />} />
-                <Route path='/mycourses' element={<InstructorPage />} />
-                <Route path='/viewmoneyowed' element={<MoneyOwed />} />
-                <Route path='/createacourse' element={<CreateCoursePage />} />
-                <Route path='/editaccountinfo' element={<EditAccountInfoPage />} />
-                <Route path='/*' element={<><h2 className='text-center'>Page Not Found</h2><RightNavBar /></>} />
-            </Routes>
+                <CoursesContextProvider>
+                    <Routes>
+                        <Route path='/' element={<InstructorPage />} />
+                        <Route path='/mycourses' element={<InstructorPage />} />
+                        <Route path='/viewmoneyowed' element={<MoneyOwed />} />
+                        <Route path='/createacourse' element={<CreateCoursePage />} />
+                        <Route path='/editaccountinfo' element={<EditAccountInfoPage />} />
+                        <Route path='/mycourses/:id' element={<CoursePage />} />
+                        <Route path='/*' element={
+                            <>
+                                <div className='container-fluid'>
+                                    <div className='row'>
+                                        <div className='col-9'>
+                                            <h1 className='text-center'> Page Not Found</h1>
+                                        </div>
+                                        <div className='col-3'>
+                                            <RightNavBar />
+                                        </div>
+                                    </div>
+                                </div>
+                            </>
+                        } />
+                    </Routes>
+                </CoursesContextProvider>
         </>
     );
 }

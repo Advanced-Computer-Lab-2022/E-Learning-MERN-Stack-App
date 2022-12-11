@@ -24,33 +24,33 @@ export default function CreateCourePage() {
     }
     return (
         <>
-            <div class="container-fluid">
-                <div class="row">
+            <div className="container-fluid">
+                <div className="row">
 
-                    <section class="col-9 vh-100">
+                    <section className="col-9 vh-100">
                         <h1>Instructor Signin</h1>
-                        <form class="g-3 needs-validation" novalidate>
-                            <div class="ms-3 mt-3 w-50">
-                                <label for="username" class="form-label" onChange={handleUsernameChange()}>Username</label>
-                                <input type="text" class="form-control" id="username" value={authentication.username} required />
-                                <div class="valid-feedback">
+                        <form className="g-3 needs-validation" novalidate>
+                            <div className="ms-3 mt-3 w-50">
+                                <label for="username" className="form-label" onChange={handleUsernameChange()}>Username</label>
+                                <input type="text" className="form-control" id="username" value={authentication.username} required />
+                                <div className="valid-feedback">
                                     Looks good!
                                 </div>
                             </div>
-                            <div class="ms-3 mt-3 w-50">
-                                <label for="password" class="form-label" onChange={handlePasswordChange()}>Password</label>
-                                <input type="text" class="form-control" id="password" value={authentication.password} required />
-                                <div class="valid-feedback">
+                            <div className="ms-3 mt-3 w-50">
+                                <label for="password" className="form-label" onChange={handlePasswordChange()}>Password</label>
+                                <input type="text" className="form-control" id="password" value={authentication.password} required />
+                                <div className="valid-feedback">
                                     Looks good!
                                 </div>
                             </div>
-                            <div class="ms-3 mt-4 w-50">
-                                <button class="btn btn-primary" type="submit">Create Course</button>
+                            <div className="ms-3 mt-4 w-50">
+                                <button className="btn btn-primary" type="submit">Create Course</button>
                             </div>
                         </form>
                     </section>
 
-                    <aside class="col-3 vh-100 text-center">
+                    <aside className="col-3 vh-100 text-center">
                         <div className='rightNavBar overflow-hidden'>
                             <RightNavBar />
                         </div>

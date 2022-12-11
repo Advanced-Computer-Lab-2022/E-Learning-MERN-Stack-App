@@ -1,54 +1,42 @@
-import React, { useState } from 'react'
+import React from 'react'
 import RightNavBar from '../../components/RightNavBar/RightNavBar'
 
 
 export default function EditAccountInfoPage() {
     return (
         <>
-            <div class="container-fluid">
-                <div class="row">
+            <div className="container-fluid">
+                <div className="row">
 
-                    <section class="col-9 vh-100">
+                    <section className="col-9 vh-100">
                         <h1>Instructor Name</h1>
-                        <form class="g-3 needs-validation" novalidate>
-                            <div class="ms-3 mt-3 w-50">
-                                <label for="validationCustom01" class="form-label">First name</label>
-                                <input type="text" class="form-control" id="validationCustom01" required />
-                                <div class="valid-feedback">
-                                    Looks good!
+                        <form className="g-3 needs-validation" novalidate>
+                            <div className="ms-3 mt-3 w-50">
+                                <label htmlFor="firstName" className="form-label">First name</label>
+                                <input type="text" className="form-control" id="firstName" required />
+                            </div>
+                            <div className="ms-3 mt-3 w-50">
+                                <label htmlFor="lastName" className="form-label">Last name</label>
+                                <input type="text" className="form-control" id="lastName" required />
+                            </div>
+                            <div className="ms-3 mt-3 w-50">
+                                <label htmlFor="email" className="form-label">Email</label>
+                                <div className="input-group">
+                                    <span className="input-group-text" id="email">@</span>
+                                    <input type="email" className="form-control" id="email" aria-describedby="inputGroupPrepend" required />
                                 </div>
                             </div>
-                            <div class="ms-3 mt-3 w-50">
-                                <label for="validationCustom02" class="form-label">Last name</label>
-                                <input type="text" class="form-control" id="validationCustom02" required />
-                                <div class="valid-feedback">
-                                    Looks good!
-                                </div>
+                            <div className="ms-3 mt-3 w-50">
+                                <label htmlFor="bio" className="form-label">Bio</label>
+                                <textarea type="text" className="form-control" id="bio" />
                             </div>
-                            <div class="ms-3 mt-3 w-50">
-                                <label for="validationCustom02" class="form-label">Bio</label>
-                                <input type="text" class="form-control" id="validationCustom02" required />
-                                <div class="valid-feedback">
-                                    Looks good!
-                                </div>
-                            </div>
-                            <div class="ms-3 mt-3 w-50">
-                                <label for="validationCustomUsername" class="form-label">Email</label>
-                                <div class="input-group">
-                                    <span class="input-group-text" id="inputGroupPrepend">@</span>
-                                    <input type="email" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required />
-                                    <div class="invalid-feedback">
-                                        Please choose a Email.
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="ms-3 mt-4 w-50">
-                                <button class="btn btn-primary" type="submit">Submit form</button>
+                            <div className="ms-3 mt-4 w-50">
+                                <button className="btn btn-primary" type="submit">Submit Changes</button>
                             </div>
                         </form>
                     </section>
 
-                    <aside class="col-3 vh-100 text-center">
+                    <aside className="col-3 vh-100 text-center">
                         <div className="rightNavBar overflow-hidden">
                             <RightNavBar />
                         </div>

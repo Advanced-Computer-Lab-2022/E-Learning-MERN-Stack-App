@@ -4,29 +4,29 @@ export default function Feedback() {
     return (
         <>
             <div className="container">
-                <div class="client-feedback ">
-                    <div class="pic float-left">
-                        <div class="inner">
+                <div className="client-feedback ">
+                    <div className="pic float-left">
+                        <div className="inner">
                             <img src='../../../../images/bakery-color.png' alt="pic-1" />
                         </div>
                     </div>
-                    <div class="feedback float-left">
-                        <div class="inner">
+                    <div className="feedback float-left">
+                        <div className="inner">
                             <h3>Alex ander</h3>
-                            <span><i class="fa-solid fa-location-dot"></i> United</span>
+                            <span><i className="fa-solid fa-location-dot"></i> United</span>
                             <p>Lorem ipsum Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, dignissimos!
                                 dolor sit amet, consectetur adipisicing elit. Animi quae veritatis et saepe expedita
                                 facere, repellat dolore eligendi praesentium harum.</p>
-                            <div class="rating">
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-regular fa-star"></i>
+                            <div className="rating">
+                                <i className="fa-solid fa-star"></i>
+                                <i className="fa-solid fa-star"></i>
+                                <i className="fa-solid fa-star"></i>
+                                <i className="fa-solid fa-star"></i>
+                                <i className="fa-regular fa-star"></i>
                             </div>
                         </div>
                     </div>
-                    <div class="clear-fix"></div>
+                    <div className="clear-fix"></div>
                 </div>
             </div>
         </>

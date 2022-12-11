@@ -1,10 +1,17 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useContext } from 'react'
 import AddChapter from '../../components/AddChapter/AddChapter.jsx'
 import Chapters from '../../components/Chapters/Chapters.jsx'
 import Reviews from '../../components/Reviews/Reviews.jsx'
+import { coursesContext } from '../../Contexts/CoursesContext.jsx'
+
+import { useParams } from 'react-router-dom';
 
 export default function CoursePage(props) {
+    const { courses } = useContext(coursesContext);
+    const { id } = useParams();
+
+    const { name, title, description, price, category } = courses[id];
+
     return (
         <>
             <div className="container-fluid">
@@ -12,15 +19,15 @@ export default function CoursePage(props) {
 
                     <section className="col-4 vh-100">
                         <ul>
-                            <li>Course Name: {props.course.name}</li>
-                            <li>Course Title: {props.course.title}</li>
-                            <li>Course Description: {props.course.description}</li>
-                            <li>Course Price: {props.course.price}</li>
-                            <li>Course Category: {props.course.category}</li>
+                            <li>Course Name: {name}</li>
+                            <li>Course Title: {title}</li>
+                            <li>Course Description: {description}</li>
+                            <li>Course Price: {price}</li>
+                            <li>Course Category: {category}</li>
                             <li>
                                 Course Short Video:
-                                <div class="embed-responsive embed-responsive-16by9">
-                                    <iframe title="vid1" className="embed-responsive-item" src={props.course.shortVideo} allowfullscreen></iframe>
+                                <div className="embed-responsive embed-responsive-16by9">
+                                    <iframe title="vid1" className="embed-responsive-item" src={courses[id].shortVideo} allowFullScreen></iframe>
                                 </div>
                             </li>
                         </ul>
@@ -28,12 +35,10 @@ export default function CoursePage(props) {
                     </section>
 
                     <section className='col-5'>
-                        <Chapters />
+                        <Chapters index={id} />
                     </section>
 
-                    <aside className="col-3 vh-100 text-center">
-                        <AddChapter />
-                    </aside>
+                    <aside className="col-3 vh-100 text-center"></aside>
 
                 </div>
             </div>
