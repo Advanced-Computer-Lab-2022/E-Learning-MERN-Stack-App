@@ -18,7 +18,7 @@ export default function InstructorPage() {
 
                     <section className="col-9 vh-100">
                         <header className='ms-4 mt-3 overflow-hidden'>
-                            <h1 className='mt-4 ms-4'>My Courses</h1>
+                            <h1 className='ms-4 mt-4'>My Courses</h1>
                             <div className="input-group">
                                 <div className="form-outline w-75 ms-4 mt-2">
                                     <label className="form-label" htmlFor="search-focus"></label>

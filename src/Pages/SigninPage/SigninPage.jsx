@@ -29,7 +29,7 @@ export default function CreateCourePage() {
 
                     <section className="col-9 vh-100">
                         <h1>Instructor Signin</h1>
-                        <form className="g-3 needs-validation" novalidate>
+                        <form className="g-3 needs-validation" noValidate >
                             <div className="ms-3 mt-3 w-50">
                                 <label for="username" className="form-label" onChange={handleUsernameChange()}>Username</label>
                                 <input type="text" className="form-control" id="username" value={authentication.username} required />
