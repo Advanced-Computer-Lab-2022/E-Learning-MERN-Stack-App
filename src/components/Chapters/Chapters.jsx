@@ -10,7 +10,7 @@ export default function Chapters() {
     // var coursesStructuredClone = global.structuredClone(courses);
 
 
-    async function addVideo(chapterIndex, newVideo) {
+    async function addVideo() {
         // console.log(await axios.post('http://localhost:800/addVideo/', document.getElementById('addVideo').value));
 
         // reload page to get view with the new video when a new render happens (see useEffect in CoursesContext.jsx)
