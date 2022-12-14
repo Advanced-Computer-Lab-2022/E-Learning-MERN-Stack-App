@@ -1,3 +1,4 @@
+// import axios from 'axios';
 import React from 'react'
 import { useState } from 'react'
 import RightNavBar from '../../components/RightNavBar/RightNavBar'
@@ -12,9 +13,9 @@ export default function EditAccountInfoPage() {
         bio: ""
     });
 
-    function handleSubmit() {
-        // Axios.post('http://localhost:8000/instructor/editaccountinfo', accountInfo);
-    }
+    // function handleSubmit() {
+    //     axios.post('http://localhost:8000/instructor/editaccountinfo', accountInfo);
+    // }
     function handleFirstNameChange(e) {
         setAccountInfo({
             ...accountInfo,

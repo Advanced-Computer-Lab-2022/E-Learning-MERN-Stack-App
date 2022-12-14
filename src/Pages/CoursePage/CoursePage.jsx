@@ -1,12 +1,11 @@
 import React, { useContext } from 'react'
-import AddChapter from '../../components/AddChapter/AddChapter.jsx'
 import Chapters from '../../components/Chapters/Chapters.jsx'
 import Reviews from '../../components/Reviews/Reviews.jsx'
 import { coursesContext } from '../../Contexts/CoursesContext.jsx'
 
 import { useParams } from 'react-router-dom';
 
-export default function CoursePage(props) {
+export default function CoursePage() {
     const { courses } = useContext(coursesContext);
     const { id } = useParams();
 
@@ -35,7 +34,7 @@ export default function CoursePage(props) {
                     </section>
 
                     <section className='col-5'>
-                        <Chapters index={id} />
+                        <Chapters />
                     </section>
 
                     <aside className="col-3 vh-100 text-center"></aside>

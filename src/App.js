@@ -25,10 +25,10 @@ function App() {
                             <>
                                 <div className='container-fluid'>
                                     <div className='row'>
-                                        <div className='col-9'>
+                                        <div className='col-xl-9 col-md-12'>
                                             <h1 className='text-center'> Page Not Found</h1>
                                         </div>
-                                        <div className='col-3'>
+                                        <div className='col-xl-3 col-md-12'>
                                             <RightNavBar />
                                         </div>
                                     </div>

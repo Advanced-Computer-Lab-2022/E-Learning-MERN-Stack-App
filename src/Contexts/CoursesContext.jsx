@@ -1,4 +1,4 @@
-import { Axios } from 'axios';
+import axios from 'axios';
 import React, { createContext, useEffect, useState } from 'react'
 
 
@@ -61,14 +61,15 @@ export default function CoursesContextProvider(props) {
     }
     const [courses, setCourses] = useState([course1, course2, course3, course4, course1, course2, course3, course4]);
 
-    // async function getAllCourses() {
-    //     const response = await Axios.get(`http://localhost:8000/instructor/getCourses`);
-    //     console.log(response);
-    //     setCourses(response.data);
-    // }
+    async function getAllCourses() {
+        const response = await axios.get(`http://localhost:8000/instructor/getCourses`);
+        console.log(response);
+        setCourses(response.data);
+    }
 
     useEffect(() => {
-        // getAllCourses();
+        // on render
+        getAllCourses();
     }, [])
 
     return (

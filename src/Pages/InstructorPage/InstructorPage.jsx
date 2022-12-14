@@ -16,7 +16,7 @@ export default function InstructorPage() {
             <div className="container-fluid">
                 <div className="row">
 
-                    <section className="col-9 vh-100">
+                    <section className="col-xl-9 col-md-12 vh-100">
                         <header className='ms-4 mt-3 overflow-hidden'>
                             <h1 className='ms-4 mt-4'>My Courses</h1>
                             <div className="input-group">
@@ -28,18 +28,18 @@ export default function InstructorPage() {
                         </header>
 
                         <div className="container text-center mt-3">
-                            <main className="row row-cols-3 bg-body g-5">
+                            <main className="row bg-body g-5">
                                 {
                                     courses
                                         .filter(course => course.price >= fromInputValue && course.price <= toInputValue)
                                         .filter(course => course.name.toLowerCase().includes(searchInputValue.toLowerCase()))
                                         .map((course, index) =>
-                                            <div key={index} className="col p-3">
+                                            <div key={index} className="col-xl-3 col-lg-4 col-md-6 col-sm-12 p-3">
                                                 <h3>{course.name}</h3>
                                                 <h4>Category: {course.category}</h4>
                                                 <img src='https://bobbyhadz.com/images/blog/react-prevent-multiple-button-clicks/thumbnail.webp' alt="mainPictureOfCourse" className='w-100' />
                                                 <p className='text-center'>Price: {course.price}</p>
-                                                <Link to={'/mycourses/'+index}>View Course</Link>
+                                                <Link to={'/mycourses/' + index}>View Course</Link>
                                             </div>
                                         )
                                 }
@@ -48,27 +48,15 @@ export default function InstructorPage() {
 
                     </section>
 
-                    <aside className="col-3 vh-100 text-center">
-                        <div className='h-auto'>
-                            <RightNavBar />
+                    <aside className="col-xl-3 col-md-12 vh-100 text-center position-relative bg-danger">
+                        <RightNavBar />
 
-                            {/* 
-                            <div className="subject mt-5">
-                                <h3>Subject</h3>
-                                <select className="select form-select w-75 text-center m-auto" data-mdb-filter="true">
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
-                                </select>
-                            </div> */}
-
-                            <div className="price mt-5">
-                                <h3>Price</h3>
-                                <p className='text-black-50' >from</p>
-                                <input type="number" name="from" id="from" onChange={e => setFromInputValue(e.target.value)} />
-                                <p className='text-black-50'>to</p>
-                                <input type="number" name="to" id="to" onChange={e => setToInputValue(e.target.value)} />
-                            </div>
+                        <div className="price position-absolute">
+                            <h3>Price</h3>
+                            <p className='text-black-50' >from</p>
+                            <input type="number" name="from" id="from" onChange={e => setFromInputValue(e.target.value)} />
+                            <p className='text-black-50'>to</p>
+                            <input type="number" name="to" id="to" onChange={e => setToInputValue(e.target.value)} />
                         </div>
 
                     </aside>
