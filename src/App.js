@@ -1,4 +1,3 @@
-import './App.css';
 import CreateCoursePage from './Pages/CreateCoursePage/CreateCoursePage';
 import EditAccountInfoPage from './Pages/EditAccountInfoPage/EditAccountInfoPage';
 import InstructorPage from './Pages/InstructorPage/InstructorPage.jsx'
