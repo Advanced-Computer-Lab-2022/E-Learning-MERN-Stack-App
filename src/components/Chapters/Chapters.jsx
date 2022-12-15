@@ -19,7 +19,7 @@ export default function Chapters() {
 
 
     async function addQuiz() {
-        console.log(await axios.post('http://localhost:800/addQuiz/', document.getElementById('addVideo').value));
+        // console.log(await axios.post('http://localhost:800/addQuiz/', document.getElementById('addVideo').value));
 
         // reload page to get view with the new video when a new render happens (see useEffect in CoursesContext.jsx)
         window.location.reload(true);
