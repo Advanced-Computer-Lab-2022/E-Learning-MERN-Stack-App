@@ -6,12 +6,12 @@ const NavBarLogo = () => {
     const { setNavIdx } = useContext(NavStateContext);
     const { setView } = useContext(CurrentViewContext);
     return (
-        <a className="text-3xl font-bold leading-none" href="#" onClick={() => {
+        <div className="text-3xl font-bold leading-none cursor-pointer" href="#" onClick={() => {
             setNavIdx(0)
             setView('guest')
         }}>
             <div className='bg-black text-white px-2 py-1'>ACL.</div>
-        </a>
+        </div>
 
     )
 }

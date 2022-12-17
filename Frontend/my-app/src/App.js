@@ -8,10 +8,11 @@ import CurrentViewContext from './context/CurrentViewContext';
 import CourseInfoContext from './context/CourseInfoContext'
 import CheckoutPage from './pages/CheckoutPage';
 import Test from './pages/Test';
+import UserPage from './pages/UserPage';
 function App() {
   const [navIdx, setNavIdx] = useState(0);
   const navIdxValue = { navIdx, setNavIdx };
-  const [view, setView] = useState("guest");
+  const [view, setView] = useState("user");
   const viewValue = { view, setView };
   return (
     <div className="App">
@@ -42,6 +43,7 @@ function App() {
               <NavStateContext.Provider value={navIdxValue}>
                 <CurrentViewContext.Provider value={viewValue}>
                   <GuestPage />
+                  <UserPage />
                   <CourseInfoContext.Provider>
                     <CoursePage owned={false} />
                   </CourseInfoContext.Provider>

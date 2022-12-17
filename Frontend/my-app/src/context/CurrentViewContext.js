@@ -2,7 +2,7 @@ import React from "react";
 
 
 const CurrentViewContext = React.createContext({
-    view: "guest",
+    view: "user",
     setView: () => { }
 });
 
