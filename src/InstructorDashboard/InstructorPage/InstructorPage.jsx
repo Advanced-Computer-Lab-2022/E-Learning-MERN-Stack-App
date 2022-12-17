@@ -39,7 +39,7 @@ export default function InstructorPage() {
                                                 <h4>Category: {course.category}</h4>
                                                 <img src='https://bobbyhadz.com/images/blog/react-prevent-multiple-button-clicks/thumbnail.webp' alt="mainPictureOfCourse" className='w-100' />
                                                 <p className='text-center'>Price: {course.price}</p>
-                                                <Link to={'/mycourses/' + index}>View Course</Link>
+                                                <Link to={'instructor/mycourses/' + index}>View Course</Link>
                                             </div>
                                         )
                                 }

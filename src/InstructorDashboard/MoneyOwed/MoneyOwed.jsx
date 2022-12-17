@@ -1,5 +1,5 @@
 import React from 'react'
-import RightNavBar from '../RightNavBar/RightNavBar'
+import RightNavBar from '../../components/RightNavBar/RightNavBar'
 
 export default function MoneyOwed() {
   return (
