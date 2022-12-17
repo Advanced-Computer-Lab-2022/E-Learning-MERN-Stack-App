@@ -28,6 +28,7 @@ const CourseFirstDiv = ({ owned }) => {
                         <CourseIncludesWrapper>
                             <CourseIncludesBulletPoint text={"Lorem ipsum"} />
                             <CourseIncludesBulletPoint text={"Lorem ipsum"} />
+                            <CourseIncludesBulletPoint text={"17 Hours Total"} />
                         </CourseIncludesWrapper>
                     </div>
                 </div>
