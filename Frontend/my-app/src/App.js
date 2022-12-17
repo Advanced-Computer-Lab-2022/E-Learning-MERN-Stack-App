@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+// import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import CoursePage from './pages/CoursePage';
 import GuestPage from './pages/GuestPage';
 import { useState } from 'react';
