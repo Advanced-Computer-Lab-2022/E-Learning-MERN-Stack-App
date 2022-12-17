@@ -27,7 +27,7 @@ const LoginForm = () => {
             </div>
             <button type="submit" class="w-full px-4 py-2 text-base font-semibold text-center text-white transition duration-200 ease-in bg-blue-500 shadow-md hover:text-black hover:bg-white focus:outline-none focus:ring-2">
                 <span class="w-full">
-                    Submit
+                    Sign In
                 </span>
             </button>
         </form>

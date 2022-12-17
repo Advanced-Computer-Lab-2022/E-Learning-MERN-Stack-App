@@ -9,6 +9,7 @@ import Signup from '../components/signup/Signup';
 import { useContext } from 'react';
 import NavStateContext from '../context/NavStateContext';
 import CurrentViewContext from '../context/CurrentViewContext';
+import ForgetPasswordContainer from '../components/forgetPassword/ForgetPasswordContainer';
 const GuestPage = () => {
     const { navIdx } = useContext(NavStateContext);
     const { view } = useContext(CurrentViewContext);
@@ -22,6 +23,7 @@ const GuestPage = () => {
                 <ContactUs visible={navIdx === 4} />
                 <Login visible={navIdx === 5} />
                 <Signup visible={navIdx === 6} />
+                <ForgetPasswordContainer visible={navIdx === 7} />
             </Layout>
 
         )

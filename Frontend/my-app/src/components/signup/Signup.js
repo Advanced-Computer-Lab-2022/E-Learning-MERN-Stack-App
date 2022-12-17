@@ -13,7 +13,6 @@ const Signup = ({ visible }) => {
                             Sign Up
                         </p>
                         <SignupForm />
-                        <LogingInRedirection />
                     </div>
                 </div>
                 <SignupImg />
