@@ -5,6 +5,7 @@ import {
     AccordionHeader,
     AccordionBody,
 } from "@material-tailwind/react";
+import SectionsBody from './SectionsBody';
 const Sections = ({ visible }) => {
     const [open, setOpen] = useState(1);
 
@@ -23,7 +24,7 @@ const Sections = ({ visible }) => {
                                 Section 1
                             </AccordionHeader>
                             <AccordionBody>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ante lectus, imperdiet vitae nunc eu, rutrum tempus ante. Sed eu finibus lorem. Cras et eros ex. Suspendisse sed justo ut odio laoreet placerat ac ut nulla. Donec gravida magna dolor, et ultrices est consectetur in.
+                                <SectionsBody />
                             </AccordionBody>
                         </Accordion>
                         <Accordion open={open === 2}>
@@ -31,7 +32,7 @@ const Sections = ({ visible }) => {
                                 Section 2
                             </AccordionHeader>
                             <AccordionBody>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ante lectus, imperdiet vitae nunc eu, rutrum tempus ante. Sed eu finibus lorem. Cras et eros ex. Suspendisse sed justo ut odio laoreet placerat ac ut nulla. Donec gravida magna dolor, et ultrices est consectetur in.
+                                <SectionsBody />
                             </AccordionBody>
                         </Accordion>
                         <Accordion open={open === 3}>
@@ -39,7 +40,7 @@ const Sections = ({ visible }) => {
                                 Section 3
                             </AccordionHeader>
                             <AccordionBody>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ante lectus, imperdiet vitae nunc eu, rutrum tempus ante. Sed eu finibus lorem. Cras et eros ex. Suspendisse sed justo ut odio laoreet placerat ac ut nulla. Donec gravida magna dolor, et ultrices est consectetur in.
+                                <SectionsBody />
                             </AccordionBody>
                         </Accordion>
                     </Fragment>
