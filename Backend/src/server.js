@@ -63,6 +63,7 @@ app.get('/guestSignin', (req, res, next) => {
 app.get('/guestSignUp', (req, res, next) => {
     res.render(path.join(__dirname + '/views/guestSignup'));
 });
+
 app.get('/addCompany', (req, res, next) => {
     res.render(path.join(__dirname + '/views/addCompany'));
 });

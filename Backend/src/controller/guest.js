@@ -61,4 +61,14 @@ exports.signin = (req, res) => {
         else return res.status(400).json({message: 'something went wrong'});
 
     });
-};
+}
+exports.logout = async (req, res) => {
+    try{ 
+        res.cookie('jwt',"");
+        res.status (200).json("you are logged out")
+    }catch (error){
+        res. status (406).json({ error: error.messages });
+    }
+}
+
+;

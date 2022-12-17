@@ -1,11 +1,12 @@
 const express = require('express');
-const { signup, signin } = require('../controller/guest');
+const { signup, signin, logout } = require('../controller/guest');
 const router = express.Router();
 
 
 
 router.post('/guest/signup', signup);
 router.post('/guest/signin', signin);
+router.get('/guest/logout', logout);
 // router.post('/profile', requireSignin, (req, res) => {
 //     res.status(200).json({guest: 'profile'})
 // });
