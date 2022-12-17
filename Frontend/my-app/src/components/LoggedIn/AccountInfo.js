@@ -64,7 +64,7 @@ const AccountInfo = ({ visible }) => {
                                         <textarea class='bg-gray-100 rounded-md  leading-normal resize-none w-full h-20 py-2 px-3 shadow-inner border border-gray-400 font-medium placeholder-gray-700 focus:outline-none focus:bg-white' placeholder={user.bio}></textarea>
                                     </div>
                                     <div class="flex justify-end">
-                                        <button class="appearance-none bg-gray-200 text-gray-900 px-2 py-1 shadow-sm border border-gray-400 rounded-md mr-3" type="submit">save changes</button>
+                                        <button class="mt-3 appearance-none bg-blue-500 text-white px-2 py-1 shadow-sm border border-gray-400 rounded-md hover:bg-white hover:text-blue-500">Save Changes</button>
                                     </div>
                                 </div>
                             </div>
