@@ -1,6 +1,5 @@
 import React from 'react'
 import SignupForm from './SignupForm'
-import LogingInRedirection from './LogingInRedirection'
 import SignupImg from './SignupImg'
 const Signup = ({ visible }) => {
     if (visible)
