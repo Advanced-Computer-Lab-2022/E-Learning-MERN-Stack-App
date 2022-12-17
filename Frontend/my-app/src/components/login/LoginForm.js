@@ -3,7 +3,7 @@ import UserInfoContext from '../../context/UserInfoContext'
 import NavStateContext from '../../context/NavStateContext'
 import CurrentViewContext from '../../context/CurrentViewContext'
 const LoginForm = () => {
-    const { user, setUser } = useContext(UserInfoContext)
+    const { setUser } = useContext(UserInfoContext)
     const { setNavIdx } = useContext(NavStateContext)
     const { setView } = useContext(CurrentViewContext)
     return (
