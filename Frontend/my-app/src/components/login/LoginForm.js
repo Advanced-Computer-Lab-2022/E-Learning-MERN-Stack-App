@@ -1,6 +1,11 @@
-import React from 'react'
-
+import React, { useContext } from 'react'
+import UserInfoContext from '../../context/UserInfoContext'
+import NavStateContext from '../../context/NavStateContext'
+import CurrentViewContext from '../../context/CurrentViewContext'
 const LoginForm = () => {
+    const { user, setUser } = useContext(UserInfoContext)
+    const { setNavIdx } = useContext(NavStateContext)
+    const { setView } = useContext(CurrentViewContext)
     return (
         <form class="flex flex-col pt-3 md:pt-8">
             <div class="flex flex-col pt-4">
@@ -25,12 +30,28 @@ const LoginForm = () => {
                     <input type="password" class=" flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Password" />
                 </div>
             </div>
-            <button type="submit" class="w-full px-4 py-2 text-base font-semibold text-center text-white transition duration-200 ease-in bg-blue-500 shadow-md hover:text-black hover:bg-white focus:outline-none focus:ring-2">
+            <button type="submit" class="w-full px-4 py-2 text-base font-semibold text-center text-white transition duration-200 ease-in bg-blue-500 shadow-md hover:text-black hover:bg-white focus:outline-none focus:ring-2"
+                onClick={() => {
+                    const getUser = {
+                        email: "minahannalla@domain.com",
+                        country: "Egypt",
+                        favoriteLanguage: "English",
+                        firstName: "Mina",
+                        lastName: "Hannalla",
+                        username: "mina.hannalla123",
+                        bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vulputate felis eget risus tempus, a faucibus ex posuere. Ut aliquam consequat metus at maximus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae semper dui. Curabitur hendrerit sed enim sit amet pulvinar.",
+                        ownedCoursesIdxs: [1052, 1514, 1236]
+                    }
+                    setUser(getUser);
+                    setNavIdx(0);
+                    setView('user')
+                }}
+            >
                 <span class="w-full">
                     Sign In
                 </span>
             </button>
-        </form>
+        </form >
     )
 }
 

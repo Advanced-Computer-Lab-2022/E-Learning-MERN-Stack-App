@@ -11,7 +11,7 @@ import AccountInfo from '../components/LoggedIn/AccountInfo';
 const UserPage = () => {
     const { navIdx } = useContext(NavStateContext);
     const { view } = useContext(CurrentViewContext);
-    if (view === "guest")
+    if (view === "user")
         return (
             <LoggedInLayout>
                 <LandingPage visible={navIdx === 0} />

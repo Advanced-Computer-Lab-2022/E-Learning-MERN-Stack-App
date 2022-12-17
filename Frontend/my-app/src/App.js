@@ -9,11 +9,14 @@ import CourseInfoContext from './context/CourseInfoContext'
 import CheckoutPage from './pages/CheckoutPage';
 import Test from './pages/Test';
 import UserPage from './pages/UserPage';
+import UserInfoContext from './context/UserInfoContext';
 function App() {
   const [navIdx, setNavIdx] = useState(0);
   const navIdxValue = { navIdx, setNavIdx };
-  const [view, setView] = useState("user");
+  const [view, setView] = useState("guest");
   const viewValue = { view, setView };
+  const [user, setUser] = useState({});
+  const userValue = { user, setUser };
   return (
     <div className="App">
       {/* <NavStateContext.Provider value={value}>
@@ -40,16 +43,18 @@ function App() {
           <Route path="/"
             element=
             {
-              <NavStateContext.Provider value={navIdxValue}>
-                <CurrentViewContext.Provider value={viewValue}>
-                  <GuestPage />
-                  <UserPage />
-                  <CourseInfoContext.Provider>
-                    <CoursePage owned={false} />
-                  </CourseInfoContext.Provider>
-                  <CheckoutPage />
-                </CurrentViewContext.Provider>
-              </NavStateContext.Provider>
+              <UserInfoContext.Provider value={userValue}>
+                <NavStateContext.Provider value={navIdxValue}>
+                  <CurrentViewContext.Provider value={viewValue}>
+                    <GuestPage />
+                    <UserPage />
+                    <CourseInfoContext.Provider>
+                      <CoursePage owned={false} />
+                    </CourseInfoContext.Provider>
+                    <CheckoutPage />
+                  </CurrentViewContext.Provider>
+                </NavStateContext.Provider>
+              </UserInfoContext.Provider>
             }
           />
           <Route path="/test"

@@ -13,7 +13,7 @@ import ForgetPasswordContainer from '../components/forgetPassword/ForgetPassword
 const GuestPage = () => {
     const { navIdx } = useContext(NavStateContext);
     const { view } = useContext(CurrentViewContext);
-    if (view === "user")
+    if (view === "guest")
         return (
             <Layout>
                 <LandingPage visible={navIdx === 0} />

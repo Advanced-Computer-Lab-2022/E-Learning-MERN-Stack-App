@@ -2,14 +2,19 @@
 import NavStateContext from '../../context/NavStateContext'
 import React, { useContext } from 'react'
 import CurrentViewContext from '../../context/CurrentViewContext';
+import UserInfoContext from '../../context/UserInfoContext';
 const MainNavListItem = ({ text, href, myIdx }) => {
     const { navIdx, setNavIdx } = useContext(NavStateContext);
     const { setView } = useContext(CurrentViewContext);
+    const { user } = useContext(UserInfoContext);
     if (navIdx !== myIdx) {
         return (
             <li onClick={() => {
                 setNavIdx(myIdx)
-                setView('guest')
+                if (user.username === undefined)
+                    setView('guest')
+                else
+                    setView('user')
             }}>
                 <a class="text-sm text-gray-400 hover:text-gray-500" href={href}>{text}</a>
             </li>
@@ -18,7 +23,10 @@ const MainNavListItem = ({ text, href, myIdx }) => {
         return (
             <li onClick={() => {
                 setNavIdx(myIdx)
-                setView('guest')
+                if (user.username === undefined)
+                    setView('guest')
+                else
+                    setView('user')
             }}>
                 <a class="text-sm text-blue-600 font-bold" href={href}>{text}</a>
             </li>

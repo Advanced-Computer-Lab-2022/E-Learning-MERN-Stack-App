@@ -1,14 +1,7 @@
-import React from 'react'
-const user = {
-    email: "minahannalla@domain.com",
-    country: "Egypt",
-    favoriteLanguage: "English",
-    firstName: "Mina",
-    lastName: "Hannalla",
-    username: "mina.hannalla123",
-    bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vulputate felis eget risus tempus, a faucibus ex posuere. Ut aliquam consequat metus at maximus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae semper dui. Curabitur hendrerit sed enim sit amet pulvinar."
-}
+import React, { useContext } from 'react'
+import UserInfoContext from '../../context/UserInfoContext'
 const AccountInfo = ({ visible }) => {
+    const { user } = useContext(UserInfoContext);
     if (visible)
         return (
             <div class="  my-5 mx-auto">
