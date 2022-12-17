@@ -5,7 +5,7 @@ import WhatYouWillLearnListWrapper from './WhatYouWillLearnListWrapper'
 import CourseIncludesWrapper from './CourseIncludesWrapper'
 import CourseIncludesBulletPoint from './CourseIncludesBulletPoint'
 import CourseFirstDivPricing from './CourseFirstDivPricing'
-const CourseFirstDiv = () => {
+const CourseFirstDiv = ({ owned }) => {
     return (
         <div class="relative max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 my-10">
             <div class="pricing-box max-w-lg mx-auto rounded-lg shadow-lg overflow-hidden lg:max-w-none lg:flex">
@@ -31,7 +31,7 @@ const CourseFirstDiv = () => {
                         </CourseIncludesWrapper>
                     </div>
                 </div>
-                <CourseFirstDivPricing price={9.99} />
+                <CourseFirstDivPricing price={9.99} owned={owned} />
             </div>
         </div>
     )

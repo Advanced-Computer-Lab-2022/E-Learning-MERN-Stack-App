@@ -7,12 +7,13 @@ import Layout from '../components/Layout'
 import Reviews from '../components/reviews/Reviews'
 import CurrentViewContext from '../context/CurrentViewContext'
 import { useContext } from 'react'
-const CoursePage = ({ navActiveState, setNavActiveState }) => {
+import CourseAndInstructorRating from '../components/course&InstructorRating/CourseAndInstructorRating'
+const CoursePage = ({ navActiveState, setNavActiveState, owned }) => {
     const { view } = useContext(CurrentViewContext);
     if (view === "course")
         return (
             <Layout >
-                <CourseFirstDiv />
+                <CourseFirstDiv owned={owned} />
                 <div className="mx-40 my-10 flex">
                     <div className='w-1/2'>
                         <CourseInstructorPlaceHolder />
@@ -24,7 +25,7 @@ const CoursePage = ({ navActiveState, setNavActiveState }) => {
                 <Sections visible={true} />
                 <Reviews visible={true} />
                 <Faqs visible={true} />
-
+                <CourseAndInstructorRating courseRating={2.5} owned={owned} />
             </Layout>
         )
 }

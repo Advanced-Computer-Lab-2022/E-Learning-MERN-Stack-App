@@ -43,7 +43,7 @@ function App() {
                 <CurrentViewContext.Provider value={viewValue}>
                   <GuestPage />
                   <CourseInfoContext.Provider>
-                    <CoursePage />
+                    <CoursePage owned={false} />
                   </CourseInfoContext.Provider>
                   <CheckoutPage />
                 </CurrentViewContext.Provider>
