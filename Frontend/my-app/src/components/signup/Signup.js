@@ -1,6 +1,7 @@
 import React from 'react'
 import SignupForm from './SignupForm'
 import SignupImg from './SignupImg'
+import TC from './T&C'
 const Signup = ({ visible }) => {
     if (visible)
         return (
@@ -12,9 +13,11 @@ const Signup = ({ visible }) => {
                             Sign Up
                         </p>
                         <SignupForm />
+                        <TC />
                     </div>
                 </div>
                 <SignupImg />
+
             </div>
 
         )
