@@ -5,6 +5,11 @@ const SignupForm = () => {
         <form class="flex flex-col pt-3 md:pt-8">
             <div class="flex flex-col pt-4">
                 <div class="flex relative ">
+                    <input type="text" class=" flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Username" />
+                </div>
+            </div>
+            <div class="flex flex-col pt-4">
+                <div class="flex relative ">
                     <input type="text" class=" flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Email" />
                 </div>
             </div>
