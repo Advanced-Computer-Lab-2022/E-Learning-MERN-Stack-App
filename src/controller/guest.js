@@ -16,7 +16,7 @@ exports.signup = (req, res) => {
        const _guest = new Guest({
            firstName: req.body.firstName,
            lastName: req.body.lastName,
-           userName: Math.random().toString(),
+           userName: req.body.userName,
            email: req.body.email,
            password: req.body.password
  
@@ -44,7 +44,7 @@ exports.signup = (req, res) => {
 }
 
 exports.signin = (req, res) => {
-    Guest.findOne({email: req.body.email})
+    Guest.findOne({userName: req.body.userName})
     .exec((error, guest) =>{
         if(error) return res.status(400).json({error});
         if(guest){

@@ -23,7 +23,7 @@ exports.signup = (req, res) => {
        const _admin = new Admin({
            firstName: req.body.firstName,
            lastName: req.body.lastName,
-           userName: Math.random().toString(),
+           userName: req.body.userName,
            email: req.body.email,
            password: req.body.password,
        });
@@ -44,7 +44,7 @@ exports.signup = (req, res) => {
 };
 
 exports.signin = (req, res) => {
-    Admin.findOne({email: req.body.email})
+    Admin.findOne({userName: req.body.userName})
     .exec((error, admin) =>{
         if(error) return res.status(400).json({error});
         if(admin){
