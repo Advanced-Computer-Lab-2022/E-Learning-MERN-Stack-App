@@ -16,10 +16,10 @@ exports.viewMyCourses = (req, res) => {
 };
 exports.getCourses = (req, res) => {
     Course.find()
-    .exec((error, course) => {
+    .exec((error, courses) => {
         if(error) return res.status(400).json({error});
-        if(guest){
-            res.status(200).json({course});
+        if(courses){
+            res.status(200).json({courses});
         }
     });
 
