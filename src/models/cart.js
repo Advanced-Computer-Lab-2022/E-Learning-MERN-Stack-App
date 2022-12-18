@@ -7,7 +7,7 @@ const cartSchema = new mongoose.Schema({
             type: mongoose.Schema.Types.ObjectId,
             ref: "course",
         },
-         Price: Number,
+         price: Number,
          offer: Number,
       }]
 }, {timestamps: true});

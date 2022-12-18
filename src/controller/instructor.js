@@ -34,20 +34,16 @@ exports.signin = (req, res) => {
     });
 };
 exports.createCourse = (req, res) => {
-    let text = req.body.text;
-    let videos = req.body.videos;
-    let quizes = req.body.quizes;
-    let chapter = [{videos,text, quizes}];
     const _course = new Course({
         name: req.body.name,
         title: req.body.title,
         description: req.body.description,
-        mainPicture:req.body.mainPicture,
         shortVideo:req.body.shortVideo,
         price: req.body.price,
-        createdBy:new mongoose.Types.ObjectId(req.body.createdBy),
-        category:new mongoose.Types.ObjectId(req.body.category),
-        chapters:chapter
+        createdBy: req.user._id,
+        category: req.body.category,
+        chapters: req.body.chapters
+        
       });
       _course.save((error, course) => {
           if(error) res.status(400).json({message:"an error occured"});
@@ -56,7 +52,7 @@ exports.createCourse = (req, res) => {
 };
 
 exports.getCourses = (req, res) => {
-    Course.find({createdBy: req.body._id})
+    Course.find({createdBy: req.user._id})
         .exec((error, course) => {
             if(error) res.status(400).json({message:"an error occured"});
             if(course) res.status(200).json(course);
