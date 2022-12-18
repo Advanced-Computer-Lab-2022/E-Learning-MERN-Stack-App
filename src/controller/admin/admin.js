@@ -102,7 +102,8 @@ exports.addOrgGuest = (req, res) => {
                      firstName: req.body.firstName,
                      lastName: req.body.lastName,
                      company: company._id,
-                     userName: Math.random().toString(),
+                     userName: req.body.userName,
+                     gender: req.body.gender
                      });
                      _guest.save((err, data)=>{
                         if(err) res.status(400).json({message: "Something went wrong"});
@@ -123,7 +124,8 @@ exports.addInstructor = (req, res) => {
                 lastName: req.body.lastName,
                 email: req.body.email,
                 password: req.body.password,
-                userName: Math.random().toString(),
+                userName: req.body.userName,
+                gender: req.body.gender
             });
             _instructor.save((error, data)=>{
                 if(error) res.status(400).json({message: "Something went wrong"});

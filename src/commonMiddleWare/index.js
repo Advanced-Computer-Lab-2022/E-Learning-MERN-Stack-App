@@ -10,5 +10,8 @@ exports.requireSignin = (req, res, next) => {
     }
     next();
 }
+exports.signout = (req, res) => {
+    
+}
 
 

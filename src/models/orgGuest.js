@@ -49,7 +49,7 @@ const orgGuestSchema = new mongoose.Schema({
      courses:[{type:mongoose.Schema.Types.ObjectId, ref:"course"}],
      gender : {
          type : String,
-         enum : ['male', 'female', 'prefere not to say']
+         enum : ['male', 'female']
      }
 }, {timestamps : true});
 
