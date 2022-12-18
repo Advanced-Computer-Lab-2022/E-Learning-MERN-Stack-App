@@ -45,6 +45,7 @@ exports.createCourse = (req, res) => {
         mainPicture:req.body.mainPicture,
         shortVideo:req.body.shortVideo,
         price: req.body.price,
+        // Instructor is not completed yet
         createdBy:new mongoose.Types.ObjectId(req.body.createdBy),
         category:new mongoose.Types.ObjectId(req.body.category),
         chapters:chapter
