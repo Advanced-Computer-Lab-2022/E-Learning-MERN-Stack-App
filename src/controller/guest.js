@@ -18,7 +18,9 @@ exports.signup = (req, res) => {
            lastName: req.body.lastName,
            userName: Math.random().toString(),
            email: req.body.email,
-           password: req.body.password
+           password: req.body.password,
+           country: req.body.country,
+           gender: req.body.gender
  
        });
        _guest.save((error, data) => {
@@ -44,7 +46,7 @@ exports.signup = (req, res) => {
 }
 
 exports.signin = (req, res) => {
-    Guest.findOne({email: req.body.email})
+    Guest.findOne({userName: req.body.userName})
     .exec((error, guest) =>{
         if(error) return res.status(400).json({error});
         if(guest){
