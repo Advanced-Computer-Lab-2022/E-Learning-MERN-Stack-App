@@ -5,9 +5,9 @@ const SigningUpRedirection = () => {
     const { navIdx, setNavIdx } = useContext(NavStateContext);
     return (
         <>
-            <div class="pt-10 pb-4 text-center" onClick={() => setNavIdx(7)}>
+            <div className="pt-10 pb-4 text-center" onClick={() => setNavIdx(7)}>
                 <p>
-                    <a href="#" class="font-semibold">
+                    <a href="#" className="font-semibold">
                         <span className='text-blue-500 underline'>Forgot Password?</span>
                     </a>
                 </p>

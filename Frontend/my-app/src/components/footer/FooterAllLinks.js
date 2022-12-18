@@ -4,7 +4,7 @@ import FooterListItem from './FooterListItem'
 
 const FooterAllLinks = () => {
     return (
-        <div class="grid lg:grid-cols-4 md:grid-cols-2">
+        <div className="grid lg:grid-cols-4 md:grid-cols-2">
             <FooterList text={"IT Categories"}>
                 <FooterListItem text={"Holder"} href={"#"} />
                 <FooterListItem text={"Holder2"} href={"#"} />

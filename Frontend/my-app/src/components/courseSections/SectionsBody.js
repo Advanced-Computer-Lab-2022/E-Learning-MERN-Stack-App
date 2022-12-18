@@ -5,8 +5,8 @@ import WatchVideoButton from './WatchVideoButton'
 
 const SectionsBody = () => {
     return (
-        <div class="container px-5 py-3 mx-auto flex flex-wrap">
-            <div class="flex flex-wrap w-full">
+        <div className="container px-5 py-3 mx-auto flex flex-wrap">
+            <div className="flex flex-wrap w-full">
                 <WatchVideoButton />
                 <TakingTestButton />
                 <ReviewSectionButton />

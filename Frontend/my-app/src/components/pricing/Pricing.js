@@ -8,10 +8,10 @@ const Pricing = ({ visible }) => {
     if (visible)
         return (
             <>
-                <div class="lg:flex items-center justify-between mx-20 mb-14 mt-20">
+                <div className="lg:flex items-center justify-between mx-20 mb-14 mt-20">
                     <PricingHeader />
-                    <div class="xl:w-1/2 lg:w-7/12 relative w-full lg:mt-0 mt-12 md:px-8" role="list">
-                        <img src="https://i.ibb.co/0n6DSS3/bgimg.png" class="absolute w-full -ml-12 mt-24" alt="background circle images" />
+                    <div className="xl:w-1/2 lg:w-7/12 relative w-full lg:mt-0 mt-12 md:px-8" role="list">
+                        <img src="https://i.ibb.co/0n6DSS3/bgimg.png" className="absolute w-full -ml-12 mt-24" alt="background circle images" />
                         <PricingItem
                             text={"Starter"}
                             price={"FREE"}
@@ -41,7 +41,7 @@ const Pricing = ({ visible }) => {
                 {/* <div className='flex'>
                     <div className='w-1/2' />
                     <div className='w-1/3 mb-10 '>
-                        <button type="button" class="py-5 bg-blue-500 hover:bg-blue-600 focus:ring-blue-500 focus:ring-offset-blue-200 text-white  transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg w-1/2 ">
+                        <button type="button" className="py-5 bg-blue-500 hover:bg-blue-600 focus:ring-blue-500 focus:ring-offset-blue-200 text-white  transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg w-1/2 ">
                             Subscribe
                         </button>
                     </div>

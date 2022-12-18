@@ -15,7 +15,7 @@ const Sections = ({ visible }) => {
     if (visible)
         return (
             <>
-                <h2 class=" mx-36 mb-8 text-4xl tracking-tight font-extrabold text-blue-500">Course Content</h2>
+                <h2 className=" mx-36 mb-8 text-4xl tracking-tight font-extrabold text-blue-500">Course Content</h2>
                 <div className='mx-36 border-b-gray-200 border-b' />
                 <div className='mx-40 my-10 mb-16 px-10 pt-2 shadow-2xl rounded-xl'>
                     <Fragment>

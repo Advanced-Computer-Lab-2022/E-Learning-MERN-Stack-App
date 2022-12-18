@@ -10,27 +10,27 @@ const TestContent = ({ visible }) => {
     if (visible === 1)
         return (
             <>
-                <section class="text-gray-600 body-font overflow-hidden">
-                    <div class="container px-20 py-24 mx-auto">
-                        <div class="-my-8 divide-y-2 divide-gray-100">
+                <section className="text-gray-600 body-font overflow-hidden">
+                    <div className="container px-20 py-24 mx-auto">
+                        <div className="-my-8 divide-y-2 divide-gray-100">
                             <Question
                                 topicName={"Phasellus odio ipsum, pharetra in lacus vel, tempus ornare nisl."}
                                 questionDesc="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tellus lectus, sagittis eget sem sit amet, dictum ullamcorper mi. Proin nisl tellus, auctor at sem in, ultricies vehicula felis. Aliquam erat volutpat?"
                                 topicNumber={"Topic 1"}
                             >
-                                <div class="flex justify-left py-1 flex-col px-8 pt-5">
+                                <div className="flex justify-left py-1 flex-col px-8 pt-5">
                                     <div>
                                         <div onClick={() => setFirst(0)}>
-                                            <input checked={first === 0} class="appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-500 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" />
-                                            <label class="inline-block text-gray-800 cursor-pointer">
+                                            <input checked={first === 0} className="appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-500 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" />
+                                            <label className="inline-block text-gray-800 cursor-pointer">
                                                 Answer 1: Phasellus odio ipsum, pharetra in lacus vel, tempus ornare nisl.
                                             </label>
                                         </div>
                                     </div>
                                     <div>
                                         <div onClick={() => setFirst(1)}>
-                                            <input checked={first === 1} class="appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-500 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" />
-                                            <label class="inline-block text-gray-800 cursor-pointer">
+                                            <input checked={first === 1} className="appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-500 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" />
+                                            <label className="inline-block text-gray-800 cursor-pointer">
                                                 Answer 2: Phasellus odio ipsum, pharetra in lacus vel, tempus ornare nisl.
                                             </label>
                                         </div>
@@ -42,19 +42,19 @@ const TestContent = ({ visible }) => {
                                 questionDesc="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tellus lectus, sagittis eget sem sit amet, dictum ullamcorper mi. Proin nisl tellus, auctor at sem in, ultricies vehicula felis. Aliquam erat volutpat?"
                                 topicNumber={"Topic 2"}
                             >
-                                <div class="flex justify-left py-1 flex-col px-8 pt-5">
+                                <div className="flex justify-left py-1 flex-col px-8 pt-5">
                                     <div>
                                         <div onClick={() => setSecond(0)}>
-                                            <input checked={second === 0} class="appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-500 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" />
-                                            <label class="inline-block text-gray-800 cursor-pointer">
+                                            <input checked={second === 0} className="appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-500 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" />
+                                            <label className="inline-block text-gray-800 cursor-pointer">
                                                 Answer 1: Phasellus odio ipsum, pharetra in lacus vel, tempus ornare nisl.
                                             </label>
                                         </div>
                                     </div>
                                     <div>
                                         <div onClick={() => setSecond(1)}>
-                                            <input checked={second === 1} class="appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-500 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" />
-                                            <label class="inline-block text-gray-800 cursor-pointer">
+                                            <input checked={second === 1} className="appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-500 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" />
+                                            <label className="inline-block text-gray-800 cursor-pointer">
                                                 Answer 2: Phasellus odio ipsum, pharetra in lacus vel, tempus ornare nisl.
                                             </label>
                                         </div>
@@ -66,19 +66,19 @@ const TestContent = ({ visible }) => {
                                 questionDesc="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tellus lectus, sagittis eget sem sit amet, dictum ullamcorper mi. Proin nisl tellus, auctor at sem in, ultricies vehicula felis. Aliquam erat volutpat?"
                                 topicNumber={"Topic 3"}
                             >
-                                <div class="flex justify-left py-1 flex-col px-8 pt-5">
+                                <div className="flex justify-left py-1 flex-col px-8 pt-5">
                                     <div>
                                         <div onClick={() => setThird(0)}>
-                                            <input checked={third === 0} class="appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-500 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" />
-                                            <label class="inline-block text-gray-800 cursor-pointer">
+                                            <input checked={third === 0} className="appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-500 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" />
+                                            <label className="inline-block text-gray-800 cursor-pointer">
                                                 Answer 1: Phasellus odio ipsum, pharetra in lacus vel, tempus ornare nisl.
                                             </label>
                                         </div>
                                     </div>
                                     <div>
                                         <div onClick={() => setThird(1)}>
-                                            <input checked={third === 1} class="appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-500 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" />
-                                            <label class="inline-block text-gray-800 cursor-pointer">
+                                            <input checked={third === 1} className="appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-500 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" />
+                                            <label className="inline-block text-gray-800 cursor-pointer">
                                                 Answer 2: Phasellus odio ipsum, pharetra in lacus vel, tempus ornare nisl.
                                             </label>
                                         </div>
@@ -90,19 +90,19 @@ const TestContent = ({ visible }) => {
                                 questionDesc="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tellus lectus, sagittis eget sem sit amet, dictum ullamcorper mi. Proin nisl tellus, auctor at sem in, ultricies vehicula felis. Aliquam erat volutpat?"
                                 topicNumber={"Topic 4"}
                             >
-                                <div class="flex justify-left py-1 flex-col px-8 pt-5">
+                                <div className="flex justify-left py-1 flex-col px-8 pt-5">
                                     <div>
                                         <div onClick={() => setFourth(0)}>
-                                            <input checked={fourth === 0} class="appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-500 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" />
-                                            <label class="inline-block text-gray-800 cursor-pointer">
+                                            <input checked={fourth === 0} className="appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-500 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" />
+                                            <label className="inline-block text-gray-800 cursor-pointer">
                                                 Answer 1: Phasellus odio ipsum, pharetra in lacus vel, tempus ornare nisl.
                                             </label>
                                         </div>
                                     </div>
                                     <div>
                                         <div onClick={() => setFourth(1)}>
-                                            <input checked={fourth === 1} class="appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-500 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" />
-                                            <label class="inline-block text-gray-800 cursor-pointer">
+                                            <input checked={fourth === 1} className="appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-500 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" />
+                                            <label className="inline-block text-gray-800 cursor-pointer">
                                                 Answer 2: Phasellus odio ipsum, pharetra in lacus vel, tempus ornare nisl.
                                             </label>
                                         </div>
@@ -114,19 +114,19 @@ const TestContent = ({ visible }) => {
                                 questionDesc="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tellus lectus, sagittis eget sem sit amet, dictum ullamcorper mi. Proin nisl tellus, auctor at sem in, ultricies vehicula felis. Aliquam erat volutpat?"
                                 topicNumber={"Topic 5"}
                             >
-                                <div class="flex justify-left py-1 flex-col px-8 pt-5">
+                                <div className="flex justify-left py-1 flex-col px-8 pt-5">
                                     <div>
                                         <div onClick={() => setFifth(0)}>
-                                            <input checked={fifth === 0} class="appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-500 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" />
-                                            <label class="inline-block text-gray-800 cursor-pointer">
+                                            <input checked={fifth === 0} className="appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-500 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" />
+                                            <label className="inline-block text-gray-800 cursor-pointer">
                                                 Answer 1: Phasellus odio ipsum, pharetra in lacus vel, tempus ornare nisl.
                                             </label>
                                         </div>
                                     </div>
                                     <div>
                                         <div onClick={() => setFifth(1)}>
-                                            <input checked={fifth === 1} class="appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-500 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" />
-                                            <label class="inline-block text-gray-800 cursor-pointer">
+                                            <input checked={fifth === 1} className="appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-500 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" />
+                                            <label className="inline-block text-gray-800 cursor-pointer">
                                                 Answer 2: Phasellus odio ipsum, pharetra in lacus vel, tempus ornare nisl.
                                             </label>
                                         </div>

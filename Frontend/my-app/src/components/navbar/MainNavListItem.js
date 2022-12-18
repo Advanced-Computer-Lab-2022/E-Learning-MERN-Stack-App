@@ -16,7 +16,7 @@ const MainNavListItem = ({ text, href, myIdx }) => {
                 else
                     setView('user')
             }}>
-                <a class="text-sm text-gray-400 hover:text-gray-500" href={href}>{text}</a>
+                <a className="text-sm text-gray-400 hover:text-gray-500" href={href}>{text}</a>
             </li>
         )
     } else {
@@ -28,7 +28,7 @@ const MainNavListItem = ({ text, href, myIdx }) => {
                 else
                     setView('user')
             }}>
-                <a class="text-sm text-blue-600 font-bold" href={href}>{text}</a>
+                <a className="text-sm text-blue-600 font-bold" href={href}>{text}</a>
             </li>
         )
     }

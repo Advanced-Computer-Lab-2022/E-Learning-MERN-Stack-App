@@ -6,8 +6,8 @@ const SmallScreenCTAButtons = ({ setActiveSmallScreen }) => {
     const { setNavIdx } = useContext(NavStateContext);
     const { setView } = useContext(CurrentViewContext);
     return (
-        <div class="mt-auto">
-            <div class="pt-6">
+        <div className="mt-auto">
+            <div className="pt-6">
                 <a
                     onClick={() => {
                         setActiveSmallScreen(false);

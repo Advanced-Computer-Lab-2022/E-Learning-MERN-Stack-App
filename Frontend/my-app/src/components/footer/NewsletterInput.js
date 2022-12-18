@@ -2,10 +2,10 @@ import React from 'react'
 
 const NewsletterInput = () => {
     return (
-        <div class="md:mb-6">
+        <div className="md:mb-6">
             <input
                 type="text"
-                class="
+                className="
                 form-control
                 block
                 w-full

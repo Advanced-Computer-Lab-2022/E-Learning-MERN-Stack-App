@@ -10,7 +10,7 @@ const Navbar = () => {
     const [activeSmallScreen, setActiveSmallScreen] = useState(false);
     return (
         <>
-            <nav class="relative px-4 py-4 flex justify-between items-center bg-white">
+            <nav className="relative px-4 py-4 flex justify-between items-center bg-white">
                 <NavBarLogo />
                 <BurgerMenu setActiveSmallScreen={setActiveSmallScreen} />
                 <MainNavList />

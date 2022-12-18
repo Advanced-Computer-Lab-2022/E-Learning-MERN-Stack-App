@@ -4,7 +4,7 @@ import SmallScreenLogo from './SmallScreenLogo'
 
 const SmallScreenHeader = ({ setActiveSmallScreen }) => {
     return (
-        <div class="flex items-center mb-8">
+        <div className="flex items-center mb-8">
             <SmallScreenLogo />
             <SmallScreenCloseButton setActiveSmallScreen={setActiveSmallScreen} />
         </div>

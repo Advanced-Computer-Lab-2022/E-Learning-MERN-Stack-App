@@ -5,8 +5,8 @@ import ReviewsWrapper from './ReviewsWrapper'
 const Reviews = ({ visible }) => {
     if (visible)
         return (
-            <section class="mb-10 text-gray-700 px-4">
-                <h2 class=" mx-32 mb-8 text-4xl tracking-tight font-extrabold text-blue-500">Reviews</h2>
+            <section className="mb-10 text-gray-700 px-4">
+                <h2 className=" mx-32 mb-8 text-4xl tracking-tight font-extrabold text-blue-500">Reviews</h2>
                 <div className='mx-32 border-b-gray-200 border-b mb-10' />
                 <ReviewsWrapper>
                     <ReviewCard
