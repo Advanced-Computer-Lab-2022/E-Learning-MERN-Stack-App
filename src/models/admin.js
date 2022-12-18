@@ -47,10 +47,10 @@ const adminSchema = new mongoose.Schema({
          required : true
      }, 
   
-     gender : {
-         type : String,
-         enum : ['male', 'female', 'prefere not to say']
-     }
+     gender :{
+        type: String,
+        reequired: true,
+    },
 }, {timestamps : true});
 
 

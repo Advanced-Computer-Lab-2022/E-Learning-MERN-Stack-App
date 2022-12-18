@@ -47,10 +47,10 @@ const orgGuestSchema = new mongoose.Schema({
          default:'corpTrainee',
      },
      courses:[{type:mongoose.Schema.Types.ObjectId, ref:"course"}],
-     gender : {
-         type : String,
-         enum : ['male', 'female']
-     }
+     gender :{
+        type: String,
+        reequired: true,
+    },
 }, {timestamps : true});
 
 

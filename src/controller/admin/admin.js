@@ -27,6 +27,7 @@ exports.signup = (req, res) => {
            email: req.body.email,
            password: req.body.password,
            country: req.body.country,
+           gender: req.body.gender
        });
        _admin.save((error, data) => {
            if(error){

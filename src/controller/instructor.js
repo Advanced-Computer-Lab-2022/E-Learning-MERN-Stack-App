@@ -10,7 +10,7 @@ exports.isInstructor = (req, res, next) => {
 
 };
 exports.signin = (req, res) => {
-    Instructor.findOne({email: req.body.email})
+    Instructor.findOne({userName: req.body.userName})
     .exec((error, instructor) =>{
         if(error) return res.status(400).json({error});
         if(instructor){
@@ -45,7 +45,6 @@ exports.createCourse = (req, res) => {
         mainPicture:req.body.mainPicture,
         shortVideo:req.body.shortVideo,
         price: req.body.price,
-        // Instructor is not completed yet
         createdBy:new mongoose.Types.ObjectId(req.body.createdBy),
         category:new mongoose.Types.ObjectId(req.body.category),
         chapters:chapter

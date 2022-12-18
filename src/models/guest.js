@@ -43,10 +43,10 @@ const guestSchema = new mongoose.Schema({
          required : true
      }, 
      role:{type:String, default:"normalTrainee"},
-     gender : {
-         type : String,
-         enum : ['male', 'female', 'prefere not to say']
-     },
+     gender :{
+        type: String,
+        reequired: true,
+    },
 }, {timestamps : true});
 
 

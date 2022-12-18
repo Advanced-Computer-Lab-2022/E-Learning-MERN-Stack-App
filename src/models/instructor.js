@@ -48,9 +48,9 @@ const instructorSchema = new mongoose.Schema({
          required : true
      }, 
   
-     gender : {
-         type : String,
-         enum : ['male', 'female', 'prefere not to say']
+     gender :{
+         type: String,
+         reequired: true,
      },
      courses:[{type:mongoose.Schema.Types.ObjectId, ref:"course"}],
      rating: Number,

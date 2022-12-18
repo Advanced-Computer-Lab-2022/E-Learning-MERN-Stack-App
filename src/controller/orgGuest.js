@@ -2,7 +2,7 @@ const OrgGuest = require('../models/orgGuest');
 const jwt = require('jsonwebtoken');
 
 exports.signin = (req, res) => {
-    OrgGuest.findOne({email: req.body.email})
+    OrgGuest.findOne({userName: req.body.userName})
     .exec((error, orgGuest) =>{
         if(error) return res.status(400).json({error});
         if(orgGuest){
