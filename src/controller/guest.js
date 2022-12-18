@@ -16,7 +16,7 @@ exports.signup = (req, res) => {
        const _guest = new Guest({
            firstName: req.body.firstName,
            lastName: req.body.lastName,
-           userName: Math.random().toString(),
+           userName: req.body.userName,
            email: req.body.email,
            password: req.body.password,
            country: req.body.country,
