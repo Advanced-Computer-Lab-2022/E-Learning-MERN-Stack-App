@@ -1,7 +1,7 @@
 const Admin = require('../../models/admin');
 const OrgGuest = require('../../models/orgGuest');
 const Instructor = require('../../models/instructor');
-const Category = require('../../models/category');
+
 const jwt = require('jsonwebtoken');
 
 
@@ -113,26 +113,12 @@ exports.addInstructor = (req, res) => {
     })
 };
 
-//categories//////////////////////////////////////////////////////////////////////////////////////
 
 
 
 
 
-exports.addCategory = (req, res) => {
-     const catObj = {
-         name:req.body.name,
-        };
-if(req.body.parentId){
-    catObj.parentId = req.body.parentId;
-}
-const cat = new Category(catObj);
-cat.save((error, category) => {
-    if(error)return res.status(400).json({error});
-    if(category)return res.status(200).json({category});
-});
 
-};
 
 
 
