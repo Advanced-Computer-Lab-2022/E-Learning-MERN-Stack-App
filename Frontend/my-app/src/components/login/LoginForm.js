@@ -1,11 +1,47 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import UserInfoContext from '../../context/UserInfoContext'
 import NavStateContext from '../../context/NavStateContext'
 import CurrentViewContext from '../../context/CurrentViewContext'
+import axios from 'axios'
 const LoginForm = () => {
     const { setUser } = useContext(UserInfoContext)
     const { setNavIdx } = useContext(NavStateContext)
     const { setView } = useContext(CurrentViewContext)
+
+    const [authenticationInfo, setAuthenticationInfo] = useState({
+        userName: "",
+        password: ""
+    });
+
+
+    async function handleSubmit(e) {
+        await axios.post('http://localhost:8000/api/guest/signin', authenticationInfo)
+            .then(function (response) {
+                console.log(response);
+                setUser(response.data.guest);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+        setNavIdx(0);
+        setView('user')
+    }
+
+    function handleUsernameChange(e) {
+        setAuthenticationInfo({
+            ...authenticationInfo,
+            userName: e.target.value
+        });
+        console.log(authenticationInfo);
+    }
+    function handlePasswordChange(e) {
+        setAuthenticationInfo({
+            ...authenticationInfo,
+            password: e.target.value
+        });
+        console.log(authenticationInfo);
+    }
+
     return (
         <form class="flex flex-col pt-3 md:pt-8">
             <div class="flex flex-col pt-4">
@@ -16,7 +52,7 @@ const LoginForm = () => {
                             </path>
                         </svg>
                     </span>
-                    <input type="text" class=" flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Email" />
+                    <input type="text" class=" flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Username" onChange={(e) => handleUsernameChange(e)} />
                 </div>
             </div>
             <div class="flex flex-col pt-4 mb-12">
@@ -27,25 +63,26 @@ const LoginForm = () => {
                             </path>
                         </svg>
                     </span>
-                    <input type="password" class=" flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Password" />
+                    <input type="password" class=" flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Password" onChange={(e) => handlePasswordChange(e)} />
                 </div>
             </div>
-            <button type="submit" class="w-full px-4 py-2 text-base font-semibold text-center text-white transition duration-200 ease-in bg-blue-500 shadow-md hover:text-black hover:bg-white focus:outline-none focus:ring-2"
-                onClick={() => {
-                    const getUser = {
-                        email: "minahannalla@domain.com",
-                        country: "Egypt",
-                        favoriteLanguage: "English",
-                        firstName: "Mina",
-                        lastName: "Hannalla",
-                        username: "mina.hannalla123",
-                        bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vulputate felis eget risus tempus, a faucibus ex posuere. Ut aliquam consequat metus at maximus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae semper dui. Curabitur hendrerit sed enim sit amet pulvinar.",
-                        ownedCoursesIdxs: [1052, 1514, 1236]
-                    }
-                    setUser(getUser);
-                    setNavIdx(0);
-                    setView('user')
-                }}
+            <button type="button" class="w-full px-4 py-2 text-base font-semibold text-center text-white transition duration-200 ease-in bg-blue-500 shadow-md hover:text-black hover:bg-white focus:outline-none focus:ring-2"
+                onClick={(e) =>
+                    // const getUser = {
+                    //     email: "minahannalla@domain.com",
+                    //     country: "Egypt",
+                    //     favoriteLanguage: "English",
+                    //     firstName: "Mina",
+                    //     lastName: "Hannalla",
+                    //     username: "mina.hannalla123",
+                    //     bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vulputate felis eget risus tempus, a faucibus ex posuere. Ut aliquam consequat metus at maximus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae semper dui. Curabitur hendrerit sed enim sit amet pulvinar.",
+                    //     ownedCoursesIdxs: [1052, 1514, 1236]
+                    // }
+                    // setUser(getUser);
+                    // setNavIdx(0);
+                    // setView('user')
+                    handleSubmit(e)
+                }
             >
                 <span class="w-full">
                     Sign In

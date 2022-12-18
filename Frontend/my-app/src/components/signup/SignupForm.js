@@ -14,7 +14,6 @@ const SignupForm = () => {
     const [confirmPasssword, setConfirmPassword] = useState("");
 
     async function handleSubmit(e) {
-        // e.preventDefault();
         if (accountInfo.password === confirmPasssword)
             await axios.post('http://localhost:8000/api/guest/signup', accountInfo)
                 .then(response => console.log(response))
