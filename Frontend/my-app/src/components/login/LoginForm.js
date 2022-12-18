@@ -16,13 +16,12 @@ const LoginForm = () => {
 
     async function handleSubmit(e) {
         await axios.post('http://localhost:8000/api/guest/signin', authenticationInfo)
-            .then(function (response) {
+            .then((response) => {
                 console.log(response);
                 setUser(response.data.guest);
             })
-            .catch(function (error) {
-                console.log(error);
-            });
+            .catch((error) => console.log(error));
+
         setNavIdx(0);
         setView('user')
     }
