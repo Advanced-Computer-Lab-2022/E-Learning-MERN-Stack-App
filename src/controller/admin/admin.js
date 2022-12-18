@@ -26,6 +26,7 @@ exports.signup = (req, res) => {
            userName: req.body.userName,
            email: req.body.email,
            password: req.body.password,
+           country: req.body.country,
        });
        _admin.save((error, data) => {
            if(error){
@@ -47,13 +48,13 @@ exports.signin = (req, res) => {
     Admin.findOne({userName: req.body.userName})
     .exec((error, admin) =>{
         if(error) return res.status(400).json({error});
-        if(admin){
+        if(admin) {
             if(admin.authenticate(req.body.password)){
                 const token = jwt.sign({_id:admin._id, role: admin.role}, process.env.JWT_SECRET, {expiresIn: '1d'});
-                const{_id, firstName, lastName, fullName, email, role, gender} = admin;
+                const{_id, firstName, lastName, userName, email, role, gender} = admin;
                 res.status(200).json({
                     token,
-                    admin: {_id, firstName, lastName, fullName, email, gender, role}
+                    admin: {_id, firstName, lastName, userName, email, gender, role}
                 });
 
             }
@@ -103,7 +104,8 @@ exports.addOrgGuest = (req, res) => {
                      lastName: req.body.lastName,
                      company: company._id,
                      userName: req.body.userName,
-                     gender: req.body.gender
+                     gender: req.body.gender,
+                     country: req.body.country,
                      });
                      _guest.save((err, data)=>{
                         if(err) res.status(400).json({message: "Something went wrong"});
@@ -125,7 +127,8 @@ exports.addInstructor = (req, res) => {
                 email: req.body.email,
                 password: req.body.password,
                 userName: req.body.userName,
-                gender: req.body.gender
+                gender: req.body.gender,
+                country: req.body.country,
             });
             _instructor.save((error, data)=>{
                 if(error) res.status(400).json({message: "Something went wrong"});
