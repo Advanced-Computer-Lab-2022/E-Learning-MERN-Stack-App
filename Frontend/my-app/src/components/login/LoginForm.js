@@ -1,17 +1,21 @@
-import React, { useContext, useState } from 'react'
-import UserInfoContext from '../../context/UserInfoContext'
-import NavStateContext from '../../context/NavStateContext'
-import CurrentViewContext from '../../context/CurrentViewContext'
+import React, { useContext, useState } from 'react';
+import UserInfoContext from '../../context/UserInfoContext';
+import NavStateContext from '../../context/NavStateContext';
+import CurrentViewContext from '../../context/CurrentViewContext';
 import axios from 'axios'
+import { useCookies } from 'react-cookie';
+
 const LoginForm = () => {
-    const { setUser } = useContext(UserInfoContext)
-    const { setNavIdx } = useContext(NavStateContext)
-    const { setView } = useContext(CurrentViewContext)
+    const { setUser } = useContext(UserInfoContext);
+    const { setNavIdx } = useContext(NavStateContext);
+    const { view, setView } = useContext(CurrentViewContext);
+    const [cookies, setCookie] = useCookies(['token']);
 
     const [authenticationInfo, setAuthenticationInfo] = useState({
         userName: "",
         password: ""
     });
+    const [errorMessage, setErrorMessage] = useState("");
 
 
     async function handleSubmit(e) {
@@ -19,11 +23,24 @@ const LoginForm = () => {
             .then((response) => {
                 console.log(response);
                 setUser(response.data.guest);
+                setNavIdx(0);
+                setView('user');
+                setCookie('token', response.data.token, { path: '/' });
+                console.log(`token cookie: ${cookies.token}`);
             })
-            .catch((error) => console.log(error));
+            .catch((error) => {
+                console.log(error);
+                switch (error.code) {
+                    case 'ERR_BAD_REQUEST':
+                        setErrorMessage('Username or password is incorrect, please try again');
+                        break;
+                    case 'ERR_NETWORK':
+                        setErrorMessage(`Please make sure you're connected to the internet`);
+                        break;
+                    default:
+                }
+            });
 
-        setNavIdx(0);
-        setView('user')
     }
 
     function handleUsernameChange(e) {
@@ -87,6 +104,7 @@ const LoginForm = () => {
                     Sign In
                 </span>
             </button>
+            <p className="mt-3 text-md text-center text-red-500">{errorMessage}</p>
         </form >
     )
 }
