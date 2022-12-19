@@ -15,7 +15,7 @@ exports.signin = (req, res) => {
         if(error) return res.status(400).json({error});
         if(instructor){
             if(instructor.authenticate(req.body.password)){
-                const token = jwt.sign({_id:instructor._id, role: instructor.role}, process.env.JWT_SECRET, {expiresIn: '1d'});
+                const token = jwt.sign({_id:instructor._id, role: instructor.role, userName: instructor.userName}, process.env.JWT_SECRET, {expiresIn: '1d'});
                 res.status(200).json({
                     token,
                     instructor

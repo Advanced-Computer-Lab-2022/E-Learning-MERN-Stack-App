@@ -50,7 +50,7 @@ exports.signin = (req, res) => {
         if(error) return res.status(400).json({error});
         if(admin) {
             if(admin.authenticate(req.body.password)){
-                const token = jwt.sign({_id:admin._id, role: admin.role}, process.env.JWT_SECRET, {expiresIn: '1d'});
+                const token = jwt.sign({_id:admin._id, role: admin.role, userName: admin.userName}, process.env.JWT_SECRET, {expiresIn: '1d'});
                 const{_id, firstName, lastName, userName, email, role, gender} = admin;
                 res.status(200).json({
                     token,
