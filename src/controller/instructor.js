@@ -42,6 +42,7 @@ exports.createCourse = (req, res) => {
         price: req.body.price,
         createdBy: req.user._id,
         category: req.body.category,
+        totalHours: req.body.totalHours,
         chapters: req.body.chapters
         
       });

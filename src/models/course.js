@@ -34,6 +34,7 @@ const courseSchema = new mongoose.Schema({
         type:Number,
         default:0
     },
+    totalHours: Number,
     reviews: [{
         review: String,
         reviewerGuest:{type: mongoose.Schema.Types.ObjectId, ref: 'Guest'},
