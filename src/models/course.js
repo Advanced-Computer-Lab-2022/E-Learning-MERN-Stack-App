@@ -34,7 +34,6 @@ const courseSchema = new mongoose.Schema({
         type:Number,
         default:0
     },
-    totalHours: Number,
     reviews: [{
         review: String,
         reviewerGuest:{type: mongoose.Schema.Types.ObjectId, ref: 'Guest'},
@@ -45,16 +44,33 @@ const courseSchema = new mongoose.Schema({
    chapters: [{
                 chapterTitle: String ,
                 videosAndTextModules:[String],
-                quizzes:[String]
+                quizzes:[String], 
+                hours: Number
              }],
     students: [{type:mongoose.Schema.Types.ObjectId, ref: "Guest"},
     {type:mongoose.Schema.Types.ObjectId, ref: "OrgGuest"}
 ],
+enrolled: {
+    type: Number,
+    default: function () {
+        return this.students.length;
+    }
+},
+totalHours: {
+    type: Number,
+    default: function () {
+        let totalHours = 0;
+        for(let i=0; i<this.chapters.length; i++) {
+            totalHours += this.chapters[i].hours;
+        }
+        return totalHours;
+    }
+},
 
-}, {timestamps: true});
-courseSchema.virtual('enrollled').get(function(){
-    return this.students.length;
-});
+
+},
+ {timestamps: true});
+
 module.exports = mongoose.model('Course', courseSchema);
 
 
