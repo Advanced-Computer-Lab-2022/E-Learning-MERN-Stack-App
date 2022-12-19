@@ -1,6 +1,7 @@
 import React from 'react'
 import { useContext } from 'react'
 import CurrentViewContext from '../../context/CurrentViewContext'
+import BuyNowButton from '../stripeComponents/BuyNowButton';
 const CourseFirstDivPricing = ({ price, owned }) => {
     const { view, setView } = useContext(CurrentViewContext);
     if (!owned)
@@ -26,9 +27,7 @@ const CourseFirstDivPricing = ({ price, owned }) => {
                             <button type="button" className="py-2 px-4  bg-blue-500 hover:bg-blue-600 focus:ring-blue-500 focus:ring-offset-blue-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
                                 Sign In
                             </button>] : [
-                            <button onClick={() => setView('checkout')} type="button" className="py-2 px-4  bg-blue-500 hover:bg-blue-600 focus:ring-blue-500 focus:ring-offset-blue-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
-                                Buy Now
-                            </button>]
+                            <BuyNowButton />]
                         }
                     </div>
                 </div>
