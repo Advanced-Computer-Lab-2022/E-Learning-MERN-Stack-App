@@ -37,7 +37,7 @@ const Homepage = ({ visible }) => {
                                         courses
                                             .filter(course => course.category === category)
                                             .map((course, index) =>
-                                                <CourseCard key={index} courseName={course.name} courseDetails={course.description} coursePrice={course.price} />
+                                                <CourseCard key={index} courseName={course.name} courseDetails={course.description} coursePrice={course.price} courseTotalHours={course.totalHours} />
                                             )
                                     }
                                 </CourseCardsWrapper>

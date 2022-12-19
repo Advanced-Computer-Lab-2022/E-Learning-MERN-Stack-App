@@ -2,7 +2,7 @@ import React from 'react'
 import { useContext } from 'react'
 // import CourseContext from '../../context/CourseInfoContext'
 import CurrentViewContext from '../../context/CurrentViewContext'
-const CourseCard = ({ courseName, courseDetails, coursePrice }) => {
+const CourseCard = ({ courseName, courseDetails, coursePrice, courseTotalHours }) => {
     const { setView } = useContext(CurrentViewContext);
     return (
         <div onClick={() => setView("course")} className="shadow-lg rounded-2xl w-96 p-4 bg-gray-50 hover:bg-blue-50 relative overflow-hidden cursor-pointer">
@@ -10,6 +10,9 @@ const CourseCard = ({ courseName, courseDetails, coursePrice }) => {
             <div className="w-4/6">
                 <p className="text-gray-800 text-lg font-bold mb-2">
                     {courseName}
+                </p>
+                <p className="text-gray-600 text-lg">
+                    {"Total Hours: "+ courseTotalHours}
                 </p>
                 <p className="text-gray-400 text-xs">
                     {courseDetails}
