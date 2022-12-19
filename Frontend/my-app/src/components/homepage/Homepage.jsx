@@ -30,17 +30,20 @@ const Homepage = ({ visible }) => {
                 <div className='text-center py-10 text-blue-500 text-4xl font-extrabold'>All Categories</div>
                 <CoursesHolder>
                     {
-                        getCategories().map(
-                            category =>
+                        getCategories()
+                            .map(category =>
                                 <CourseCardsWrapper headingText={category}>
                                     {
-                                        courses.map((course, index) => <CourseCard key={index} courseName={course.name} courseDetails={course.description} coursePrice={course.price} />)
+                                        courses
+                                            .filter(course => course.category === category)
+                                            .map((course, index) =>
+                                                <CourseCard key={index} courseName={course.name} courseDetails={course.description} coursePrice={course.price} />
+                                            )
                                     }
                                 </CourseCardsWrapper>
-                        )
+                            )
                     }
                 </CoursesHolder>
-
             </>
         )
 }
