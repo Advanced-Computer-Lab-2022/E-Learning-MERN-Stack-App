@@ -40,9 +40,12 @@ const Homepage = ({ visible }) => {
                                                 <CourseCard key={index} courseName={course.name} courseDetails={course.description} coursePrice={course.price} />
                                             )
                                     }
+                                    
                                 </CourseCardsWrapper>
                             )
                     }
+                    {/* For Stripe Testing */}
+                    <CourseCard key={1} courseName={"Test"} courseDetails={"Test"} coursePrice={"9.99"} />
                 </CoursesHolder>
             </>
         )
