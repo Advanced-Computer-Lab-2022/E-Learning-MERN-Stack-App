@@ -12,15 +12,18 @@ const SignupForm = () => {
         country: ""
     })
     const [confirmPasssword, setConfirmPassword] = useState("");
+    const [message, setMessage] = useState("");
 
     async function handleSubmit(e) {
         if (accountInfo.password === confirmPasssword)
             await axios.post('http://localhost:8000/api/guest/signup', accountInfo)
-                .then(response => console.log(response))
+                .then(response => {
+                    console.log(response)
+                    setMessage("Registered Successfuly");
+                })
                 .catch(error => {
                     console.log(error)
-                    alert("Password is incorrect");
-                    e.target.preventDefault();
+                    setMessage("Couldn't Register, please try again");
                 });
 
     }
@@ -355,11 +358,17 @@ const SignupForm = () => {
                 </div>
             </div>
 
-            <button type="submit" className="w-full px-4 py-2 text-base font-semibold text-center text-white transition duration-200 ease-in bg-blue-500 shadow-md hover:text-black hover:bg-white focus:outline-none focus:ring-2" onClick={(e) => handleSubmit(e)}>
+            <button type="button" className="w-full px-4 py-2 text-base font-semibold text-center text-white transition duration-200 ease-in bg-blue-500 shadow-md hover:text-black hover:bg-white focus:outline-none focus:ring-2" onClick={(e) => handleSubmit(e)}>
                 <span className="w-full">
                     Sign Up
                 </span>
             </button>
+            {
+                message === 'Registered Successfuly'
+                    ? <p className="mt-3 text-md text-center text-green-600">{message}</p>
+                    : <p className="mt-3 text-md text-center text-red-600">{message}</p>
+            }
+
         </form>
     )
 }
