@@ -16,10 +16,10 @@ const LoginForm = () => {
         password: ""
     });
     const [errorMessage, setErrorMessage] = useState("");
-
+    var api = 'http://localhost:8000/api/guest/signin';
 
     async function handleSubmit(e) {
-        await axios.post('http://localhost:8000/api/guest/signin', authenticationInfo)
+        await axios.post(api, authenticationInfo)
             .then((response) => {
                 console.log(response);
                 setUser(response.data.guest);
@@ -60,6 +60,24 @@ const LoginForm = () => {
         });
         console.log(authenticationInfo);
     }
+    function handleRoleChange(e) {
+        const role = e.target.value;
+        switch (role) {
+            case 'individualTrainee':
+                api = 'http://localhost:8000/api/guest/signin';
+                break;
+            case 'corporateTrainee':
+                api = 'http://localhost:8000/api/guest/signin';
+                break;
+            case 'instructor':
+                api = 'http://localhost:8000/api/instructor/signin';
+                break;
+            case 'admin':
+                api = 'http://localhost:8000/api/admin/signin';
+                break;
+            default:
+        }
+    }
 
     return (
         <form className="flex flex-col pt-3 md:pt-8">
@@ -71,7 +89,7 @@ const LoginForm = () => {
                             </path>
                         </svg>
                     </span>
-                    <input type="text" className=" flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Username" onChange={(e) => handleUsernameChange(e)} />
+                    <input type="text" className=" flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Username" onChange={e => handleUsernameChange(e)} />
                 </div>
             </div>
             <div className="flex flex-col pt-4 mb-12">
@@ -82,7 +100,24 @@ const LoginForm = () => {
                             </path>
                         </svg>
                     </span>
-                    <input type="password" className=" flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Password" onChange={(e) => handlePasswordChange(e)} />
+                    <input type="password" className=" flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Password" onChange={e => handlePasswordChange(e)} />
+                </div>
+            </div>
+            <div className="flex flex-col pt-4 mb-5">
+                <div className="flex relative ">
+                    <span className=" inline-flex  items-center px-3 border-t bg-white border-l border-b  border-gray-300 text-gray-500 shadow-sm text-sm">
+                        <svg width="15" height="15" fill="currentColor" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M1376 768q40 0 68 28t28 68v576q0 40-28 68t-68 28h-960q-40 0-68-28t-28-68v-576q0-40 28-68t68-28h32v-320q0-185 131.5-316.5t316.5-131.5 316.5 131.5 131.5 316.5q0 26-19 45t-45 19h-64q-26 0-45-19t-19-45q0-106-75-181t-181-75-181 75-75 181v320h736z">
+                            </path>
+                        </svg>
+                    </span>
+                    <select name="role" className="flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-800 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" onChange={e => handleRoleChange(e)} >
+                        <option disabled selected>Select Role</option>
+                        <option value="individualTrainee">Individual Trainee</option>
+                        <option value="corporateTrainee">Corporate Trainee</option>
+                        <option value="instructor">Instructor</option>
+                        <option value="admin">Admin</option>
+                    </select>
                 </div>
             </div>
             <button type="button" className="w-full px-4 py-2 text-base font-semibold text-center text-white transition duration-200 ease-in bg-blue-500 shadow-md hover:text-black hover:bg-white focus:outline-none focus:ring-2"
