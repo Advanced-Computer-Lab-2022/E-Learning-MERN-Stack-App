@@ -142,7 +142,7 @@ const LoginForm = () => {
                     Sign In
                 </span>
             </button>
-            <p className="mt-3 text-md text-center text-red-500">{errorMessage}</p>
+            <p className="mt-3 text-md text-center text-red-600">{errorMessage}</p>
         </form >
     )
 }
