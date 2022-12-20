@@ -11,10 +11,12 @@ exports.isInstructor = (req, res, next) => {
 };
 exports.signin = (req, res) => {
     Instructor.findOne({userName: req.body.userName})
-    .exec((error, instructor) =>{
+    .exec(async(error, instructor) =>{
         if(error) return res.status(400).json({error});
         if(instructor){
-            if(instructor.authenticate(req.body.password)){
+            const passwordVerify = await instructor.authenticate(req.body.password);
+
+            if(passwordVerify){
                 const token = jwt.sign({_id:instructor._id, role: instructor.role, userName: instructor.userName}, process.env.JWT_SECRET, {expiresIn: '1d'});
                 res.status(200).json({
                     token,

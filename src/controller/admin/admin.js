@@ -46,10 +46,11 @@ exports.signup = (req, res) => {
 
 exports.signin = (req, res) => {
     Admin.findOne({userName: req.body.userName})
-    .exec((error, admin) =>{
+    .exec(async(error, admin) =>{
         if(error) return res.status(400).json({error});
         if(admin) {
-            if(admin.authenticate(req.body.password)){
+            const passwordVerify = await admin.authenticate(req.body.password);
+            if(passwordVerify){
                 const token = jwt.sign({_id:admin._id, role: admin.role, userName: admin.userName}, process.env.JWT_SECRET, {expiresIn: '1d'});
                 const{_id, firstName, lastName, userName, email, role, gender} = admin;
                 res.status(200).json({

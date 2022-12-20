@@ -41,10 +41,11 @@ exports.signup = (req, res) => {
 
 exports.signin = (req, res) => {
     Guest.findOne({userName: req.body.userName})
-    .exec((error, guest) =>{
+    .exec(async(error, guest) =>{
         if(error) return res.status(400).json({error});
         if(guest){
-            if(guest.authenticate(req.body.password)){
+            const passwordVerify = await guest.authenticate(req.body.password);
+            if(passwordVerify){
                 const token = jwt.sign({_id:guest._id, role: guest.role, userName: guest.userName}, process.env.JWT_SECRET, {expiresIn: '1d'});
                 return res.status(200).json({
                     token,
