@@ -28,7 +28,7 @@ const LoginForm = () => {
                 setView('user');
                 setCookie('token', response.data.token, { path: '/' });
                 console.log(`token cookie: ${cookies.token}`);
-                // should log 'user' but logs the 'guest' which is the default
+                // should log 'user' but logs 'guest' which is the default
                 console.log(view);
             })
             .catch((error) => {
