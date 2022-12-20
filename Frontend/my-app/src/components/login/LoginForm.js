@@ -17,6 +17,7 @@ const LoginForm = () => {
     });
     const [errorMessage, setErrorMessage] = useState("");
     var api = 'http://localhost:8000/api/guest/signin';
+    var viewToBeSetIfLoggedInSuccessfuly = 'user';
 
     async function handleSubmit(e) {
         await axios.post(api, authenticationInfo)
@@ -25,7 +26,7 @@ const LoginForm = () => {
                 setUser(response.data.guest);
                 setNavIdx(0);
                 // setView is not wokring for some reason
-                setView('user');
+                setView(viewToBeSetIfLoggedInSuccessfuly);
                 setCookie('token', response.data.token, { path: '/' });
                 console.log(`token cookie: ${cookies.token}`);
                 // should log 'user' but logs 'guest' which is the default
@@ -65,15 +66,19 @@ const LoginForm = () => {
         switch (role) {
             case 'individualTrainee':
                 api = 'http://localhost:8000/api/guest/signin';
+                viewToBeSetIfLoggedInSuccessfuly = 'user';
                 break;
             case 'corporateTrainee':
                 api = 'http://localhost:8000/api/guest/signin';
+                viewToBeSetIfLoggedInSuccessfuly = 'user';
                 break;
             case 'instructor':
                 api = 'http://localhost:8000/api/instructor/signin';
+                viewToBeSetIfLoggedInSuccessfuly = 'instructor';
                 break;
             case 'admin':
                 api = 'http://localhost:8000/api/admin/signin';
+                viewToBeSetIfLoggedInSuccessfuly = 'admin';
                 break;
             default:
         }
