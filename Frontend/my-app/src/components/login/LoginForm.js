@@ -24,9 +24,12 @@ const LoginForm = () => {
                 console.log(response);
                 setUser(response.data.guest);
                 setNavIdx(0);
+                // setView is not wokring for some reason
                 setView('user');
                 setCookie('token', response.data.token, { path: '/' });
                 console.log(`token cookie: ${cookies.token}`);
+                // should log 'user' but logs the 'guest' which is the default
+                console.log(view);
             })
             .catch((error) => {
                 console.log(error);
