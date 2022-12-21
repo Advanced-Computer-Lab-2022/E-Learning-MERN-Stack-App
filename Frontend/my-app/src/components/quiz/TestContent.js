@@ -75,6 +75,7 @@ const TestContent = ({ visible }) => {
                 <section className="text-gray-600 body-font overflow-hidden">
                     <div className="container px-20 py-24 mx-auto">
                         <div className="-my-8 divide-y-2 divide-gray-100">
+                            {/* @TODO :: Use array.map to iterate over the fetched questions */}
                             <Question
                                 topicName={q1Info.topicName}
                                 questionDesc={q1Info.quesDesc}
@@ -128,7 +129,8 @@ const TestContent = ({ visible }) => {
                     </div>
                     <div className='m-auto w-1/2'>
                         <button
-                            className='-mx-4 -my-4 mb-20 bg-blue-500 px-16 py-5 text-white font-bold text-lg hover:bg-blue-700 rounded-lg'
+                            className='-mx-4 -my-4 mb-20 bg-blue-500 px-16 py-5 text-white font-bold text-lg hover:bg-blue-700 rounded-lg disabled:bg-blue-300'
+                            disabled={!canEdit}
                             onClick={() => {
                                 submitClbk();
                             }}
