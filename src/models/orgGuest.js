@@ -23,7 +23,6 @@ const orgGuestSchema = new mongoose.Schema({
         index : true,
         lowercase : true
     },
-    company:{type: mongoose.Schema.Types.ObjectId, ref: 'company'},
     country:{
         type:String,
         trim:true,

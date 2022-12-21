@@ -54,7 +54,7 @@ exports.createCourse = (req, res) => {
 };
 
 exports.getCourses = (req, res) => {
-    Course.find({createdBy: req.user._id})
+    Course.find({createdBy: req.user.userName})
         .exec((error, course) => {
             if(error) res.status(400).json({message:"an error occured"});
             if(course) res.status(200).json(course);
