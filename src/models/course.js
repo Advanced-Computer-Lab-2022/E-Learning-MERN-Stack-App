@@ -40,7 +40,7 @@ const courseSchema = new mongoose.Schema({
         reviewerOrgGuest:{type: mongoose.Schema.Types.ObjectId, ref: 'OrgGuest'}
     }],
     category: String,
-    createdBy: {type: mongoose.Schema.Types.ObjectId, ref: 'Instructor'},
+    createdBy: {type: mongoose.Schema.Types.String, ref: 'Instructor'},
    chapters: [{
                 chapterTitle: String ,
                 videosAndTextModules:[String],

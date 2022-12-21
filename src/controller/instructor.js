@@ -42,7 +42,7 @@ exports.createCourse = (req, res) => {
         description: req.body.description,
         shortVideo:req.body.shortVideo,
         price: req.body.price,
-        createdBy: req.user._id,
+        createdBy: req.user.userName,
         category: req.body.category,
         chapters: req.body.chapters
         
