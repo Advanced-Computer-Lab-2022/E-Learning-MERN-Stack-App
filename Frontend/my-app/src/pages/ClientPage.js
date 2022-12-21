@@ -14,21 +14,21 @@ import AccountInfo from '../components/LoggedIn/AccountInfo';
 const ClientPage = () => {
     const { navIdx } = useContext(NavStateContext);
     const { view } = useContext(CurrentViewContext);
-    if (view === "guest")
-        return (
-            <Layout>
-                <LandingPage visible={navIdx === 0} />
-                <Features visible={navIdx === 0} />
-                <Homepage visible={navIdx === 1} />
-                <Pricing visible={navIdx === 2} />
-                <ContactUs visible={navIdx === 4} />
-                <Login visible={navIdx === 5} />
-                <Signup visible={navIdx === 6} />
-                <ForgetPasswordContainer visible={navIdx === 7} />
-                <AccountInfo visible={navIdx === 8 && view === 'user'} />
-            </Layout>
 
-        )
+    return (
+        <Layout>
+            <LandingPage visible={navIdx === 0} />
+            <Features visible={navIdx === 0} />
+            <Homepage visible={navIdx === 1} />
+            <Pricing visible={navIdx === 2} />
+            <ContactUs visible={navIdx === 4} />
+            <Login visible={navIdx === 5} />
+            <Signup visible={navIdx === 6} />
+            <ForgetPasswordContainer visible={navIdx === 7} />
+            <AccountInfo visible={navIdx === 8 && view === 'user'} />
+        </Layout>
+
+    )
 }
 
 export default ClientPage
