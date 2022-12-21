@@ -1,10 +1,10 @@
 import React from 'react'
 import Rating from '@mui/material/Rating';
 function instructorRate() {
-    console.log("Post Rating")
+
 }
 function courseRate() {
-    console.log("Post Rating")
+    // 
 }
 const CourseAndInstructorRating = ({ courseRating, owned }) => {
     if (owned)

@@ -6,6 +6,7 @@ import {
     AccordionBody,
 } from "@material-tailwind/react";
 import SectionsBody from './SectionsBody';
+import NotesBody from './NotesBody';
 const Sections = ({ visible }) => {
     const [open, setOpen] = useState(1);
 
@@ -41,6 +42,14 @@ const Sections = ({ visible }) => {
                             </AccordionHeader>
                             <AccordionBody>
                                 <SectionsBody />
+                            </AccordionBody>
+                        </Accordion>
+                        <Accordion open={open === 4}>
+                            <AccordionHeader onClick={() => handleOpen(4)}>
+                                PDF Notes
+                            </AccordionHeader>
+                            <AccordionBody>
+                                <NotesBody />
                             </AccordionBody>
                         </Accordion>
                     </Fragment>
