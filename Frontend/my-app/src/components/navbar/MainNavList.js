@@ -1,6 +1,10 @@
+import { useContext } from 'react'
+import UserInfoContext from '../../context/UserInfoContext';
 import MainNavListItem from './MainNavListItem'
 import MainNavListSeparator from './MainNavListSeparator'
+
 const MainNavList = () => {
+    const { user } = useContext(UserInfoContext);
     return (
         <ul className="hidden absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:flex lg:mx-auto lg:flex lg:items-center lg:w-auto lg:space-x-6">
             <MainNavListItem
@@ -21,17 +25,35 @@ const MainNavList = () => {
                 myIdx={2}
             />
             <MainNavListSeparator />
-            {/* <MainNavListItem
-                text={"Teach With Us"}
-                href="#"
-                myIdx={3}
-            /> */}
-            {/* <MainNavListSeparator /> */}
             <MainNavListItem
                 text={"Contact Us"}
                 href="#"
                 myIdx={4}
             />
+            {
+                user.role === 'instructor'
+                    ?
+                    <>
+                        <MainNavListSeparator />
+                        <MainNavListItem
+                            text={"Instructor Dashboard"}
+                            href="#"
+                            myIdx={8} />
+                    </>
+                    : ''
+            }
+            {
+                user.role === 'admin'
+                    ?
+                    <>
+                        <MainNavListSeparator />
+                        <MainNavListItem
+                            text={"Admin Dashboard"}
+                            href="#"
+                            myIdx={9} />
+                    </>
+                    : ''
+            }
         </ul>
     )
 }
