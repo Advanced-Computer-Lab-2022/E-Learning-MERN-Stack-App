@@ -1,13 +1,17 @@
 import axios from 'axios';
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { useEffect } from 'react';
 import CourseCard from './CourseCard'
 import CourseCardsWrapper from './CourseCardsWrapper'
 import CoursesHolder from './CoursesHolder'
+import CourseContext from '../../context/CourseInfoContext';
+// import AllCourses from '../../context/AllCoursesContext';
 
 const Homepage = ({ visible }) => {
 
     const [courses, setCourses] = useState([]);
+    // const [courseIdx, setCourseIdx] = useContext(CourseContext);
+    // const [setAllCourses] = useContext(AllCourses)
 
     useEffect(() => {
         axios
@@ -24,6 +28,10 @@ const Homepage = ({ visible }) => {
         return Array.from(new Set(courses.map(course => course.category)));
     }
 
+    var testCourse = {
+        ...courses[0]
+    }
+
     if (visible)
         return (
             <>
@@ -37,15 +45,17 @@ const Homepage = ({ visible }) => {
                                         courses
                                             .filter(course => course.category === category)
                                             .map((course, index) =>
-                                                <CourseCard key={index} courseName={course.name} courseDetails={course.description} coursePrice={course.price} courseTotalHours={course.totalHours} />
+                                                <CourseCard key={index} course={course} />
                                             )
                                     }
-                                    
+
                                 </CourseCardsWrapper>
                             )
                     }
                     {/* For Stripe Testing */}
-                    <CourseCard key={1} courseName={"Test"} courseDetails={"Test"} coursePrice={"9.99"} />
+                    {
+                    }
+                    <CourseCard key={1} course={testCourse} />
                 </CoursesHolder>
             </>
         )
