@@ -42,10 +42,10 @@ const guestSchema = new mongoose.Schema({
          type : String,
          required : true
      }, 
-     role:{type:String, default:"normalTrainee"},
+     role:{type:String, default:"individualTrainee"},
      gender :{
         type: String,
-        reequired: true,
+        required: true,
     },
 }, {timestamps : true});
 
