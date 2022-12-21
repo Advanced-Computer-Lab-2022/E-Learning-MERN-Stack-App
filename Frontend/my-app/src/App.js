@@ -1,7 +1,7 @@
 import "@stripe/stripe-js";
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import CoursePage from './pages/CoursePage';
-import GuestPage from './pages/GuestPage';
+import ClientPage from './pages/ClientPage';
 import { useState } from 'react';
 import React from 'react';
 import NavStateContext from './context/NavStateContext';
@@ -9,7 +9,6 @@ import CurrentViewContext from './context/CurrentViewContext';
 import CourseInfoContext from './context/CourseInfoContext'
 import CheckoutPage from './pages/CheckoutPage';
 import Test from './pages/Test';
-import UserPage from './pages/UserPage';
 import UserInfoContext from './context/UserInfoContext';
 import PaymentSuccessful from "./components/stripeComponents/PaymentSuccessful";
 import PaymentCancelled from "./components/stripeComponents/PaymentCancelled"
@@ -49,8 +48,7 @@ function App() {
               <UserInfoContext.Provider value={userValue}>
                 <NavStateContext.Provider value={navIdxValue}>
                   <CurrentViewContext.Provider value={viewValue}>
-                    <GuestPage />
-                    <UserPage />
+                    <ClientPage />
                     <CourseInfoContext.Provider>
                       <CoursePage owned={false} />
                     </CourseInfoContext.Provider>

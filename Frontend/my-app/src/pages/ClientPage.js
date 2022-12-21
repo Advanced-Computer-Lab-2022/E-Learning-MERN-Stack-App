@@ -1,27 +1,34 @@
 import Homepage from '../components/homepage/Homepage'
 import LandingPage from "../components/landing/LandingPage";
 import Pricing from "../components/pricing/Pricing";
+import Layout from "../components/Layout";
 import ContactUs from '../components/contactus/ContactUs';
 import Features from '../components/landing/Features';
+import Login from '../components/login/Login';
+import Signup from '../components/signup/Signup';
 import { useContext } from 'react';
 import NavStateContext from '../context/NavStateContext';
 import CurrentViewContext from '../context/CurrentViewContext';
-import LoggedInLayout from '../components/LoggedIn/LoggedInLayout';
+import ForgetPasswordContainer from '../components/forgetPassword/ForgetPasswordContainer';
 import AccountInfo from '../components/LoggedIn/AccountInfo';
-const UserPage = () => {
+const ClientPage = () => {
     const { navIdx } = useContext(NavStateContext);
     const { view } = useContext(CurrentViewContext);
-    if (view === "user")
+    if (view === "guest")
         return (
-            <LoggedInLayout>
+            <Layout>
                 <LandingPage visible={navIdx === 0} />
                 <Features visible={navIdx === 0} />
                 <Homepage visible={navIdx === 1} />
                 <Pricing visible={navIdx === 2} />
                 <ContactUs visible={navIdx === 4} />
-                <AccountInfo visible={navIdx === 8} />
-            </LoggedInLayout>
+                <Login visible={navIdx === 5} />
+                <Signup visible={navIdx === 6} />
+                <ForgetPasswordContainer visible={navIdx === 7} />
+                <AccountInfo visible={navIdx === 8 && view === 'user'} />
+            </Layout>
+
         )
 }
 
-export default UserPage
+export default ClientPage

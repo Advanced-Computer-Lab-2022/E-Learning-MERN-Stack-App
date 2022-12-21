@@ -23,14 +23,11 @@ const LoginForm = () => {
         await axios.post(api, authenticationInfo)
             .then((response) => {
                 console.log(response);
-                setUser(response.data.guest);
+                // setUser(response.data.guest);
                 setNavIdx(0);
-                // setView is not wokring for some reason
-                setView(viewToBeSetIfLoggedInSuccessfuly);
+                // setView(viewToBeSetIfLoggedInSuccessfuly);
                 setCookie('token', response.data.token, { path: '/' });
                 console.log(`token cookie: ${cookies.token}`);
-                // should log 'user' but logs 'guest' which is the default
-                console.log(view);
             })
             .catch((error) => {
                 console.log(error);
