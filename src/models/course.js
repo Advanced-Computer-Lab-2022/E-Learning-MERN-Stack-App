@@ -18,44 +18,63 @@ const courseSchema = new mongoose.Schema({
         type: String,
         required:true,
     },
+
     shortVideo: {
         type:String,
         required: true
     },
+
     price:{
         type:Number,
         required:true
     },
+
     discount:{
         type:Number,
         default:0
     },
+
     rating:{
         type:Number,
         default:0
     },
+
     reviews: [{
         review: String,
         reviewerGuest:{type: mongoose.Schema.Types.ObjectId, ref: 'Guest'},
         reviewerOrgGuest:{type: mongoose.Schema.Types.ObjectId, ref: 'OrgGuest'}
     }],
+
     category: String,
+
     createdBy: {type: mongoose.Schema.Types.String, ref: 'Instructor'},
+
    chapters: [{
                 chapterTitle: String ,
-                videosAndTextModules:[String],
-                quizzes:[String], 
-                hours: Number
+                textModules: [String],
+                videos:[{
+                    video : String,
+                    videoDescription: String
+                }],
+                quizzes:[String],
+                 
+                hours: {
+                   type: Number,
+                   required : true
+                }
              }],
-    students: [{type:mongoose.Schema.Types.ObjectId, ref: "Guest"},
+    students:
+     [{type:mongoose.Schema.Types.ObjectId, ref: "Guest"},
     {type:mongoose.Schema.Types.ObjectId, ref: "OrgGuest"}
 ],
+
 enrolled: {
     type: Number,
     default: function () {
         return this.students.length;
     }
 },
+
 totalHours: {
     type: Number,
     default: function () {
