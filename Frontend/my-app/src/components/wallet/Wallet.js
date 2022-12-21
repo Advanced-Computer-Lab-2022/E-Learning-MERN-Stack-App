@@ -1,8 +1,6 @@
 import React from 'react'
-const user = {
-    walletBalance: 12.64,
-}
-const Wallet = () => {
+
+const Wallet = ({ walletBalance }) => {
     return (
 
         <div class="px-40 py-5 bg-white shadow-lg rounded-2xl dark:bg-gray-800">
@@ -18,13 +16,13 @@ const Wallet = () => {
                 </p>
             </div>
             <div class="flex flex-col justify-start">
-                <div class="flex items-center text-sm text-green-500 mx-2 mt-3 -mb-2">
+                <div class="flex items-center text-sm mt-3 -mb-2">
                     <span class="text-gray-400">
                         Currently Having:
                     </span>
                 </div>
                 <p class="my-4 text-4xl font-bold text-left text-gray-700 dark:text-gray-100">
-                    {user.walletBalance}
+                    {walletBalance}
                     <span class="text-sm">
                         $
                     </span>

@@ -1,11 +1,18 @@
 import React from 'react'
 import StripeBuyNowButton from '../stripeComponents/StripeBuyNowButton'
 import Wallet from '../wallet/Wallet';
+const user = {
+    walletBalance: 12.64,
+}
 
-const CourseBuyButton = () => {
+function walletPaymentClbk() {
+    // @TODO :: handle payment using wallet balance
+}
+const CourseBuyButton = ({ price }) => {
 
     const [showModal, setShowModal] = React.useState(false);
     return (
+
         <div className="my-10 ">
             <button
                 className="py-2 px-4  bg-blue-500 hover:bg-blue-600 focus:ring-blue-500 focus:ring-offset-blue-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg cursor-pointer"
@@ -43,20 +50,37 @@ const CourseBuyButton = () => {
 
                                         We may modify these Terms for any reason-at any time-by posting a new version on Our Website; these changes do not affect rights and obligations that arose prior to such changes. Your continued use of Our Website following the posting of modified Terms will be subject to the Terms in effect at the time of your use. Please review these Terms periodically for changes. If you object to any provision of these Terms or any subsequent modifications to these Terms or become dissatisfied with Our Website in any way, your only recourse is to immediately terminate use of Our Website.
                                     </p> */}
-                                    <Wallet />
+                                    <Wallet walletBalance={user.walletBalance} />
                                     <div className="flex items-center justify-end pt-6 border-t border-solid border-slate-200 rounded-b">
-                                        <button
-                                            className="text-blue-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 hover:bg-blue-700 hover:text-white rounded-lg" type="button"
-                                            onClick={() => setShowModal(false)}
-                                        >
-                                            Buy with credit card
-                                        </button>
-                                        <button
-                                            className="text-blue-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 hover:bg-blue-700 hover:text-white rounded-lg" type="button"
-                                            onClick={() => setShowModal(false)}
-                                        >
-                                            Buy from wallet
-                                        </button>
+
+                                        {
+                                            price > user.walletBalance
+                                                ?
+                                                [
+                                                    <button
+                                                        className="text-blue-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 hover:bg-blue-700 hover:text-white rounded-lg disabled:blur-sm disabled:hover:bg-white disabled:hover:text-blue-500" disabled type="button"
+                                                        onClick={() => {
+                                                            setShowModal(false)
+                                                            walletPaymentClbk()
+                                                        }}
+                                                    >
+                                                        Buy from wallet
+                                                    </button>
+                                                ]
+                                                :
+                                                [
+                                                    <button
+                                                        className="text-blue-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 hover:bg-blue-700 hover:text-white rounded-lg disabled:blur-sm disabled:hover:bg-white disabled:hover:text-blue-500" type="button"
+                                                        onClick={() => {
+                                                            setShowModal(false)
+                                                            walletPaymentClbk()
+                                                        }}
+                                                    >
+                                                        Buy from wallet
+                                                    </button>
+                                                ]
+                                        }
+                                        <StripeBuyNowButton />
                                     </div>
                                 </div>
                                 {/*footer*/}
