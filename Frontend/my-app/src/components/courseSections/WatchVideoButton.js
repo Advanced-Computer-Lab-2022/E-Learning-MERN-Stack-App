@@ -1,7 +1,14 @@
 import React from "react";
-
+function saveNotesToDb() {
+    // @TODO :: Connet to db and save the written notes to it
+    //          Notes is automatically updated every change event 
+    //          Most recent value will be in myNotes var
+    //          Store my var and use useEffect to get it once the session is initiated
+    //          Change should be automatically reflected, since this fucntion is triggered with closing the modal
+}
 export default function Modal() {
     const [showModal, setShowModal] = React.useState(false);
+    const [myNotes, setMyNotes] = React.useState("My previously written notes published to the db and fetched every session.")
     return (
         <div>
             <div className="flex relative pb-12 cursor-pointer" onClick={() => setShowModal(true)}>
@@ -41,17 +48,30 @@ export default function Modal() {
                                     </button>
                                 </div>
                                 {/*body*/}
-                                <div className="relative p-6 flex-auto">
-                                    <p className="my-4 text-slate-500 text-lg leading-relaxed">
+                                <div className="relative p-10 flex-auto">
+                                    <div className="flex flex-row my-4">
                                         <iframe width="650" height="300" src="https://www.youtube.com/embed/Ctqi5Y4X-jA" title="How to Use Strings in Python - Python Tutorial for Beginners" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                    </p>
+                                        <div className="w-1/3 px-5">
+                                            <label class="text-gray-700 h-full">
+                                                <p className="py-4 font-bold text-blue-500 text-lg">
+                                                    My Notes
+                                                </p>
+                                                <textarea class="flex-1 w-full px-4 h-3/4 text-base text-gray-700 placeholder-gray-400 bg-white border border-gray-300 rounded-lg appearance-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" rows="5" cols="400" onChange={(e) => setMyNotes(e.target.value)}>
+                                                    {myNotes}
+                                                </textarea>
+                                            </label>
+                                        </div>
+                                    </div>
                                 </div>
                                 {/*footer*/}
                                 <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
                                     <button
                                         className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 hover:bg-red-500 hover:text-white rounded-lg"
                                         type="button"
-                                        onClick={() => setShowModal(false)}
+                                        onClick={() => {
+                                            setShowModal(false)
+                                            saveNotesToDb();
+                                        }}
                                     >
                                         Close
                                     </button>

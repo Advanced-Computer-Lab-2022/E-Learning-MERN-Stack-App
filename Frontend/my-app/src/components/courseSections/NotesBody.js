@@ -1,6 +1,6 @@
 import React from 'react'
 
-const NotesBody = () => {
+const NotesBody = ({ pdfLink }) => {
     return (
         <div className="flex relative px-5">
             <div className="flex-shrink-0 w-10 h-10 rounded-full bg-blue-500 inline-flex items-center justify-center text-white relative z-10">
@@ -10,7 +10,7 @@ const NotesBody = () => {
                 </svg>
             </div>
             <div className="flex-grow pl-4 py-2">
-                <a href='https://bugs.python.org/file47781/Tutorial_EDIT.pdf' target={'blank'} className="font-medium title-font text-sm text-blue-500 tracking-wider">Download PDF Notes</a>
+                <a href={pdfLink} target={'blank'} className="font-medium title-font text-sm text-blue-500 tracking-wider">Download PDF Notes</a>
             </div>
         </div>
     )

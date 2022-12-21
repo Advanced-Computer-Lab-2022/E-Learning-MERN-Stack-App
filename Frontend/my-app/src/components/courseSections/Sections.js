@@ -49,7 +49,7 @@ const Sections = ({ visible }) => {
                                 PDF Notes
                             </AccordionHeader>
                             <AccordionBody>
-                                <NotesBody />
+                                <NotesBody pdfLink={'https://bugs.python.org/file47781/Tutorial_EDIT.pdf'} />
                             </AccordionBody>
                         </Accordion>
                     </Fragment>
