@@ -2,7 +2,7 @@ import React from 'react'
 import { useContext } from 'react'
 // import CourseContext from '../../context/CourseInfoContext'
 import CurrentViewContext from '../../context/CurrentViewContext'
-const CourseCard = ({ courseName, courseDetails, coursePrice, courseTotalHours }) => {
+const CourseCard = ({ course }) => {
     const { setView } = useContext(CurrentViewContext);
     return (
         <div onClick={
@@ -14,16 +14,16 @@ const CourseCard = ({ courseName, courseDetails, coursePrice, courseTotalHours }
             <img alt="moto" src="./svg/courseDemoIcon.svg" className="absolute -right-5 -bottom-10 h-40 w-40 mb-4" />
             <div className="w-4/6">
                 <p className="text-gray-800 text-lg font-bold mb-2">
-                    {courseName}
+                    {course.name}
                 </p>
                 <p className="text-gray-600 text-lg">
-                    {"Total Hours: "+ courseTotalHours}
+                    {"Total Hours: "+ course.totalHours}
                 </p>
                 <p className="text-gray-400 text-xs">
-                    {courseDetails}
+                    {course.description}
                 </p>
                 <p className="text-blue-500 text-xl pt-2 font-medium">
-                    ${coursePrice}
+                    ${course.price}
                 </p>
             </div>
         </div>
