@@ -1,7 +1,8 @@
 import React from 'react'
 import { useContext } from 'react'
 import CurrentViewContext from '../../context/CurrentViewContext'
-import BuyNowButton from '../stripeComponents/BuyNowButton';
+import UserInfoContext from '../../context/UserInfoContext'
+import CourseBuyButton from './CourseBuyButton';
 const CourseFirstDivPricing = ({ price, owned }) => {
     const { view, setView } = useContext(CurrentViewContext);
     if (!owned)
@@ -23,11 +24,16 @@ const CourseFirstDivPricing = ({ price, owned }) => {
                 </p>
                 <div className="mt-6">
                     <div className="rounded-md shadow">
+                        {/* 
+                        @TODO :: change view context method to user 
+                        context method after integration 
+                        */}
                         {view === 'guest' ? [
                             <button type="button" className="py-2 px-4  bg-blue-500 hover:bg-blue-600 focus:ring-blue-500 focus:ring-offset-blue-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg ">
                                 Sign In
                             </button>] : [
-                            <BuyNowButton />]
+                            <CourseBuyButton />
+                        ]
                         }
                     </div>
                 </div>

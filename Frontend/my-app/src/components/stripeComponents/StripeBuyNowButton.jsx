@@ -17,7 +17,7 @@ const getStripe = () => {
 };
 
 
-const BuyNowButton = () => {
+const StripeBuyNowButton = () => {
     const [stripeError, setStripeError] = useState(null);
     const [isLoading, setLoading] = useState(false);
     // To be fetched from the db (price_1MGgdHGOs1abJdWNyzLlNkH2)
@@ -58,4 +58,4 @@ const BuyNowButton = () => {
     )
 }
 
-export default BuyNowButton
+export default StripeBuyNowButton
