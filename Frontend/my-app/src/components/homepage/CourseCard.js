@@ -1,13 +1,17 @@
 import React from 'react'
 import { useContext } from 'react'
+import CourseContextProvider from '../../context/CourseContext';
 // import CourseContext from '../../context/CourseInfoContext'
 import CurrentViewContext from '../../context/CurrentViewContext'
 const CourseCard = ({ course }) => {
     const { setView } = useContext(CurrentViewContext);
+    // const { setCourse } = useContext(CourseContextProvider);
+
     return (
         <div onClick={
             () => {
-                setView("course")
+                setView("course");
+                // setCourse(course);
             }
         }
             className="shadow-lg rounded-2xl w-96 p-4 bg-gray-50 hover:bg-blue-50 relative overflow-hidden cursor-pointer">
@@ -17,7 +21,7 @@ const CourseCard = ({ course }) => {
                     {course.name}
                 </p>
                 <p className="text-gray-600 text-lg">
-                    {"Total Hours: "+ course.totalHours}
+                    {"Total Hours: " + course.totalHours}
                 </p>
                 <p className="text-gray-400 text-xs">
                     {course.description}

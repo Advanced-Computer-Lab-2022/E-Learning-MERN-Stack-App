@@ -8,11 +8,16 @@ import Reviews from '../components/reviews/Reviews'
 import CurrentViewContext from '../context/CurrentViewContext'
 import { useContext } from 'react'
 import CourseAndInstructorRating from '../components/course&InstructorRating/CourseAndInstructorRating'
+import CourseContextProvider from '../context/CourseContext'
+
 const CoursePage = ({ navActiveState, setNavActiveState, owned }) => {
     const { view } = useContext(CurrentViewContext);
+    // const { course } = useContext(CourseContextProvider);
+
     if (view === "course")
         return (
             <Layout >
+                <h1 className='text-center text-red-500 text-lg'>{'hello world'}</h1>
                 <CourseFirstDiv owned={owned} />
                 <div className="mx-40 my-10 flex">
                     <div className='w-1/2'>

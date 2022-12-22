@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import CourseCard from './CourseCard'
 import CourseCardsWrapper from './CourseCardsWrapper'
 import CoursesHolder from './CoursesHolder'
-import CourseContext from '../../context/CourseInfoContext';
+import CourseContext from '../../context/CourseContext';
 import { FiltersContext } from '../../context/FiltersContext';
 // import AllCourses from '../../context/AllCoursesContext';
 
@@ -56,43 +56,24 @@ const Homepage = ({ visible }) => {
                             .map(category =>
                                 <CourseCardsWrapper headingText={category}>
                                     {
-
-                                        (selectedCategory === '' && rating === -1) ?
-                                            courses
-                                                .filter(course => course.category === category)
-                                                .filter(course => course.name.toLowerCase().includes(search.toLowerCase())
-                                                    || course.title.toLowerCase().includes(search.toLowerCase())
-                                                    || course.createdBy.toLowerCase().includes(search.toLowerCase())
-                                                    || course.description.toLowerCase().includes(search.toLowerCase()))
-                                                .filter(course => course.price >= minPrice && course.price <= maxPrice)
-                                                .map((course, index) =>
-                                                    <CourseCard key={index} course={course} />
-                                                )
-                                            : ((selectedCategory === '') ?
-                                                courses
-                                                    .filter(course => course.category === category)
-                                                    .filter(course => course.name.toLowerCase().includes(search.toLowerCase())
-                                                        || course.title.toLowerCase().includes(search.toLowerCase())
-                                                        || course.createdBy.toLowerCase().includes(search.toLowerCase())
-                                                        || course.description.toLowerCase().includes(search.toLowerCase()))
-                                                    .filter(course => course.price >= minPrice && course.price <= maxPrice)
-                                                    .filter(course => course.rating === rating)
-                                                    .map((course, index) =>
-                                                        <CourseCard key={index} course={course} />
-                                                    )
-                                                :
-                                                courses
-                                                    .filter(course => course.category === category)
-                                                    .filter(course => course.name.toLowerCase().includes(search.toLowerCase())
-                                                        || course.title.toLowerCase().includes(search.toLowerCase())
-                                                        || course.createdBy.toLowerCase().includes(search.toLowerCase())
-                                                        || course.description.toLowerCase().includes(search.toLowerCase()))
-                                                    .filter(course => course.price >= minPrice && course.price <= maxPrice)
-                                                    .filter(course => course.category === selectedCategory)
-                                                    .filter(course => course.rating === rating)
-                                                    .map((course, index) =>
-                                                        <CourseCard key={index} course={course} />
-                                                    ))
+                                        courses
+                                            .filter(course => course.category === category)
+                                            .filter(course => course.name.toLowerCase().includes(search.toLowerCase())
+                                                || course.title.toLowerCase().includes(search.toLowerCase())
+                                                || course.createdBy.toLowerCase().includes(search.toLowerCase())
+                                                || course.description.toLowerCase().includes(search.toLowerCase()))
+                                            .filter(course => course.price >= minPrice && course.price <= maxPrice)
+                                            .filter(course => {
+                                                if (selectedCategory === '') return true
+                                                return course.category === selectedCategory
+                                            })
+                                            .filter(course => {
+                                                if (rating === -1) return true
+                                                return course.rating === rating
+                                            })
+                                            .map((course, index) =>
+                                                <CourseCard key={index} course={course} />
+                                            )
                                     }
 
                                 </CourseCardsWrapper>

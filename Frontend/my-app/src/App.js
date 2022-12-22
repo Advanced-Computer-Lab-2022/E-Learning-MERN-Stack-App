@@ -6,7 +6,7 @@ import { useState } from 'react';
 import React from 'react';
 import NavStateContext from './context/NavStateContext';
 import CurrentViewContext from './context/CurrentViewContext';
-import CourseInfoContext from './context/CourseInfoContext'
+import CourseInfoContext from './context/CourseContext'
 import CheckoutPage from './pages/CheckoutPage';
 import Test from './pages/Test';
 import UserPage from './pages/UserPage';
@@ -14,7 +14,7 @@ import UserInfoContext from './context/UserInfoContext';
 import PaymentSuccessful from "./components/stripeComponents/PaymentSuccessful";
 import PaymentCancelled from "./components/stripeComponents/PaymentCancelled"
 import FiltersContextProvider from "./context/FiltersContext";
-import CourseContextProvider from "./context/CourseInfoContext";
+import CourseContextProvider from "./context/CourseContext";
 function App() {
   const [navIdx, setNavIdx] = useState(0);
   const navIdxValue = { navIdx, setNavIdx };
@@ -56,9 +56,9 @@ function App() {
                       <UserPage />
                     </FiltersContextProvider>
                     {/* <CourseInfoContext.Provider> */}
-                    <CourseContextProvider>
+                    {/* <CourseContextProvider> */}
                       <CoursePage owned={false} />
-                    </CourseContextProvider>
+                    {/* </CourseContextProvider> */}
                     {/* </CourseInfoContext.Provider> */}
                     <CheckoutPage />
                   </CurrentViewContext.Provider>

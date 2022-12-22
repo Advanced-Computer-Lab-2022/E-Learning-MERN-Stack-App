@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import CourseCard from './CourseCard'
 import CourseCardsWrapper from './CourseCardsWrapper'
 import CoursesHolder from './CoursesHolder'
-import CourseContext from '../../context/CourseInfoContext';
+import CourseContext from '../../context/CourseContext';
 import UserInfoContext from '../../context/UserInfoContext';
 // import AllCourses from '../../context/AllCoursesContext';
 
