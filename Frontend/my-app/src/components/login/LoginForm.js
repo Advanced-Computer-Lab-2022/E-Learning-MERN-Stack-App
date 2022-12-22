@@ -17,20 +17,34 @@ const LoginForm = () => {
     });
     const [errorMessage, setErrorMessage] = useState("");
     var api = 'http://localhost:8000/api/guest/signin';
-    var viewToBeSetIfLoggedInSuccessfuly = 'user';
+    var userRole = 'individualTrainee';
 
     async function handleSubmit(e) {
         await axios.post(api, authenticationInfo)
             .then((response) => {
                 console.log(response);
-                // the setUser(response.data.guest) is causing a problem
-                // setUser(response.data.guest);
+
+                let userToBeSet = response.data.guest;
+                switch (userRole) {
+                    case 'individualTrainee':
+                        userToBeSet = response.data.guest;
+                        break;
+                    case 'corporateTrainee':
+                        userToBeSet = response.data.guest;
+                        break;
+                    case 'instructor':
+                        userToBeSet = response.data.instructor;
+                        break;
+                    case 'admin':
+                        userToBeSet = response.data.admin;
+                        break;
+                    default:
+                }
+                setUser(userToBeSet);
                 setNavIdx(0);
                 setView('user');
                 setCookie('token', response.data.token, { path: '/' });
                 console.log(`token cookie: ${cookies.token}`);
-                // should log 'user' but logs 'guest' which is the default
-                console.log(view);
             })
             .catch((error) => {
                 console.log(error);
@@ -66,22 +80,19 @@ const LoginForm = () => {
         switch (role) {
             case 'individualTrainee':
                 api = 'http://localhost:8000/api/guest/signin';
-                viewToBeSetIfLoggedInSuccessfuly = 'user';
                 break;
             case 'corporateTrainee':
                 api = 'http://localhost:8000/api/guest/signin';
-                viewToBeSetIfLoggedInSuccessfuly = 'user';
                 break;
             case 'instructor':
                 api = 'http://localhost:8000/api/instructor/signin';
-                viewToBeSetIfLoggedInSuccessfuly = 'instructor';
                 break;
             case 'admin':
                 api = 'http://localhost:8000/api/admin/signin';
-                viewToBeSetIfLoggedInSuccessfuly = 'admin';
                 break;
             default:
         }
+        userRole = role;
     }
 
     return (
