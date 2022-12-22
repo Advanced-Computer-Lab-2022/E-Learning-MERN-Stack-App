@@ -61,7 +61,12 @@ const courseSchema = new mongoose.Schema({
                         role: String
                     }]
                 }],
-                quizzes:[String],
+                quizzes:[{
+                    wrong1: String,
+                    wrong2: String,
+                    wrong3: String,
+                    correct:String
+                }],
                  
                 hours: {
                    type: Number,
