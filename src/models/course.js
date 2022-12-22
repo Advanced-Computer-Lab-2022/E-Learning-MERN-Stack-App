@@ -62,6 +62,7 @@ const courseSchema = new mongoose.Schema({
                     }]
                 }],
                 quizzes:[{
+                    question:String,
                     wrong1: String,
                     wrong2: String,
                     wrong3: String,
