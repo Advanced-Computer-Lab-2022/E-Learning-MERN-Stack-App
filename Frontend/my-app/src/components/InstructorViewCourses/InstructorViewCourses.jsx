@@ -58,9 +58,7 @@ const InstructorViewCourses = ({ visible }) => {
                             )
                     }
                     {/* For Stripe Testing */}
-                    {
-                    }
-                    <CourseCard key={1} course={testCourse} />
+                    {/* <CourseCard key={1} course={testCourse} /> */}
                 </CoursesHolder>
             </>
         )

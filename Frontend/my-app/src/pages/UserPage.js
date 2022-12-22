@@ -10,6 +10,7 @@ import LoggedInLayout from '../components/LoggedIn/LoggedInLayout';
 import AccountInfo from '../components/LoggedIn/AccountInfo';
 import UserInfoContext from '../context/UserInfoContext';
 import InstructorViewCourses from '../components/InstructorViewCourses/InstructorViewCourses';
+import InstructorCreateCourse from '../components/InstructorCreateCourse/InstructorCreateCourse';
 
 const UserPage = () => {
     const { navIdx } = useContext(NavStateContext);
@@ -26,7 +27,7 @@ const UserPage = () => {
                 <ContactUs visible={navIdx === 4} />
                 <AccountInfo visible={navIdx === 8} />
                 <InstructorViewCourses visible={navIdx === 64} />
-                {/* <InstructorCreateACourse visible={navIdx === 65 && user.role === 'instructor'} /> */}
+                <InstructorCreateCourse visible={navIdx === 65} />
                 {/* <AdminDashboard visible={navIdx === 128 && user.role === 'admin'} /> */}
             </LoggedInLayout>
         )
