@@ -8,7 +8,6 @@ const router = express.Router();
 // posts
 router.post('/guest/signup', signup);
 router.post('/guest/signin', signin);
-//router.post('/guest/changePassword', changePassword);
 
 
 //gets
