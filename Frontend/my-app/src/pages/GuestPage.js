@@ -1,4 +1,3 @@
-
 import Homepage from '../components/homepage/Homepage'
 import LandingPage from "../components/landing/LandingPage";
 import Pricing from "../components/pricing/Pricing";
