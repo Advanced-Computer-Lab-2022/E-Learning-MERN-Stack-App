@@ -40,7 +40,8 @@ const LoginForm = () => {
                         break;
                     default:
                 }
-                setUser(userToBeSet);
+                if (userToBeSet !== undefined)
+                    setUser(userToBeSet);
                 setNavIdx(0);
                 setView('user');
                 setCookie('token', response.data.token, { path: '/' });
