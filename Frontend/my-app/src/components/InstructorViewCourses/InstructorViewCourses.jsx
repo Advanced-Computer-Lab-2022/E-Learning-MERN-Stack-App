@@ -5,11 +5,13 @@ import CourseCard from './CourseCard'
 import CourseCardsWrapper from './CourseCardsWrapper'
 import CoursesHolder from './CoursesHolder'
 import CourseContext from '../../context/CourseInfoContext';
+import UserInfoContext from '../../context/UserInfoContext';
 // import AllCourses from '../../context/AllCoursesContext';
 
-const InstructorDashboard = ({ visible }) => {
+const InstructorViewCourses = ({ visible }) => {
 
     const [courses, setCourses] = useState([]);
+    const { user } = useContext(UserInfoContext);
     // const [courseIdx, setCourseIdx] = useContext(CourseContext);
     // const [setAllCourses] = useContext(AllCourses)
 
@@ -25,7 +27,9 @@ const InstructorDashboard = ({ visible }) => {
     }, []);
 
     function getCategories() {
-        return Array.from(new Set(courses.map(course => course.category)));
+        return Array.from(new Set(courses
+            .filter(course => course.createdBy === user.userName)
+            .map(course => course.category)));
     }
 
     var testCourse = {
@@ -35,7 +39,7 @@ const InstructorDashboard = ({ visible }) => {
     if (visible)
         return (
             <>
-                <div className='text-center py-10 text-blue-500 text-4xl font-extrabold'>All Categories</div>
+                <div className='text-center py-10 text-blue-500 text-4xl font-extrabold'>Courses I Teach</div>
                 <CoursesHolder>
                     {
                         getCategories()
@@ -44,6 +48,7 @@ const InstructorDashboard = ({ visible }) => {
                                     {
                                         courses
                                             .filter(course => course.category === category)
+                                            .filter(course => course.createdBy === user.userName)
                                             .map((course, index) =>
                                                 <CourseCard key={index} course={course} />
                                             )
@@ -61,4 +66,4 @@ const InstructorDashboard = ({ visible }) => {
         )
 }
 
-export default InstructorDashboard
+export default InstructorViewCourses

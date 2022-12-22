@@ -11,7 +11,7 @@ const MainNavListItem = ({ text, href, myIdx }) => {
         return (
             <li onClick={() => {
                 setNavIdx(myIdx)
-                if (user.username === undefined)
+                if (user.userName === undefined)
                     setView('guest')
                 else
                     setView('user')
@@ -23,7 +23,7 @@ const MainNavListItem = ({ text, href, myIdx }) => {
         return (
             <li onClick={() => {
                 setNavIdx(myIdx)
-                if (user.username === undefined)
+                if (user.userName === undefined)
                     setView('guest')
                 else
                     setView('user')
