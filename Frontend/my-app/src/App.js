@@ -14,6 +14,7 @@ import UserInfoContext from './context/UserInfoContext';
 import PaymentSuccessful from "./components/stripeComponents/PaymentSuccessful";
 import PaymentCancelled from "./components/stripeComponents/PaymentCancelled"
 import FiltersContextProvider from "./context/FiltersContext";
+import CourseContextProvider from "./context/CourseInfoContext";
 function App() {
   const [navIdx, setNavIdx] = useState(0);
   const navIdxValue = { navIdx, setNavIdx };
@@ -54,9 +55,11 @@ function App() {
                       <GuestPage />
                       <UserPage />
                     </FiltersContextProvider>
-                    <CourseInfoContext.Provider>
+                    {/* <CourseInfoContext.Provider> */}
+                    <CourseContextProvider>
                       <CoursePage owned={false} />
-                    </CourseInfoContext.Provider>
+                    </CourseContextProvider>
+                    {/* </CourseInfoContext.Provider> */}
                     <CheckoutPage />
                   </CurrentViewContext.Provider>
                 </NavStateContext.Provider>

@@ -9,16 +9,16 @@
 // export default CourseContext
 import React, { createContext, useState } from "react";
 
-export let CourseInfoContext = createContext({});
+export let CourseContext = createContext({});
 
-export default function CourseInfoProvider(props) {
+export default function CourseContextProvider(props) {
     const [courseIdx, setCourseIdx] = useState(0);
     const [course, setCourse] = useState({});
 
-    return <CourseInfoContext.Provider value={{
+    return <CourseContext.Provider value={{
         courseIdx, setCourseIdx,
         course, setCourse
     }}>
         {props.children}
-    </CourseInfoContext.Provider>
+    </CourseContext.Provider>
 };
