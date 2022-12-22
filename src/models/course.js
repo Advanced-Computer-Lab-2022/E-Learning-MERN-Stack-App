@@ -54,7 +54,12 @@ const courseSchema = new mongoose.Schema({
                 textModules: [String],
                 videos:[{
                     video : String,
-                    videoDescription: String
+                    videoDescription: String,
+                    notes:[{
+                        note: String,
+                        guestUserName:mongoose.Schema.Types.String,
+                        role: String
+                    }]
                 }],
                 quizzes:[String],
                  
