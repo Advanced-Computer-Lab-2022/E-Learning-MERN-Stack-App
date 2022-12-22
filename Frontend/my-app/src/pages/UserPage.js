@@ -11,6 +11,7 @@ import AccountInfo from '../components/LoggedIn/AccountInfo';
 import UserInfoContext from '../context/UserInfoContext';
 import InstructorViewCourses from '../components/InstructorViewCourses/InstructorViewCourses';
 import InstructorCreateCourse from '../components/InstructorCreateCourse/InstructorCreateCourse';
+import AdminDashboard from '../components/AdminDashboard/AdminDashboard';
 
 const UserPage = () => {
     const { navIdx } = useContext(NavStateContext);
@@ -28,7 +29,7 @@ const UserPage = () => {
                 <AccountInfo visible={navIdx === 8} />
                 <InstructorViewCourses visible={navIdx === 64} />
                 <InstructorCreateCourse visible={navIdx === 65} />
-                {/* <AdminDashboard visible={navIdx === 128 && user.role === 'admin'} /> */}
+                <AdminDashboard visible={navIdx === 128} />
             </LoggedInLayout>
         )
 }

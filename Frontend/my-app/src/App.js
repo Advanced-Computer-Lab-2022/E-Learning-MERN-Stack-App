@@ -13,6 +13,7 @@ import UserPage from './pages/UserPage';
 import UserInfoContext from './context/UserInfoContext';
 import PaymentSuccessful from "./components/stripeComponents/PaymentSuccessful";
 import PaymentCancelled from "./components/stripeComponents/PaymentCancelled"
+import FiltersContextProvider from "./context/FiltersContext";
 function App() {
   const [navIdx, setNavIdx] = useState(0);
   const navIdxValue = { navIdx, setNavIdx };
@@ -49,8 +50,10 @@ function App() {
               <UserInfoContext.Provider value={userValue}>
                 <NavStateContext.Provider value={navIdxValue}>
                   <CurrentViewContext.Provider value={viewValue}>
-                    <GuestPage />
-                    <UserPage />
+                    <FiltersContextProvider>
+                      <GuestPage />
+                      <UserPage />
+                    </FiltersContextProvider>
                     <CourseInfoContext.Provider>
                       <CoursePage owned={false} />
                     </CourseInfoContext.Provider>
