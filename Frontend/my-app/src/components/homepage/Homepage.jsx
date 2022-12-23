@@ -53,7 +53,7 @@ const Homepage = ({ visible }) => {
                 <CoursesHolder>
                     {
                         getCategories()
-                            .map(category =>
+                            .map((category, catIndx) =>
                                 <CourseCardsWrapper headingText={category}>
                                     {
                                         courses
@@ -72,7 +72,7 @@ const Homepage = ({ visible }) => {
                                                 return course.rating === rating
                                             })
                                             .map((course, index) =>
-                                                <CourseCard key={index} course={course} />
+                                                <CourseCard key={index} course={course} id={(catIndx * (index + 1))} />
                                             )
                                     }
 

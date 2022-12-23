@@ -1,17 +1,17 @@
 import React from 'react'
 import { useContext } from 'react'
-import CourseContextProvider from '../../context/CourseContext';
+import CourseContextProvider, { CourseContext } from '../../context/CourseContext';
 // import CourseContext from '../../context/CourseInfoContext'
 import CurrentViewContext from '../../context/CurrentViewContext'
-const CourseCard = ({ course }) => {
+const CourseCard = ({ course, id }) => {
     const { setView } = useContext(CurrentViewContext);
-    // const { setCourse } = useContext(CourseContextProvider);
+    const { setCourseId } = useContext(CourseContext);
 
     return (
         <div onClick={
             () => {
                 setView("course");
-                // setCourse(course);
+                setCourseId(id);
             }
         }
             className="shadow-lg rounded-2xl w-96 p-4 bg-gray-50 hover:bg-blue-50 relative overflow-hidden cursor-pointer">

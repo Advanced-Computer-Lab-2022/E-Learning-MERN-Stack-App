@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import CourseFirstDiv from '../components/coursePage/CourseFirstDiv'
 import CourseInstructorPlaceHolder from '../components/coursePage/CourseInstructorPlaceHolder'
 import Sections from '../components/courseSections/Sections'
@@ -9,15 +9,33 @@ import CurrentViewContext from '../context/CurrentViewContext'
 import { useContext } from 'react'
 import CourseAndInstructorRating from '../components/course&InstructorRating/CourseAndInstructorRating'
 import { CourseContext } from '../context/CourseContext'
+import axios from 'axios'
 
 const CoursePage = ({ navActiveState, setNavActiveState, owned }) => {
     const { view } = useContext(CurrentViewContext);
-    const { course } = useContext(CourseContext);
+    const { courseId } = useContext(CourseContext);
+    const [courses, setCourses] = useState([]);
+    const [intendedCourse, setIntendedCourse] = useState({});
+
+    useEffect(() => {
+        axios
+            .get('http://localhost:8000/api/getCourses')
+            .then(response => {
+                console.log(response);
+                setCourses(response.data.courses);
+            })
+            .catch(error => console.log(error));
+    }, []);
+
+    useEffect(() => {
+        setIntendedCourse(courses[courseId]);
+    }, [courseId, courses]);
 
     if (view === "course")
         return (
             <Layout >
-                <h1 className='text-center text-red-500 text-lg'>CourseTitle: {course}</h1>
+                <h1>{courseId}</h1>
+                <h1 className='text-center text-red-500 text-lg'>CourseTitle: {intendedCourse.name}</h1>
                 <CourseFirstDiv owned={owned} />
                 <div className="mx-40 my-10 flex">
                     <div className='w-1/2'>

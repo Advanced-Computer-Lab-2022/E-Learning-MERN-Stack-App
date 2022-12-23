@@ -9,13 +9,13 @@
 // export default CourseContext
 import React, { createContext, useState } from "react";
 
-export let CourseContext = createContext({});
+export let CourseContext = createContext(0);
 
 export default function CourseContextProvider(props) {
-    const [course, setCourse] = useState('this is the course default value');
+    const [courseId, setCourseId] = useState(0);
 
     return <CourseContext.Provider value={{
-        course, setCourse
+        courseId, setCourseId
     }}>
         {props.children}
     </CourseContext.Provider>
