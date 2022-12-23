@@ -72,7 +72,7 @@ const Homepage = ({ visible }) => {
                                                 return course.rating === rating
                                             })
                                             .map((course, index) =>
-                                                <CourseCard key={index} course={course} id={(catIndx * (index + 1))} />
+                                                <CourseCard key={index} course={course} id={(course._id)} />
                                             )
                                     }
 
