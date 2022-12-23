@@ -1,9 +1,4 @@
-// ///////////include 
-// USER = ACLTeamName@hotmail.com
-// PASS = Aabb1122
-// SERVICE = hotmail
-// in .env file
-// ////////////////////
+
 
 
 const Guest = require("../models/guest");
