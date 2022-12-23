@@ -3,100 +3,65 @@ const mongoose = require('mongoose');
 
 const courseSchema = new mongoose.Schema({
 
-    name:{
-        type: String,
-        required:true,
-        trim:true
-    },
-
-    title: {
-        type: String,
-        required:true,
-    },
- 
-    description: {
-        type: String,
-        required:true,
-    },
-
-    shortVideo: {
-        type:String,
-        required: true
-    },
-
-    price:{
-        type:Number,
-        required:true
-    },
-
-    discount:{
-        type:Number,
-        default:0
-    },
-
-    rating:{
-        type:Number,
-        default:0
-    },
-
-    reviews: [{
-        review: String,
-        reviewerGuest:{type: mongoose.Schema.Types.ObjectId, ref: 'Guest'},
-        reviewerOrgGuest:{type: mongoose.Schema.Types.ObjectId, ref: 'OrgGuest'}
-    }],
-
-    category: String,
-
-    createdBy: {type: mongoose.Schema.Types.String, ref: 'Instructor'},
-
-   chapters: [{
-                chapterTitle: String ,
-                textModules: [String],
-                videos:[{
-                    videoId:{
-                        type:String,
-                        required:true,
-                        unique: true,
-                    },
-                    video : String,
-                    videoDescription: String,
-                    notes:[{
-                        note: String,
-                        guestUserName:mongoose.Schema.Types.String,
-                        role: String
-                    }]
-                }],
-                quizzes:[{
-                    question:String,
-                    wrong1: String,
-                    wrong2: String,
-                    wrong3: String,
-                    correct:String
-                }],
-                 
-                hours: {
-                   type: Number,
-                   required : true
+        title: String,
+        description: String,
+        whatYouWillLearnBullets: [String],
+        courseIncludes: [String],
+        price:{
+            type: Number,
+            default: 0
+        },
+        previewVideoURL: String,
+        previewVideoTitle: String,
+        rating: Number,
+        numberOfRatings:{
+            type: Number,
+            default: 0
+        },
+        //****************   Problem: HardCoded    ******************* */
+        // instructor: {
+        //     id: "inst-1452",
+        //     name: "Corey Schafer",
+        //     role: "Python Developer",
+        //     imgURL: "https://mdbootstrap.com/img/Photos/Avatars/img%20(20).jpg",
+        //     numberOfCourses: 5,
+        //     rating: 4.6,
+        // },
+        instructor:{type:mongoose.Schema.Types.ObjectId, ref:"instructor"}, 
+        sections: [
+            {
+                idx: Number,
+                title: String,
+                lesson: {
+                    video: String,
+                    title: String,
+                }, 
+                hours: Number,
+                lessonDescription: String,
+                testId: {
+                    type:String,
+                    unique: true
                 }
-             }],
-    students:
-     [{type:mongoose.Schema.Types.ObjectId, ref: "Guest"},
-    {type:mongoose.Schema.Types.ObjectId, ref: "OrgGuest"}
-],
-
-enrolled: {
-    type: Number,
-    default: function () {
-        return this.students.length;
-    }
-},
-
+            },
+        ],
+        reviews: [
+            {
+                reviewerName: String,
+                reviewerImgURL: String,
+                reviewerReview: String,
+                reviewerRating: Number,
+            }
+        ],
+        faqs: [{
+            question: String,
+            answer: String
+        }],
 totalHours: {
     type: Number,
     default: function () {
         let totalHours = 0;
-        for(let i=0; i<this.chapters.length; i++) {
-            totalHours += this.chapters[i].hours;
+        for(let i=0; i<this.sections.length; i++) {
+            totalHours += this.sections[i].hours;
         }
         return totalHours;
     }
