@@ -12,7 +12,7 @@ import React, { createContext, useState } from "react";
 export let CourseContext = createContext({});
 
 export default function CourseContextProvider(props) {
-    const [course, setCourse] = useState({});
+    const [course, setCourse] = useState('this is the course default value');
 
     return <CourseContext.Provider value={{
         course, setCourse

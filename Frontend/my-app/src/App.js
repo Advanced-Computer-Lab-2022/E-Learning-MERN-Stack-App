@@ -51,15 +51,15 @@ function App() {
               <UserInfoContext.Provider value={userValue}>
                 <NavStateContext.Provider value={navIdxValue}>
                   <CurrentViewContext.Provider value={viewValue}>
-                    <FiltersContextProvider>
-                      <GuestPage />
-                      <UserPage />
-                    </FiltersContextProvider>
-                    {/* <CourseInfoContext.Provider> */}
-                    {/* <CourseContextProvider> */}
+
+                    <CourseContextProvider>
+                      <FiltersContextProvider>
+                        <GuestPage />
+                        <UserPage />
+                      </FiltersContextProvider>
                       <CoursePage owned={false} />
-                    {/* </CourseContextProvider> */}
-                    {/* </CourseInfoContext.Provider> */}
+                    </CourseContextProvider>
+
                     <CheckoutPage />
                   </CurrentViewContext.Provider>
                 </NavStateContext.Provider>
