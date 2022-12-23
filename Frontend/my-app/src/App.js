@@ -24,67 +24,48 @@ function App() {
   const userValue = { user, setUser };
   return (
     <div className="App">
-      {/* <NavStateContext.Provider value={value}>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/"
-              element=
-              {
-                <GuestPage />
-              }
-            />
-            <Route path="/course"
-              element=
-              {
-                <CoursePage />
-              }
-            />
-          </Routes>
-        </BrowserRouter>
-      </NavStateContext.Provider> */}
       <BrowserRouter>
-
-        <Routes>
-          <Route path="/"
-            element=
-            {
-              <UserInfoContext.Provider value={userValue}>
-                <NavStateContext.Provider value={navIdxValue}>
-                  <CurrentViewContext.Provider value={viewValue}>
-
-                    <CourseContextProvider>
-                      <FiltersContextProvider>
-                        <GuestPage />
-                        <UserPage />
-                      </FiltersContextProvider>
-                      <CoursePage owned={false} />
-                    </CourseContextProvider>
-
-                    <CheckoutPage />
-                  </CurrentViewContext.Provider>
-                </NavStateContext.Provider>
-              </UserInfoContext.Provider>
-            }
-          />
-          <Route path="/test"
-            element=
-            {
-              <Test />
-            }
-          />
-          <Route path="/successful_payment"
-            element=
-            {
-              <PaymentSuccessful />
-            }
-          />
-          <Route path="/cancel_payment"
-            element=
-            {
-              <PaymentCancelled />
-            }
-          />
-        </Routes>
+        <UserInfoContext.Provider value={userValue}>
+          <NavStateContext.Provider value={navIdxValue}>
+            <CurrentViewContext.Provider value={viewValue}>
+              <Routes>
+                <Route path="/"
+                  element=
+                  {
+                    <>
+                      <CourseContextProvider>
+                        <FiltersContextProvider>
+                          <GuestPage />
+                          <UserPage />
+                        </FiltersContextProvider>
+                        <CoursePage owned={false} />
+                      </CourseContextProvider>
+                      <CheckoutPage />
+                    </>
+                  }
+                />
+                <Route path="/test/:id"
+                  element=
+                  {
+                    <Test />
+                  }
+                />
+                <Route path="/successful_payment"
+                  element=
+                  {
+                    <PaymentSuccessful />
+                  }
+                />
+                <Route path="/cancel_payment"
+                  element=
+                  {
+                    <PaymentCancelled />
+                  }
+                />
+              </Routes>
+            </CurrentViewContext.Provider>
+          </NavStateContext.Provider>
+        </UserInfoContext.Provider>
       </BrowserRouter>
     </div>
   );

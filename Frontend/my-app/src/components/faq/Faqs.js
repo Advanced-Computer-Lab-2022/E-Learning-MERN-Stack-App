@@ -1,7 +1,21 @@
 import React from 'react'
 import Question from './Question'
 
-const Faqs = ({ visible }) => {
+const Faqs = ({ visible, faqs }) => {
+
+    const lSide = faqs[0].map((faq) => [
+        <Question
+            question={faq.question}
+            answer={faq.answer}
+        />
+    ])
+    const rSide = faqs[1].map((faq) => [
+        <Question
+            question={faq.question}
+            answer={faq.answer}
+        />
+    ])
+
     if (visible)
         return (
             <section className="bg-white dark:bg-gray-900">
@@ -10,21 +24,11 @@ const Faqs = ({ visible }) => {
                     <div className="grid pt-8 text-left border-t border-gray-200 md:gap-16 dark:border-gray-700 md:grid-cols-2">
                         {/* Left Side */}
                         <div>
-                            <Question
-                                question={"Question 1?"}
-                                answer={"Lorem ipsum dolor sit amet, consectetur adipiscing elit. In placerat aliquam tempus. Phasellus auctor erat turpis, quis laoreet orci luctus eget. Quisque congue ut orci sit amet aliquam."}
-                            />
-                            <Question
-                                question={"Question 2?"}
-                                answer={"Lorem ipsum dolor sit amet, consectetur adipiscing elit. In placerat aliquam tempus. Phasellus auctor erat turpis, quis laoreet orci luctus eget. Quisque congue ut orci sit amet aliquam."}
-                            />
+                            {lSide}
                         </div>
                         {/* Right Side */}
                         <div>
-                            <Question
-                                question={"Question 3?"}
-                                answer={"Lorem ipsum dolor sit amet, consectetur adipiscing elit. In placerat aliquam tempus. Phasellus auctor erat turpis, quis laoreet orci luctus eget. Quisque congue ut orci sit amet aliquam."}
-                            />
+                            {rSide}
                         </div>
                     </div>
                 </div>

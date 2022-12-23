@@ -6,8 +6,8 @@ function instructorRate() {
 function courseRate() {
     // 
 }
-const CourseAndInstructorRating = ({ courseRating, owned }) => {
-    if (owned)
+const CourseAndInstructorRating = ({ courseRating, instructorRating, owned }) => {
+    if (!owned)
         return (
             <div className="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6 -my-16">
                 <h2 className="mb-8 text-4xl tracking-tight font-extrabold text-blue-500 dark:text-white">Review Your Experience</h2>
@@ -17,7 +17,7 @@ const CourseAndInstructorRating = ({ courseRating, owned }) => {
                         Rate Instructor:
                     </div>
                     <div className=''>
-                        <Rating name="half-rating" defaultValue={courseRating} precision={0.2} onClick={() => instructorRate()} />
+                        <Rating name="half-rating" defaultValue={instructorRating} precision={0.2} onClick={() => instructorRate()} />
                     </div>
                 </div>
                 <div className=' flex flex-row py-10'>

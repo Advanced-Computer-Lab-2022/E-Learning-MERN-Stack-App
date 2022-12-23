@@ -6,7 +6,7 @@ function saveNotesToDb() {
     //          Store my var and use useEffect to get it once the session is initiated
     //          Change should be automatically reflected, since this fucntion is triggered with closing the modal
 }
-export default function Modal() {
+export default function Modal({ section }) {
     const [showModal, setShowModal] = React.useState(false);
     const [myNotes, setMyNotes] = React.useState("My previously written notes published to the db and fetched every session.")
     return (
@@ -22,7 +22,7 @@ export default function Modal() {
                 </div>
                 <div className="flex-grow pl-4">
                     <h2 className="font-medium title-font text-sm text-blue-500 mb-1 tracking-wider">Watch Video</h2>
-                    <p className="leading-relaxed">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse tincidunt justo eu quam facilisis varius. In laoreet lorem in elit vehicula.</p>
+                    <p className="leading-relaxed">{section.lessonDescription}</p>
                 </div>
             </div>
             {showModal ? (
@@ -50,7 +50,7 @@ export default function Modal() {
                                 {/*body*/}
                                 <div className="relative p-10 flex-auto">
                                     <div className="flex flex-row my-4">
-                                        <iframe width="650" height="300" src="https://www.youtube.com/embed/Ctqi5Y4X-jA" title="How to Use Strings in Python - Python Tutorial for Beginners" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                        {section.lessonEmbed}
                                         <div className="w-1/3 px-5">
                                             <label class="text-gray-700 h-full">
                                                 <p className="py-4 font-bold text-blue-500 text-lg">

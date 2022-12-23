@@ -5,34 +5,33 @@ import WhatYouWillLearnListWrapper from './WhatYouWillLearnListWrapper'
 import CourseIncludesWrapper from './CourseIncludesWrapper'
 import CourseIncludesBulletPoint from './CourseIncludesBulletPoint'
 import CourseFirstDivPricing from './CourseFirstDivPricing'
-const CourseFirstDiv = ({ owned }) => {
+
+
+
+const CourseFirstDiv = ({ owned, courseObj }) => {
+    const learnBullets = courseObj.whatYouWillLearnBullets.map((bullet) => <WhatYouWillLearnBulletPoint text={bullet} />)
+    const includesBulles = courseObj.courseIncludes.map((bullet) => <CourseIncludesBulletPoint text={bullet} />)
     return (
         <div className="relative max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 my-10">
             <div className="pricing-box max-w-lg mx-auto rounded-lg shadow-lg overflow-hidden lg:max-w-none lg:flex">
                 <div className="bg-white px-6 py-8 lg:flex-shrink-1 lg:p-12">
                     <CourseFirstDivTitleAndDescription
-                        title={"Learn Python: The Complete Python Programming Course"}
-                        description={"Learn A-Z everything about Python, from the basics, to advanced topics like Python GUI, Python Data Analysis, and more!"}
+                        title={courseObj.title}
+                        description={courseObj.description}
                     />
 
                     <div className="mt-8">
                         <WhatYouWillLearnListWrapper>
-                            <WhatYouWillLearnBulletPoint text={"Lorem ipsum"} />
-                            <WhatYouWillLearnBulletPoint text={"Lorem ipsum"} />
-                            <WhatYouWillLearnBulletPoint text={"Lorem ipsum"} />
-                            <WhatYouWillLearnBulletPoint text={"Lorem ipsum"} />
-                            <WhatYouWillLearnBulletPoint text={"Lorem ipsum"} />
+                            {learnBullets}
                         </WhatYouWillLearnListWrapper>
                     </div>
                     <div className="mt-8">
                         <CourseIncludesWrapper>
-                            <CourseIncludesBulletPoint text={"Lorem ipsum"} />
-                            <CourseIncludesBulletPoint text={"Lorem ipsum"} />
-                            <CourseIncludesBulletPoint text={"17 Hours Total"} />
+                            {includesBulles}
                         </CourseIncludesWrapper>
                     </div>
                 </div>
-                <CourseFirstDivPricing price={9.99} owned={owned} />
+                <CourseFirstDivPricing price={courseObj.price} owned={owned} />
             </div>
         </div>
     )

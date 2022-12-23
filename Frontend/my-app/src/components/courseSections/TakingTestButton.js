@@ -1,8 +1,7 @@
 import React from 'react'
-
-const TakingTestButton = () => {
+const TakingTestButton = ({ testId }) => {
     return (
-        <a href="./test" target="_blank">
+        <a href={"./test/" + testId} target="_blank">
             <div className="flex relative pb-12">
                 <div className="h-full w-10 absolute inset-0 flex items-center justify-center">
                     <div className="h-full w-1 bg-gray-200 pointer-events-none"></div>
