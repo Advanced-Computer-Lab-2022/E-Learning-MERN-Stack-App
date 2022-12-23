@@ -11,7 +11,7 @@ exports.isInstructor = (req, res, next) => {
 };
 exports.signin = (req, res) => {
     Instructor.findOne({userName: req.body.userName})
-    .exec(async(error, instructor) =>{
+    .exec(async(error, instructor) => {
         if(error) return res.status(400).json({error});
         if(instructor){
             const passwordVerify = await instructor.authenticate(req.body.password);

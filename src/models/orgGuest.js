@@ -37,6 +37,17 @@ const orgGuestSchema = new mongoose.Schema({
         unique : true,
         lowercase : true
      },
+     watching: {
+        state:{
+            type:Boolean,
+            default: false 
+        },
+        videoId: String,
+        notes:{//keyvalue pair (key:videoId, value: Note)
+            type: Map,
+            of: String
+        }
+    },
      hash_password : {
          type : String,
          required : true,

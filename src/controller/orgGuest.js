@@ -17,7 +17,6 @@ exports.signin = (req, res) => {
                     token,
                     orgGuest
                 });
-
             }
             else{
                 return res.status(400).json({

@@ -53,6 +53,11 @@ const courseSchema = new mongoose.Schema({
                 chapterTitle: String ,
                 textModules: [String],
                 videos:[{
+                    videoId:{
+                        type:String,
+                        required:true,
+                        unique: true,
+                    },
                     video : String,
                     videoDescription: String,
                     notes:[{
