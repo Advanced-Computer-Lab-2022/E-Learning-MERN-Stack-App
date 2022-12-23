@@ -23,8 +23,8 @@ const instructorSchema = new mongoose.Schema({
         unique : true,
         index : true,
         lowercase : true
-       
     },
+    bio: String,
     role: {
         type:String,
         default:'instructor'
