@@ -82,6 +82,7 @@ exports.addOrgGuest = (req, res) => {
             firstName: req.body.firstName,
             lastName: req.body.lastName,
             userName: req.body.userName,
+            company : req.body.company,
             gender: req.body.gender,
             country: req.body.country,
             });

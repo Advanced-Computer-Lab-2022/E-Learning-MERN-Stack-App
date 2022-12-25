@@ -15,6 +15,7 @@ const orgGuestSchema = new mongoose.Schema({
         min : 2,
         max : 25
     },
+    company : String,
     userName : {
         type : String,
         required : true,
