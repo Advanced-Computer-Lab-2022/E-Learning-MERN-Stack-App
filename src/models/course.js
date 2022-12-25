@@ -27,7 +27,7 @@ const courseSchema = new mongoose.Schema({
         // },
 
         // instructor userName only only  
-        createdBY:{type:mongoose.Schema.Types.String, ref:"instructor"}, 
+        createdBy:{type:mongoose.Schema.Types.String, ref:"instructor"}, 
         sections: [
             {
                 idx: Number,
