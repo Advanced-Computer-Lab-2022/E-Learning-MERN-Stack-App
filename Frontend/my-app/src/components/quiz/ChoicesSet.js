@@ -1,8 +1,15 @@
 import React from 'react'
 import Choice from './Choice'
 import { useState } from 'react'
-const ChoicesSet = ({ qInfo, showResults, canEdit }) => {
+const ChoicesSet = ({ qInfo, showResults, canEdit, setSubmitted }) => {
     const [selected, setSelected] = useState(-1)
+
+    if (selected === qInfo.correctAnswer) {
+        setSubmitted(qInfo.idx, 1)
+    } else {
+        setSubmitted(qInfo.idx, 0)
+    }
+
     return (
         <>
             <div onClick={() => { canEdit && setSelected(0) }}>
