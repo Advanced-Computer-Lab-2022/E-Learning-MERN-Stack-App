@@ -9,7 +9,7 @@ Check this before editting in the branch.
   [ ] <br />
   [ ] <br />
 ## FIXME
-  [✔] Course page is appearing below the footer in all views ~ 25/12 <br />
+  [X] Course page is appearing below the footer in all views ~ 25/12 <br />
   [ ] <br />
   [ ] <br />
   [ ] <br />
