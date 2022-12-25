@@ -1,6 +1,7 @@
 import React from 'react'
 
 const Choice = ({ text, selected, isCorrect, isWrong }) => {
+
     return (
         <div>
             <div   >
