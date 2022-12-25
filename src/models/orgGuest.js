@@ -48,6 +48,7 @@ const orgGuestSchema = new mongoose.Schema({
             of: String
         }
     },
+     imgURL:String,
      hash_password : {
          type : String,
          required : true,

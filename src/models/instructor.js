@@ -29,6 +29,7 @@ const instructorSchema = new mongoose.Schema({
         type:String,
         default:'instructor'
     },
+    imgURL:String,
     country:{
         type:String,
         trim:true,

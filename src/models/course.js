@@ -1,6 +1,4 @@
 const mongoose = require('mongoose');
-
-
 const courseSchema = new mongoose.Schema({
 
         title: String,
@@ -27,6 +25,8 @@ const courseSchema = new mongoose.Schema({
         //     numberOfCourses: 5,
         //     rating: 4.6,
         // },
+
+        // instructor Id only  
         instructor:{type:mongoose.Schema.Types.ObjectId, ref:"instructor"}, 
         sections: [
             {
