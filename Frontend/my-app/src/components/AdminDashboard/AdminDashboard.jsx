@@ -1,32 +1,24 @@
-import axios from 'axios';
-import React, { useContext, useState } from 'react'
-import { useEffect } from 'react';
-import CourseCard from './CourseCard'
-import CourseCardsWrapper from './CourseCardsWrapper'
-import CoursesHolder from './CoursesHolder'
-import CourseContext from '../../context/CourseContext';
-// import AllCourses from '../../context/AllCoursesContext';
+import React from 'react'
+import SignupImg from '../signup/SignupImg'
+import AdminDashboardForm from './AdminDashboardForm'
 
 const AdminDashboard = ({ visible }) => {
-
-    const [courses, setCourses] = useState([]);
-    // const [courseIdx, setCourseIdx] = useContext(CourseContext);
-    // const [setAllCourses] = useContext(AllCourses)
-
-    // useEffect(() => {
-    //     axios
-    //         .get('http://localhost:8000/api/getCourses')
-    //         .then(response => {
-    //             console.log(response);
-    //             // this would trigger a rerender
-    //             setCourses(response.data.courses);
-    //         })
-    //         .catch(error => console.log(error));
-    // }, []);
-
     if (visible)
         return (
-            <>AdminDashboard</>
+
+            <div className="flex flex-wrap w-full my-10">
+                <div className="flex flex-col w-full md:w-1/2">
+                    <div className="flex flex-col justify-center px-8 pt-8 my-auto md:justify-start md:pt-0 md:px-24 lg:px-32">
+                        <p className="text-3xl text-center font-bold text-blue-500">
+                            Add a user
+                        </p>
+                        <AdminDashboardForm />
+                    </div>
+                </div>
+                <SignupImg />
+
+            </div>
+
         )
 }
 
