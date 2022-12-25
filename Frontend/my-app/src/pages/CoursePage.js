@@ -404,30 +404,31 @@ const CoursePage = ({ navActiveState, setNavActiveState, owned }) => {
         })
     })
 
-    return (
-        <Layout>
-            {/* TITLE IS ALREADY THERE... */}
-            {/* <h1 className='text-center text-red-500 text-lg'>CourseTitle: {intendedCourse.name}</h1> */}
-            {/* ......................... */}
-            <CourseFirstDiv owned={owned} courseObj={courseObj} />
-            <div className="mx-40 my-10 flex">
-                <div className='w-1/2'>
-                    <CourseInstructorPlaceHolder instructor={courseObj.instructor} />
+    if (view === 'course')
+        return (
+            <Layout>
+                {/* TITLE IS ALREADY THERE... */}
+                {/* <h1 className='text-center text-red-500 text-lg'>CourseTitle: {intendedCourse.name}</h1> */}
+                {/* ......................... */}
+                <CourseFirstDiv owned={owned} courseObj={courseObj} />
+                <div className="mx-40 my-10 flex">
+                    <div className='w-1/2'>
+                        <CourseInstructorPlaceHolder instructor={courseObj.instructor} />
+                    </div>
+                    <div className='w-1/2 shadow-2xl rounded-2xl'>
+                        <iframe className='w-full rounded-2xl' width="520" height="340" src={courseObj.previewVideoURL} title={courseObj.previewVideoTitle} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
                 </div>
-                <div className='w-1/2 shadow-2xl rounded-2xl'>
-                    <iframe className='w-full rounded-2xl' width="520" height="340" src={courseObj.previewVideoURL} title={courseObj.previewVideoTitle} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
-            </div>
-            <Sections visible={true} courseObj={courseObj} />
-            <Reviews visible={true} reviews={courseObj.reviews} />
-            <Faqs visible={true} faqs={courseObj.faqs} />
-            <CourseAndInstructorRating
-                courseRating={courseObj.rating}
-                instructorRating={courseObj.instructor.rating}
-                owned={owned}
-            />
-        </Layout>
-    )
+                <Sections visible={true} courseObj={courseObj} />
+                <Reviews visible={true} reviews={courseObj.reviews} />
+                <Faqs visible={true} faqs={courseObj.faqs} />
+                <CourseAndInstructorRating
+                    courseRating={courseObj.rating}
+                    instructorRating={courseObj.instructor.rating}
+                    owned={owned}
+                />
+            </Layout>
+        )
 }
 
 export default CoursePage
