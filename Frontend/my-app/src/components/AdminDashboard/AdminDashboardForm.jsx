@@ -28,6 +28,7 @@ const AdminDashboardForm = () => {
         })
             .then((response) => {
                 console.log(response);
+                setMessage('User Added Successfully')
             })
             .catch((error) => {
                 console.log(error);
@@ -47,7 +48,7 @@ const AdminDashboardForm = () => {
         const role = e.target.value;
         switch (role) {
             case 'corporateTrainee':
-                api = 'http://localhost:8000/api/admin/addCorporateTrainee';
+                api = 'http://localhost:8000/api/admin/addOrgGuest';
                 break;
             case 'instructor':
                 api = 'http://localhost:8000/api/admin/addInstructor';
@@ -182,7 +183,7 @@ const AdminDashboardForm = () => {
                 </span>
             </button>
             {
-                message === 'Registered Successfuly'
+                message === 'User Added Successfully'
                     ? <p className="mt-3 text-md text-center text-green-600">{message}</p>
                     : <p className="mt-3 text-md text-center text-red-600">{message}</p>
             }
