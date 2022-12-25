@@ -33,9 +33,8 @@ const instructorSchema = new mongoose.Schema({
     country:{
         type:String,
         trim:true,
-        required:false
+        required:true
     },
-    // type may be changed later
     email : {
         type : String,
         required : true,
@@ -43,15 +42,13 @@ const instructorSchema = new mongoose.Schema({
         unique : true,
         lowercase : true
      },
-     about: String,
      hash_password : {
          type : String,
          required : true
      }, 
-  
-     gender :{
+    gender :{
          type: String,
-         reequired: true,
+         required: true,
      },
      courses:[{type:mongoose.Schema.Types.ObjectId, ref:"course"}],
      rating:[{
@@ -88,7 +85,5 @@ instructorSchema.methods = {
      authenticate : async function(password) {
          return await bcrypt.compare(password, this.hash_password)
      }
- };
-
-
+ }
 module.exports = mongoose.model('Instructor', instructorSchema); 
