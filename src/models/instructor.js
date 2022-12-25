@@ -54,7 +54,22 @@ const instructorSchema = new mongoose.Schema({
          reequired: true,
      },
      courses:[{type:mongoose.Schema.Types.ObjectId, ref:"course"}],
-     rating: Number,
+     rating:[{
+         traineeUserName: String,
+         traineeRole: String,
+         ratingValue: Number
+
+     }],
+     totalRating: {
+        type: Number,
+        default: function () {
+            let totalRating = 0;
+            for(let i=0; i<this.rating.length; i++) {
+                totalRating += this.rating[i].ratingValue;
+            }
+            return totalHours;
+        }
+    },
      numberOfCourses: Number,
      numberOfStudents:Number,
      totalEarnings:Number,

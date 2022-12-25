@@ -26,8 +26,8 @@ const courseSchema = new mongoose.Schema({
         //     rating: 4.6,
         // },
 
-        // instructor Id only  
-        instructor:{type:mongoose.Schema.Types.ObjectId, ref:"instructor"}, 
+        // instructor userName only only  
+        createdBY:{type:mongoose.Schema.Types.String, ref:"instructor"}, 
         sections: [
             {
                 idx: Number,

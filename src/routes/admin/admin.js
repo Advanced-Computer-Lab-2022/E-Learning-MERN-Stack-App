@@ -6,6 +6,7 @@ const router = express.Router();
 
 
 router.post('/admin/signup', signup);
+router.post('/admin/addAdmin',requireSignin, signup);
 router.post('/admin/signin', signin);
 router.post('/admin/addOrgGuest',requireSignin, isAdmin, addOrgGuest);
 router.post('/admin/addInstructor',requireSignin, isAdmin, addInstructor); 
