@@ -55,7 +55,7 @@ const InstructorViewCourses = ({ visible }) => {
                                     {
                                         courses
                                             .filter(course => course.category === category)
-                                            // .filter(course => course.createdBy === user.userName)
+                                            .filter(course => course.createdBy === user.userName)
                                             .filter(course => course.title.toLowerCase().includes(search.toLowerCase())
                                                 // || course.instructor.name.toLowerCase().includes(search.toLowerCase())
                                                 || course.description.toLowerCase().includes(search.toLowerCase()))

@@ -42,8 +42,7 @@ const TraineeCoursesITake = ({ visible }) => {
     if (visible)
         return (
             <>
-                Courses I Take
-                <div className='text-center py-10 text-blue-500 text-4xl font-extrabold'>Courses I Teach</div>
+                <div className='text-center py-10 text-blue-500 text-4xl font-extrabold'>Courses I Take</div>
                 <CoursesHolder>
                     {
                         getCategories()
@@ -53,7 +52,7 @@ const TraineeCoursesITake = ({ visible }) => {
                                         user.courses
                                             .filter(course => course.category === category)
                                             .filter(course => course.title.toLowerCase().includes(search.toLowerCase())
-                                                // || course.instructor.name.toLowerCase().includes(search.toLowerCase())
+                                                || course.createdBy.toLowerCase().includes(search.toLowerCase())
                                                 || course.description.toLowerCase().includes(search.toLowerCase()))
                                             .filter(course => course.price >= minPrice && course.price <= maxPrice)
                                             .filter(course => {
