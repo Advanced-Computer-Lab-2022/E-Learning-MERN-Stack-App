@@ -47,7 +47,7 @@ const AdminDashboardForm = () => {
         const role = e.target.value;
         switch (role) {
             case 'corporateTrainee':
-                api = 'http://localhost:8000/api/admin/addCoporateTrainee';
+                api = 'http://localhost:8000/api/admin/addCorporateTrainee';
                 break;
             case 'instructor':
                 api = 'http://localhost:8000/api/admin/addInstructor';
