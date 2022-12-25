@@ -75,8 +75,7 @@ exports.addOrgGuest = (req, res) => {
     OrgGuest.findOne({email: req.body.email})
     .exec((error, guest) => {
          if(guest) return res.status(400).json({message: "Guest already registered"});
-        });
-        const _guest = new OrgGuest ({
+         const _guest = new OrgGuest ({
             email: req.body.email,
             password: req.body.password,
             firstName: req.body.firstName,
@@ -90,26 +89,29 @@ exports.addOrgGuest = (req, res) => {
             if(err) return res.status(400).json({message: "Something went wrong"});
             if(data) return res.status(201).json({message: "User was added successfuly...!"});
         });
+        });
+    
 };
 
 exports.addInstructor = (req, res) => {
     Instructor.findOne({email: req.body.email})
     .exec((error, instructor) => {
         if(instructor) return res.status(400).json({message: "Instructor already registered"});
+        const _instructor = new Instructor({
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            email: req.body.email,
+            password: req.body.password,
+            userName: req.body.userName,
+            gender: req.body.gender,
+            country: req.body.country,
+        });
+        _instructor.save((error, data) => {
+            if(error) return  res.status(400).json({message: "Something went wrong"});
+           if(data) return res.status(201).json({message: "Instructor was added successfuly...!"});
+        });
     });
-            const _instructor = new Instructor({
-                firstName: req.body.firstName,
-                lastName: req.body.lastName,
-                email: req.body.email,
-                password: req.body.password,
-                userName: req.body.userName,
-                gender: req.body.gender,
-                country: req.body.country,
-            });
-            _instructor.save((error, data) => {
-                if(error) return  res.status(400).json({message: "Something went wrong"});
-               if(data) return res.status(201).json({message: "Instructor was added successfuly...!"});
-            });
+           
    
 };
 
