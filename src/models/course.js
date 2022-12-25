@@ -1,6 +1,4 @@
 const mongoose = require('mongoose');
-
-
 const courseSchema = new mongoose.Schema({
 
         title: String,
@@ -18,31 +16,26 @@ const courseSchema = new mongoose.Schema({
             type: Number,
             default: 0
         },
-        //****************   Problem: HardCoded    ******************* */
-        // instructor: {
-        //     id: "inst-1452",
-        //     name: "Corey Schafer",
-        //     role: "Python Developer",
-        //     imgURL: "https://mdbootstrap.com/img/Photos/Avatars/img%20(20).jpg",
-        //     numberOfCourses: 5,
-        //     rating: 4.6,
-        // },
-        instructor:{type:mongoose.Schema.Types.ObjectId, ref:"instructor"}, 
+        createdBy:{type:mongoose.Schema.Types.String, ref:"instructor"}, 
         sections: [
             {
                 idx: Number,
                 title: String,
+                lessonDescription: String,
+                hours: Number,
                 lesson: {
                     video: String,
                     title: String,
-                }, 
-                hours: Number,
-                lessonDescription: String,
+                    opened: {
+                        type:Boolean,
+                        default: false
+                    }
+                },
                 testId: {
                     type:String,
                     unique: true
                 }
-            },
+            }
         ],
         reviews: [
             {
@@ -56,6 +49,10 @@ const courseSchema = new mongoose.Schema({
             question: String,
             answer: String
         }],
+        discount: {
+            type:Number,
+            default:0
+        }, 
 totalHours: {
     type: Number,
     default: function () {
@@ -66,8 +63,16 @@ totalHours: {
         return totalHours;
     }
 },
-
-
+boughtBy:{
+    type: Number,
+    default: 0
+},
+finalPrice : {
+    type: Number,
+    default: function () {
+        return this.price * (1-this.discount);
+    }
+}
 },
  {timestamps: true});
 

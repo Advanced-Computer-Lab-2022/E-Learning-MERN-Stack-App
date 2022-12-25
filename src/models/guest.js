@@ -54,6 +54,7 @@ const guestSchema = new mongoose.Schema({
         unique : true,
         lowercase : true
      },
+     imgURL:String,
      hash_password : {
          type : String,
          required : true

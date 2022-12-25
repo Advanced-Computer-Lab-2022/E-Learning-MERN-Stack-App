@@ -78,7 +78,7 @@ exports.signup = async (req, res) => {
 
 exports.signin = (req, res) => {
     Admin.findOne({userName: req.body.userName})
-    .exec(async(error, admin) =>{
+    .exec(async(error, admin) => {
         if(error) return res.status(400).json({error});
         if(admin) {
             const passwordVerify = await admin.authenticate(req.body.password);

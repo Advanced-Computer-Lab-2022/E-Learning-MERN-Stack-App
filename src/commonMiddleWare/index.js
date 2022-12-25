@@ -135,7 +135,6 @@ exports.editBio = (req, res) => {
 
                }
             });
-
     }
     else if(user.role == "corprateTrainee") {
         OrgGuest.findByIdAndUpdate({userName:user.userName},
@@ -153,7 +152,6 @@ exports.editBio = (req, res) => {
 
                }
             });
-
-    }
-}
+        }
+};
 

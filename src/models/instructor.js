@@ -29,12 +29,12 @@ const instructorSchema = new mongoose.Schema({
         type:String,
         default:'instructor'
     },
+    imgURL:String,
     country:{
         type:String,
         trim:true,
-        required:false
+        required:true
     },
-    // type may be changed later
     email : {
         type : String,
         required : true,
@@ -42,18 +42,31 @@ const instructorSchema = new mongoose.Schema({
         unique : true,
         lowercase : true
      },
-     about: String,
      hash_password : {
          type : String,
          required : true
      }, 
-  
-     gender :{
+    gender :{
          type: String,
-         reequired: true,
+         required: true,
      },
      courses:[{type:mongoose.Schema.Types.ObjectId, ref:"course"}],
-     rating: Number,
+     rating:[{
+         traineeUserName: String,
+         traineeRole: String,
+         ratingValue: Number
+
+     }],
+     totalRating: {
+        type: Number,
+        default: function () {
+            let totalRating = 0;
+            for(let i=0; i<this.rating.length; i++) {
+                totalRating += this.rating[i].ratingValue;
+            }
+            return totalRating;
+        }
+    },
      numberOfCourses: Number,
      numberOfStudents:Number,
      totalEarnings:Number,
@@ -72,7 +85,5 @@ instructorSchema.methods = {
      authenticate : async function(password) {
          return await bcrypt.compare(password, this.hash_password)
      }
- };
-
-
+ }
 module.exports = mongoose.model('Instructor', instructorSchema); 

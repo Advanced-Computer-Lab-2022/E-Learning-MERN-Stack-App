@@ -15,6 +15,7 @@ const orgGuestSchema = new mongoose.Schema({
         min : 2,
         max : 25
     },
+    company : String,
     userName : {
         type : String,
         required : true,
@@ -48,6 +49,7 @@ const orgGuestSchema = new mongoose.Schema({
             of: String
         }
     },
+     imgURL:String,
      hash_password : {
          type : String,
          required : true,
@@ -57,6 +59,7 @@ const orgGuestSchema = new mongoose.Schema({
          default:'corporateTrainee',
      },
      courses:[{type:mongoose.Schema.Types.ObjectId, ref:"course"}],
+     requestedCourses:[{type:mongoose.Schema.Types.ObjectId, ref:"course"}],
      gender :{
         type: String,
         reequired: true,
