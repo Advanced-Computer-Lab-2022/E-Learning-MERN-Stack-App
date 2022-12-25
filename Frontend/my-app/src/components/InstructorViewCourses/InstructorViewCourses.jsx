@@ -4,36 +4,43 @@ import { useEffect } from 'react';
 import CourseCard from '../homepage/CourseCard'
 import CourseCardsWrapper from '../homepage/CourseCardsWrapper'
 import CoursesHolder from '../homepage/CoursesHolder'
-import CourseContext from '../../context/CourseContext';
 import UserInfoContext from '../../context/UserInfoContext';
-// import AllCourses from '../../context/AllCoursesContext';
+import { FiltersContext } from '../../context/FiltersContext';
+import { useCookies } from 'react-cookie';
 
 const InstructorViewCourses = ({ visible }) => {
 
     const [courses, setCourses] = useState([]);
     const { user } = useContext(UserInfoContext);
-    // const [courseIdx, setCourseIdx] = useContext(CourseContext);
-    // const [setAllCourses] = useContext(AllCourses)
+    const [cookies] = useCookies(['token']);
+
+    let {
+        search, setSearch,
+        minPrice, setMinPrice,
+        maxPrice, setMaxPrice,
+        allCategories, setAllCategories,
+        selectedCategory, setSelectedCategory,
+        rating, setRating
+    } = useContext(FiltersContext);
 
     useEffect(() => {
         axios
-            .get('http://localhost:8000/api/getCourses')
+            .get('http://localhost:8000/api/instructor/getCourses', {
+                headers: {
+                    authorization: cookies['token']
+                }
+            })
             .then(response => {
                 console.log(response);
-                // this would trigger a rerender
-                setCourses(response.data.courses);
+                setCourses(response.data);
             })
             .catch(error => console.log(error));
     }, []);
 
     function getCategories() {
         return Array.from(new Set(courses
-            .filter(course => course.createdBy === user.userName)
+            // .filter(course => course.createdBy === user.userName)
             .map(course => course.category)));
-    }
-
-    var testCourse = {
-        ...courses[0]
     }
 
     if (visible)
@@ -48,17 +55,27 @@ const InstructorViewCourses = ({ visible }) => {
                                     {
                                         courses
                                             .filter(course => course.category === category)
-                                            .filter(course => course.createdBy === user.userName)
+                                            // .filter(course => course.createdBy === user.userName)
+                                            .filter(course => course.title.toLowerCase().includes(search.toLowerCase())
+                                                // || course.instructor.name.toLowerCase().includes(search.toLowerCase())
+                                                || course.description.toLowerCase().includes(search.toLowerCase()))
+                                            .filter(course => course.price >= minPrice && course.price <= maxPrice)
+                                            .filter(course => {
+                                                if (selectedCategory === '') return true
+                                                return course.category === selectedCategory
+                                            })
+                                            .filter(course => {
+                                                if (rating === -1) return true
+                                                return course.rating === rating
+                                            })
                                             .map((course, index) =>
-                                                <CourseCard key={index} course={course} />
+                                                <CourseCard key={index} course={course} id={(course._id)} />
                                             )
                                     }
 
                                 </CourseCardsWrapper>
                             )
                     }
-                    {/* For Stripe Testing */}
-                    {/* <CourseCard key={1} course={testCourse} /> */}
                 </CoursesHolder>
             </>
         )
