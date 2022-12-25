@@ -1,9 +1,9 @@
 import axios from 'axios';
 import React, { useContext, useState } from 'react'
 import { useEffect } from 'react';
-import CourseCard from './CourseCard'
-import CourseCardsWrapper from './CourseCardsWrapper'
-import CoursesHolder from './CoursesHolder'
+import CourseCard from '../homepage/CourseCard'
+import CourseCardsWrapper from '../homepage/CourseCardsWrapper'
+import CoursesHolder from '../homepage/CoursesHolder'
 import CourseContext from '../../context/CourseContext';
 import UserInfoContext from '../../context/UserInfoContext';
 // import AllCourses from '../../context/AllCoursesContext';

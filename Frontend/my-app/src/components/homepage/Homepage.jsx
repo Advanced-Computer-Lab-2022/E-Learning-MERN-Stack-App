@@ -58,10 +58,9 @@ const Homepage = ({ visible }) => {
                                     {
                                         courses
                                             .filter(course => course.category === category)
-                                            // .filter(course => course.name.toLowerCase().includes(search.toLowerCase())
-                                            //     || course.title.toLowerCase().includes(search.toLowerCase())
-                                            //     || course.createdBy.toLowerCase().includes(search.toLowerCase())
-                                            //     || course.description.toLowerCase().includes(search.toLowerCase()))
+                                            .filter(course => course.title.toLowerCase().includes(search.toLowerCase())
+                                                // || course.instructor.name.toLowerCase().includes(search.toLowerCase())
+                                                || course.description.toLowerCase().includes(search.toLowerCase()))
                                             .filter(course => course.price >= minPrice && course.price <= maxPrice)
                                             .filter(course => {
                                                 if (selectedCategory === '') return true
