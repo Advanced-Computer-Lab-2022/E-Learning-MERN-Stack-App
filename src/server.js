@@ -11,6 +11,8 @@ const orgGuest = require('./routes/orgGuest');
 const adminRoutes = require('./routes/admin/admin');
 const instructorRoutes = require('./routes/instructor');
 const courseRoutes = require('./routes/course');
+const passwordReset = require("./routes/resetPassword");
+
 
 
    
@@ -21,6 +23,7 @@ app.use('/api', adminRoutes);
 app.use('/api', orgGuest);
 app.use('/api', instructorRoutes); 
 app.use('/api', courseRoutes);
+app.use("/api/password-reset", passwordReset);
 
 
 
