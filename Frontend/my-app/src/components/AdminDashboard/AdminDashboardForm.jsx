@@ -15,9 +15,8 @@ const AdminDashboardForm = () => {
     })
     const [confirmPasssword, setConfirmPassword] = useState("");
     const [message, setMessage] = useState("");
-    const [cookies] = useCookies(['token'])
-
-    var api = 'http://localhost:8000/api/instructor/createCourse';
+    const [cookies] = useCookies(['token']);
+    const [api, setApi] = useState("");
 
 
     async function handleSubmit(e) {
@@ -48,13 +47,13 @@ const AdminDashboardForm = () => {
         const role = e.target.value;
         switch (role) {
             case 'corporateTrainee':
-                api = 'http://localhost:8000/api/admin/addOrgGuest';
+                setApi('http://localhost:8000/api/admin/addOrgGuest');
                 break;
             case 'instructor':
-                api = 'http://localhost:8000/api/admin/addInstructor';
+                setApi('http://localhost:8000/api/admin/addInstructor');
                 break;
             case 'admin':
-                api = 'http://localhost:8000/api/admin/addAdmin';
+                setApi('http://localhost:8000/api/admin/addAdmin');
                 break;
             default:
         }

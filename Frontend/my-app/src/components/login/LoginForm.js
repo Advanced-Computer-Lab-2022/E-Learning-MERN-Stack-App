@@ -16,8 +16,9 @@ const LoginForm = () => {
         password: ""
     });
     const [errorMessage, setErrorMessage] = useState("");
-    var api = 'http://localhost:8000/api/guest/signin';
-    var userRole = 'individualTrainee';
+    const [api, setApi] = useState('http://localhost:8000/api/guest/signin');
+    // var userRole = 'individualTrainee';
+    const [userRole, setUserRole] = useState('individualTrainee');
 
     async function handleSubmit(e) {
         await axios.post(api, authenticationInfo)
@@ -40,8 +41,8 @@ const LoginForm = () => {
                         break;
                     default:
                 }
-                if (userToBeSet !== undefined)
-                    setUser(userToBeSet);
+                // if (userToBeSet !== undefined)
+                setUser(userToBeSet);
                 setNavIdx(0);
                 setView('user');
                 setCookie('token', response.data.token, { path: '/' });
@@ -80,20 +81,20 @@ const LoginForm = () => {
         const role = e.target.value;
         switch (role) {
             case 'individualTrainee':
-                api = 'http://localhost:8000/api/guest/signin';
+                setApi('http://localhost:8000/api/guest/signin');
                 break;
             case 'corporateTrainee':
-                api = 'http://localhost:8000/api/guest/signin';
+                setApi('http://localhost:8000/api/guest/signin');
                 break;
             case 'instructor':
-                api = 'http://localhost:8000/api/instructor/signin';
+                setApi('http://localhost:8000/api/instructor/signin');
                 break;
             case 'admin':
-                api = 'http://localhost:8000/api/admin/signin';
+                setApi('http://localhost:8000/api/admin/signin');
                 break;
             default:
         }
-        userRole = role;
+        setUserRole(role);
     }
 
     return (
