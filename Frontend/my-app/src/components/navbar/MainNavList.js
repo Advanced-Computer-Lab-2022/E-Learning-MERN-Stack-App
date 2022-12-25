@@ -31,7 +31,7 @@ const MainNavList = () => {
                 myIdx={4}
             />
             {
-                user.role === 'instructor'
+                (user.role === 'instructor')
                     ?
                     <>
                         <MainNavListSeparator />
@@ -43,7 +43,7 @@ const MainNavList = () => {
                     : ''
             }
             {
-                user.role === 'instructor'
+                (user.role === 'instructor')
                     ?
                     <>
                         <MainNavListSeparator />
@@ -55,7 +55,7 @@ const MainNavList = () => {
                     : ''
             }
             {
-                user.role === 'admin'
+                (user.role === 'admin')
                     ?
                     <>
                         <MainNavListSeparator />
@@ -63,6 +63,18 @@ const MainNavList = () => {
                             text={"Admin Dashboard"}
                             href="#"
                             myIdx={128} />
+                    </>
+                    : ''
+            }
+            {
+                (user.role === 'normalTrainee' || user.role === 'corporateTrainee')
+                    ?
+                    <>
+                        <MainNavListSeparator />
+                        <MainNavListItem
+                            text={"Courses I Take"}
+                            href="#"
+                            myIdx={256} />
                     </>
                     : ''
             }

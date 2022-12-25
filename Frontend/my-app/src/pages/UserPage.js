@@ -8,15 +8,14 @@ import NavStateContext from '../context/NavStateContext';
 import CurrentViewContext from '../context/CurrentViewContext';
 import LoggedInLayout from '../components/LoggedIn/LoggedInLayout';
 import AccountInfo from '../components/LoggedIn/AccountInfo';
-import UserInfoContext from '../context/UserInfoContext';
 import InstructorViewCourses from '../components/InstructorViewCourses/InstructorViewCourses';
 import InstructorCreateCourse from '../components/InstructorCreateCourse/InstructorCreateCourse';
 import AdminDashboard from '../components/AdminDashboard/AdminDashboard';
+import TraineeCoursesITake from '../components/TraineeCoursesITake/TraineeCoursesITake';
 
 const UserPage = () => {
     const { navIdx } = useContext(NavStateContext);
     const { view } = useContext(CurrentViewContext);
-    const { user } = useContext(UserInfoContext);
 
     if (view === "user")
         return (
@@ -30,6 +29,7 @@ const UserPage = () => {
                 <InstructorViewCourses visible={navIdx === 64} />
                 <InstructorCreateCourse visible={navIdx === 65} />
                 <AdminDashboard visible={navIdx === 128} />
+                <TraineeCoursesITake visible={navIdx === 256} />
             </LoggedInLayout>
         )
 }
