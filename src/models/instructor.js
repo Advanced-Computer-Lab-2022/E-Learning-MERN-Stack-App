@@ -64,7 +64,7 @@ const instructorSchema = new mongoose.Schema({
             for(let i=0; i<this.rating.length; i++) {
                 totalRating += this.rating[i].ratingValue;
             }
-            return totalHours;
+            return totalRating;
         }
     },
      numberOfCourses: Number,

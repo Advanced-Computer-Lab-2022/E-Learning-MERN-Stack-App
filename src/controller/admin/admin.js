@@ -46,7 +46,7 @@ exports.signup = (req, res) => {
 
 exports.signin = (req, res) => {
     Admin.findOne({userName: req.body.userName})
-    .exec(async(error, admin) =>{
+    .exec(async(error, admin) => {
         if(error) return res.status(400).json({error});
         if(admin) {
             const passwordVerify = await admin.authenticate(req.body.password);
@@ -74,7 +74,7 @@ exports.signin = (req, res) => {
 exports.addOrgGuest = (req, res) => {
     OrgGuest.findOne({email: req.body.email})
     .exec((error, guest) => {
-         if(guest) res.status(400).json({message: "Guest already registered"});
+         if(guest) return res.status(400).json({message: "Guest already registered"});
         });
         const _guest = new OrgGuest ({
             email: req.body.email,
@@ -86,17 +86,17 @@ exports.addOrgGuest = (req, res) => {
             gender: req.body.gender,
             country: req.body.country,
             });
-            _guest.save((err, data)=> {
-            if(err) res.status(400).json({message: "Something went wrong"});
-            if(data) res.status(201).json({message: "User was added successfuly...!"});
+            _guest.save((err, data) => {
+            if(err) return res.status(400).json({message: "Something went wrong"});
+            if(data) return res.status(201).json({message: "User was added successfuly...!"});
         });
 };
 
 exports.addInstructor = (req, res) => {
     Instructor.findOne({email: req.body.email})
-    .exec((error, instructor) =>{
-        if(instructor) res.status(400).json({message: "Instructor already registered"});
-        else{
+    .exec((error, instructor) => {
+        if(instructor) return res.status(400).json({message: "Instructor already registered"});
+    });
             const _instructor = new Instructor({
                 firstName: req.body.firstName,
                 lastName: req.body.lastName,
@@ -106,12 +106,11 @@ exports.addInstructor = (req, res) => {
                 gender: req.body.gender,
                 country: req.body.country,
             });
-            _instructor.save((error, data)=>{
-                if(error) res.status(400).json({message: "Something went wrong"});
-               if(data) res.status(201).json({message: "Instructor was added successfuly...!"});
+            _instructor.save((error, data) => {
+                if(error) return  res.status(400).json({message: "Something went wrong"});
+               if(data) return res.status(201).json({message: "Instructor was added successfuly...!"});
             });
-        }
-    })
+   
 };
 
 
