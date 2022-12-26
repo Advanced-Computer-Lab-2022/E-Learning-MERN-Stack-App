@@ -53,7 +53,7 @@ const Sections = ({ visible, courseObj }) => {
                                         {"Download Certificate"}
                                     </AccordionHeader>
                                     <AccordionBody>
-                                        <NotesBody pdfLink={courseObj.certificateURL} text={"Send Certificate to email"} />
+                                        <NotesBody pdfLink={courseObj.certificateURL} text={"Download certificate"} />
                                     </AccordionBody>
                                 </Accordion>
                                 : ''

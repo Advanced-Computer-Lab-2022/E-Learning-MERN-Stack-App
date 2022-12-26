@@ -295,14 +295,16 @@ const courseObj = {
     previewVideoTitle: "What is Cyber Security? | Introduction to Cyber Security | Cyber Security Training",
     rating: 4.7,
     numberOfRatings: 12,
+    progress: 80,
     instructor: {
         id: "inst-1455",
         name: "Edureka",
         role: "Cybersecurity Team",
         imgURL: "https://mdbootstrap.com/img/Photos/Avatars/img%20(28).jpg",
         numberOfCourses: 2,
-        rating: 4.2,
+        rating: 4.2
     },
+    certificateURL: "https://upload.wikimedia.org/wikipedia/commons/9/98/Student_certificate.pdf",
     sections: [
         {
             idx: 1,
@@ -317,46 +319,46 @@ const courseObj = {
             title: "Cybersecurity Tools | Popular Tools for Cybersecurity Threats",
             lessonEmbed: <iframe width="650" height="300" src="https://www.youtube.com/embed/KgtevibJlTE?list=PL9ooVrP1hQOGPQVeapGsJCktzIO4DtI4_" title="Cybersecurity Tools | Popular Tools for Cybersecurity Threats  | Cybersecurity Training | Edureka" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>,
             lessonDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse tincidunt justo eu quam facilisis varius. In laoreet lorem in elit vehicula.",
-            testId: 'tst-02-crs-1012',
+            testId: 'tst-02-crs-1012'
         },
         {
             idx: 3,
             title: "Cybersecurity Career Paths | Skills Required in Cybersecurity Career",
             lessonEmbed: <iframe width="650" height="300" src="https://www.youtube.com/embed/Sj4TD0LSC_k?list=PL9ooVrP1hQOGPQVeapGsJCktzIO4DtI4_" title="Cybersecurity Career Paths | Skills Required in Cybersecurity Career | Learn Cybersecurity | Edureka" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>, lessonDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse tincidunt justo eu quam facilisis varius. In laoreet lorem in elit vehicula.",
-            testId: 'tst-03-crs-1012',
+            testId: 'tst-03-crs-1012'
         },
         {
             idx: 4,
             title: "What is Cryptography? | Introduction to Cryptography",
             lessonEmbed: <iframe width="650" height="300" src="https://www.youtube.com/embed/5jpgMXt1Z9Y?list=PL9ooVrP1hQOGPQVeapGsJCktzIO4DtI4_" title="What is Cryptography? | Introduction to Cryptography | Cryptography for Beginners | Edureka" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>,
             lessonDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse tincidunt justo eu quam facilisis varius. In laoreet lorem in elit vehicula.",
-            testId: 'tst-04-crs-1012',
+            testId: 'tst-04-crs-1012'
         },
         {
             idx: 5,
             title: "Cross Site Scripting Tutorial | Penetration Testing Tutorial | Web Application Security",
             lessonEmbed: <iframe width="1519" height="577" src="https://www.youtube.com/embed/1qzjWNcQVeI?list=PL9ooVrP1hQOGPQVeapGsJCktzIO4DtI4_" title="Cross Site Scripting Tutorial | Penetration Testing Tutorial | Web Application Security | Edureka" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>,
             lessonDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse tincidunt justo eu quam facilisis varius. In laoreet lorem in elit vehicula.",
-            testId: 'tst-05-crs-1012',
+            testId: 'tst-05-crs-1012'
         },
         {
             idx: 6,
             title: "PDF Notes",
             pdfURL: "https://www.ftc.gov/system/files/attachments/cybersecurity-small-business/cybersecuirty_sb_factsheets_all.pdf"
         }
-
     ],
     reviews: [
         {
             reviewerName: "Name 1",
             reviewerImgURL: "https://mdbootstrap.com/img/Photos/Avatars/img%20(1).jpg",
             reviewerReview: "Lorem ipsum dolor sit amet eos adipisci, consectetur adipisicing elit sed ut perspiciatis unde omnis.",
-            reviewerRating: 4,
-        }, {
+            reviewerRating: 4
+        },
+        {
             reviewerName: "Name 2",
             reviewerImgURL: "https://mdbootstrap.com/img/Photos/Avatars/img%20(2).jpg",
             reviewerReview: "Lorem ipsum dolor sit amet eos adipisci, consectetur adipisicing elit sed ut perspiciatis unde omnis.",
-            reviewerRating: 4,
+            reviewerRating: 4
         }
     ],
     faqs: [
