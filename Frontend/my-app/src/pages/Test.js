@@ -17,7 +17,7 @@ const allTestsDB =
                 quesDesc: "Q1: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tellus lectus, sagittis eget sem sit amet, dictum ullamcorper mi. Proin nisl tellus, auctor at sem in, ultricies vehicula felis. Aliquam erat volutpat?",
                 topicNumber: "Topic 1",
                 topicName: "Phasellus odio ipsum, pharetra in lacus vel, tempus ornare nisl.",
-                correctAnswer: 2
+                correctAnswer: 2,
             },
             {
                 idx: 1,
@@ -28,7 +28,7 @@ const allTestsDB =
                 quesDesc: "Q2: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tellus lectus, sagittis eget sem sit amet, dictum ullamcorper mi. Proin nisl tellus, auctor at sem in, ultricies vehicula felis. Aliquam erat volutpat?",
                 topicNumber: "Topic 2",
                 topicName: "Phasellus odio ipsum, pharetra in lacus vel, tempus ornare nisl.",
-                correctAnswer: 1
+                correctAnswer: 1,
             },
             {
                 idx: 2,
@@ -39,7 +39,7 @@ const allTestsDB =
                 quesDesc: "Q2: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tellus lectus, sagittis eget sem sit amet, dictum ullamcorper mi. Proin nisl tellus, auctor at sem in, ultricies vehicula felis. Aliquam erat volutpat?",
                 topicNumber: "Topic 3",
                 topicName: "Phasellus odio ipsum, pharetra in lacus vel, tempus ornare nisl.",
-                correctAnswer: 3
+                correctAnswer: 3,
             }
         ]
     },
@@ -55,7 +55,7 @@ const allTestsDB =
                 quesDesc: "Q1: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tellus lectus, sagittis eget sem sit amet, dictum ullamcorper mi. Proin nisl tellus, auctor at sem in, ultricies vehicula felis. Aliquam erat volutpat?",
                 topicNumber: "Topic 1",
                 topicName: "Phasellus odio ipsum, pharetra in lacus vel, tempus ornare nisl.",
-                correctAnswer: 2
+                correctAnswer: 2,
             },
             {
                 idx: 1,
@@ -66,7 +66,7 @@ const allTestsDB =
                 quesDesc: "Q2: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tellus lectus, sagittis eget sem sit amet, dictum ullamcorper mi. Proin nisl tellus, auctor at sem in, ultricies vehicula felis. Aliquam erat volutpat?",
                 topicNumber: "Topic 2",
                 topicName: "Phasellus odio ipsum, pharetra in lacus vel, tempus ornare nisl.",
-                correctAnswer: 1
+                correctAnswer: 1,
             }
         ]
     },
@@ -82,7 +82,7 @@ const allTestsDB =
                 quesDesc: "Q1: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tellus lectus, sagittis eget sem sit amet, dictum ullamcorper mi. Proin nisl tellus, auctor at sem in, ultricies vehicula felis. Aliquam erat volutpat?",
                 topicNumber: "Topic 1",
                 topicName: "Phasellus odio ipsum, pharetra in lacus vel, tempus ornare nisl.",
-                correctAnswer: 2
+                correctAnswer: 2,
             },
             {
                 idx: 1,
@@ -93,7 +93,7 @@ const allTestsDB =
                 quesDesc: "Q2: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tellus lectus, sagittis eget sem sit amet, dictum ullamcorper mi. Proin nisl tellus, auctor at sem in, ultricies vehicula felis. Aliquam erat volutpat?",
                 topicNumber: "Topic 2",
                 topicName: "Phasellus odio ipsum, pharetra in lacus vel, tempus ornare nisl.",
-                correctAnswer: 1
+                correctAnswer: 1,
             }
         ]
     }, {

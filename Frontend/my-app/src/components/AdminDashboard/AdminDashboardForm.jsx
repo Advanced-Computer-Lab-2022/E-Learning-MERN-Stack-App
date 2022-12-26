@@ -19,8 +19,8 @@ const AdminDashboardForm = () => {
     const [api, setApi] = useState("");
 
 
-    function handleSubmit(e) {
-        axios.post(api, accountInfo, {
+    async function handleSubmit(e) {
+        await axios.post(api, accountInfo, {
             headers: {
                 authorization: cookies['token']
             }
@@ -148,23 +148,9 @@ const AdminDashboardForm = () => {
                 <div className="flex relative">
                     <select name="country" className="flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-800 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" onChange={e => handleCountryChange(e)} >
                         <option disabled selected>Select Country</option>
-                        <option value="CHY">China</option>
-                        <option value="INR">India</option>
-                        <option value="IDR">Indonesia</option>
-                        <option value="PKR">Pakistan</option>
-                        <option value="BRL">Brazil</option>
-                        <option value="NGN">Nigeria</option>
-                        <option value="BDT">Bangladesh</option>
-                        <option value="RUB">Russia</option>
-                        <option value="MXN">Mexico</option>
-                        <option value="JPY">Japan</option>
-                        <option value="ETB">Ethiopia</option>
-                        <option value="PHP">Philippines</option>
-                        <option value="EGP">Egypt</option>
-                        <option value="USD">United States</option>
-                        <option value="VND">Vietnam</option>
-                        <option value="TRY">Turkey</option>
-                        <option value="THB">Thailand</option>
+                        <option value="Afghanistan">Afghanistan</option>
+                        <option value="Zambia">Zambia</option>
+                        <option value="Zimbabwe">Zimbabwe</option>
                     </select>
                 </div>
             </div>

@@ -11,7 +11,7 @@ const CreateCourseForm = () => {
         description: '',
         shortVideo: '',
         price: '',
-        discount: 0,
+        discount: '',
         category: '',
         chapters: []
     });

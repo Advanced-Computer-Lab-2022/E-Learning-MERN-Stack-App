@@ -640,7 +640,6 @@ const courseObj = {
     previewVideoTitle: "Data Analyst vs Data Engineer vs Data Scientist",
     rating: 4.8,
     numberOfRatings: 12,
-    progress: 80,
     instructor: {
         id: "inst-1457",
         name: "Andrew Ng",
@@ -649,7 +648,6 @@ const courseObj = {
         numberOfCourses: 21,
         rating: 4.9,
     },
-    certificateURL: "https://upload.wikimedia.org/wikipedia/commons/9/98/Student_certificate.pdf",
     sections: [
         {
             idx: 1,
@@ -670,6 +668,7 @@ const courseObj = {
             title: "PDF Notes",
             pdfURL: "https://alex.smola.org/drafts/thebook.pdf"
         }
+
     ],
     reviews: [
         {

@@ -9,7 +9,6 @@ import SectionsBody from './SectionsBody';
 import NotesBody from './NotesBody';
 const Sections = ({ visible, courseObj }) => {
     const [open, setOpen] = useState(1);
-    const [certificateIsOpened, setCertificateIsOpened] = useState(false);
 
     const handleOpen = (value) => {
         setOpen(open === value ? 0 : value);
@@ -23,7 +22,7 @@ const Sections = ({ visible, courseObj }) => {
             <AccordionBody>
                 {section.title === "PDF Notes"
                     ?
-                    <NotesBody pdfLink={section.pdfURL} text={'Download PDF Notes'} />
+                    <NotesBody pdfLink={section.pdfURL} />
                     :
                     <SectionsBody
                         section={section}
@@ -42,22 +41,6 @@ const Sections = ({ visible, courseObj }) => {
                     <Fragment>
 
                         {sectionsAccordion}
-                        {
-                            (courseObj.progress > 70)
-                                ?
-                                <Accordion open={certificateIsOpened}>
-                                    <AccordionHeader onClick={() => {
-                                        if (certificateIsOpened) setCertificateIsOpened(false);
-                                        if (!certificateIsOpened) setCertificateIsOpened(true);
-                                    }}>
-                                        {"Download Certificate"}
-                                    </AccordionHeader>
-                                    <AccordionBody>
-                                        <NotesBody pdfLink={courseObj.certificateURL} text={"Download certificate"} />
-                                    </AccordionBody>
-                                </Accordion>
-                                : ''
-                        }
                         {/* <Accordion open={open === 4}>
                             <AccordionHeader onClick={() => handleOpen(4)}>
                                 PDF Notes
