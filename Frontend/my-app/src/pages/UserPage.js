@@ -13,6 +13,8 @@ import InstructorCreateCourse from '../components/InstructorCreateCourse/Instruc
 import AdminDashboard from '../components/AdminDashboard/AdminDashboard';
 import TraineeCoursesITake from '../components/TraineeCoursesITake/TraineeCoursesITake';
 import InstructorViewReviews from '../components/InstructorViewReviews/InstructorViewReviews'
+import { navbar } from '@material-tailwind/react';
+import InstructorAddSection from '../components/InstructorAddSection/InstructorAddSection';
 
 const UserPage = () => {
     const { navIdx } = useContext(NavStateContext);
@@ -28,8 +30,9 @@ const UserPage = () => {
                 <ContactUs visible={navIdx === 4} />
                 <AccountInfo visible={navIdx === 8} />
                 <InstructorViewCourses visible={navIdx === 64} />
-                <InstructorCreateCourse visible={navIdx === 65} />
-                <InstructorViewReviews visible ={navIdx === 66} />
+                <InstructorViewReviews visible ={navIdx === 65} />
+                <InstructorCreateCourse visible={navIdx === 66} />
+                <InstructorAddSection visible={navIdx === 67} />
                 <AdminDashboard visible={navIdx === 128} />
                 <TraineeCoursesITake visible={navIdx === 512} />
             </LoggedInLayout>

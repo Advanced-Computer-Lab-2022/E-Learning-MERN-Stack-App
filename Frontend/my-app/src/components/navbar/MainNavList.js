@@ -55,7 +55,7 @@ const MainNavList = () => {
                     <>
                         <MainNavListSeparator />
                         <MainNavListItem
-                            text={"Create a Course"}
+                            text={"Reviews"}
                             href="#"
                             myIdx={65} />
                     </>
@@ -67,9 +67,21 @@ const MainNavList = () => {
                     <>
                         <MainNavListSeparator />
                         <MainNavListItem
-                            text={"View Reviews"}
+                            text={"Create Course"}
                             href="#"
                             myIdx={66} />
+                    </>
+                    : ''
+            }
+            {
+                (user.role === 'instructor')
+                    ?
+                    <>
+                        <MainNavListSeparator />
+                        <MainNavListItem
+                            text={"Add Section"}
+                            href="#"
+                            myIdx={67} />
                     </>
                     : ''
             }
