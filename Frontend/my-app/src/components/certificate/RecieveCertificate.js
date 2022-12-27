@@ -3,6 +3,7 @@ import UserInfoContext from '../../context/UserInfoContext'
 import { useContext } from 'react'
 import { PDFDownloadLink } from '@react-pdf/renderer';
 import CertificatePDF from './CertificatePDF';
+import EmailForm from './EmailForm';
 
 
 const RecieveCertificate = ({ visible, courseObj }) => {
@@ -31,6 +32,13 @@ const RecieveCertificate = ({ visible, courseObj }) => {
                             <span className='px-4'>Download Certificate</span>
                         </div>
                     </PDFDownloadLink>
+                    <div
+                        className='self-center rounded-lg bg-blue-500 text-center mt-10 mx-96 py-5 text-white text-4xl font-extrabold cursor-pointer flex felx-row hover:bg-blue-700'
+
+                    >
+                        <span className='px-4'>Email Certificate</span>
+                    </div>
+                    <EmailForm />
                 </div>
                 <div className='mx-32 border-b-gray-200 border-b my-10' />
             </section>

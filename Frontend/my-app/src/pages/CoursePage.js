@@ -764,7 +764,8 @@ const CoursePage = ({ navActiveState, setNavActiveState }) => {
                     progress={getProgress(user.progress, courseObj.id)} />
                 <RecieveCertificate
                     visible={getProgress(user.progress, courseObj.id) > 80}
-                    courseObj={courseObj} />
+                    courseObj={courseObj}
+                />
                 <div className="mx-40 my-10 flex">
                     <div className='w-1/2'>
                         <CourseInstructorPlaceHolder
