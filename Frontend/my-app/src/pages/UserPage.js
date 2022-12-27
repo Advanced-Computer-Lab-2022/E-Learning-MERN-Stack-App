@@ -29,7 +29,7 @@ const UserPage = () => {
                 <InstructorViewCourses visible={navIdx === 64} />
                 <InstructorCreateCourse visible={navIdx === 65} />
                 <AdminDashboard visible={navIdx === 128} />
-                <TraineeCoursesITake visible={navIdx === 256} />
+                <TraineeCoursesITake visible={navIdx === 512} />
             </LoggedInLayout>
         )
 }

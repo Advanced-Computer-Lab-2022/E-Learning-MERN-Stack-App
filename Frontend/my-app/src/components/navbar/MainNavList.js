@@ -18,18 +18,25 @@ const MainNavList = () => {
                 href="#"
                 myIdx={1}
             />
-            <MainNavListSeparator />
+            {/* <MainNavListSeparator />
             <MainNavListItem
                 text={"Services"}
                 href="#"
                 myIdx={2}
-            />
-            <MainNavListSeparator />
-            <MainNavListItem
-                text={"Contact Us"}
-                href="#"
-                myIdx={4}
-            />
+            /> */}
+            {
+                (user.role === 'normalTrainee' || user.role === 'corporateTrainee' || user.role === 'instructor')
+                    ?
+                    <>
+                        <MainNavListSeparator />
+                        <MainNavListItem
+                            text={"Report a Problem"}
+                            href="#"
+                            myIdx={4}
+                        />
+                    </>
+                    : ''
+            }
             {
                 (user.role === 'instructor')
                     ?
@@ -55,6 +62,18 @@ const MainNavList = () => {
                     : ''
             }
             {
+                (user.role === 'instructor')
+                    ?
+                    <>
+                        <MainNavListSeparator />
+                        <MainNavListItem
+                            text={"Show Reviews"}
+                            href="#"
+                            myIdx={66} />
+                    </>
+                    : ''
+            }
+            {
                 (user.role === 'admin')
                     ?
                     <>
@@ -67,6 +86,54 @@ const MainNavList = () => {
                     : ''
             }
             {
+                (user.role === 'admin')
+                    ?
+                    <>
+                        <MainNavListSeparator />
+                        <MainNavListItem
+                            text={"View Reported Problems"}
+                            href="#"
+                            myIdx={129} />
+                    </>
+                    : ''
+            }
+            {
+                (user.role === 'admin')
+                    ?
+                    <>
+                        <MainNavListSeparator />
+                        <MainNavListItem
+                            text={"Show Course Requests"}
+                            href="#"
+                            myIdx={130} />
+                    </>
+                    : ''
+            }
+            {
+                (user.role === 'admin')
+                    ?
+                    <>
+                        <MainNavListSeparator />
+                        <MainNavListItem
+                            text={"Set a Promotion for a Course"}
+                            href="#"
+                            myIdx={131} />
+                    </>
+                    : ''
+            }
+            {
+                (user.role === 'corporateTrainee')
+                    ?
+                    <>
+                        <MainNavListSeparator />
+                        <MainNavListItem
+                            text={"Request access for a Course"}
+                            href="#"
+                            myIdx={256} />
+                    </>
+                    : ''
+            }
+            {
                 (user.role === 'normalTrainee' || user.role === 'corporateTrainee')
                     ?
                     <>
@@ -74,7 +141,7 @@ const MainNavList = () => {
                         <MainNavListItem
                             text={"Courses I Take"}
                             href="#"
-                            myIdx={256} />
+                            myIdx={512} />
                     </>
                     : ''
             }

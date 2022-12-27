@@ -729,7 +729,7 @@ const CoursePage = ({ navActiveState, setNavActiveState, owned }) => {
         })
     })
 
-    if (view !== 'course')
+    if (view === 'course')
         return (
             <Layout>
                 {/* TITLE IS ALREADY THERE... */}
