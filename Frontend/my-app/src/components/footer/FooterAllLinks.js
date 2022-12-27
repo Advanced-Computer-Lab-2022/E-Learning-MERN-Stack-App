@@ -5,25 +5,25 @@ import FooterListItem from './FooterListItem'
 const FooterAllLinks = () => {
     return (
         <div className="grid lg:grid-cols-4 md:grid-cols-2">
-            <FooterList text={"IT Categories"}>
-                <FooterListItem text={"Holder"} href={"#"} />
-                <FooterListItem text={"Holder2"} href={"#"} />
-                <FooterListItem text={"Holder3"} href={"#"} />
-                <FooterListItem text={"Holder4"} href={"#"} />
+            <FooterList text={"Featured Courses"}>
+                <FooterListItem text={"Business Analytics"} href={"#"} />
+                <FooterListItem text={"SQL"} href={"#"} />
+                <FooterListItem text={"Data Engineering with AWS"} href={"#"} />
+                <FooterListItem text={"Self Driving Car Engineer"} href={"#"} />
             </FooterList>
-            <FooterList text={"Business Categories"} >
-                <FooterListItem text={"Holder"} href={"#"} />
-                <FooterListItem text={"Holder2"} href={"#"} />
-                <FooterListItem text={"Holder3"} href={"#"} />
-                <FooterListItem text={"Holder4"} href={"#"} />
+            <FooterList text={"ACL Schools"} >
+                <FooterListItem text={"School of Artificial Intelligence"} href={"#"} />
+                <FooterListItem text={"School of Autonomous Systems"} href={"#"} />
+                <FooterListItem text={"School of Cybersecurity"} href={"#"} />
+                <FooterListItem text={"School of Data Science"} href={"#"} />
             </FooterList>
-            <FooterList text={"Other Categories"} >
-                <FooterListItem text={"Holder"} href={"#"} />
-                <FooterListItem text={"Holder2"} href={"#"} />
+            <FooterList text={"Enterprise"} >
+                <FooterListItem text={"ACL for Enterprise"} href={"#"} />
+                <FooterListItem text={"Data Science for Enterprise"} href={"#"} />
             </FooterList>
-            <FooterList text={"Contact Us"} >
-                <FooterListItem text={"Holder"} href={"#"} />
-                <FooterListItem text={"Holder2"} href={"#"} />
+            <FooterList text={"Support"} >
+                <FooterListItem text={"Contact Us"} href={"#"} />
+                <FooterListItem text={"Help and FAQ"} href={"#"} />
             </FooterList>
         </div>
     )

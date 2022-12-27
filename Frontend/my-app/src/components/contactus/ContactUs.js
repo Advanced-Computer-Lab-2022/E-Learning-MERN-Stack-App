@@ -34,7 +34,6 @@ const ContactUs = ({ visible }) => {
                                 <textarea tabindex="0" aria-label="leave a message" role="textbox" type="name" className="h-36 text-base leading-none text-gray-900 p-3 focus:oultine-none focus:border-blue-500 mt-4 bg-gray-100 border rounded border-gray-200 placeholder-gray-100 resize-none"></textarea>
                             </div>
                         </div>
-                        <p className="text-xs leading-3 text-gray-600 dark:text-gray-200 mt-4">By clicking submit you agree to our terms of service, privacy policy and how we use data as stated</p>
                         <div className="flex items-center justify-center w-full">
                             <button className="mt-9 text-base font-semibold leading-none text-white py-4 px-10 bg-blue-500 rounded hover:bg-blue-800 focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 focus:outline-none">SUBMIT</button>
                         </div>

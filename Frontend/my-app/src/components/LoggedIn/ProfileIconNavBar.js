@@ -34,11 +34,12 @@ const ProfileIconNavBar = () => {
                         </g>
                     </g>
                 </svg>
-                <img alt="profileImg" src="https://mdbcdn.b-cdn.net/img/new/avatars/8.webp" className="mx-auto object-cover rounded-full h-12 w-12 mx-10 my-1" onClick={
-                    () => {
-                        setNavIdx(8);
-                    }
-                } />
+                <div class="flex relative w-12 h-12 bg-blue-500 justify-center items-center my-1 mx-10 text-xl rounded-full text-white"
+                    onClick={
+                        () => {
+                            setNavIdx(8);
+                        }
+                    }>{user.firstName[0]}{user.lastName[0]}</div>
                 {showModal ? (
                     <>
                         <div
