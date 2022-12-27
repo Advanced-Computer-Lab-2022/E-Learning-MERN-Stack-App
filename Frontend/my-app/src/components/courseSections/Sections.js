@@ -7,7 +7,7 @@ import {
 } from "@material-tailwind/react";
 import SectionsBody from './SectionsBody';
 import NotesBody from './NotesBody';
-const Sections = ({ visible, courseObj }) => {
+const Sections = ({ visible, courseObj, owned }) => {
     const [open, setOpen] = useState(1);
 
     const handleOpen = (value) => {
@@ -15,7 +15,7 @@ const Sections = ({ visible, courseObj }) => {
     };
 
     const sectionsAccordion = courseObj.sections.map((section) => [
-        <Accordion open={open === section.idx}>
+        <Accordion open={open === section.idx && owned}>
             <AccordionHeader onClick={() => handleOpen(section.idx)}>
                 {section.title}
             </AccordionHeader>

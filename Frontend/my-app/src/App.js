@@ -15,6 +15,7 @@ import PaymentSuccessful from "./components/stripeComponents/PaymentSuccessful";
 import PaymentCancelled from "./components/stripeComponents/PaymentCancelled"
 import FiltersContextProvider from "./context/FiltersContext";
 import CourseContextProvider from "./context/CourseContext";
+import CertificatePDF from "./components/certificate/CertificatePDF";
 function App() {
   const [navIdx, setNavIdx] = useState(0);
   const navIdxValue = { navIdx, setNavIdx };
@@ -25,7 +26,7 @@ function App() {
   // For Testing
   // const [user, setUser] = useState({
   //   userName: "dummy123",
-  //   firstName: "Testing",
+  //   firstName: "Dummy",
   //   lastName: "User",
   //   email: "dummy@domain.com",
   //   gender: "Male",
@@ -46,6 +47,9 @@ function App() {
   //     {
   //       crsId: 'crs-1011',
   //       prog: 30
+  //     }, {
+  //       crsId: 'crs-1016',
+  //       prog: 90
   //     }
   //   ],
   //   country: "Egypt",
@@ -91,6 +95,12 @@ function App() {
                   element=
                   {
                     <PaymentCancelled />
+                  }
+                />
+                <Route path="/certificate"
+                  element=
+                  {
+                    <CertificatePDF />
                   }
                 />
               </Routes>
