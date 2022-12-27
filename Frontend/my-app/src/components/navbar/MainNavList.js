@@ -67,7 +67,7 @@ const MainNavList = () => {
                     <>
                         <MainNavListSeparator />
                         <MainNavListItem
-                            text={"Show Reviews"}
+                            text={"View Reviews"}
                             href="#"
                             myIdx={66} />
                     </>

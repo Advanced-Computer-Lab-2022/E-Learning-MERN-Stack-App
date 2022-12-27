@@ -12,6 +12,7 @@ import InstructorViewCourses from '../components/InstructorViewCourses/Instructo
 import InstructorCreateCourse from '../components/InstructorCreateCourse/InstructorCreateCourse';
 import AdminDashboard from '../components/AdminDashboard/AdminDashboard';
 import TraineeCoursesITake from '../components/TraineeCoursesITake/TraineeCoursesITake';
+import InstructorViewReviews from '../components/InstructorViewReviews/InstructorViewReviews'
 
 const UserPage = () => {
     const { navIdx } = useContext(NavStateContext);
@@ -28,6 +29,7 @@ const UserPage = () => {
                 <AccountInfo visible={navIdx === 8} />
                 <InstructorViewCourses visible={navIdx === 64} />
                 <InstructorCreateCourse visible={navIdx === 65} />
+                <InstructorViewReviews visible ={navIdx === 66} />
                 <AdminDashboard visible={navIdx === 128} />
                 <TraineeCoursesITake visible={navIdx === 512} />
             </LoggedInLayout>
