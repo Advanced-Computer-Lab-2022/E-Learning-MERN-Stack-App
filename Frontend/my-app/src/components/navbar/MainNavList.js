@@ -1,12 +1,15 @@
 import { useContext } from 'react'
+import CurrentViewContext from '../../context/CurrentViewContext';
 import UserInfoContext from '../../context/UserInfoContext';
 import MainNavListItem from './MainNavListItem'
 import MainNavListSeparator from './MainNavListSeparator'
 
 const MainNavList = () => {
     const { user } = useContext(UserInfoContext);
+    const { view } = useContext(CurrentViewContext);
+    var conditional = (view === 'guest') ? 'absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2' : '';
     return (
-        <ul className="hidden absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:flex lg:mx-auto lg:flex lg:items-center lg:w-auto lg:space-x-6">
+        <ul className={`hidden ${conditional} lg:flex lg:mx-auto lg:flex lg:items-center lg:w-auto lg:space-x-6`}>
             <MainNavListItem
                 text={"Home"}
                 href="#"
@@ -30,7 +33,7 @@ const MainNavList = () => {
                     <>
                         <MainNavListSeparator />
                         <MainNavListItem
-                            text={"Report a Problem"}
+                            text={"Report Problem"}
                             href="#"
                             myIdx={4}
                         />
@@ -86,6 +89,18 @@ const MainNavList = () => {
                     : ''
             }
             {
+                (user.role === 'instructor')
+                    ?
+                    <>
+                        <MainNavListSeparator />
+                        <MainNavListItem
+                            text={"Add Test"}
+                            href="#"
+                            myIdx={68} />
+                    </>
+                    : ''
+            }
+            {
                 (user.role === 'admin')
                     ?
                     <>
@@ -127,7 +142,7 @@ const MainNavList = () => {
                     <>
                         <MainNavListSeparator />
                         <MainNavListItem
-                            text={"Set a Promotion for a Course"}
+                            text={"Set a Promotion"}
                             href="#"
                             myIdx={131} />
                     </>
@@ -139,7 +154,7 @@ const MainNavList = () => {
                     <>
                         <MainNavListSeparator />
                         <MainNavListItem
-                            text={"Request access for a Course"}
+                            text={"Request access"}
                             href="#"
                             myIdx={256} />
                     </>

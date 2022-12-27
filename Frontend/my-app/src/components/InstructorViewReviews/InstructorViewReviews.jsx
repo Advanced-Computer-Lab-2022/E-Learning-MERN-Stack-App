@@ -7,7 +7,7 @@ const InstructorViewReviews = ({ visible, reviews }) => {
     const reviews2 = [
         {
             reviewerReview: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptate, voluptatem nihil quaerat debitis dolorum, repudiandae id assumenda fugiat saepe aliquam quasi nisi reiciendis officia rerum iste. Neque rem quasi velit.',
-            reviewerName: "Ahmad",
+            reviewerName: "Toto",
             reviewerImgURL: "https://mdbootstrap.com/img/Photos/Avatars/img%20(21).jpg",
             reviewerRating: 4
         },
