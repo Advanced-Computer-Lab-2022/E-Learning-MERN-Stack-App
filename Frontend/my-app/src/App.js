@@ -49,7 +49,7 @@ function App() {
   //       prog: 30
   //     }, {
   //       crsId: 'crs-1016',
-  //       prog: 90
+  //       prog: 100
   //     }
   //   ],
   //   country: "Egypt",
@@ -95,12 +95,6 @@ function App() {
                   element=
                   {
                     <PaymentCancelled />
-                  }
-                />
-                <Route path="/certificate"
-                  element=
-                  {
-                    <CertificatePDF />
                   }
                 />
               </Routes>
