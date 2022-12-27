@@ -10,6 +10,7 @@ import { useContext } from 'react'
 import CourseAndInstructorRating from '../components/course&InstructorRating/CourseAndInstructorRating'
 import { CourseContext } from '../context/CourseContext'
 import axios from 'axios'
+import UserInfoContext from '../context/UserInfoContext'
 
 
 // Python Course
@@ -702,14 +703,26 @@ const courseObj = {
 }
 
 
-const CoursePage = ({ navActiveState, setNavActiveState, owned }) => {
+const CoursePage = ({ navActiveState, setNavActiveState }) => {
     const { view } = useContext(CurrentViewContext);
     const { courseId } = useContext(CourseContext);
+    const { user } = useContext(UserInfoContext)
     const [courses, setCourses] = useState([]);
     const [intendedCourse, setIntendedCourse] = useState({});
 
     function getCategories() {
         return Array.from(new Set(courses.map(course => course.category)));
+    }
+
+    function checkIfOwned(list, crsId) {
+        if (list === undefined)
+            return false
+        for (const crs of list) {
+            if (crs === crsId) {
+                return true;
+            }
+        }
+        return false;
     }
 
     useEffect(() => {
@@ -728,8 +741,8 @@ const CoursePage = ({ navActiveState, setNavActiveState, owned }) => {
                 setIntendedCourse(course);
         })
     })
-
-    if (view !== 'course')
+    const owned = checkIfOwned(user.coursesOwned, courseObj.id)
+    if (view === 'course')
         return (
             <Layout>
                 {/* TITLE IS ALREADY THERE... */}

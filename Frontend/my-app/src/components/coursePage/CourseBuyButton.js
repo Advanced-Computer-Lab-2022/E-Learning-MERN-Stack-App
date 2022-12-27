@@ -1,15 +1,14 @@
 import React from 'react'
 import StripeBuyNowButton from '../stripeComponents/StripeBuyNowButton'
 import Wallet from '../wallet/Wallet';
-const user = {
-    walletBalance: 12.64,
-}
+import UserInfoContext from '../../context/UserInfoContext';
+import { useContext } from 'react';
 
 function walletPaymentClbk() {
     // @TODO :: handle payment using wallet balance
 }
 const CourseBuyButton = ({ price }) => {
-
+    const { user } = useContext(UserInfoContext)
     const [showModal, setShowModal] = React.useState(false);
     return (
 
