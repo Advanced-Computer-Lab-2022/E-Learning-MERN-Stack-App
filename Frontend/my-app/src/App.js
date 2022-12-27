@@ -18,7 +18,7 @@ import CourseContextProvider from "./context/CourseContext";
 function App() {
   const [navIdx, setNavIdx] = useState(0);
   const navIdxValue = { navIdx, setNavIdx };
-  const [view, setView] = useState("guest");
+  const [view, setView] = useState("user");
   const viewValue = { view, setView };
   const [user, setUser] = useState({});
   const userValue = { user, setUser };
