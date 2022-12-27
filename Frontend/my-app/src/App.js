@@ -15,12 +15,47 @@ import PaymentSuccessful from "./components/stripeComponents/PaymentSuccessful";
 import PaymentCancelled from "./components/stripeComponents/PaymentCancelled"
 import FiltersContextProvider from "./context/FiltersContext";
 import CourseContextProvider from "./context/CourseContext";
+import CertificatePDF from "./components/certificate/CertificatePDF";
 function App() {
   const [navIdx, setNavIdx] = useState(0);
   const navIdxValue = { navIdx, setNavIdx };
   const [view, setView] = useState("guest");
   const viewValue = { view, setView };
+  // Deafulttt
   const [user, setUser] = useState({});
+  // For Testing
+  // const [user, setUser] = useState({
+  //   userName: "dummy123",
+  //   firstName: "Dummy",
+  //   lastName: "User",
+  //   email: "dummy@domain.com",
+  //   gender: "Male",
+  //   role: "user",
+  //   walletBalance: 145.25,
+  //   coursesOwned: ['crs-1011', 'crs-1012', 'crs-1016'],
+  //   notes: [],
+  //   grades: [
+  //     {
+  //       testId: 'tst-01-crs-1011',
+  //       testGrade: 80
+  //     }, {
+  //       testId: 'tst-02-crs-1011',
+  //       testGrade: 67
+  //     }
+  //   ],
+  //   progress: [
+  //     {
+  //       crsId: 'crs-1011',
+  //       prog: 30
+  //     }, {
+  //       crsId: 'crs-1016',
+  //       prog: 90
+  //     }
+  //   ],
+  //   country: "Egypt",
+  //   favoriteLanguage: "English",
+  //   bio: "I am a dummy user, Created for testing.",
+  // });
   const userValue = { user, setUser };
   return (
     <div className="App">
@@ -38,7 +73,7 @@ function App() {
                           <GuestPage />
                           <UserPage />
                         </FiltersContextProvider>
-                        <CoursePage owned={false} />
+                        <CoursePage />
                       </CourseContextProvider>
                       <CheckoutPage />
                     </>
@@ -60,6 +95,12 @@ function App() {
                   element=
                   {
                     <PaymentCancelled />
+                  }
+                />
+                <Route path="/certificate"
+                  element=
+                  {
+                    <CertificatePDF />
                   }
                 />
               </Routes>

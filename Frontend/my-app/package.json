@@ -10,6 +10,7 @@
     "@material-tailwind/react": "^1.2.4",
     "@mui/material": "^5.11.0",
     "@mui/styled-engine-sc": "^5.11.0",
+    "@react-pdf/renderer": "^3.0.1",
     "@stripe/stripe-js": "^1.46.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",

@@ -10,6 +10,8 @@ import { useContext } from 'react'
 import CourseAndInstructorRating from '../components/course&InstructorRating/CourseAndInstructorRating'
 import { CourseContext } from '../context/CourseContext'
 import axios from 'axios'
+import UserInfoContext from '../context/UserInfoContext'
+import RecieveCertificate from '../components/certificate/RecieveCertificate'
 
 
 // Python Course
@@ -702,9 +704,10 @@ const courseObj = {
 }
 
 
-const CoursePage = ({ navActiveState, setNavActiveState, owned }) => {
+const CoursePage = ({ navActiveState, setNavActiveState }) => {
     const { view } = useContext(CurrentViewContext);
     const { courseId } = useContext(CourseContext);
+    const { user } = useContext(UserInfoContext)
     const [courses, setCourses] = useState([]);
     const [intendedCourse, setIntendedCourse] = useState({});
 
@@ -712,6 +715,26 @@ const CoursePage = ({ navActiveState, setNavActiveState, owned }) => {
         return Array.from(new Set(courses.map(course => course.category)));
     }
 
+    function checkIfOwned(list, crsId) {
+        if (list === undefined)
+            return false
+        for (const crs of list) {
+            if (crs === crsId) {
+                return true;
+            }
+        }
+        return false;
+    }
+    function getProgress(list, crsId) {
+        if (list === undefined)
+            return -1
+        for (const crs of list) {
+            if (crs.crsId === crsId) {
+                return crs.prog;
+            }
+        }
+        return -1;
+    }
     useEffect(() => {
         axios
             .get('http://localhost:8000/api/getCourses')
@@ -728,7 +751,7 @@ const CoursePage = ({ navActiveState, setNavActiveState, owned }) => {
                 setIntendedCourse(course);
         })
     })
-
+    const owned = checkIfOwned(user.coursesOwned, courseObj.id)
     if (view === 'course')
         return (
             <Layout>
@@ -736,6 +759,7 @@ const CoursePage = ({ navActiveState, setNavActiveState, owned }) => {
                 {/* <h1 className='text-center text-red-500 text-lg'>CourseTitle: {intendedCourse.name}</h1> */}
                 {/* ......................... */}
                 <CourseFirstDiv owned={owned} courseObj={courseObj} />
+                <RecieveCertificate visible={getProgress(user.progress, courseObj.id) > 80} courseObj={courseObj} />
                 <div className="mx-40 my-10 flex">
                     <div className='w-1/2'>
                         <CourseInstructorPlaceHolder instructor={courseObj.instructor} />
@@ -744,7 +768,7 @@ const CoursePage = ({ navActiveState, setNavActiveState, owned }) => {
                         <iframe className='w-full rounded-2xl' width="520" height="340" src={courseObj.previewVideoURL} title={courseObj.previewVideoTitle} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                 </div>
-                <Sections visible={true} courseObj={courseObj} />
+                <Sections visible={true} courseObj={courseObj} owned={owned} />
                 <Reviews visible={true} reviews={courseObj.reviews} />
                 <Faqs visible={true} faqs={courseObj.faqs} />
                 <CourseAndInstructorRating

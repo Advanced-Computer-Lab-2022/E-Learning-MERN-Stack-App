@@ -25,7 +25,7 @@ const LandingPage = ({ visible }) => {
                         <div className="text-center pb-12 md:pb-16">
                             <h1 className="text-5xl md:text-6xl font-extrabold leading-tighter tracking-tighter mb-4" >We Innovate <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-400">Learning Processes</span></h1>
                             <div className="max-w-3xl mx-auto">
-                                <p className="text-xl text-gray-600 mb-8" >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas metus magna, volutpat eget accumsan ut, venenatis a augue. Morbi tincidunt lacus leo, eu dictum ex porta nec.</p>
+                                <p className="text-xl text-gray-600 mb-8" >Start, switch, or advance your career with more than 5,400 courses, Professional Certificates, and degrees from world-class universities and companies.</p>
                                 <div className="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center">
                                 </div>
                             </div>

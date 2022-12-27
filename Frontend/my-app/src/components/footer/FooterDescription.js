@@ -4,9 +4,7 @@ const FooterDescription = () => {
     return (
         <div className="mb-6">
             <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt distinctio earum
-                repellat quaerat voluptatibus placeat nam, commodi optio pariatur est quia magnam
-                eum harum corrupti dicta, aliquam sequi voluptate quas.
+                <span className='font-bold'>ACL</span> is the trusted market leader in talent transformation. We change lives, businesses, and nations through digital upskilling, developing the edge you need to conquer what’s next.
             </p>
         </div>
     )

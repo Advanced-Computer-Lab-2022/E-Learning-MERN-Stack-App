@@ -21,7 +21,7 @@ const Wallet = ({ walletBalance }) => {
                         Currently Having:
                     </span>
                 </div>
-                <p class="my-4 text-4xl font-bold text-left text-gray-700 dark:text-gray-100">
+                <p class="my-4 text-4xl font-bold text-left text-gray-700 dark:text-gray-100 px-2">
                     {walletBalance}
                     <span class="text-sm">
                         $
