@@ -17,7 +17,8 @@ const Homepage = ({ visible }) => {
         maxPrice, setMaxPrice,
         allCategories, setAllCategories,
         selectedCategory, setSelectedCategory,
-        rating, setRating
+        rating, setRating,
+        mostPopular, setMostPopular
     } = useContext(FiltersContext);
 
 
@@ -36,9 +37,55 @@ const Homepage = ({ visible }) => {
         setAllCategories(getCategories());
     }, [courses])
 
+
     function getCategories() {
         return Array.from(new Set(courses.map(course => course.category)));
     }
+
+    function nthlargest(arra, highest) {
+        var x = 0,
+            y = 0,
+            z = 0,
+            temp = 0,
+            tnum = arra.length,
+            flag = false,
+            result = false;
+
+        while (x < tnum) {
+            y = x + 1;
+
+            if (y < tnum) {
+                for (z = y; z < tnum; z++) {
+
+                    if (arra[x] < arra[z]) {
+                        temp = arra[z];
+                        arra[z] = arra[x];
+                        arra[x] = temp;
+                        flag = true;
+                    } else {
+                        continue;
+                    }
+                }
+            }
+
+            if (flag) {
+                flag = false;
+            } else {
+                x++;
+                if (x === highest) {
+
+                    result = true;
+                }
+            }
+            if (result) {
+                break;
+            }
+        }
+
+        return (arra[(highest - 1)]);
+    }
+
+
 
     var testCourse = {
         ...courses[0]
@@ -68,6 +115,11 @@ const Homepage = ({ visible }) => {
                                                 if (rating === -1) return true
                                                 return course.rating === rating
                                             })
+                                            // .filter(course => {
+                                            //     if (mostPopular)
+                                            //         return course.numberOfStudents >= nthlargest(courses, 1)
+                                            //     return false;
+                                            // })
                                             .map((course, index) =>
                                                 <CourseCard key={index} course={course} id={(course._id)} />
                                             )
@@ -77,7 +129,7 @@ const Homepage = ({ visible }) => {
                             )
                     }
                     {/* For Stripe Testing */}
-                    {/* <CourseCard key={1} course={testCourse} /> */}
+                    <CourseCard key={1} course={testCourse} />
                 </CoursesHolder>
             </>
         )
