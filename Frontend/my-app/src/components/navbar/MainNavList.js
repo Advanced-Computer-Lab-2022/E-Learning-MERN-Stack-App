@@ -7,9 +7,9 @@ import MainNavListSeparator from './MainNavListSeparator'
 const MainNavList = () => {
     const { user } = useContext(UserInfoContext);
     const { view } = useContext(CurrentViewContext);
-    var conditional = (view === 'guest') ? 'absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2' : '';
+    // var conditional = (view === 'guest') ? 'absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2' : '';
     return (
-        <ul className={`hidden ${conditional} lg:flex lg:mx-auto lg:flex lg:items-center lg:w-auto lg:space-x-6`}>
+        <ul className={`hidden absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:flex lg:mx-auto lg:flex lg:items-center lg:w-auto lg:space-x-6`}>
             <MainNavListItem
                 text={"Home"}
                 href="#"
