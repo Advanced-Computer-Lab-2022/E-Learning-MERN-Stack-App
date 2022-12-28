@@ -641,6 +641,7 @@ const courseObj = {
     previewVideoURL: "https://www.youtube.com/embed/q9oAZwhuUy4?list=PLeo1K3hjS3us_ELKYSj_Fth2tIEkdKXvV",
     previewVideoTitle: "Data Analyst vs Data Engineer vs Data Scientist",
     rating: 4.8,
+    numberOfStudents: 25,
     numberOfRatings: 12,
     instructor: {
         id: "inst-1457",
