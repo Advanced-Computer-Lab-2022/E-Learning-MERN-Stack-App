@@ -556,91 +556,17 @@ import RecieveCertificate from '../components/certificate/RecieveCertificate'
 //     ]
 // }
 
-// const courseObj = {
-//     id: "crs-1015",
-//     category: "Data Science",
-//     title: "Machine Learning",
-//     description: "Machine learning is the science of getting computers to act without being explicitly programmed. In the past decade, machine learning has given us self-driving cars, practical speech recognition, effective web search, and a vastly improved understanding of the human genome.",
-//     whatYouWillLearnBullets: ["What is Machine Learning", "Cross Validation", "The Confusion Matrix"],
-//     courseIncludes: ["Practical Labs", "Interactive Sessions", "9 Hours Total"],
-//     price: 19.99,
-//     previewVideoURL: "https://www.youtube.com/embed/Gv9_4yMHFhI?list=PLblh5JKOoLUICTaGLRoHQDuF_7q2GfuJF",
-//     previewVideoTitle: "A Gentle Introduction to Machine Learning",
-//     rating: 4.6,
-//     numberOfRatings: 12,
-//     instructor: {
-//         id: "inst-1457",
-//         name: "Andrew Ng",
-//         role: "Machine Learning Engineer",
-//         imgURL: "https://mdbootstrap.com/img/Photos/Avatars/img%20(32).jpg",
-//         numberOfCourses: 21,
-//         rating: 4.9,
-//     },
-//     sections: [
-//         {
-//             idx: 1,
-//             title: "Cross Validation",
-//             lessonEmbed: <iframe width="650" height="300" src="https://www.youtube.com/embed/fSytzGwwBVw?list=PLblh5JKOoLUICTaGLRoHQDuF_7q2GfuJF" title="Machine Learning Fundamentals: Cross Validation" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>,
-//             lessonDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse tincidunt justo eu quam facilisis varius. In laoreet lorem in elit vehicula.",
-//             testId: 'tst-01-crs-1015'
-
-//         },
-//         {
-//             idx: 2,
-//             title: "The Confusion Matrix",
-//             lessonEmbed: <iframe width="650" height="300" src="https://www.youtube.com/embed/Kdsp6soqA7o?list=PLblh5JKOoLUICTaGLRoHQDuF_7q2GfuJF" title="Machine Learning Fundamentals: The Confusion Matrix" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>,
-//             lessonDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse tincidunt justo eu quam facilisis varius. In laoreet lorem in elit vehicula.",
-//             testId: 'tst-02-crs-1015',
-//         },
-//         {
-//             idx: 6,
-//             title: "PDF Notes",
-//             pdfURL: "https://alex.smola.org/drafts/thebook.pdf"
-//         }
-
-//     ],
-//     reviews: [
-//         {
-//             reviewerName: "Name 1",
-//             reviewerImgURL: "https://mdbootstrap.com/img/Photos/Avatars/img%20(1).jpg",
-//             reviewerReview: "Lorem ipsum dolor sit amet eos adipisci, consectetur adipisicing elit sed ut perspiciatis unde omnis.",
-//             reviewerRating: 2,
-//         }, {
-//             reviewerName: "Name 2",
-//             reviewerImgURL: "https://mdbootstrap.com/img/Photos/Avatars/img%20(2).jpg",
-//             reviewerReview: "Lorem ipsum dolor sit amet eos adipisci, consectetur adipisicing elit sed ut perspiciatis unde omnis.",
-//             reviewerRating: 3,
-//         }
-//     ],
-//     faqs: [
-//         [
-//             {
-//                 question: "Question 1",
-//                 answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In placerat aliquam tempus. Phasellus auctor erat turpis, quis laoreet orci luctus eget. Quisque congue ut orci sit amet aliquam."
-//             },
-
-//         ],
-//         [
-//             {
-//                 question: "Question 2",
-//                 answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In placerat aliquam tempus. Phasellus auctor erat turpis, quis laoreet orci luctus eget. Quisque congue ut orci sit amet aliquam."
-//             },
-
-//         ]
-//     ]
-// }
-
 const courseObj = {
-    id: "crs-1016",
+    id: "crs-1015",
     category: "Data Science",
-    title: "Data Science Full Course | Python Data Science Tutorial | Data Science With Python",
+    title: "Machine Learning",
     description: "Machine learning is the science of getting computers to act without being explicitly programmed. In the past decade, machine learning has given us self-driving cars, practical speech recognition, effective web search, and a vastly improved understanding of the human genome.",
-    whatYouWillLearnBullets: ["What is Machine Learning", "Image Classification", "Deep Learning"],
+    whatYouWillLearnBullets: ["What is Machine Learning", "Cross Validation", "The Confusion Matrix"],
     courseIncludes: ["Practical Labs", "Interactive Sessions", "9 Hours Total"],
-    price: 29.99,
-    previewVideoURL: "https://www.youtube.com/embed/q9oAZwhuUy4?list=PLeo1K3hjS3us_ELKYSj_Fth2tIEkdKXvV",
-    previewVideoTitle: "Data Analyst vs Data Engineer vs Data Scientist",
-    rating: 4.8,
+    price: 19.99,
+    previewVideoURL: "https://www.youtube.com/embed/Gv9_4yMHFhI?list=PLblh5JKOoLUICTaGLRoHQDuF_7q2GfuJF",
+    previewVideoTitle: "A Gentle Introduction to Machine Learning",
+    rating: 4.6,
     numberOfRatings: 12,
     instructor: {
         id: "inst-1457",
@@ -653,20 +579,21 @@ const courseObj = {
     sections: [
         {
             idx: 1,
-            title: "Data Science & Machine Learning Project | Image Classification",
-            lessonEmbed: <iframe width="650" height="300" src="https://www.youtube.com/embed/qWXXHjV3JHI" title="Data Science & Machine Learning Project - Part 1 Introduction | Image Classification" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>,
+            title: "Cross Validation",
+            lessonEmbed: <iframe width="650" height="300" src="https://www.youtube.com/embed/fSytzGwwBVw?list=PLblh5JKOoLUICTaGLRoHQDuF_7q2GfuJF" title="Machine Learning Fundamentals: Cross Validation" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>,
             lessonDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse tincidunt justo eu quam facilisis varius. In laoreet lorem in elit vehicula.",
-            testId: 'tst-01-crs-1016'
+            testId: 'tst-01-crs-1015'
+
         },
         {
             idx: 2,
-            title: "What is a neuron? | Deep Learning",
-            lessonEmbed: <iframe width="650" height="300" src="https://www.youtube.com/embed/VhRtaziEWd4?list=PLeo1K3hjS3us_ELKYSj_Fth2tIEkdKXvV" title="What is a neuron? | Deep Learning Tutorial 3 (Tensorflow Tutorial, Keras & Python)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>,
+            title: "The Confusion Matrix",
+            lessonEmbed: <iframe width="650" height="300" src="https://www.youtube.com/embed/Kdsp6soqA7o?list=PLblh5JKOoLUICTaGLRoHQDuF_7q2GfuJF" title="Machine Learning Fundamentals: The Confusion Matrix" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>,
             lessonDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse tincidunt justo eu quam facilisis varius. In laoreet lorem in elit vehicula.",
-            testId: 'tst-02-crs-1016',
+            testId: 'tst-02-crs-1015',
         },
         {
-            idx: 3,
+            idx: 6,
             title: "PDF Notes",
             pdfURL: "https://alex.smola.org/drafts/thebook.pdf"
         }
@@ -702,6 +629,79 @@ const courseObj = {
         ]
     ]
 }
+
+// const courseObj = {
+//     id: "crs-1016",
+//     category: "Data Science",
+//     title: "Data Science Full Course | Python Data Science Tutorial | Data Science With Python",
+//     description: "Machine learning is the science of getting computers to act without being explicitly programmed. In the past decade, machine learning has given us self-driving cars, practical speech recognition, effective web search, and a vastly improved understanding of the human genome.",
+//     whatYouWillLearnBullets: ["What is Machine Learning", "Image Classification", "Deep Learning"],
+//     courseIncludes: ["Practical Labs", "Interactive Sessions", "9 Hours Total"],
+//     price: 29.99,
+//     previewVideoURL: "https://www.youtube.com/embed/q9oAZwhuUy4?list=PLeo1K3hjS3us_ELKYSj_Fth2tIEkdKXvV",
+//     previewVideoTitle: "Data Analyst vs Data Engineer vs Data Scientist",
+//     rating: 4.8,
+//     numberOfRatings: 12,
+//     instructor: {
+//         id: "inst-1457",
+//         name: "Andrew Ng",
+//         role: "Machine Learning Engineer",
+//         imgURL: "https://mdbootstrap.com/img/Photos/Avatars/img%20(32).jpg",
+//         numberOfCourses: 21,
+//         rating: 4.9,
+//     },
+//     sections: [
+//         {
+//             idx: 1,
+//             title: "Data Science & Machine Learning Project | Image Classification",
+//             lessonEmbed: <iframe width="650" height="300" src="https://www.youtube.com/embed/qWXXHjV3JHI" title="Data Science & Machine Learning Project - Part 1 Introduction | Image Classification" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>,
+//             lessonDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse tincidunt justo eu quam facilisis varius. In laoreet lorem in elit vehicula.",
+//             testId: 'tst-01-crs-1016'
+//         },
+//         {
+//             idx: 2,
+//             title: "What is a neuron? | Deep Learning",
+//             lessonEmbed: <iframe width="650" height="300" src="https://www.youtube.com/embed/VhRtaziEWd4?list=PLeo1K3hjS3us_ELKYSj_Fth2tIEkdKXvV" title="What is a neuron? | Deep Learning Tutorial 3 (Tensorflow Tutorial, Keras & Python)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>,
+//             lessonDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse tincidunt justo eu quam facilisis varius. In laoreet lorem in elit vehicula.",
+//             testId: 'tst-02-crs-1016',
+//         },
+//         {
+//             idx: 3,
+//             title: "PDF Notes",
+//             pdfURL: "https://alex.smola.org/drafts/thebook.pdf"
+//         }
+
+//     ],
+//     reviews: [
+//         {
+//             reviewerName: "Name 1",
+//             reviewerImgURL: "https://mdbootstrap.com/img/Photos/Avatars/img%20(1).jpg",
+//             reviewerReview: "Lorem ipsum dolor sit amet eos adipisci, consectetur adipisicing elit sed ut perspiciatis unde omnis.",
+//             reviewerRating: 2,
+//         }, {
+//             reviewerName: "Name 2",
+//             reviewerImgURL: "https://mdbootstrap.com/img/Photos/Avatars/img%20(2).jpg",
+//             reviewerReview: "Lorem ipsum dolor sit amet eos adipisci, consectetur adipisicing elit sed ut perspiciatis unde omnis.",
+//             reviewerRating: 3,
+//         }
+//     ],
+//     faqs: [
+//         [
+//             {
+//                 question: "Question 1",
+//                 answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In placerat aliquam tempus. Phasellus auctor erat turpis, quis laoreet orci luctus eget. Quisque congue ut orci sit amet aliquam."
+//             },
+
+//         ],
+//         [
+//             {
+//                 question: "Question 2",
+//                 answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In placerat aliquam tempus. Phasellus auctor erat turpis, quis laoreet orci luctus eget. Quisque congue ut orci sit amet aliquam."
+//             },
+
+//         ]
+//     ]
+// }
 
 
 const CoursePage = ({ navActiveState, setNavActiveState }) => {
@@ -751,10 +751,12 @@ const CoursePage = ({ navActiveState, setNavActiveState }) => {
                 setIntendedCourse(course);
         })
     })
-    const owned = checkIfOwned(user.coursesOwned, courseObj.id)
+    const owned = checkIfOwned(user.courses, courseObj.id)
     if (view !== 'course')
         return (
+            
             <Layout>
+                
                 {/* TITLE IS ALREADY THERE... */}
                 {/* <h1 className='text-center text-red-500 text-lg'>CourseTitle: {intendedCourse.name}</h1> */}
                 {/* ......................... */}
@@ -767,6 +769,7 @@ const CoursePage = ({ navActiveState, setNavActiveState }) => {
                     courseObj={courseObj}
                 />
                 <div className="mx-40 my-10 flex">
+               
                     <div className='w-1/2'>
                         <CourseInstructorPlaceHolder
                             instructor={courseObj.instructor}

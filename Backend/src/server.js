@@ -1,5 +1,6 @@
 const env = require('dotenv').config();
 const { json } = require('body-parser');
+var cors = require('cors');
 const express = require('express');
 const port = process.env.PORT ;
 const app = express();
@@ -19,6 +20,7 @@ const signout = require("./routes/signout");
    
 // app.use
 app.use(express.json());  
+app.use(cors());
 app.use('/api', guestRoutes);
 app.use('/api', adminRoutes);
 app.use('/api', orgGuest);

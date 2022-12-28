@@ -6,7 +6,7 @@ import axios from 'axios'
 import { useCookies } from 'react-cookie';
 
 const LoginForm = () => {
-    const { setUser } = useContext(UserInfoContext);
+    const { user,setUser } = useContext(UserInfoContext);
     const { setNavIdx } = useContext(NavStateContext);
     const { view, setView } = useContext(CurrentViewContext);
     const [cookies, setCookie] = useCookies(['token']);
@@ -16,33 +16,32 @@ const LoginForm = () => {
         password: ""
     });
     const [errorMessage, setErrorMessage] = useState("");
-    const [api, setApi] = useState('http://localhost:8000/api/guest/signin');
+    const [api, setApi] = useState('http://localhost:8000/api/signin');
     // var userRole = 'individualTrainee';
-    const [userRole, setUserRole] = useState('individualTrainee');
+    const [userRole, setUserRole] = useState('');
 
     async function handleSubmit(e) {
         await axios.post(api, authenticationInfo)
             .then((response) => {
-                console.log(response);
-
-                let userToBeSet = response.data.guest;
-                switch (userRole) {
-                    case 'individualTrainee':
-                        userToBeSet = response.data.guest;
-                        break;
-                    case 'corporateTrainee':
-                        userToBeSet = response.data.guest;
-                        break;
-                    case 'instructor':
-                        userToBeSet = response.data.instructor;
-                        break;
-                    case 'admin':
-                        userToBeSet = response.data.admin;
-                        break;
-                    default:
-                }
-                // if (userToBeSet !== undefined)
-                setUser(userToBeSet);
+                console.log(response.data.user);
+                setUserRole(response.data.user.role);
+                setUser(response.data.user);
+                // let userToBeSet = response.data.guest;
+                // switch (userRole) {
+                //     case 'individualTrainee':
+                //         userToBeSet = response.data.guest;
+                //         break;
+                //     case 'corporateTrainee':
+                //         userToBeSet = response.data.guest;
+                //         break;
+                //     case 'instructor':
+                //         userToBeSet = response.data.instructor;
+                //         break;
+                //     case 'admin':
+                //         userToBeSet = response.data.admin;
+                //         break;
+                //     default:
+                // }
                 setNavIdx(0);
                 setView('user');
                 setCookie('token', response.data.token, { path: '/' });
@@ -79,22 +78,22 @@ const LoginForm = () => {
     }
     function handleRoleChange(e) {
         const role = e.target.value;
-        switch (role) {
-            case 'individualTrainee':
-                setApi('http://localhost:8000/api/guest/signin');
-                break;
-            case 'corporateTrainee':
-                setApi('http://localhost:8000/api/guest/signin');
-                break;
-            case 'instructor':
-                setApi('http://localhost:8000/api/instructor/signin');
-                break;
-            case 'admin':
-                setApi('http://localhost:8000/api/admin/signin');
-                break;
-            default:
-        }
-        setUserRole(role);
+        // switch (role) {
+        //     case 'individualTrainee':
+        //         setApi('http://localhost:8000/api/guest/signin');
+        //         break;
+        //     case 'corporateTrainee':
+        //         setApi('http://localhost:8000/api/guest/signin');
+        //         break;
+        //     case 'instructor':
+        //         setApi('http://localhost:8000/api/instructor/signin');
+        //         break;
+        //     case 'admin':
+        //         setApi('http://localhost:8000/api/admin/signin');
+        //         break;
+        //     default:
+        // }
+        // setUserRole(role);
     }
 
     return (
@@ -140,20 +139,9 @@ const LoginForm = () => {
             </div>
             <button type="button" className="w-full px-4 py-2 text-base font-semibold text-center text-white transition duration-200 ease-in bg-blue-500 shadow-md hover:text-black hover:bg-white focus:outline-none focus:ring-2"
                 onClick={(e) =>
-                    // const getUser = {
-                    //     email: "minahannalla@domain.com",
-                    //     country: "Egypt",
-                    //     favoriteLanguage: "English",
-                    //     firstName: "Mina",
-                    //     lastName: "Hannalla",
-                    //     username: "mina.hannalla123",
-                    //     bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vulputate felis eget risus tempus, a faucibus ex posuere. Ut aliquam consequat metus at maximus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae semper dui. Curabitur hendrerit sed enim sit amet pulvinar.",
-                    //     ownedCoursesIdxs: [1052, 1514, 1236]
-                    // }
-                    // setUser(getUser);
-                    // setNavIdx(0);
-                    // setView('user')
-                    handleSubmit(e)
+                    {
+                        handleSubmit(e)
+                    }
                 }
             >
                 <span className="w-full">
