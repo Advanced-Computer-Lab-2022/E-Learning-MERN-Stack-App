@@ -26,9 +26,9 @@ function App() {
   // For Testing
   const [user, setUser] = useState({
     userName: "dummy123",
-    firstName: "Loay",
-    lastName: "Hesham",
-    email: "loayhesham7@gmail.com",
+    firstName: "Dummy",
+    lastName: "User",
+    email: "minasamy9090.ms@gmail.com",
     gender: "Male",
     role: "user",
     walletBalance: 145.25,

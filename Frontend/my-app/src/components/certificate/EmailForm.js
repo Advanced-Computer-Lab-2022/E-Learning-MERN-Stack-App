@@ -18,7 +18,7 @@ const EmailForm = ({ user, courseObj }) => {
     };
     const user_email = user.email;
     const subject = "| " + courseObj.title;
-    const message = user.firstName + " " + user.lastName + " ! \n"
+    const message = user.firstName + " " + user.lastName + "\n"
         + "has successfully completed \n"
         + courseObj.title + "\n"
         + "an online non-credit course authorized by " + courseObj.instructor.name + " and offered through ACL"
