@@ -15,15 +15,18 @@ import PaymentSuccessful from "./components/stripeComponents/PaymentSuccessful";
 import PaymentCancelled from "./components/stripeComponents/PaymentCancelled"
 import FiltersContextProvider from "./context/FiltersContext";
 import CourseContextProvider from "./context/CourseContext";
-import CertificatePDF from "./components/certificate/CertificatePDF";
+import { Cookies, useCookies } from "react-cookie";
+// import CertificatePDF from "./components/certificate/CertificatePDF";
+
+
 function App() {
   const [cookies] = useCookies(['userCookie']);
   const [navIdx, setNavIdx] = useState(0);
   const navIdxValue = { navIdx, setNavIdx };
-  const [view, setView] = useState((cookies['userCookie'] !== undefined ? 'user' : 'guest'));
+  const [view, setView] = useState('guest');
   const viewValue = { view, setView };
   // Deafulttt
-  const [user, setUser] = useState(cookies['userCookie']);
+  const [user, setUser] = useState({});
   // For Testing
   // const [user, setUser] = useState({
   //   userName: "dummy123",
@@ -58,6 +61,7 @@ function App() {
   //   bio: "I am a dummy user, Created for testing.",
   // });
   const userValue = { user, setUser };
+
   return (
     <div className="App">
       <BrowserRouter>
@@ -99,10 +103,10 @@ function App() {
                   }
                 />
                 <Route path="/certificate"
-                  element=
-                  {
-                    <CertificatePDF />
-                  }
+                // element=
+                // {
+                //   <CertificatePDF />
+                // }
                 />
               </Routes>
             </CurrentViewContext.Provider>
