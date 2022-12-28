@@ -4,7 +4,7 @@ const  OrgGuest  = require('../models/orgGuest');
 const  Admin  = require("../models/admin");
 const jwt = require('jsonwebtoken');
 const Course = require('../models/course');
-
+const sendEmail = require("../utils/sendEmail");
 
 exports.signup = async (req, res) => {
     var user = await Guest.findOne({ userName: req.body.userName });
@@ -56,6 +56,7 @@ exports.signup = async (req, res) => {
                                         });
                                     }
                                     if(data){
+                                        sendEmail(_guest.email, "Welcome","You Have Signed Up Successfully" );
                                          return res.status(200).json({message: 'user added successfuly'});
                                    
                                     }
@@ -70,32 +71,6 @@ exports.signup = async (req, res) => {
     }
     
 }
-
-exports.signin = (req, res) => {
-    Guest.findOne({userName: req.body.userName})
-    .exec(async(error, guest) =>{
-        if(error) return res.status(400).json({error});
-        if(guest){
-            const passwordVerify = await guest.authenticate(req.body.password);
-            if(passwordVerify){
-                const token = jwt.sign({_id:guest._id, role: guest.role, userName: guest.userName}, process.env.JWT_SECRET, {expiresIn: '1d'});
-                return res.status(200).json({
-                    token,
-                    guest
-                });
-
-            }
-            else{
-                return res.status(400).json({
-                    message: 'Invalid password'
-
-                });
-            }
-        }
-        else return res.status(400).json({message: 'something went wrong'});
-
-    });
-};
 
 
 exports.viewMyCourses = (req, res) => {

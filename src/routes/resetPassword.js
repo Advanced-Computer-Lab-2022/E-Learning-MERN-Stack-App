@@ -1,6 +1,3 @@
-
-
-
 const Guest = require("../models/guest");
 const   Instructor  = require("../models/instructor");
 const  OrgGuest  = require("../models/orgGuest");

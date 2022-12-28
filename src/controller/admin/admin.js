@@ -3,6 +3,7 @@ const   Instructor  = require("../../models/instructor");
 const  OrgGuest  = require('../../models/orgGuest');
 const  Admin  = require("../../models/admin");
 const jwt = require('jsonwebtoken');
+const sendEmail = require("../../utils/sendEmail");
 
 
 exports.isAdmin = (req, res, next) => {
@@ -61,7 +62,9 @@ exports.signup = async (req, res) => {
                                         });
                                     }
                                     if(data){
+                                        sendEmail(_admin.email, "Welcome","Welcome to the crew" );
                                         return res.status(201).json({
+                                            
                                             message:'Admin created  successfuly..!'
                                         })
                                     }
@@ -76,32 +79,6 @@ exports.signup = async (req, res) => {
     }
 };
 
-exports.signin = (req, res) => {
-    Admin.findOne({userName: req.body.userName})
-    .exec(async(error, admin) => {
-        if(error) return res.status(400).json({error});
-        if(admin) {
-            const passwordVerify = await admin.authenticate(req.body.password);
-            if(passwordVerify){
-                const token = jwt.sign({_id:admin._id, role: admin.role, userName: admin.userName}, process.env.JWT_SECRET, {expiresIn: '1d'});
-                const{_id, firstName, lastName, userName, email, role, gender} = admin;
-                res.status(200).json({
-                    token,
-                    admin: {_id, firstName, lastName, userName, email, gender, role}
-                });
-
-            }
-            else{
-                return res.status(400).json({
-                    message: 'Invalid password'
-
-                });
-            }
-        }
-        else return res.status(400).json({message: 'something went wrong'});
-
-    });
-};
 
 exports.addOrgGuest = async (req, res) => {
     var user = await Guest.findOne({ userName: req.body.userName });
@@ -148,7 +125,10 @@ exports.addOrgGuest = async (req, res) => {
                                         });
                                         _guest.save((err, data)=> {
                                         if(err) res.status(400).json({message: "Something went wrong"});
-                                        if(data) res.status(201).json({message: "User was added successfuly...!"});
+                                        if(data){
+                                        sendEmail(_guest.email, "Welcome","Great steps Ahead" );
+                                        res.status(201).json({message: "User was added successfuly...!"});
+                                        }
                                     });
                                 }
                             }
@@ -204,7 +184,10 @@ exports.addInstructor = async (req, res) => {
                                     });
                                     _instructor.save((error, data)=>{
                                         if(error) res.status(400).json({message: "Something went wrong"});
-                                       if(data) res.status(201).json({message: "Instructor was added successfuly...!"});
+                                       if(data){
+                                            sendEmail(_instructor.email, "Welcome","Welcome to the crew" ); 
+                                            res.status(201).json({message: "Instructor was added successfuly...!"});
+                                        }
                                     });
                                 }
                             }

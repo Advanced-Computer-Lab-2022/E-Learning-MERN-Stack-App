@@ -4,8 +4,7 @@ const {requireSignin, changePassword, addVideoNote} = require('../commonMiddleWa
 const router = express.Router();
 
 // posts
-router.post('/orgGuest/signin', signin);
-router.post('/orgGuest/signin', signin);
+
 router.post('/orgGuest/changePassword',requireSignin, changePassword);
 router.post('/orgGuest/addVideoNote',requireSignin, addVideoNote);
 
