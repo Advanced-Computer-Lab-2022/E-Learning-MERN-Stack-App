@@ -28,7 +28,7 @@ function App() {
     userName: "dummy123",
     firstName: "Dummy",
     lastName: "User",
-    email: "minasamy9090.ms@gmail.com",
+    email: "cobof71486@haikido.com",
     gender: "Male",
     role: "user",
     walletBalance: 145.25,
