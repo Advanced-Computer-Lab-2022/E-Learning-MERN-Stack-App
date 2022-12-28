@@ -10,6 +10,7 @@ const LoginForm = () => {
     const { setNavIdx } = useContext(NavStateContext);
     const { view, setView } = useContext(CurrentViewContext);
     const [cookies, setCookie] = useCookies(['token']);
+    const [userCookie, setUserCookie] = useCookies(['userCookie']);
 
     const [authenticationInfo, setAuthenticationInfo] = useState({
         userName: "",
@@ -46,7 +47,9 @@ const LoginForm = () => {
                 setNavIdx(0);
                 setView('user');
                 setCookie('token', response.data.token, { path: '/' });
-                console.log(`token cookie: ${cookies.token}`);
+                setCookie('userCookie', JSON.stringify(userToBeSet));
+                // console.log(cookies['userCookie']);
+                // console.log(`token cookie: ${cookies.token}`);
             })
             .catch((error) => {
                 console.log(error);

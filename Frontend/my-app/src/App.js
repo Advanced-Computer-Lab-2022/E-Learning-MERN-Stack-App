@@ -17,12 +17,13 @@ import FiltersContextProvider from "./context/FiltersContext";
 import CourseContextProvider from "./context/CourseContext";
 import CertificatePDF from "./components/certificate/CertificatePDF";
 function App() {
+  const [cookies] = useCookies(['userCookie']);
   const [navIdx, setNavIdx] = useState(0);
   const navIdxValue = { navIdx, setNavIdx };
-  const [view, setView] = useState("guest");
+  const [view, setView] = useState((cookies['userCookie'] !== undefined ? 'user' : 'guest'));
   const viewValue = { view, setView };
   // Deafulttt
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState(cookies['userCookie']);
   // For Testing
   // const [user, setUser] = useState({
   //   userName: "dummy123",

@@ -9,6 +9,7 @@ const InstructorAddSectionForm = () => {
         title: '',
         lessonEmbed: '',
         lessonDescription: '',
+        testId: '',
         courseId: ''
     });
     const [courses, setCourses] = useState([]);
