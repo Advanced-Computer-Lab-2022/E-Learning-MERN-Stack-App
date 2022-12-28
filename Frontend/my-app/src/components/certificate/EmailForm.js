@@ -1,7 +1,8 @@
 import React from 'react'
 import { useRef } from 'react'
 import emailjs from '@emailjs/browser'
-const EmailForm = () => {
+import UserInfoContext from '../../context/UserInfoContext'
+const EmailForm = ({ user, courseObj }) => {
     const form = useRef()
 
     const sendEmail = (e) => {
@@ -15,14 +16,23 @@ const EmailForm = () => {
             });
         e.target.reset();
     };
+    const user_email = user.email;
+    const subject = "| " + courseObj.title;
+    const message = user.firstName + " " + user.lastName + " ! \n"
+        + "has successfully completed \n"
+        + courseObj.title + "\n"
+        + "an online non-credit course authorized by " + courseObj.instructor.name + " and offered through ACL"
     return (
         <section>
             <form ref={form} onSubmit={sendEmail}>
-                <h2> mail </h2>
-                <input type="text" placeholder="uemail" name="user_email" required />
-                <input type="text" placeholder="subject" name="subject" required />
-                <input type="text" placeholder="message" name="message" required />
-                <button type='submit'> Send Message  </button>
+                <input type="text" className='hidden' name="user_email" required value={user_email} />
+                <input type="text" className='hidden' name="subject" required value={subject} />
+                <textarea type="text" className='hidden' name="message" required value={message} />
+                <button type='submit'
+                    className='self-center rounded-lg bg-blue-500 text-center mt-10 mx-96 py-5 text-white text-4xl font-extrabold cursor-pointer flex felx-row hover:bg-blue-700'
+                >
+                    <span className='px-4'>Email Certificate</span>
+                </button>
             </form>
         </section >
     )

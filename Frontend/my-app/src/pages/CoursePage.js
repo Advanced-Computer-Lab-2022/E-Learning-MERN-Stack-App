@@ -752,7 +752,7 @@ const CoursePage = ({ navActiveState, setNavActiveState }) => {
         })
     })
     const owned = checkIfOwned(user.coursesOwned, courseObj.id)
-    if (view === 'course')
+    if (view !== 'course')
         return (
             <Layout>
                 {/* TITLE IS ALREADY THERE... */}

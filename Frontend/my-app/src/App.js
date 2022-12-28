@@ -22,40 +22,40 @@ function App() {
   const [view, setView] = useState("guest");
   const viewValue = { view, setView };
   // Deafulttt
-  const [user, setUser] = useState({});
+  // const [user, setUser] = useState({});
   // For Testing
-  // const [user, setUser] = useState({
-  //   userName: "dummy123",
-  //   firstName: "Dummy",
-  //   lastName: "User",
-  //   email: "dummy@domain.com",
-  //   gender: "Male",
-  //   role: "user",
-  //   walletBalance: 145.25,
-  //   coursesOwned: ['crs-1011', 'crs-1012', 'crs-1016'],
-  //   notes: [],
-  //   grades: [
-  //     {
-  //       testId: 'tst-01-crs-1011',
-  //       testGrade: 80
-  //     }, {
-  //       testId: 'tst-02-crs-1011',
-  //       testGrade: 67
-  //     }
-  //   ],
-  //   progress: [
-  //     {
-  //       crsId: 'crs-1011',
-  //       prog: 30
-  //     }, {
-  //       crsId: 'crs-1016',
-  //       prog: 100
-  //     }
-  //   ],
-  //   country: "Egypt",
-  //   favoriteLanguage: "English",
-  //   bio: "I am a dummy user, Created for testing.",
-  // });
+  const [user, setUser] = useState({
+    userName: "dummy123",
+    firstName: "Loay",
+    lastName: "Hesham",
+    email: "loayhesham7@gmail.com",
+    gender: "Male",
+    role: "user",
+    walletBalance: 145.25,
+    coursesOwned: ['crs-1011', 'crs-1012', 'crs-1016'],
+    notes: [],
+    grades: [
+      {
+        testId: 'tst-01-crs-1011',
+        testGrade: 80
+      }, {
+        testId: 'tst-02-crs-1011',
+        testGrade: 67
+      }
+    ],
+    progress: [
+      {
+        crsId: 'crs-1011',
+        prog: 30
+      }, {
+        crsId: 'crs-1016',
+        prog: 100
+      }
+    ],
+    country: "Egypt",
+    favoriteLanguage: "English",
+    bio: "I am a dummy user, Created for testing.",
+  });
   const userValue = { user, setUser };
   return (
     <div className="App">
