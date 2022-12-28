@@ -1,4 +1,5 @@
-import React, { createContext, useState } from "react";
+import axios from "axios";
+import React, { createContext, useEffect, useState } from "react";
 
 export let FiltersContext = createContext({});
 
@@ -9,6 +10,9 @@ export default function FiltersContextProvider(props) {
     const [allCategories, setAllCategories] = useState([]);
     const [rating, setRating] = useState(-1);
     const [selectedCategory, setSelectedCategory] = useState('');
+    const [mostPopular, setMostPopular] = useState(false);
+
+
 
     return <FiltersContext.Provider value={{
         search, setSearch,
@@ -16,7 +20,8 @@ export default function FiltersContextProvider(props) {
         maxPrice, setMaxPrice,
         allCategories, setAllCategories,
         rating, setRating,
-        selectedCategory, setSelectedCategory
+        selectedCategory, setSelectedCategory,
+        mostPopular, setMostPopular
     }}>
         {props.children}
     </FiltersContext.Provider>
