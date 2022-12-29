@@ -1,18 +1,11 @@
-import React, { useContext, useEffect } from 'react'
+import React from 'react'
 import NavBarLogo from '../navbar/NavBarLogo'
 import MainNavList from '../navbar/MainNavList'
 import Footer from '../footer/Footer'
 import ProfileIconNavBar from './ProfileIconNavBar'
-import NavStateContext from '../../context/NavStateContext'
-import CurrentViewContext from '../../context/CurrentViewContext'
-import UserInfoContext from '../../context/UserInfoContext'
-import { Cookies, useCookies } from 'react-cookie'
+import { Cookies } from 'react-cookie'
 
 const LoggedInLayout = ({ children }) => {
-    const { navIdx, setNavIdx } = useContext(NavStateContext);
-    const { setView } = useContext(CurrentViewContext);
-    const { user, setUser } = useContext(UserInfoContext);
-    const [removeCookie] = useCookies(['userCookie'])
 
     function handleSignOut() {
         new Cookies().remove('userCookie');
