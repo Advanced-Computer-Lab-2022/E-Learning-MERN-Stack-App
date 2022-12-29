@@ -26,9 +26,9 @@ const LoginForm = () => {
     // var userRole = 'individualTrainee';
     const [userRole, setUserRole] = useState('individualTrainee');
 
-    function handleSubmit() {
+    async function handleSubmit() {
         for (let i = 0; i < apis.length; ++i) {
-            axios.post(apis[i], authenticationInfo)
+            await axios.post(apis[i], authenticationInfo)
                 .then((res) => {
                     console.log(res);
                     if (res.data.guest !== undefined) {
