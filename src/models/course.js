@@ -12,7 +12,7 @@ const courseSchema = new mongoose.Schema({
         previewVideoURL: String,
         previewVideoTitle: String,
         rating: Number,
-        numberOfRatings:{
+        numberOfRatings: {
             type: Number,
             default: 0
         },

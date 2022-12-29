@@ -46,6 +46,10 @@ const adminSchema = new mongoose.Schema({
          type : String,
          required : true
      }, 
+     courseRequests: [{
+         courseId:mongoose.Schema.Types.ObjectId,
+         orgGuestUserName: String
+    }],
      gender :{
         type: String,
         reequired: true,

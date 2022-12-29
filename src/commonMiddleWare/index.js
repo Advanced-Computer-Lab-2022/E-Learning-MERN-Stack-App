@@ -72,7 +72,7 @@ exports.addVideoNote = (req, res) => {
    } 
 }
 
-exports.editBio = (req, res) => {
+exports.editInfo= (req, res) => {
     const oldToken = req.headers.authorization;
     const user = jwt.verify(oldToken, process.env.JWT_SECRET);
     const _userName = req.body.userName;
