@@ -23,44 +23,44 @@ function App() {
   const [cookies] = useCookies(['userCookie']);
   const [navIdx, setNavIdx] = useState(0);
   const navIdxValue = { navIdx, setNavIdx };
-  const [view, setView] = useState((cookies['userCookie'] !== undefined ? 'user' : 'guest'));
+  const [view, setView] = useState('guest');// ((cookies['userCookie'] !== undefined ? 'user' : 'guest'));
   const viewValue = { view, setView };
 
   // Deafulttt
-  // const [user, setUser] = useState(cookies['userCookie'] !== undefined ? cookies['userCookie'] : {});
+  const [user, setUser] = useState(cookies['userCookie'] !== undefined ? cookies['userCookie'] : {});
   // For Testing
-  const [user, setUser] = useState({
-    userName: "dummy123",
-    firstName: "Dummy",
-    lastName: "User",
-    email: "cobof71486@haikido.com",
-    gender: "Male",
-    role: "user",
-    walletBalance: 145.25,
-    coursesOwned: ['crs-1011', 'crs-1012', 'crs-1016'],
-    notes: [],
-    grades: [
-      {
-        testId: 'tst-01-crs-1011',
-        testGrade: 80
-      }, {
-        testId: 'tst-02-crs-1011',
-        testGrade: 67
-      }
-    ],
-    progress: [
-      {
-        crsId: 'crs-1011',
-        prog: 30
-      }, {
-        crsId: 'crs-1016',
-        prog: 100
-      }
-    ],
-    country: "Egypt",
-    favoriteLanguage: "English",
-    bio: "I am a dummy user, Created for testing.",
-  });
+  // const [user, setUser] = useState({
+  //   userName: "dummy123",
+  //   firstName: "Dummy",
+  //   lastName: "User",
+  //   email: "cobof71486@haikido.com",
+  //   gender: "Male",
+  //   role: "user",
+  //   walletBalance: 145.25,
+  //   coursesOwned: ['crs-1011', 'crs-1012', 'crs-1016'],
+  //   notes: [],
+  //   grades: [
+  //     {
+  //       testId: 'tst-01-crs-1011',
+  //       testGrade: 80
+  //     }, {
+  //       testId: 'tst-02-crs-1011',
+  //       testGrade: 67
+  //     }
+  //   ],
+  //   progress: [
+  //     {
+  //       crsId: 'crs-1011',
+  //       prog: 30
+  //     }, {
+  //       crsId: 'crs-1016',
+  //       prog: 100
+  //     }
+  //   ],
+  //   country: "Egypt",
+  //   favoriteLanguage: "English",
+  //   bio: "I am a dummy user, Created for testing.",
+  // });
   const userValue = { user, setUser };
 
   return (

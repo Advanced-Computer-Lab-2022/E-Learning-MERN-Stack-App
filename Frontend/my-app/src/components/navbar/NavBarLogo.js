@@ -9,7 +9,7 @@ const NavBarLogo = () => {
     return (
         <div className="text-3xl font-bold leading-none cursor-pointer" href="#" onClick={() => {
             setNavIdx(0)
-            if (user.username === undefined)
+            if (user.userName === undefined)
                 setView('guest')
             else
                 setView('user')

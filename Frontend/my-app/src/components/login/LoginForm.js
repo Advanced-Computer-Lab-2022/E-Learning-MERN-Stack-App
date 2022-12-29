@@ -6,7 +6,7 @@ import axios from 'axios'
 import { useCookies } from 'react-cookie';
 
 const LoginForm = () => {
-    const { setUser } = useContext(UserInfoContext);
+    const { user, setUser } = useContext(UserInfoContext);
     const { setNavIdx } = useContext(NavStateContext);
     const { view, setView } = useContext(CurrentViewContext);
     const [cookies, setCookie] = useCookies(['token']);
@@ -18,53 +18,93 @@ const LoginForm = () => {
     });
     const [errorMessage, setErrorMessage] = useState("");
     const [api, setApi] = useState('http://localhost:8000/api/guest/signin');
+    const [apis, setApis] = useState([
+        'http://localhost:8000/api/guest/signin',
+        'http://localhost:8000/api/instructor/signin',
+        'http://localhost:8000/api/admin/signin'
+    ])
     // var userRole = 'individualTrainee';
     const [userRole, setUserRole] = useState('individualTrainee');
 
-    async function handleSubmit(e) {
-        await axios.post(api, authenticationInfo)
-            .then((response) => {
-                console.log(response);
-
-                let userToBeSet = response.data.guest;
-                switch (userRole) {
-                    case 'individualTrainee':
-                        userToBeSet = response.data.guest;
-                        break;
-                    case 'corporateTrainee':
-                        userToBeSet = response.data.guest;
-                        break;
-                    case 'instructor':
-                        userToBeSet = response.data.instructor;
-                        break;
-                    case 'admin':
-                        userToBeSet = response.data.admin;
-                        break;
-                    default:
-                }
-                // if (userToBeSet !== undefined)
-                setUser(userToBeSet);
-                setNavIdx(0);
-                setView('user');
-                setCookie('token', response.data.token, { path: '/' });
-                setCookie('userCookie', JSON.stringify(userToBeSet));
-                // console.log(cookies['userCookie']);
-                // console.log(`token cookie: ${cookies.token}`);
-            })
-            .catch((error) => {
-                console.log(error);
-                switch (error.code) {
-                    case 'ERR_BAD_REQUEST':
-                        setErrorMessage('Username or password is incorrect, please try again');
-                        break;
-                    case 'ERR_NETWORK':
-                        setErrorMessage(`Please make sure you're connected to the internet`);
-                        break;
-                    default:
-                }
-            });
-
+    function handleSubmit() {
+        for (let i = 0; i < apis.length; ++i) {
+            axios.post(apis[i], authenticationInfo)
+                .then((res) => {
+                    console.log(res);
+                    if (res.data.guest !== undefined) {
+                        setUser(res.data.guest);
+                    }
+                    else if (res.data.instructor !== undefined) {
+                        setUser(res.data.instructor);
+                    }
+                    else if (res.data.admin !== undefined) {
+                        setUser(res.data.admin);
+                    }
+                    console.log(user);
+                    setNavIdx(0);
+                    setView('user');
+                    setCookie('token', res.data.token, { path: '/' });
+                    setCookie('userCookie', JSON.stringify(user));
+                    return;
+                })
+                .catch((error) => {
+                    console.log(error);
+                    switch (error.code) {
+                        case 'ERR_BAD_REQUEST':
+                            setErrorMessage('Username or password is incorrect, please try again');
+                            break;
+                        case 'ERR_NETWORK':
+                            setErrorMessage(`Please make sure you're connected to the internet`);
+                            break;
+                        default:
+                    }
+                })
+        }
     }
+
+
+    // async function handleSubmit(e) {
+    //     await axios.post(api, authenticationInfo)
+    //         .then((response) => {
+    //             console.log(response);
+
+    //             let userToBeSet = response.data.guest;
+    //             switch (userRole) {
+    //                 case 'individualTrainee':
+    //                     userToBeSet = response.data.guest;
+    //                     break;
+    //                 case 'corporateTrainee':
+    //                     userToBeSet = response.data.guest;
+    //                     break;
+    //                 case 'instructor':
+    //                     userToBeSet = response.data.instructor;
+    //                     break;
+    //                 case 'admin':
+    //                     userToBeSet = response.data.admin;
+    //                     break;
+    //                 default:
+    //             }
+    //             // if (userToBeSet !== undefined)
+    //             setUser(userToBeSet);
+    //             setNavIdx(0);
+    //             setView('user');
+    //             setCookie('token', response.data.token, { path: '/' });
+    //             setCookie('userCookie', JSON.stringify(userToBeSet));
+    //         })
+    //         .catch((error) => {
+    //             console.log(error);
+    //             switch (error.code) {
+    //                 case 'ERR_BAD_REQUEST':
+    //                     setErrorMessage('Username or password is incorrect, please try again');
+    //                     break;
+    //                 case 'ERR_NETWORK':
+    //                     setErrorMessage(`Please make sure you're connected to the internet`);
+    //                     break;
+    //                 default:
+    //             }
+    //         });
+
+    // }
 
     function handleUsernameChange(e) {
         setAuthenticationInfo({
@@ -124,7 +164,7 @@ const LoginForm = () => {
                     <input type="password" className=" flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Password" onChange={e => handlePasswordChange(e)} />
                 </div>
             </div>
-            <div className="flex flex-col pt-4 mb-5">
+            {/* <div className="flex flex-col pt-4 mb-5">
                 <div className="flex relative ">
                     <span className=" inline-flex  items-center px-3 border-t bg-white border-l border-b  border-gray-300 text-gray-500 shadow-sm text-sm">
                         <svg width="15" height="15" fill="currentColor" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
@@ -140,22 +180,9 @@ const LoginForm = () => {
                         <option value="admin">Admin</option>
                     </select>
                 </div>
-            </div>
+            </div> */}
             <button type="button" className="w-full px-4 py-2 text-base font-semibold text-center text-white transition duration-200 ease-in bg-blue-500 shadow-md hover:text-black hover:bg-white focus:outline-none focus:ring-2"
                 onClick={(e) =>
-                    // const getUser = {
-                    //     email: "minahannalla@domain.com",
-                    //     country: "Egypt",
-                    //     favoriteLanguage: "English",
-                    //     firstName: "Mina",
-                    //     lastName: "Hannalla",
-                    //     username: "mina.hannalla123",
-                    //     bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vulputate felis eget risus tempus, a faucibus ex posuere. Ut aliquam consequat metus at maximus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae semper dui. Curabitur hendrerit sed enim sit amet pulvinar.",
-                    //     ownedCoursesIdxs: [1052, 1514, 1236]
-                    // }
-                    // setUser(getUser);
-                    // setNavIdx(0);
-                    // setView('user')
                     handleSubmit(e)
                 }
             >
