@@ -172,6 +172,13 @@ const MainNavList = () => {
                     </>
                     : ''
             }
+            <>
+                <MainNavListSeparator />
+                <MainNavListItem
+                    text={"Most Popular"}
+                    href="#"
+                    myIdx={1024} />
+            </>
         </ul>
     )
 }

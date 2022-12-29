@@ -15,6 +15,7 @@ import TraineeCoursesITake from '../components/TraineeCoursesITake/TraineeCourse
 import InstructorViewReviews from '../components/InstructorViewReviews/InstructorViewReviews'
 import { navbar } from '@material-tailwind/react';
 import InstructorAddSection from '../components/InstructorAddSection/InstructorAddSection';
+import ViewMostPopular from '../components/ViewMostPopular/ViewMostPopular';
 
 const UserPage = () => {
     const { navIdx } = useContext(NavStateContext);
@@ -35,6 +36,7 @@ const UserPage = () => {
                 <InstructorAddSection visible={navIdx === 67} />
                 <AdminDashboard visible={navIdx === 128} />
                 <TraineeCoursesITake visible={navIdx === 512} />
+                <ViewMostPopular visible={navIdx === 1024} />
             </LoggedInLayout>
         )
 }

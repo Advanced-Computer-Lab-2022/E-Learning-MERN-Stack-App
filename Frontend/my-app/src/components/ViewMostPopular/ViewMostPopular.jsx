@@ -1,14 +1,14 @@
 import axios from 'axios';
 import React, { useContext, useState } from 'react'
 import { useEffect } from 'react';
-import CourseCard from './CourseCard'
-import CourseCardsWrapper from './CourseCardsWrapper'
-import CoursesHolder from './CoursesHolder'
+import CourseCard from '../homepage/CourseCard'
+import CourseCardsWrapper from '../homepage/CourseCardsWrapper'
+import CoursesHolder from '../homepage/CoursesHolder'
 import CourseContext from '../../context/CourseContext';
 import { FiltersContext } from '../../context/FiltersContext';
 // import AllCourses from '../../context/AllCoursesContext';
 
-const Homepage = ({ visible }) => {
+const ViewMostPopular = ({ visible }) => {
 
     const [courses, setCourses] = useState([]);
     let {
@@ -108,12 +108,18 @@ const Homepage = ({ visible }) => {
                                                 || course.description.toLowerCase().includes(search.toLowerCase()))
                                             .filter(course => course.price >= minPrice && course.price <= maxPrice)
                                             .filter(course => {
-                                                if (selectedCategory === '') return true
-                                                return course.category === selectedCategory
+                                                if (selectedCategory === '') return true;
+                                                return course.category === selectedCategory;
                                             })
                                             .filter(course => {
-                                                if (rating === -1) return true
-                                                return course.rating === rating
+                                                if (rating === -1) return true;
+                                                return course.rating === rating;
+                                            })
+                                            .filter(course => {
+                                                if (mostPopular)
+                                                    // https://www.w3resource.com/javascript-exercises/javascript-array-exercise-34.php
+                                                    return course.numberOfStudents >= nthlargest(courses.map(course => course.numberOfStudents), 3);
+                                                return false;
                                             })
                                             .map((course, index) =>
                                                 <CourseCard key={index} course={course} id={(course._id)} />
@@ -130,4 +136,4 @@ const Homepage = ({ visible }) => {
         )
 }
 
-export default Homepage
+export default ViewMostPopular

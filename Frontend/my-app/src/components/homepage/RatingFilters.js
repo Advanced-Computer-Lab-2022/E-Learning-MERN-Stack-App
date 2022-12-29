@@ -51,12 +51,12 @@ const RatingFilters = () => {
                     5 Stars
                 </label>
             </div>
-            <div className="px-16 py-1" onClick={() => { setSelected(5); setMostPopular(true) }}>
+            {/* <div className="px-16 py-1" onClick={() => { setSelected(5); setMostPopular(true) }}>
                 <input checked={selected === 4} className="appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-500 checked:border-blue-500 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" />
                 <label className="inline-block text-gray-800 cursor-pointer">
                     View Most Popular Courses
                 </label>
-            </div>
+            </div> */}
         </>
     )
 }
