@@ -23,7 +23,7 @@ function App() {
   const [cookies] = useCookies(['userCookie']);
   const [navIdx, setNavIdx] = useState(0);
   const navIdxValue = { navIdx, setNavIdx };
-  const [view, setView] = useState('guest');// ((cookies['userCookie'] !== undefined ? 'user' : 'guest'));
+  const [view, setView] = useState((cookies['userCookie'] !== undefined ? 'user' : 'guest'));
   const viewValue = { view, setView };
 
   // Deafulttt
