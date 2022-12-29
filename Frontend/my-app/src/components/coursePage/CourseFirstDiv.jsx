@@ -5,10 +5,10 @@ import WhatYouWillLearnListWrapper from './WhatYouWillLearnListWrapper'
 import CourseIncludesWrapper from './CourseIncludesWrapper'
 import CourseIncludesBulletPoint from './CourseIncludesBulletPoint'
 import CourseFirstDivPricing from './CourseFirstDivPricing'
+import ProgressBar from './ProgressBar'
 
 
-
-const CourseFirstDiv = ({ owned, courseObj }) => {
+const CourseFirstDiv = ({ owned, courseObj, progress}) => {
     const learnBullets = courseObj.whatYouWillLearnBullets.map((bullet) => <WhatYouWillLearnBulletPoint text={bullet} />)
     const includesBulles = courseObj.courseIncludes.map((bullet) => <CourseIncludesBulletPoint text={bullet} />)
     return (
@@ -29,9 +29,17 @@ const CourseFirstDiv = ({ owned, courseObj }) => {
                         <CourseIncludesWrapper>
                             {includesBulles}
                         </CourseIncludesWrapper>
+                        <ProgressBar 
+                            owned={owned}
+                            progress={progress}
+
+                        />
                     </div>
                 </div>
                 <CourseFirstDivPricing price={courseObj.price} owned={owned} />
+                
+
+
             </div>
         </div>
     )
