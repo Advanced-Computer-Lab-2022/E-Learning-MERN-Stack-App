@@ -115,6 +115,76 @@ const LoginForm = () => {
 
     }
 
+    async function handleSubmit1(e) {
+        await axios.post('http://localhost:8000/api/guest/signin', authenticationInfo)
+            .then((response) => {
+                console.log(response);
+                setUser(response.data?.guest);
+                setNavIdx(0);
+                setView('user');
+                setCookie('token', response.data.token, { path: '/' });
+                setCookie('userCookie', JSON.stringify(response.data?.guest));
+            })
+            .catch((error) => {
+                console.log(error);
+                switch (error.code) {
+                    case 'ERR_BAD_REQUEST':
+                        setErrorMessage('Username or password is incorrect, please try again');
+                        break;
+                    case 'ERR_NETWORK':
+                        setErrorMessage(`Please make sure you're connected to the internet`);
+                        break;
+                    default:
+                }
+            });
+    }
+    async function handleSubmit2(e) {
+        await axios.post('http://localhost:8000/api/instructor/signin', authenticationInfo)
+            .then((response) => {
+                console.log(response);
+                setUser(response.data?.instructor);
+                setNavIdx(0);
+                setView('user');
+                setCookie('token', response.data.token, { path: '/' });
+                setCookie('userCookie', JSON.stringify(response.data?.instructor));
+            })
+            .catch((error) => {
+                console.log(error);
+                switch (error.code) {
+                    case 'ERR_BAD_REQUEST':
+                        setErrorMessage('Username or password is incorrect, please try again');
+                        break;
+                    case 'ERR_NETWORK':
+                        setErrorMessage(`Please make sure you're connected to the internet`);
+                        break;
+                    default:
+                }
+            });
+    }
+    async function handleSubmit3(e) {
+        await axios.post('http://localhost:8000/api/admin/signin', authenticationInfo)
+            .then((response) => {
+                console.log(response);
+                setUser(response.data?.admin);
+                setNavIdx(0);
+                setView('user');
+                setCookie('token', response.data.token, { path: '/' });
+                setCookie('userCookie', JSON.stringify(response.data?.admin));
+            })
+            .catch((error) => {
+                console.log(error);
+                switch (error.code) {
+                    case 'ERR_BAD_REQUEST':
+                        setErrorMessage('Username or password is incorrect, please try again');
+                        break;
+                    case 'ERR_NETWORK':
+                        setErrorMessage(`Please make sure you're connected to the internet`);
+                        break;
+                    default:
+                }
+            });
+    }
+
     function handleUsernameChange(e) {
         setAuthenticationInfo({
             ...authenticationInfo,
@@ -173,7 +243,7 @@ const LoginForm = () => {
                     <input type="password" className=" flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Password" onChange={e => handlePasswordChange(e)} />
                 </div>
             </div>
-            <div className="flex flex-col pt-4 mb-5">
+            {/* <div className="flex flex-col pt-4 mb-5">
                 <div className="flex relative ">
                     <span className=" inline-flex  items-center px-3 border-t bg-white border-l border-b  border-gray-300 text-gray-500 shadow-sm text-sm">
                         <svg width="15" height="15" fill="currentColor" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
@@ -189,10 +259,14 @@ const LoginForm = () => {
                         <option value="admin">Admin</option>
                     </select>
                 </div>
-            </div>
+            </div> */}
             <button type="button" className="w-full px-4 py-2 text-base font-semibold text-center text-white transition duration-200 ease-in bg-blue-500 shadow-md hover:text-black hover:bg-white focus:outline-none focus:ring-2"
-                onClick={(e) =>
-                    handleSubmit(e)
+                onClick={(e) => {
+                    // handleSubmit(e)
+                    handleSubmit1(e);
+                    handleSubmit2(e);
+                    handleSubmit3(e);
+                }
                 }
             >
                 <span className="w-full">
