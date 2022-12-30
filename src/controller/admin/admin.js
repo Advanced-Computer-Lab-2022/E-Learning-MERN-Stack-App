@@ -1,8 +1,9 @@
-const   Guest  = require("../../models/guest");
-const   Instructor  = require("../../models/instructor");
-const  OrgGuest  = require('../../models/orgGuest');
+const Guest  = require("../../models/guest");
+const Instructor  = require("../../models/instructor");
 const  Admin  = require("../../models/admin");
+const AdminCourseRequests = require("../../models/adminCourseRequests");
 const jwt = require('jsonwebtoken');
+
 
 
 exports.isAdmin = (req, res, next) => {
@@ -215,6 +216,16 @@ exports.addInstructor = async (req, res) => {
         }
     }
 };
+
+exports.viewAllCourseRequests = (req, res) => {
+    AdminCourseRequests.find()
+    .exec((error, requests) => {
+        if(error) return res.status(400).json({
+            message: 'an error occured' 
+        });
+        if(requests) return res.status(200).json({requests});
+    });
+}
 
 
 

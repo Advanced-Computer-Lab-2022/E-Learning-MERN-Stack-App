@@ -36,32 +36,32 @@ exports.signin = (req, res) => {
     });
 };
 exports.createCourse = (req, res) => {
-    const _course = new Course({
-        title: req.body.title,
-        description: req.body.description,
-        category: req.body.category,
-        whatYouWillLearnBullets:req.body.whatYouWillLearnBullets,
-        courseIncludes: req.body.courseIncludes,
-        price: req.body.price,
-        previewVideoURL:req.body.previewVideoURL,
-        previewVideoTitle: req.body.previewVideoTitle,
-        createdBy: req.user.userName,
-        sections: req.body.sections,
-        faqs: req.body.faqs,
-        discount: req.body.discount,
-        number : req.body.number
+   const _course = new Course({
+   title: req.body.title,
+   description: req.body.description,
+   category: req.body.category,
+   price: req.body.price,
+   previewVideoTitle: req.body.previewVideoTitle,
+   previewVideoURL: req.body.previewVideoURL,
+   discount: req.body.discount,
+   whatYouWillLearnBullets: req.body.whatYouWillLearnBullets,
+   courseIncludes: req.body.courseIncludes,
+   createdBy: req.user.userName
+       // sections: req.body.sections,
+        //faqs: req.body.faqs,
+       
       });
       _course.save((error, course) => {
-          if(error) res.status(400).json({message:"an error occured"});
-          if(course) res.status(201).json({message: "course created successfuly...!"});
+          if(error) return res.status(400).json({message:"an error occured"});
+          if(course) return res.status(201).json({message: "course created successfuly...!"});
         });
 };
 
 exports.getCourses = (req, res) => {
     Course.find({createdBy: req.user.userName})
         .exec((error, courses) => {
-            if(error) res.status(400).json({message:"an error occured"});
-            if(courses) res.status(200).json(courses);
+            if(error) return  res.status(400).json({message:"an error occured"});
+            if(courses)return  res.status(200).json(courses);
         });
 }
 

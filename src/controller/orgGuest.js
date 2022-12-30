@@ -1,5 +1,6 @@
 const OrgGuest = require('../models/orgGuest');
 const Course = require('../models/course');
+const AdminCourseRequests = require('../models/adminCourseRequests');
 const jwt = require('jsonwebtoken');
 
 
@@ -50,4 +51,24 @@ exports.viewMyCourses = (req, res) => {
          return res.status(200).json({myCourses});
      }
 });
+}
+
+exports.requestCourse  = (req, res) => {
+    const _request = new AdminCourseRequests({
+        orgGuestUserName: req.user.userName,
+        course : req.body.id
+    }); 
+    _request.save((error, request) => {
+    if(error) return res.status(400).json({message:"an error occured"});
+    if(request) return res.status(201).json({message: "request sent successfuly...!"});
+    });
+}
+exports.viewMyCourseRequests = (req, res) => {
+    AdminCourseRequests.find({orgGuestUserName: req.body.userName})
+    .exec((error, requests) => {
+        if(error) return res.status(400).json({
+            message: 'an error occured' 
+        });
+        if(requests) return res.status(200).json({requests});
+    });
 }

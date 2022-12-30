@@ -12,7 +12,7 @@ const courseSchema = new mongoose.Schema({
         },
         previewVideoURL: String,
         previewVideoTitle: String, 
-        createdBy:{type:mongoose.Schema.Types.String, ref : "instructor"}, 
+        createdBy: String, 
         sections: [
             {
                 idx: Number,
@@ -53,26 +53,26 @@ const courseSchema = new mongoose.Schema({
             type:Number,
             default:0
         }, 
-totalHours: {
-    type: Number,
-    default: function () {
-        let totalHours = 0;
-        for(let i=0; i<this.sections.length; i++) {
-            totalHours += this.sections[i].hours;
-        }
-        return totalHours;
-    }
-},
-rating: {
-    type: Number,
-    default: function () {
-        let rating= 0;
-        for(let i=0; i<this.ratingsAndReviews.length; i++) {
-            rating += this.ratingsAndReviews[i].reviewerRating;
-        }
-        return rating / this.ratingsAndReviews.length;
-    }
-},
+// totalHours: {
+//     type: Number,
+//     default: function () {
+//         let totalHours = 0;
+//         for(let i=0; i<this.sections.length; i++) {
+//             totalHours += this.sections[i].hours;
+//         }
+//         return totalHours;
+//     }
+// },
+// rating: {
+//     type: Number,
+//     default: function () {
+//         let rating= 0;
+//         for(let i=0; i<this.ratingsAndReviews.length; i++) {
+//             rating += this.ratingsAndReviews[i].reviewerRating;
+//         }
+//         return rating / this.ratingsAndReviews.length;
+//     }
+// },
 currentPrice : {
     type: Number,
     default: function () {
