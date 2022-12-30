@@ -37,15 +37,19 @@ exports.signin = (req, res) => {
 };
 exports.createCourse = (req, res) => {
     const _course = new Course({
-        name: req.body.name,
         title: req.body.title,
         description: req.body.description,
-        shortVideo:req.body.shortVideo,
-        price: req.body.price,
-        createdBy: req.user.userName,
         category: req.body.category,
-        chapters: req.body.chapters
-        
+        whatYouWillLearnBullets:req.body.whatYouWillLearnBullets,
+        courseIncludes: req.body.courseIncludes,
+        price: req.body.price,
+        previewVideoURL:req.body.previewVideoURL,
+        previewVideoTitle: req.body.previewVideoTitle,
+        createdBy: req.user.userName,
+        sections: req.body.sections,
+        faqs: req.body.faqs,
+        discount: req.body.discount,
+        number : req.body.number
       });
       _course.save((error, course) => {
           if(error) res.status(400).json({message:"an error occured"});
@@ -55,8 +59,17 @@ exports.createCourse = (req, res) => {
 
 exports.getCourses = (req, res) => {
     Course.find({createdBy: req.user.userName})
-        .exec((error, course) => {
+        .exec((error, courses) => {
             if(error) res.status(400).json({message:"an error occured"});
-            if(course) res.status(200).json(course);
+            if(courses) res.status(200).json(courses);
         });
+}
+
+exports.getRatingsAndreviews = (req, res) => {
+    Instructor.findOne({user: req.user.userName})
+    .exec((error, instructor) => {
+        if(error) res.status(400).json({message:"an error occured"});
+        if(instructor) res.status(200).json(instructor);
+    });
+
 }

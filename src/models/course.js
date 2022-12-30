@@ -3,6 +3,7 @@ const courseSchema = new mongoose.Schema({
 
         title: String,
         description: String,
+        category : String,
         whatYouWillLearnBullets: [String],
         courseIncludes: [String],
         price:{
@@ -10,13 +11,8 @@ const courseSchema = new mongoose.Schema({
             default: 0
         },
         previewVideoURL: String,
-        previewVideoTitle: String,
-        rating: Number,
-        numberOfRatings: {
-            type: Number,
-            default: 0
-        },
-        createdBy:{type:mongoose.Schema.Types.String, ref:"instructor"}, 
+        previewVideoTitle: String, 
+        createdBy:{type:mongoose.Schema.Types.String, ref : "instructor"}, 
         sections: [
             {
                 idx: Number,
@@ -26,20 +22,25 @@ const courseSchema = new mongoose.Schema({
                 lesson: {
                     video: String,
                     title: String,
-                    opened: {
-                        type:Boolean,
-                        default: false
+                 },
+                test:[
+                    {
+                        idx:Number,
+                        quesDesc:String,
+                        topicNumber:String,
+                        topicName:String,
+                        answer1:String,
+                        answer2:String,
+                        answer3:String,
+                        answer4:String,
+                        correctAnswer:Number
                     }
-                },
-                testId: {
-                    type:String,
-                    unique: true
-                }
-            }
+                ]
+            } // end section
         ],
-        reviews: [
+        ratingsAndReviews: [
             {
-                reviewerName: String,
+                reviewerUserName: String,
                 reviewerImgURL: String,
                 reviewerReview: String,
                 reviewerRating: Number,
@@ -63,11 +64,21 @@ totalHours: {
         return totalHours;
     }
 },
-boughtBy:{
+rating: {
+    type: Number,
+    default: function () {
+        let rating= 0;
+        for(let i=0; i<this.ratingsAndReviews.length; i++) {
+            rating += this.ratingsAndReviews[i].reviewerRating;
+        }
+        return rating / this.ratingsAndReviews.length;
+    }
+},
+ number:{
     type: Number,
     default: 0
 },
-finalPrice : {
+currentPrice : {
     type: Number,
     default: function () {
         return this.price * (1-this.discount);

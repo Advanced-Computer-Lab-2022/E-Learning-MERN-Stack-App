@@ -51,25 +51,38 @@ const instructorSchema = new mongoose.Schema({
          required: true,
      },
      courses:[{type:mongoose.Schema.Types.ObjectId, ref:"course"}],
-     rating:[{
-         traineeUserName: String,
-         traineeRole: String,
-         ratingValue: Number
-
-     }],
-     totalRating: {
+     ratingsAndReviews: [
+        {
+            reviewerUserName: String,
+            reviewerImgURL: String,
+            reviewerReview: String,
+            reviewerRating: Number,
+        }
+    ],
+    rating: {
         type: Number,
         default: function () {
-            let totalRating = 0;
-            for(let i=0; i<this.rating.length; i++) {
-                totalRating += this.rating[i].ratingValue;
+            let rating= 0;
+            for(let i=0; i<this.ratingsAndReviews.length; i++) {
+                rating += this.ratingsAndReviews[i].reviewerRating;
             }
-            return totalRating;
+            return rating / this.ratingsAndReviews.length;
         }
     },
-     numberOfCourses: Number,
-     numberOfStudents:Number,
-     totalEarnings:Number,
+     numberOfCourses:{
+         type: Number,
+         default: function () {
+        return this.courses.length;
+     }
+     },
+     numberOfStudents:{
+         type:Number,
+         default:0
+     },
+     totalEarnings:{
+         type:Number,
+         default:0
+     },
 }, {timestamps : true});
 
 

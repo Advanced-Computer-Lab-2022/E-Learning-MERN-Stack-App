@@ -23,7 +23,6 @@ const adminSchema = new mongoose.Schema({
         unique : true,
         index : true,
         lowercase : true
-       
     },
     role: {
         type:String,
