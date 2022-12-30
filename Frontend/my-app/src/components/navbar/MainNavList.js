@@ -137,7 +137,7 @@ const MainNavList = () => {
                     : ''
             }
             {
-                (user.role === 'admin')
+                (user.role === 'admin' || user.role === 'instructor')
                     ?
                     <>
                         <MainNavListSeparator />

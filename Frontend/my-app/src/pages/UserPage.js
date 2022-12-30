@@ -16,6 +16,7 @@ import InstructorViewReviews from '../components/InstructorViewReviews/Instructo
 import { navbar } from '@material-tailwind/react';
 import InstructorAddSection from '../components/InstructorAddSection/InstructorAddSection';
 import ViewMostPopular from '../components/ViewMostPopular/ViewMostPopular';
+import SetPromotion from '../components/SetPromotion/SetPromotion';
 
 const UserPage = () => {
     const { navIdx } = useContext(NavStateContext);
@@ -35,6 +36,7 @@ const UserPage = () => {
                 <InstructorCreateCourse visible={navIdx === 66} />
                 <InstructorAddSection visible={navIdx === 67} />
                 <AdminDashboard visible={navIdx === 128} />
+                <SetPromotion visible={navIdx === 131} />
                 <TraineeCoursesITake visible={navIdx === 512} />
                 <ViewMostPopular visible={navIdx === 1024} />
             </LoggedInLayout>
