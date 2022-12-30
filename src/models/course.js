@@ -1,11 +1,15 @@
 const mongoose = require('mongoose');
 const courseSchema = new mongoose.Schema({
 
-        title: String,
-        description: String,
-        category : String,
-        whatYouWillLearnBullets: [String],
-        courseIncludes: [String],
+       title: String,
+       description: String,
+       category : String,
+       firstBullet: String,
+       secondBullet: String,
+       thirdBullet: String,
+       firstInclude: String,
+       secondInclude: String,
+       thirdInclude: String,
         price:{
             type: Number,
             default: 0
