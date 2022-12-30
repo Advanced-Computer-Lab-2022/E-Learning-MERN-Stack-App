@@ -23,8 +23,7 @@ const courseSchema = new mongoose.Schema({
                     video: String,
                     title: String,
                  },
-                test:[
-                    {
+                test:{
                         idx:Number,
                         quesDesc:String,
                         topicNumber:String,
@@ -34,8 +33,8 @@ const courseSchema = new mongoose.Schema({
                         answer3:String,
                         answer4:String,
                         correctAnswer:Number
-                    }
-                ]
+                    },
+                
             } // end section
         ],
         ratingsAndReviews: [
@@ -73,10 +72,6 @@ rating: {
         }
         return rating / this.ratingsAndReviews.length;
     }
-},
- number:{
-    type: Number,
-    default: 0
 },
 currentPrice : {
     type: Number,
