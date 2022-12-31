@@ -15,7 +15,6 @@ const orgGuestSchema = new mongoose.Schema({
         min : 2,
         max : 25
     },
-    company : String,
     userName : {
         type : String,
         required : true,
@@ -38,17 +37,6 @@ const orgGuestSchema = new mongoose.Schema({
         unique : true,
         lowercase : true
      },
-     watching: {
-        state:{
-            type:Boolean,
-            default: false 
-        },
-        videoId: String,
-        notes:{//keyvalue pair (key:videoId, value: Note)
-            type: Map,
-            of: String
-        }
-    },
      imgURL:String,
      hash_password : {
          type : String,
@@ -62,7 +50,7 @@ const orgGuestSchema = new mongoose.Schema({
      requestedCourses:[{type:mongoose.Schema.Types.ObjectId, ref:"course"}],
      gender :{
         type: String,
-        reequired: true,
+        required: true,
     },
 }, {timestamps : true});
 
@@ -72,9 +60,6 @@ orgGuestSchema.virtual('password')
     this.hash_password = bcrypt.hashSync(password, 10);
 
 });
-orgGuestSchema.virtual('fullname').get(function(){
-    return `${this.firstName} ${this.lastName}`;
-})
 orgGuestSchema.methods = {
      authenticate : async function(password) {
          return await bcrypt.compare(password, this.hash_password)

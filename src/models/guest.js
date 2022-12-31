@@ -34,18 +34,6 @@ const guestSchema = new mongoose.Schema({
         default:0
     },
     courses:[{type:mongoose.Schema.Types.ObjectId, ref:"course"}],
-    watching: {
-        state:{
-            type:Boolean,
-            default: false 
-        },
-        videoId: String,
-     
-    },
-    notes:{//keyvalue pair (key:videoId, value: Note) && to be tested
-        type: Map,
-        of: String
-    },
 
     email : {
         type : String,
@@ -72,9 +60,7 @@ guestSchema.virtual('password')
     this.hash_password = bcrypt.hashSync(password, 10);
 
 });
-guestSchema.virtual('fullname').get(function(){
-    return `${this.firstName} ${this.lastName}`;
-});
+
  guestSchema.methods = {
      authenticate : async function(password) {
          return await bcrypt.compare(password, this.hash_password)
