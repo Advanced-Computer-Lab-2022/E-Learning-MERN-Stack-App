@@ -28,7 +28,7 @@ const MainNavList = () => {
                 myIdx={2}
             /> */}
             {
-                (user.role === 'normalTrainee' || user.role === 'corporateTrainee' || user.role === 'instructor')
+                (user.role === 'individualTrainee' || user.role === 'corporateTrainee' || user.role === 'instructor')
                     ?
                     <>
                         <MainNavListSeparator />
@@ -88,7 +88,7 @@ const MainNavList = () => {
                     </>
                     : ''
             }
-            {
+            {/* {
                 (user.role === 'instructor')
                     ?
                     <>
@@ -99,7 +99,7 @@ const MainNavList = () => {
                             myIdx={68} />
                     </>
                     : ''
-            }
+            } */}
             {
                 (user.role === 'admin')
                     ?
@@ -149,19 +149,20 @@ const MainNavList = () => {
                     : ''
             }
             {
-                (user.role === 'corporateTrainee')
+                // (user.role === 'corporateTrainee')
+                true
                     ?
                     <>
                         <MainNavListSeparator />
                         <MainNavListItem
-                            text={"Request access"}
+                            text={"Request Course access ^^"}
                             href="#"
                             myIdx={256} />
                     </>
                     : ''
             }
             {
-                (user.role === 'normalTrainee' || user.role === 'corporateTrainee')
+                (user.role === 'individualTrainee' || user.role === 'corporateTrainee')
                     ?
                     <>
                         <MainNavListSeparator />
