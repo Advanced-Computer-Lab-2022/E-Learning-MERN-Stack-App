@@ -184,6 +184,29 @@ const LoginForm = () => {
                 }
             });
     }
+    async function handleSubmit4(e) {
+        await axios.post('http://localhost:8000/api/orgGuest/signin', authenticationInfo)
+            .then((response) => {
+                console.log(response);
+                setUser(response.data?.orgGuest);
+                setNavIdx(0);
+                setView('user');
+                setCookie('token', response.data.token, { path: '/' });
+                setCookie('userCookie', JSON.stringify(response.data?.orgGuest));
+            })
+            .catch((error) => {
+                console.log(error);
+                switch (error.code) {
+                    case 'ERR_BAD_REQUEST':
+                        setErrorMessage('Username or password is incorrect, please try again');
+                        break;
+                    case 'ERR_NETWORK':
+                        setErrorMessage(`Please make sure you're connected to the internet`);
+                        break;
+                    default:
+                }
+            });
+    }
 
     function handleUsernameChange(e) {
         setAuthenticationInfo({
@@ -266,6 +289,7 @@ const LoginForm = () => {
                     handleSubmit1(e);
                     handleSubmit2(e);
                     handleSubmit3(e);
+                    handleSubmit4(e);
                 }
                 }
             >
