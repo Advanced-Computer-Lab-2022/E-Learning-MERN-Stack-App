@@ -6,7 +6,7 @@ import { useState } from 'react'
 import { useCookies } from 'react-cookie';
 import UserInfoContext from '../../context/UserInfoContext';
 
-export default function SetPromotion() {
+export default function SetPromotion({ visible }) {
 
     const [toBeSent, setToBeSent] = useState({
         courseId: '',
@@ -63,31 +63,33 @@ export default function SetPromotion() {
                 console.log(response);
             })
     }
-    return (
 
-        <>
-            <div className='text-center'>
-                <select name="coursesChoice" className="flex-1 appearance-none border border-gray-300 w-1/3 py-2 px-4 bg-white text-gray-800 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" onChange={e => handleCoursesChoiceChange(e)} >
-                    <option disabled selected>Select Course</option>
-                    {
-                        courses.map(course => <option value={course._id}>{course.title}</option>)
+    if (visible)
+        return (
+            <>
+
+                <div className='text-center'>
+                    <select name="coursesChoice" className="flex-1 appearance-none border border-gray-300 w-1/3 py-2 px-4 bg-white text-gray-800 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" onChange={e => handleCoursesChoiceChange(e)} >
+                        <option disabled selected>Select Course</option>
+                        {
+                            courses.map(course => <option value={course._id}>{course.title}</option>)
+                        }
+                    </select>
+                    <div className='w-1/3 md:w-1/3 px-3 mx-auto text-center'>
+                        <label className='tracking-wide text-gray-700 text-xs font-bold mb-2' for='grid-text-1'>Please write a number from 0 to 100</label>
+                        <input className='appearance-none w-full bg-white text-gray-700 placeholder:text-gray-800 border border-gray-400 shadow-inner rounded-md py-3 px-4 leading-tight focus:outline-none  focus:border-gray-500' type='number' onClick={(e) => handlePromotionChange(e)} />
+                    </div>
+                    <button type="button" className="mb-12 mt-12 w/1/3 px-4 py-2 text-base font-semibold text-center text-white transition duration-200 ease-in bg-blue-500 shadow-md hover:text-black hover:bg-white focus:outline-none focus:ring-2" onClick={(e) => {
+                        if (user.role === 'admin') handleSubmitIfAdmin();
+                        if (user.role === 'instructor') handleSubmitIfInstructor();
                     }
-                </select>
-                <div className='w-1/3 md:w-1/3 px-3 mx-auto text-center'>
-                    <label className='tracking-wide text-gray-700 text-xs font-bold mb-2' for='grid-text-1'>Please write a number from 0 to 100</label>
-                    <input className='appearance-none w-full bg-white text-gray-700 placeholder:text-gray-800 border border-gray-400 shadow-inner rounded-md py-3 px-4 leading-tight focus:outline-none  focus:border-gray-500' type='number' onClick={(e) => handlePromotionChange(e)} />
+                    }>
+                        <span className="w-full">
+                            Set Discount
+                        </span>
+                    </button>
                 </div>
-                <button type="button" className="mb-12 mt-12 w/1/3 px-4 py-2 text-base font-semibold text-center text-white transition duration-200 ease-in bg-blue-500 shadow-md hover:text-black hover:bg-white focus:outline-none focus:ring-2" onClick={(e) => {
-                    if (user.role === 'admin') handleSubmitIfAdmin();
-                    if (user.role === 'instructor') handleSubmitIfInstructor();
-                }
-                }>
-                    <span className="w-full">
-                        Set Discount
-                    </span>
-                </button>
-            </div>
 
-        </>
-    )
+            </>
+        )
 }
