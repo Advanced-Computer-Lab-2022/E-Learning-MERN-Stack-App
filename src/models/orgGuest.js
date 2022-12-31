@@ -67,4 +67,4 @@ orgGuestSchema.methods = {
  };
 
 
-module.exports = mongoose.model('ORGGuest', orgGuestSchema); 
+module.exports = mongoose.model('OrgGuest', orgGuestSchema); 

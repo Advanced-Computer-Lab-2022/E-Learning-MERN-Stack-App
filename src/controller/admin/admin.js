@@ -1,4 +1,5 @@
 const Guest  = require("../../models/guest");
+const OrgGuest  = require("../../models/orgGuest");
 const Instructor  = require("../../models/instructor");
 const  Admin  = require("../../models/admin");
 const AdminCourseRequests = require("../../models/adminCourseRequests");
