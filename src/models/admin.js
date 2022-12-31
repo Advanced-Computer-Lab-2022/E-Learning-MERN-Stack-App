@@ -51,7 +51,7 @@ const adminSchema = new mongoose.Schema({
     }],
      gender :{
         type: String,
-        reequired: true,
+        required: true,
     },
 }, {timestamps : true});
 
