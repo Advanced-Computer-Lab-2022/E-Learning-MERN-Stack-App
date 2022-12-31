@@ -18,7 +18,7 @@ const CourseCard = ({ course, id }) => {
             <img alt="moto" src="./svg/courseDemoIcon.svg" className="absolute -right-5 -bottom-10 h-40 w-40 mb-4" />
             <div className="w-4/6">
                 <p className="text-gray-800 text-lg font-bold mb-2">
-                    {course.name}
+                    {course.title}
                 </p>
                 <p className="text-gray-600 text-lg">
                     {"Total Hours: " + course.totalHours}
