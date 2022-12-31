@@ -4,12 +4,12 @@ const OrgGuest = require('../models/orgGuest');
 const Insrtuctor = require('../models/instructor');
 const Course = require('../models/course');
 exports.requireSignin = (req, res, next) => {
-    if(req.headers.authorization){
+    if(req.headers.authorization) {
     const token = req.headers.authorization;
     const user = jwt.verify(token, process.env.JWT_SECRET);
     req.user = user;
     }
-    else{
+    else {
         return res.status(400).json({message: 'Athorization Required'});
     }
     next();
@@ -20,7 +20,7 @@ exports.requireSignin = (req, res, next) => {
 exports.changePassword = (req, res) => {
     const token = req.headers.authorization;
     const user = jwt.verify(token, process.env.JWT_SECRET);
-    if(user.role == "corporateTrainee"){
+    if(user.role == "corporateTrainee") {
         OrgGuest.findOneAndUpdate({email: req.body.email}, {password:req.body.password})
         .exec((error, result) => {
             if(error) return res.status(400).json({error});
@@ -81,74 +81,69 @@ exports.editInfo= (req, res) => {
     const _firstName = req.body.firstName;
     const _lastName = req.body.lastName;
     const _password = req.body.password;
-    let _bio;
-    if(user.role == "instructor") {
-        _bio = req.body.bio;
-        Insrtuctor.findByIdAndUpdate({userName:user.userName},
-             {userName:_userName},
-             {email:_email},
-             {password:_password},
-             {firstName:_firstName},
-             {lastName:_lastName},
-             {country:_country},
-             {bio:_bio})
+    if(user.role === "instructor") {
+        Insrtuctor.findOneAndUpdate({userName:req.user.userName},{
+            userName:_userName,
+            email:_email,
+            password:_password,
+            firstName:_firstName,
+            lastName:_lastName,
+            country:_country,
+            bio:req.body.bio
+            })
              .exec((error, instructor) => {
                 if(error) return res.status(400).json({error});
-                else if(instructor) {
+                if(instructor) {
                     const token = jwt.sign({_id:instructor._id, role: instructor.role, userName: instructor.userName}, process.env.JWT_SECRET, {expiresIn: '1d'});
-                    return res.status(200).json({message:"info edited successfuly"});
-
+                    return res.status(200).json({token});
                 }
              });
     }
-    else if(user.role == "admin") {
-        Admin.findByIdAndUpdate({userName:user.userName},
-            {userName:_userName},
-            {email:_email},
-            {password:_password},
-            {firstName:_firstName},
-            {lastName:_lastName},
-            {country:_country})
+    else if(user.role === "admin") {
+        Admin.findByIdAndUpdate({userName:user.userName},{
+            userName:_userName,
+            email:_email,
+            password:_password,
+            firstName:_firstName,
+            lastName:_lastName,
+            country:_country})
             .exec((error, admin) => {
                if(error) return res.status(400).json({error});
                else if(admin) {
                    const token = jwt.sign({_id:admin._id, role: admin.role, userName: admin.userName}, process.env.JWT_SECRET, {expiresIn: '1d'});
-                   return res.status(200).json({message:"info edited successfuly"});
-
-               }
+                   return res.status(200).json({token});
+                }
             });
-
     }
-    else if(user.role == "normalTrainee") {
-        Guest.findByIdAndUpdate({userName:user.userName},
-            {userName:_userName},
-            {email:_email},
-            {password:_password},
-            {firstName:_firstName},
-            {lastName:_lastName},
-            {country:_country})
+    else if(user.role === "individualTrainee") {
+        Guest.findByIdAndUpdate({userName:user.userName},{
+            userName:_userName,
+            email:_email,
+            password:_password,
+            firstName:_firstName,
+            lastName:_lastName,
+            country:_country})
             .exec((error, guest) => {
                if(error) return res.status(400).json({error});
                else if(guest) {
                    const token = jwt.sign({_id:guest._id, role: guest.role, userName: guest.userName}, process.env.JWT_SECRET, {expiresIn: '1d'});
-                   return res.status(200).json({message:"info edited successfuly"});
-
-               }
+                   return res.status(200).json({token});
+                }
             });
     }
-    else if(user.role == "corprateTrainee") {
-        OrgGuest.findByIdAndUpdate({userName:user.userName},
-            {userName:_userName},
-            {email:_email},
-            {password:_password},
-            {firstName:_firstName},
-            {lastName:_lastName},
-            {country:_country})
+    else if(user.role === "corprateTrainee") {
+        OrgGuest.findByIdAndUpdate({userName:user.userName},{
+            userName:_userName,
+            email:_email,
+            password:_password,
+            firstName:_firstName,
+            lastName:_lastName,
+            country:_country})
             .exec((error, orgGuest) => {
                if(error) return res.status(400).json({error});
                else if(orgGuest) {
                    const token = jwt.sign({_id:orgGuest._id, role: orgGuest.role, userName: orgGuest.userName}, process.env.JWT_SECRET, {expiresIn: '1d'});
-                   return res.status(200).json({message:"info edited successfuly"});
+                   return res.status(200).json({token});
 
                }
             });

@@ -3,20 +3,19 @@ const Course = require('../models/course');
 const jwt = require('jsonwebtoken');
 
 exports.isInstructor = (req, res, next) => {
-    if(req.user.role !== 'instructor'){
+    if(req.user.role !== 'instructor') {
         return res.status(400).json({message: 'Access Denied'});
     }
     next();
-
 };
 exports.signin = (req, res) => {
     Instructor.findOne({userName: req.body.userName})
     .exec(async(error, instructor) => {
         if(error) return res.status(400).json({error});
-        if(instructor){
+        if(instructor) {
             const passwordVerify = await instructor.authenticate(req.body.password);
 
-            if(passwordVerify){
+            if(passwordVerify) {
                 const token = jwt.sign({_id:instructor._id, role: instructor.role, userName: instructor.userName}, process.env.JWT_SECRET, {expiresIn: '1d'});
                 res.status(200).json({
                     token,
@@ -24,7 +23,7 @@ exports.signin = (req, res) => {
                 });
 
             }
-            else{
+            else {
                 return res.status(400).json({
                     message: 'Invalid password'
 
@@ -68,14 +67,12 @@ exports.getCourses = (req, res) => {
             if(courses)return  res.status(200).json(courses);
         });
 }
-
-exports.getRatingsAndreviews = (req, res) => {
+exports.getRatingsAndReviews = (req, res) => {
     Instructor.findOne({user: req.user.userName})
     .exec((error, instructor) => {
         if(error) res.status(400).json({message:"an error occured"});
         if(instructor) res.status(200).json(instructor);
     });
-
 }
 exports.viewAllCourseRequests = (req, res) => {
     AdminCourseRequests.find()
@@ -111,7 +108,6 @@ exports.removePromotions = (req, res) => {
     .exec((error, removed) => {
         if(error) return res.status(400).json({message: "error happened"});
         if(removed) return res.status(200).json({message:"error removed"});
-
     });
 }
 

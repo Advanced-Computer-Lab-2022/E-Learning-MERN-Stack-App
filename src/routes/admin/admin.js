@@ -13,7 +13,7 @@ router.post('/admin/signin', signin);
 router.post('/admin/addOrgGuest',requireSignin, isAdmin, addOrgGuest);
 router.post('/admin/addInstructor',requireSignin, isAdmin, addInstructor); 
 router.post('/admin/editInfo', requireSignin, editInfo);
-router.post('/admin/viewAllCourseRequests', requireSignin,isAdmin, viewAllCourseRequests);
+router.post('/admin/viewAllCourseRequests', requireSignin, isAdmin, viewAllCourseRequests);
 router.post('/admin/setPromotionsOnAll',requireSignin,isAdmin, setPromotionsOnAll);
 router.post('/admin/setSelectedPromotions',requireSignin,isAdmin, setSelectedPromotions);
 router.post('/admin/removePromotions',requireSignin,isAdmin, removePromotions);
