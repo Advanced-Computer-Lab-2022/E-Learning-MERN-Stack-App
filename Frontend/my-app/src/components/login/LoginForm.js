@@ -18,11 +18,11 @@ const LoginForm = () => {
     });
     const [errorMessage, setErrorMessage] = useState("");
     const [api, setApi] = useState('http://localhost:8000/api/guest/signin');
-    const [apis, setApis] = useState([
-        'http://localhost:8000/api/guest/signin',
-        'http://localhost:8000/api/instructor/signin',
-        'http://localhost:8000/api/admin/signin'
-    ])
+    // const [apis, setApis] = useState([
+    //     'http://localhost:8000/api/guest/signin',
+    //     'http://localhost:8000/api/instructor/signin',
+    //     'http://localhost:8000/api/admin/signin'
+    // ])
     // var userRole = 'individualTrainee';
     const [userRole, setUserRole] = useState('individualTrainee');
 
@@ -72,48 +72,48 @@ const LoginForm = () => {
     // }
 
 
-    async function handleSubmit(e) {
-        await axios.post(api, authenticationInfo)
-            .then((response) => {
-                console.log(response);
+    // async function handleSubmit(e) {
+    //     await axios.post(api, authenticationInfo)
+    //         .then((response) => {
+    //             console.log(response);
 
-                let userToBeSet = response.data.guest;
-                switch (userRole) {
-                    case 'individualTrainee':
-                        userToBeSet = response.data.guest;
-                        break;
-                    case 'corporateTrainee':
-                        userToBeSet = response.data.guest;
-                        break;
-                    case 'instructor':
-                        userToBeSet = response.data.instructor;
-                        break;
-                    case 'admin':
-                        userToBeSet = response.data.admin;
-                        break;
-                    default:
-                }
-                // if (userToBeSet !== undefined)
-                setUser(userToBeSet);
-                setNavIdx(0);
-                setView('user');
-                setCookie('token', response.data.token, { path: '/' });
-                setCookie('userCookie', JSON.stringify(userToBeSet));
-            })
-            .catch((error) => {
-                console.log(error);
-                switch (error.code) {
-                    case 'ERR_BAD_REQUEST':
-                        setErrorMessage('Username or password is incorrect, please try again');
-                        break;
-                    case 'ERR_NETWORK':
-                        setErrorMessage(`Please make sure you're connected to the internet`);
-                        break;
-                    default:
-                }
-            });
+    //             let userToBeSet = response.data.guest;
+    //             switch (userRole) {
+    //                 case 'individualTrainee':
+    //                     userToBeSet = response.data.guest;
+    //                     break;
+    //                 case 'corporateTrainee':
+    //                     userToBeSet = response.data.guest;
+    //                     break;
+    //                 case 'instructor':
+    //                     userToBeSet = response.data.instructor;
+    //                     break;
+    //                 case 'admin':
+    //                     userToBeSet = response.data.admin;
+    //                     break;
+    //                 default:
+    //             }
+    //             // if (userToBeSet !== undefined)
+    //             setUser(userToBeSet);
+    //             setNavIdx(0);
+    //             setView('user');
+    //             setCookie('token', response.data.token, { path: '/' });
+    //             setCookie('userCookie', JSON.stringify(userToBeSet));
+    //         })
+    //         .catch((error) => {
+    //             console.log(error);
+    //             switch (error.code) {
+    //                 case 'ERR_BAD_REQUEST':
+    //                     setErrorMessage('Username or password is incorrect, please try again');
+    //                     break;
+    //                 case 'ERR_NETWORK':
+    //                     setErrorMessage(`Please make sure you're connected to the internet`);
+    //                     break;
+    //                 default:
+    //             }
+    //         });
 
-    }
+    // }
 
     async function handleSubmit1(e) {
         await axios.post('http://localhost:8000/api/guest/signin', authenticationInfo)
