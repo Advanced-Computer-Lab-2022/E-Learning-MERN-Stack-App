@@ -713,7 +713,7 @@ const CoursePage = ({ navActiveState, setNavActiveState }) => {
     const { user } = useContext(UserInfoContext)
     const [courses, setCourses] = useState([]);
     const [intendedCourse, setIntendedCourse] = useState({});
-    const [cookies] = useCookies(['userCookie']);
+    const [cookies] = useCookies(['userCookie', 'courseId']);
 
     function getCategories() {
         return Array.from(new Set(courses.map(course => course.category)));
@@ -754,82 +754,61 @@ const CoursePage = ({ navActiveState, setNavActiveState }) => {
             if (course._id === courseId)
                 setIntendedCourse(course);
         })
-    })
-    const owned = checkIfOwned(user.coursesOwned, courseObj.id)
+    });
+
+    const owned = true // checkIfOwned(user.coursesOwned, courseObj.id)
+    // let content = <>
+    //     <CourseFirstDiv
+    //         owned={owned}
+    //         courseObj={courseObj}
+    //         progress={getProgress(user.progress, courseObj.id)} />
+    //     {/* <RecieveCertificate
+    //                 visible={getProgress(user.progress, courseObj.id) > 80}
+    //                 courseObj={courseObj}
+    //             /> */}
+    //     <div className="mx-40 my-10 flex">
+    //         <div className='w-1/2'>
+    //             <CourseInstructorPlaceHolder
+    //                 instructor={courseObj.instructor}
+    //             />
+    //         </div>
+    //         <div className='w-1/2 shadow-2xl rounded-2xl'>
+    //             <iframe className='w-full rounded-2xl' width="520" height="340" src={courseObj.previewVideoURL} title={courseObj.previewVideoTitle} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    //         </div>
+    //     </div>
+    //     <Sections
+    //         visible={true}
+    //         courseObj={courseObj}
+    //         owned={owned} />
+    //     <Reviews
+    //         visible={true}
+    //         reviews={courseObj.reviews} />
+    //     <Faqs
+    //         visible={true}
+    //         faqs={courseObj.faqs} />
+    //     <CourseAndInstructorRating
+    //         courseRating={courseObj.rating}
+    //         instructorRating={courseObj.instructor.rating}
+    //         owned={owned}
+    //     />
+    // </>
+    let content = <>
+        <h1 className='text-lg text-red-400 my-auto text-center'>{intendedCourse.title}</h1>
+    </>
+
     if (view === 'course' && cookies['userCookie'] === undefined)
         return (
             <Layout>
-                {/* TITLE IS ALREADY THERE... */}
-                {/* <h1 className='text-center text-red-500 text-lg'>CourseTitle: {intendedCourse.name}</h1> */}
-                {/* ......................... */}
-                <CourseFirstDiv
-                    owned={owned}
-                    courseObj={courseObj}
-                    progress={getProgress(user.progress, courseObj.id)} />
-                <RecieveCertificate
-                    visible={getProgress(user.progress, courseObj.id) > 80}
-                    courseObj={courseObj}
-                />
-                <div className="mx-40 my-10 flex">
-                    <div className='w-1/2'>
-                        <CourseInstructorPlaceHolder
-                            instructor={courseObj.instructor}
-                        />
-                    </div>
-                    <div className='w-1/2 shadow-2xl rounded-2xl'>
-                        <iframe className='w-full rounded-2xl' width="520" height="340" src={courseObj.previewVideoURL} title={courseObj.previewVideoTitle} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
-                </div>
-                <Sections
-                    visible={true}
-                    courseObj={courseObj}
-                    owned={owned} />
-                <Reviews
-                    visible={true}
-                    reviews={courseObj.reviews} />
-                <Faqs
-                    visible={true}
-                    faqs={courseObj.faqs} />
-                <CourseAndInstructorRating
-                    courseRating={courseObj.rating}
-                    instructorRating={courseObj.instructor.rating}
-                    owned={owned}
-                />
+                {content}
             </Layout>
         )
     else if (view === 'course' && cookies['userCookie'] !== undefined)
         return (
             <LoggedInLayout>
-                {/* TITLE IS ALREADY THERE... */}
-                {/* <h1 className='text-center text-red-500 text-lg'>CourseTitle: {intendedCourse.name}</h1> */}
-                {/* ......................... */}
-                <CourseFirstDiv owned={owned} courseObj={courseObj} />
-                {/* <RecieveCertificate visible={getProgress(user.progress, courseObj.id) > 80} courseObj={courseObj} /> */}
-                <div className="mx-40 my-10 flex">
-                    <div className='w-1/2'>
-                        <CourseInstructorPlaceHolder instructor={courseObj.instructor} />
-                    </div>
-                    <div className='w-1/2 shadow-2xl rounded-2xl'>
-                        <iframe className='w-full rounded-2xl' width="520" height="340" src={courseObj.previewVideoURL} title={courseObj.previewVideoTitle} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
-                </div>
-                <Sections
-                    visible={true}
-                    courseObj={courseObj}
-                    owned={owned} />
-                <Reviews
-                    visible={true}
-                    reviews={courseObj.reviews} />
-                <Faqs
-                    visible={true}
-                    faqs={courseObj.faqs} />
-                <CourseAndInstructorRating
-                    courseRating={courseObj.rating}
-                    instructorRating={courseObj.instructor.rating}
-                    owned={owned}
-                />
+                {content}
             </LoggedInLayout>
         )
+
 }
 
 export default CoursePage
