@@ -149,13 +149,12 @@ const MainNavList = () => {
                     : ''
             }
             {
-                // (user.role === 'corporateTrainee')
-                true
+                (user.role === 'corporateTrainee')
                     ?
                     <>
                         <MainNavListSeparator />
                         <MainNavListItem
-                            text={"Request Course access ^^"}
+                            text={"Request Course access"}
                             href="#"
                             myIdx={256} />
                     </>
