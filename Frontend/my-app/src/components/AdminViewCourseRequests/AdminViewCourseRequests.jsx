@@ -63,7 +63,7 @@ export default function AdminViewCourseRequests({ visible }) {
             corporateTrainees,
             grantedCourses
         };
-        axios.post('http://localhost:8000/admin/grantAcess', req, {
+        axios.post('http://localhost:8000/admin/grantAccess', req, {
             headers: {
                 authorization: cookies['token']
             }
