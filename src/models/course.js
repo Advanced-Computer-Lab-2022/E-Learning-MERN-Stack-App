@@ -54,8 +54,17 @@ const courseSchema = new mongoose.Schema({
             answer: String
         }],
         discount: {
-            type:Number,
-            default:0
+            value:{
+                type:Number,
+                default:0,
+                min:0,
+                max:1
+            },
+            endDate:Date,
+            state:{
+                type:Boolean,
+                default:false
+            } 
         }, 
 // totalHours: {
 //     type: Number,

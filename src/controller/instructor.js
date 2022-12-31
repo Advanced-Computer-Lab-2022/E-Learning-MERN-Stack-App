@@ -77,3 +77,41 @@ exports.getRatingsAndreviews = (req, res) => {
     });
 
 }
+exports.viewAllCourseRequests = (req, res) => {
+    AdminCourseRequests.find()
+    .exec((error, requests) => {
+        if(error) return res.status(400).json({
+            message: 'an error occured' 
+        });
+        if(requests) return res.status(200).json({requests});
+    });
+}
+exports.setSelectedPromotions = (req, res) => {
+    let courses = req.body.courses;
+    for(let i=0; i<courses.length; i++) {
+        Course.findOneAndUpdate({_id: courses[i].courseId, discount:{state:false}},
+             {discount:{value:courses[i].value, endDate:courses[i].endDate, state:true}})
+             .exec((error, updated) => {
+                 if(error) return res.status(400).json({message: "error happened"});
+             });
+    }
+    return res.status(200).json({message:"Offer added successfuly"});
+}
+exports.setPromotionsOnAll = (req, res) => {
+        Course.updateMany({discount:{state:false}},
+             {discount:{value:req.body.value, endDate:req.body.endDate, state:true}})
+            .exec((error, updated) => {
+                 if(error) return res.status(400).json({message: "error happened"});
+                 if(updated) return res.status(200).json({message:"Offer added successfuly"});
+             });
+}
+exports.removePromotions = (req, res) => {
+    Course.updateMany({discount:{state:true, endDate:req.body.endDate}},
+         {discount:{value:0, state:false}})
+    .exec((error, removed) => {
+        if(error) return res.status(400).json({message: "error happened"});
+        if(removed) return res.status(200).json({message:"error removed"});
+
+    });
+}
+
