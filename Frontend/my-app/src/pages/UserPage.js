@@ -18,6 +18,7 @@ import InstructorAddSection from '../components/InstructorAddSection/InstructorA
 import ViewMostPopular from '../components/ViewMostPopular/ViewMostPopular';
 import SetPromotion from '../components/SetPromotion/SetPromotion';
 import AdminViewCourseRequests from '../components/AdminViewCourseRequests/AdminViewCourseRequests';
+import CorporateRequestCourse from '../components/CorporateRequestCourse/CorporateRequestCourse'
 
 const UserPage = () => {
     const { navIdx } = useContext(NavStateContext);
@@ -39,6 +40,7 @@ const UserPage = () => {
                 <AdminDashboard visible={navIdx === 128} />
                 <AdminViewCourseRequests visible={navIdx === 130} />
                 <SetPromotion visible={navIdx === 131} />
+                <CorporateRequestCourse visible={navIdx === 256} />
                 <TraineeCoursesITake visible={navIdx === 512} />
                 <ViewMostPopular visible={navIdx === 1024} />
             </LoggedInLayout>
