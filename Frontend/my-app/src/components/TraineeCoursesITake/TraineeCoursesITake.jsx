@@ -34,8 +34,7 @@ const TraineeCoursesITake = ({ visible }) => {
     }, []);
 
     function getCategories() {
-        return Array.from(new Set(courses
-            .filter(course => course.createdBy === user.userName)
+        return Array.from(new Set(user.courses
             .map(course => course.category)));
     }
 
