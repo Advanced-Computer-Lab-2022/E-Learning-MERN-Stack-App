@@ -9,7 +9,7 @@
  How to Install & Run the Project:
   All you need is a computer, internet and little terminal knowledge to run our project.
   
- First you can download as a zip file from this link -> 
+ First you can download our project as a zip file from the following link -> 
  https://github.com/Advanced-Computer-Lab-2022/team_name/archive/refs/heads/frontend_integrated_edits.zip,
   after downloading the file you will have to extract it
  
