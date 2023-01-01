@@ -69,7 +69,7 @@ const ProfileIconNavBar = () => {
     
                                             We may modify these Terms for any reason-at any time-by posting a new version on Our Website; these changes do not affect rights and obligations that arose prior to such changes. Your continued use of Our Website following the posting of modified Terms will be subject to the Terms in effect at the time of your use. Please review these Terms periodically for changes. If you object to any provision of these Terms or any subsequent modifications to these Terms or become dissatisfied with Our Website in any way, your only recourse is to immediately terminate use of Our Website.
                                         </p> */}
-                                        <Wallet walletBalance={user.walletBalance} />
+                                        <Wallet walletBalance={user.wallet} />
                                     </div>
                                     {/*footer*/}
                                     <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
