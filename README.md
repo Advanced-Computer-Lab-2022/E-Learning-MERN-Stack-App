@@ -16,6 +16,7 @@
 Then you will open the terminal and move to the source folder with the command:
 ```bash
 cd team-name/Frontend/my-app/src
+```
   
 Then you can Install all project dependencies using the command:
 ```bash
