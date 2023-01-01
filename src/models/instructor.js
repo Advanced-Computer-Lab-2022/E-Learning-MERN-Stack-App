@@ -63,6 +63,7 @@ const instructorSchema = new mongoose.Schema({
         type: Number,
         default: function () {
             let rating= 0;
+            if(this.ratingsAndReviews.length===0) return 0;
             for(let i=0; i<this.ratingsAndReviews.length; i++) {
                 rating += this.ratingsAndReviews[i].reviewerRating;
             }
@@ -72,6 +73,7 @@ const instructorSchema = new mongoose.Schema({
      numberOfCourses:{
          type: Number,
          default: function () {
+        if(this.courses.length==0) return 0;
         return this.courses.length;
      }
      },

@@ -6,70 +6,45 @@ const jwt = require('jsonwebtoken');
 const Course = require('../models/course');
 
 
-exports.signup = async (req, res) => {
-    var user = await Guest.findOne({ userName: req.body.userName });
-    if (user){
-        return res.status(400).send("Username already registered");
-    }else{
-        user = await OrgGuest.findOne({ userName: req.body.userName });
-        if(user){
-            return res.status(400).send("Username already registered");
-        }else{
-            user = await Instructor.findOne({ userName: req.body.userName });
-            if(user){
-                return res.status(400).send("Username already registered");
-            }else{
-                user = await Admin.findOne({ userName: req.body.userName });
-                if(user){
-                    return res.status(400).send("Username already registered");
-                }else{
-                    user = await Guest.findOne({ email: req.body.email });
-                    if(user){
-                        return res.status(400).send("email already registered");
-                    }else{
-                        user = await OrgGuest.findOne({ email: req.body.email });
-                        if(user){
-                            return res.status(400).send("email already registered");
-                        }else{
-                            user = await Instructor.findOne({ email: req.body.email });
-                            if(user){
-                                return res.status(400).send("email already registered");
-                            }else{
-                                user = await Admin.findOne({ email: req.body.email });
-                                if(user){
-                                    return res.status(400).send("email already registered");
-                                }else{
-                                    const _guest = new Guest({
-                                        firstName: req.body.firstName,
-                                        lastName: req.body.lastName,
-                                        userName: req.body.userName,
-                                        email: req.body.email,
-                                        password: req.body.password,
-                                        country: req.body.country,
-                                        gender: req.body.gender
-                              
-                                    });
-                                    _guest.save((error, data) => {
-                                        if(error){
-                                        return res.status(400).json({
-                                            message: 'Something went wrong'
-                                        });
-                                    }
-                                    if(data){
-                                         return res.status(200).json({message: 'user added successfuly'});
-                                   
-                                    }
-                                 });
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
+exports.signup = (req, res) => {
+    Guest.findOne({email: req.body.email})
+   .exec((error, guest) => {
+    if(error) return res.status(400).json({
+        message: 'an error occured' 
+    });
+
+    if(guest) return res.status(400).json({
+        message: 'User already registered' 
+    });
+
+    const _guest = new Guest({
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        userName: req.body.userName,
+        email: req.body.email,
+        password: req.body.password,
+        country: req.body.country,
+        gender: req.body.gender
+
+    });
+    _guest.save((error, data) => {
+        if(error){
+        return res.status(400).json({
+            message: 'Something went wrong'
+        });
     }
-    
+    if(data) {
+         return res.status(200).json({message: 'user added successfuly'});
+    }
+ });
+
+});
 }
+
+
+
+
+
 
 exports.signin = (req, res) => {
     Guest.findOne({userName: req.body.userName})

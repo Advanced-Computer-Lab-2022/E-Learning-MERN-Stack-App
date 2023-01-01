@@ -51,7 +51,7 @@ exports.createCourse = (req, res) => {
    thirdInclude: req.body.thirdInclude,
    createdBy: req.user.userName
        // sections: req.body.sections,
-        //faqs: req.body.faqs,
+      //  faqs: req.body.faqs,
        
       });
       _course.save((error, course) => {
