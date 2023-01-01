@@ -14,12 +14,15 @@
   after downloading the file you will have to extract it
  
 Then you will open the terminal and move to the source folder with the command:
- 	cd team-name/Frontend/my-app/src
+```bash
+cd team-name/Frontend/my-app/src
   
 Then you can Install all project dependencies using the command:
+```bash
  	npm i
 	
 Then you can start the project using the command:
+```bash
 	npm start
   
  
