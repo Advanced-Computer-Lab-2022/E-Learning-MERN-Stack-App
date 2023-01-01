@@ -18,7 +18,6 @@ const ViewMostPopular = ({ visible }) => {
         allCategories, setAllCategories,
         selectedCategory, setSelectedCategory,
         rating, setRating,
-        mostPopular, setMostPopular
     } = useContext(FiltersContext);
 
 
@@ -115,12 +114,9 @@ const ViewMostPopular = ({ visible }) => {
                                                 if (rating === -1) return true;
                                                 return course.rating === rating;
                                             })
-                                            .filter(course => {
-                                                if (mostPopular)
-                                                    // https://www.w3resource.com/javascript-exercises/javascript-array-exercise-34.php
-                                                    return course.numberOfStudents >= nthlargest(courses.map(course => course.numberOfStudents), 3);
-                                                return false;
-                                            })
+                                            .filter(course =>
+                                                course.numberOfStudents >= nthlargest(courses.map(course => course.numberOfStudents), 3)
+                                            )
                                             .map((course, index) =>
                                                 <CourseCard key={index} course={course} id={(course._id)} />
                                             )

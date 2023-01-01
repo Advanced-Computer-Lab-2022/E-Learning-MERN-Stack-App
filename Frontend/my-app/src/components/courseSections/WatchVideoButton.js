@@ -6,7 +6,7 @@ function saveNotesToDb() {
     //          Store my var and use useEffect to get it once the session is initiated
     //          Change should be automatically reflected, since this fucntion is triggered with closing the modal
 }
-export default function Modal({ section }) {
+export default function Modal({ lessonDescription, lessonEmbed }) {
     const [showModal, setShowModal] = React.useState(false);
     const [myNotes, setMyNotes] = React.useState("My previously written notes published to the db and fetched every session.")
     return (
@@ -22,7 +22,7 @@ export default function Modal({ section }) {
                 </div>
                 <div className="flex-grow pl-4">
                     <h2 className="font-medium title-font text-sm text-blue-500 mb-1 tracking-wider">Watch Video</h2>
-                    <p className="leading-relaxed">{section.lessonDescription}</p>
+                    <p className="leading-relaxed">{lessonDescription}</p>
                 </div>
             </div>
             {showModal ? (
@@ -50,7 +50,7 @@ export default function Modal({ section }) {
                                 {/*body*/}
                                 <div className="relative p-10 flex-auto">
                                     <div className="flex flex-row my-4">
-                                        {section.lessonEmbed}
+                                        {lessonEmbed}
                                         <div className="w-1/3 px-5">
                                             <label class="text-gray-700 h-full">
                                                 <p className="py-4 font-bold text-blue-500 text-lg">

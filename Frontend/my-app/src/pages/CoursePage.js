@@ -659,7 +659,8 @@ const courseObj = {
             title: "Data Science & Machine Learning Project | Image Classification",
             lessonEmbed: <iframe width="650" height="300" src="https://www.youtube.com/embed/qWXXHjV3JHI" title="Data Science & Machine Learning Project - Part 1 Introduction | Image Classification" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>,
             lessonDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse tincidunt justo eu quam facilisis varius. In laoreet lorem in elit vehicula.",
-            testId: 'tst-01-crs-1016'
+            testId: 'tst-01-crs-1016',
+            hours: 5
         },
         {
             idx: 2,
@@ -667,6 +668,7 @@ const courseObj = {
             lessonEmbed: <iframe width="650" height="300" src="https://www.youtube.com/embed/VhRtaziEWd4?list=PLeo1K3hjS3us_ELKYSj_Fth2tIEkdKXvV" title="What is a neuron? | Deep Learning Tutorial 3 (Tensorflow Tutorial, Keras & Python)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>,
             lessonDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse tincidunt justo eu quam facilisis varius. In laoreet lorem in elit vehicula.",
             testId: 'tst-02-crs-1016',
+            hours: 7
         },
         {
             idx: 3,
@@ -689,20 +691,15 @@ const courseObj = {
         }
     ],
     faqs: [
-        [
-            {
-                question: "Question 1",
-                answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In placerat aliquam tempus. Phasellus auctor erat turpis, quis laoreet orci luctus eget. Quisque congue ut orci sit amet aliquam."
-            },
+        {
+            question: "Question 1",
+            answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In placerat aliquam tempus. Phasellus auctor erat turpis, quis laoreet orci luctus eget. Quisque congue ut orci sit amet aliquam."
+        },
 
-        ],
-        [
-            {
-                question: "Question 2",
-                answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In placerat aliquam tempus. Phasellus auctor erat turpis, quis laoreet orci luctus eget. Quisque congue ut orci sit amet aliquam."
-            },
-
-        ]
+        {
+            question: "Question 2",
+            answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In placerat aliquam tempus. Phasellus auctor erat turpis, quis laoreet orci luctus eget. Quisque congue ut orci sit amet aliquam."
+        },
     ]
 }
 
@@ -756,44 +753,43 @@ const CoursePage = ({ navActiveState, setNavActiveState }) => {
         })
     });
 
-    const owned = true // checkIfOwned(user.coursesOwned, courseObj.id)
-    // let content = <>
-    //     <CourseFirstDiv
-    //         owned={owned}
-    //         courseObj={courseObj}
-    //         progress={getProgress(user.progress, courseObj.id)} />
-    //     {/* <RecieveCertificate
-    //                 visible={getProgress(user.progress, courseObj.id) > 80}
-    //                 courseObj={courseObj}
-    //             /> */}
-    //     <div className="mx-40 my-10 flex">
-    //         <div className='w-1/2'>
-    //             <CourseInstructorPlaceHolder
-    //                 instructor={courseObj.instructor}
-    //             />
-    //         </div>
-    //         <div className='w-1/2 shadow-2xl rounded-2xl'>
-    //             <iframe className='w-full rounded-2xl' width="520" height="340" src={courseObj.previewVideoURL} title={courseObj.previewVideoTitle} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    //         </div>
-    //     </div>
-    //     <Sections
-    //         visible={true}
-    //         courseObj={courseObj}
-    //         owned={owned} />
-    //     <Reviews
-    //         visible={true}
-    //         reviews={courseObj.reviews} />
-    //     <Faqs
-    //         visible={true}
-    //         faqs={courseObj.faqs} />
-    //     <CourseAndInstructorRating
-    //         courseRating={courseObj.rating}
-    //         instructorRating={courseObj.instructor.rating}
-    //         owned={owned}
-    //     />
-    // </>
+    const owned = true; // checkIfOwned(user.coursesOwned, courseObj.id)
     let content = <>
-        <h1 className='text-lg text-red-400 my-auto text-center'>{intendedCourse.title}</h1>
+        <CourseFirstDiv
+            owned={owned}
+            courseObj={courseObj}
+            progress={getProgress(user.progress, courseObj.id)}
+            intendedCourse={intendedCourse} />
+        {/* <RecieveCertificate
+                    visible={getProgress(user.progress, courseObj.id) > 80}
+                    courseObj={courseObj}
+                /> */}
+        <div className="mx-40 my-10 flex">
+            <div className='w-1/2'>
+                <CourseInstructorPlaceHolder
+                    instructor={courseObj.instructor}
+                />
+            </div>
+            <div className='w-1/2 shadow-2xl rounded-2xl'>
+                <iframe className='w-full rounded-2xl' width="520" height="340" src={intendedCourse.previewVideoURL} title={intendedCourse.previewVideoTitle} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+        <Sections
+            visible={true}
+            courseObj={courseObj}
+            intendedCourse={intendedCourse}
+            owned={owned} />
+        {/* <Reviews
+            visible={true}
+            reviews={intendedCourse.reviews} /> */}
+        {/* <Faqs
+            visible={true}
+            faqs={intendedCourse.faqs} /> */}
+        <CourseAndInstructorRating
+            courseRating={intendedCourse.rating}
+            // instructorRating={courseObj.instructor.rating}
+            owned={owned}
+        />
     </>
 
     if (view === 'course' && cookies['userCookie'] === undefined)

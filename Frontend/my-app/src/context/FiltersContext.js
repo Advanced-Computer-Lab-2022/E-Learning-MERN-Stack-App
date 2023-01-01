@@ -10,7 +10,6 @@ export default function FiltersContextProvider(props) {
     const [allCategories, setAllCategories] = useState([]);
     const [rating, setRating] = useState(-1);
     const [selectedCategory, setSelectedCategory] = useState('');
-    const [mostPopular, setMostPopular] = useState(false);
 
 
 
@@ -21,7 +20,6 @@ export default function FiltersContextProvider(props) {
         allCategories, setAllCategories,
         rating, setRating,
         selectedCategory, setSelectedCategory,
-        mostPopular, setMostPopular
     }}>
         {props.children}
     </FiltersContext.Provider>

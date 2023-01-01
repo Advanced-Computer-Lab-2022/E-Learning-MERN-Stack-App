@@ -7,16 +7,16 @@ import {
 } from "@material-tailwind/react";
 import SectionsBody from './SectionsBody';
 import NotesBody from './NotesBody';
-const Sections = ({ visible, courseObj, owned }) => {
+const Sections = ({ visible, courseObj, owned, intendedCourse }) => {
     const [open, setOpen] = useState(1);
 
     const handleOpen = (value) => {
         setOpen(open === value ? 0 : value);
     };
 
-    const sectionsAccordion = courseObj.sections.map((section) => [
-        <Accordion open={open === section.idx && owned}>
-            <AccordionHeader onClick={() => handleOpen(section.idx)}>
+    const sectionsAccordion = courseObj.sections?.map((section, index) => [
+        <Accordion open={open === index && owned}>
+            <AccordionHeader onClick={() => handleOpen(index)}>
                 {section.title}
             </AccordionHeader>
             <AccordionBody>
@@ -25,7 +25,10 @@ const Sections = ({ visible, courseObj, owned }) => {
                     <NotesBody pdfLink={section.pdfURL} />
                     :
                     <SectionsBody
-                        section={section}
+                        lessonDescription={section.lessonDescription}
+                        lessonEmbed={section.lessonEmbed}
+                        hours={section.hours}
+                        testId={section.testId}
                     />}
             </AccordionBody>
         </Accordion>
