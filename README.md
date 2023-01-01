@@ -20,10 +20,12 @@ cd team-name/Frontend/my-app/src
 Then you can Install all project dependencies using the command:
 ```bash
  	npm i
+```
 	
 Then you can start the project using the command:
 ```bash
 	npm start
+```
   
  
 How to use the Project:
