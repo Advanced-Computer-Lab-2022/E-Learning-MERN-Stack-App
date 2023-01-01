@@ -1,25 +1,37 @@
-import React from 'react'
+import React, { useState } from 'react'
 import StripeBuyNowButton from '../stripeComponents/StripeBuyNowButton'
 import Wallet from '../wallet/Wallet';
 import UserInfoContext from '../../context/UserInfoContext';
 import { useContext } from 'react';
+import { useCookies } from 'react-cookie';
 
 function walletPaymentClbk() {
     // @TODO :: handle payment using wallet balance
 }
 const CourseBuyButton = ({ price }) => {
-    const { user } = useContext(UserInfoContext)
+    const { user } = useContext(UserInfoContext);
     const [showModal, setShowModal] = React.useState(false);
+    const [cookies] = useCookies(['userCookie']);
+    const [showMessage, setShowMessage] = useState(false);
+
     return (
 
         <div className="my-10 ">
             <button
                 className="py-2 px-4  bg-blue-500 hover:bg-blue-600 focus:ring-blue-500 focus:ring-offset-blue-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg cursor-pointer"
                 type="button"
-                onClick={() => setShowModal(true)}
+                onClick={() => {
+                    setShowModal(cookies['userCookie'] !== undefined);
+                    setShowMessage(cookies['userCookie'] === undefined);
+                }}
             >
                 Buy Now
             </button>
+            {
+                (showMessage)
+                    ? <p className="mt-3 text-md text-center text-red-600">Please Sign in first</p>
+                    : ''
+            }
             {showModal ? (
                 <>
                     <div
