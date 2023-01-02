@@ -8,7 +8,7 @@ const ForgotPasswordForm = () => {
     const [message, setMessage] = useState('')
 
     function handleSubmit() {
-        axios.post('http://localhost:8000/api/forgetPassword', userName)
+        axios.post('http://localhost:8000/api/password-reset', userName)
             .then(res => {
                 console.log(res);
                 setMessage("an email was sent to you successfully");
