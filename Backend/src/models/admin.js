@@ -23,7 +23,6 @@ const adminSchema = new mongoose.Schema({
         unique : true,
         index : true,
         lowercase : true
-       
     },
     role: {
         type:String,
@@ -46,11 +45,14 @@ const adminSchema = new mongoose.Schema({
          type : String,
          required : true
      }, 
-  
-     gender : {
-         type : String,
-         enum : ['male', 'female', 'prefere not to say']
-     }
+     courseRequests: [{
+         courseId:mongoose.Schema.Types.ObjectId,
+         orgGuestUserName: String
+    }],
+     gender :{
+        type: String,
+        required: true,
+    },
 }, {timestamps : true});
 
 
@@ -63,8 +65,8 @@ adminSchema.virtual('fullname').get(function(){
     return `${this.firstName} ${this.lastName}`;
 })
  adminSchema.methods = {
-     authenticate : function(password) {
-         return bcrypt.compareSync(password, this.hash_password)
+     authenticate : async function(password) {
+         return await bcrypt.compare(password, this.hash_password)
      }
  };
 

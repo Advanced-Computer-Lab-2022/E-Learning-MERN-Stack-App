@@ -29,8 +29,12 @@ const guestSchema = new mongoose.Schema({
         trim:true,
         required:false
     },
+    wallet:{
+        type:Number,
+        default:0
+    },
     courses:[{type:mongoose.Schema.Types.ObjectId, ref:"course"}],
-    // type may be changed later
+
     email : {
         type : String,
         required : true,
@@ -38,15 +42,16 @@ const guestSchema = new mongoose.Schema({
         unique : true,
         lowercase : true
      },
+     imgURL:String,
      hash_password : {
          type : String,
          required : true
      }, 
-     role:{type:String, default:"normalTrainee"},
-     gender : {
-         type : String,
-         enum : ['male', 'female', 'prefere not to say']
-     }
+     role:{type:String, default:"individualTrainee"},
+     gender :{
+        type: String,
+        required: true,
+    },
 }, {timestamps : true});
 
 
@@ -55,12 +60,10 @@ guestSchema.virtual('password')
     this.hash_password = bcrypt.hashSync(password, 10);
 
 });
-guestSchema.virtual('fullname').get(function(){
-    return `${this.firstName} ${this.lastName}`;
-})
+
  guestSchema.methods = {
-     authenticate : function(password) {
-         return bcrypt.compareSync(password, this.hash_password)
+     authenticate : async function(password) {
+         return await bcrypt.compare(password, this.hash_password)
      }
  };
 

@@ -1,38 +1,39 @@
-const Admin = require('../../models/admin');
-const Company = require('../../models/company');
-const OrgGuest = require('../../models/orgGuest');
-const Instructor = require('../../models/instructor');
+const Guest  = require("../../models/guest");
+const OrgGuest  = require("../../models/orgGuest");
+const Instructor  = require("../../models/instructor");
+const  Admin  = require("../../models/admin");
+const AdminCourseRequests = require("../../models/adminCourseRequests");
 const jwt = require('jsonwebtoken');
-const { restart } = require('nodemon');
+const Course = require("../../models/course");
 
 
+
+exports.isAdmin = (req, res, next) => {
+    if(req.user.role !== 'admin'){
+        return res.status(400).json({message: 'Access Denied'});
+    }
+    next();
+};
 exports.signup = (req, res) => {
     Admin.findOne({email: req.body.email})
    .exec((error, admin) => {
        if(admin) return res.status(400).json({
            message: 'User already registered' 
        });
-       const {
-           firstName, 
-           lastName,
-           userName,
-           email,
-           password,
-           gender
-       } = req.body;
+
        const _admin = new Admin({
-           firstName,
-           lastName,
-           userName: Math.random().toString(),
-           email,
-           password,
-           gender,
-           role:'admin'
+           firstName: req.body.firstName,
+           lastName: req.body.lastName,
+           userName: req.body.userName,
+           email: req.body.email,
+           password: req.body.password,
+           country: req.body.country,
+           gender: req.body.gender
        });
        _admin.save((error, data) => {
            if(error){
            return res.status(400).json({
-               message: 'Something went wrong'
+             message: 'Something went wrong'
            });
        }
        if(data){
@@ -41,21 +42,22 @@ exports.signup = (req, res) => {
            })
        }
     });
-       
+
    });
-};
+}
 
 exports.signin = (req, res) => {
-    Admin.findOne({email: req.body.email})
-    .exec((error, admin) =>{
+    Admin.findOne({userName: req.body.userName})
+    .exec(async(error, admin) => {
         if(error) return res.status(400).json({error});
-        if(admin){
-            if(admin.authenticate(req.body.password)){
-                const token = jwt.sign({_id:admin._id, role: admin.role}, process.env.JWT_SECRET, {expiresIn: '1d'});
-                const{_id, firstName, lastName, fullName, email, role, gender} = admin;
+        if(admin) {
+            const passwordVerify = await admin.authenticate(req.body.password);
+            if(passwordVerify){
+                const token = jwt.sign({_id:admin._id, role: admin.role, userName: admin.userName}, process.env.JWT_SECRET, {expiresIn: '1d'});
+                const{_id, firstName, lastName, userName, email, role, gender} = admin;
                 res.status(200).json({
                     token,
-                    admin: {_id, firstName, lastName, fullName, email, gender, role}
+                    admin: {_id, firstName, lastName, userName, email, gender, role}
                 });
 
             }
@@ -71,77 +73,94 @@ exports.signin = (req, res) => {
     });
 };
 
-exports.logout = async (req, res) => {
-    try{ 
-        res.cookie('jwt',"");
-        res.status (200).json("you are logged out")
-    }catch (error){
-        res. status (406).json({ error: error.messages });
-    }
-}
-
-exports.addCompany = (req, res) => {
-    Company.findOne({email: req.body.email})
-    .exec((error, company) =>{
-        if(company) restart.status(400).json({message: "Company already registered"});
-        else{
-            const _comapny = new Company({
-                name: req.body.name,
-                email: req.body.email,
-                password: req.body.password
-            });
-            _comapny.save((error, data)=>{
-                if(error) res.status(400).json({message: "Something went wrong"});
-               if(data) res.status(201).json({message: "Company was added successfuly...!"});
-            });
-        }
-    })
-};
 exports.addOrgGuest = (req, res) => {
     OrgGuest.findOne({email: req.body.email})
     .exec((error, guest) => {
-         if(guest) restart.status(400).json({message: "Guest already registered"});
-         Company.findOne({email: req.body.companyEmail}).
-         exec((error, company) =>{
-             if(!company) res.status(403).json({message: "Access denied, company not registered"});
-             else{
-                 const _guest = new OrgGuest({
-                     email: req.body.email,
-                     password: req.body.password,
-                     firstName: req.body.firstName,
-                     lastName: req.body.LastName,
-                     company: req.body.company,
-                     userName: Math.random().toString(),
-
-                  
-
-
-                 });
-
-                 _guest.save((error, data)=>{
-                    if(error) res.status(400).json({message: "Something went wrong"});
-                   if(data) res.status(201).json({message: "User was added successfuly...!"});
+         if(guest) res.status(400).json({message: "Guest already registered"});
+        });
+        const _guest = new OrgGuest ({
+            email: req.body.email,
+            password: req.body.password,
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            company: company._id,
+            userName: req.body.userName,
+            gender: req.body.gender,
+            country: req.body.country,
+            });
+            _guest.save((err, data)=> {
+            if(err) res.status(400).json({message: "Something went wrong"});
+            if(data) res.status(201).json({message: "User was added successfuly...!"});
+        });
+    }
+    exports.addInstructor = (req, res) => {
+        Instructor.findOne({email: req.body.email})
+        .exec((error, instructor) => {
+            if(instructor) return res.status(400).json({message: "Instructor already registered"});
+            if(error) return res.status(400).json({message: "error"});
+            else {
+                const _instructor = new Instructor({
+                    firstName: req.body.firstName,
+                    lastName: req.body.lastName,
+                    email: req.body.email,
+                    password: req.body.password,
+                    userName: req.body.userName,
+                    gender: req.body.gender,
+                    country: req.body.country,
                 });
-             }
-         })
+                _instructor.save((error, data) => {
+                    if(error) return  res.status(400).json({message: "Something went wrong"});
+                   if(data) return  res.status(201).json({message: "Instructor was added successfuly...!"});
+                });
+            }
+        })
+    }
         
-    });
 
-};
-exports.addInstructor = (req, res) => {
-    Company.findOne({email: req.body.email})
-    .exec((error, instructor) =>{
-        if(instructor) restart.status(400).json({message: "Instructor already registered"});
-        else{
-            const _instructor = new Instructor({
-                name: req.body.name,
-                email: req.body.email,
-                password: req.body.password
-            });
-            _instructor.save((error, data)=>{
-                if(error) res.status(400).json({message: "Something went wrong"});
-               if(data) res.status(201).json({message: "Instructor was added successfuly...!"});
-            });
-        }
-    })
-};
+exports.viewAllCourseRequests = (req, res) => {
+    AdminCourseRequests.find()
+    .exec((error, requests) => {
+        if(error) return res.status(400).json({
+            message: 'an error occured' 
+        });
+        if(requests) return res.status(200).json({requests});
+    });
+}
+exports.setSelectedPromotions = (req, res) => {
+    let courses = req.body.courses;
+    for(let i=0; i<courses.length; i++) {
+        Course.findOneAndUpdate({_id: courses[i].courseId, discount:{state:false}},
+             {discount:{value:courses[i].value, endDate:courses[i].endDate, state:true}})
+             .exec((error, updated) => {
+                 if(error) return res.status(400).json({message: "error happened"});
+             });
+    }
+    return res.status(200).json({message:"Offer added successfuly"});
+}
+exports.setPromotionsOnAll = (req, res) => {
+        Course.updateMany({discount:{state:false}},
+             {discount:{value:req.body.value, endDate:req.body.endDate, state:true}})
+            .exec((error, updated) => {
+                 if(error) return res.status(400).json({message: "error happened"});
+                 if(updated) return res.status(200).json({message:"Offer added successfuly"});
+             });
+}
+exports.removePromotions = (req, res) => {
+    Course.updateMany({discount:{state:true, endDate:req.body.endDate}},
+         {discount:{value:0, state:false}})
+    .exec((error, removed) => {
+        if(error) return res.status(400).json({message: "error happened"});
+        if(removed) return res.status(200).json({message:"error removed"});
+
+    });
+}
+
+
+
+
+
+
+
+
+
+

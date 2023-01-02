@@ -8,7 +8,6 @@ const orgGuestSchema = new mongoose.Schema({
         min : 2,
         max : 25
     },
-    
     lastName : {
         type : String,
         required : true,
@@ -23,13 +22,12 @@ const orgGuestSchema = new mongoose.Schema({
         unique : true,
         index : true,
         lowercase : true
-       
     },
-    company:{type: mongoose.Schema.Types.ObjectId, ref: 'Company'},
     country:{
         type:String,
         trim:true,
-        required:false
+        required: false
+
     },
     // type may be changed later
     email : {
@@ -39,19 +37,21 @@ const orgGuestSchema = new mongoose.Schema({
         unique : true,
         lowercase : true
      },
+     imgURL:String,
      hash_password : {
          type : String,
-         required : true
+         required : true,
      }, 
      role: {
          type: String,
-         default:'corpTrainee'
+         default:'corporateTrainee',
      },
      courses:[{type:mongoose.Schema.Types.ObjectId, ref:"course"}],
-     gender : {
-         type : String,
-         enum : ['male', 'female', 'prefere not to say']
-     }
+     requestedCourses:[{type:mongoose.Schema.Types.ObjectId, ref:"course"}],
+     gender :{
+        type: String,
+        required: true,
+    },
 }, {timestamps : true});
 
 
@@ -60,14 +60,11 @@ orgGuestSchema.virtual('password')
     this.hash_password = bcrypt.hashSync(password, 10);
 
 });
-orgGuestSchema.virtual('fullname').get(function(){
-    return `${this.firstName} ${this.lastName}`;
-})
 orgGuestSchema.methods = {
-     authenticate : function(password) {
-         return bcrypt.compareSync(password, this.hash_password)
+     authenticate : async function(password) {
+         return await bcrypt.compare(password, this.hash_password)
      }
  };
 
 
-module.exports = mongoose.model('ORGGuest', orgGuestSchema); 
+module.exports = mongoose.model('OrgGuest', orgGuestSchema); 

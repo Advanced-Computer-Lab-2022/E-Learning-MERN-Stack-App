@@ -1,33 +1,30 @@
 const express = require('express');
-const { signup, signin, logout } = require('../controller/guest');
+const {requireSignin, addVideoNote, editInfo, issueProblem} = require('../commonMiddleWare');
+const {viewMyCourses} = require('../controller/guest');
+const { signup, signin} = require('../controller/guest');
 const router = express.Router();
 
 
-
+// posts
 router.post('/guest/signup', signup);
 router.post('/guest/signin', signin);
-router.get('/guest/logout', logout);
-// router.post('/profile', requireSignin, (req, res) => {
-//     res.status(200).json({guest: 'profile'})
-// });
+router.post('/guest/addVideoNote', requireSignin, addVideoNote);
+router.post('/guest/editInfo', requireSignin, editInfo);
+router.post('/guest/issueProblem', requireSignin, issueProblem);
+
+
+//gets
+router.get('/guest/viewMyCourses', requireSignin, viewMyCourses);
+
+
+
+
 
  module.exports = router;
 
 
 
 
-/*
-Instructor:
-1) fname
-2) lname
-3) mail
-4) passw
-5) userName
-6) gender
-7) country
-8) courses
-9) no of students
-10) 
 
 
 
@@ -43,5 +40,3 @@ Instructor:
 
 
 
-
-*/

@@ -1,7 +1,7 @@
 const env = require('dotenv').config();
 const { json } = require('body-parser');
 const express = require('express');
-const port = process.env.PORT;
+const port = process.env.PORT ;
 const app = express();
 const mongoose = require('mongoose');
 
@@ -9,27 +9,33 @@ const mongoose = require('mongoose');
 const guestRoutes = require('./routes/guest');
 const orgGuest = require('./routes/orgGuest');
 const adminRoutes = require('./routes/admin/admin');
-const categoryRoutes = require('./routes/category');
+const instructorRoutes = require('./routes/instructor');
+const courseRoutes = require('./routes/course');
+const passwordReset = require("./routes/resetPassword");
 
 
+
+   
 // app.use
-
-app.use(express.json());
+app.use(express.json());  
 app.use('/api', guestRoutes);
-app.use('/api', categoryRoutes);
 app.use('/api', adminRoutes);
 app.use('/api', orgGuest);
+app.use('/api', instructorRoutes); 
+app.use('/api', courseRoutes);
+app.use("/api/password-reset", passwordReset);
+
 
 
 // server listening
-app.listen(port, () => console.log(`server running on port ${port}`));
+app.listen(port, () => console.log(`server running on port ${port}`)); 
 
 //mongo db & mongoose
 mongoose.connect(
     `mongodb+srv://${process.env.MONGO_DB_USER}:${process.env.MONGO_DB_PASSWORD}@cluster0.uoerd5c.mongodb.net/${process.env.MONGO_DB_DATABASE}?retryWrites=true&w=majority`,
     {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
+        useNewUrlParser : true,
+        useUnifiedTopology : true,
 
     }
 ).then(() => {
@@ -41,38 +47,15 @@ mongoose.connect(
 
 
 app.get('/', (req, res, next) => {
-    res.send(`checked`);
+    res.send(`checked `);
 
 });
 app.post('/data', (req, res, next) => {
-    res.status(200).json({ message: req.body });
+    res.status(200).json({message : req.body});
+
 });
 
 
 
 
-// Mina's Modifications
-const path = require("path");
-app.set('view engine', 'ejs');
-app.set("views", path.join(__dirname, "views"));
-app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/guestSignin', (req, res, next) => {
-    res.render(path.join(__dirname + '/views/guestSignin'));
-});
-app.get('/guestSignUp', (req, res, next) => {
-    res.render(path.join(__dirname + '/views/guestSignup'));
-});
-
-app.get('/addCompany', (req, res, next) => {
-    res.render(path.join(__dirname + '/views/addCompany'));
-});
-app.get('/addOrgGuest', (req, res, next) => {
-    res.render(path.join(__dirname + '/views/addOrgGuest'));
-});
-app.get('/adminSignin', (req, res, next) => {
-    res.render(path.join(__dirname + '/views/adminSignin'));
-});
-app.get('/adminSignup', (req, res, next) => {
-    res.render(path.join(__dirname + '/views/adminSignup'));
-});
