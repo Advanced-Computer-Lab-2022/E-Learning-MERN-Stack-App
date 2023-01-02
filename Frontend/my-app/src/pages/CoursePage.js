@@ -13,7 +13,7 @@ import axios from 'axios'
 import UserInfoContext from '../context/UserInfoContext'
 import { useCookies } from 'react-cookie'
 import LoggedInLayout from '../components/LoggedIn/LoggedInLayout'
-// import RecieveCertificate from '../components/certificate/RecieveCertificate'
+import RecieveCertificate from '../components/certificate/RecieveCertificate'
 
 
 // Python Course
@@ -760,10 +760,10 @@ const CoursePage = ({ navActiveState, setNavActiveState }) => {
             courseObj={courseObj}
             progress={getProgress(user.progress, courseObj.id)}
             intendedCourse={intendedCourse} />
-        {/* <RecieveCertificate
+        <RecieveCertificate
                     visible={getProgress(user.progress, courseObj.id) > 80}
                     courseObj={courseObj}
-                /> */}
+                />
         <div className="mx-40 my-10 flex">
             <div className='w-1/2'>
                 <CourseInstructorPlaceHolder
@@ -779,9 +779,9 @@ const CoursePage = ({ navActiveState, setNavActiveState }) => {
             courseObj={courseObj}
             intendedCourse={intendedCourse}
             owned={owned} />
-        {/* <Reviews
+        <Reviews
             visible={true}
-            reviews={intendedCourse.reviews} /> */}
+            reviews={intendedCourse.reviews} />
         {/* <Faqs
             visible={true}
             faqs={intendedCourse.faqs} /> */}
