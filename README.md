@@ -1,4 +1,5 @@
- ## E Learning
+ ## A brief description
+ An e-learning web application using the MERN stack is a platform for delivering educational content to students over the internet. The e-learning web application will allow students to access course materials, complete quizzes and assessments, and track their progress through their studies. It will also provide instructors with tools to create and manage course content and track student progress. The application will be hosted on GitHub and can be accessed through a web browser.
   E Learning is a place for Instructors & Course creators to benefit from their skills, we have all kinds of courses, you can learn how to cook, you can learn about Science, Math, and Programming!
   
   
