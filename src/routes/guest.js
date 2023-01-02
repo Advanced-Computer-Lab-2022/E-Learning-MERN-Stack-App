@@ -1,5 +1,5 @@
 const express = require('express');
-const {requireSignin, addVideoNote, editInfo} = require('../commonMiddleWare');
+const {requireSignin, addVideoNote, editInfo, issueProblem} = require('../commonMiddleWare');
 const {viewMyCourses} = require('../controller/guest');
 const { signup, signin} = require('../controller/guest');
 const router = express.Router();
@@ -10,6 +10,7 @@ router.post('/guest/signup', signup);
 router.post('/guest/signin', signin);
 router.post('/guest/addVideoNote', requireSignin, addVideoNote);
 router.post('/guest/editInfo', requireSignin, editInfo);
+router.post('/guest/issueProblem', requireSignin, issueProblem);
 
 
 //gets

@@ -4,6 +4,7 @@ const Guest = require('../models/guest');
 const OrgGuest = require('../models/orgGuest');
 const Insrtuctor = require('../models/instructor');
 const Course = require('../models/course');
+const Probelms = require('../models/problems');
 exports.requireSignin = (req, res, next) => {
     if(req.headers.authorization) {
     const token = req.headers.authorization;
@@ -150,4 +151,23 @@ exports.editInfo = (req, res) => {
             });
         }
 };
+exports.issueProblem = (req, res) => {
+
+    const _problem = new Probelms({
+    problem:req.body.problem,
+    issuer:req.user.userName, 
+    role:req.user.role,
+});
+_problem.save((error, data) => {
+    if(error){
+    return res.status(400).json({
+      message: 'Something went wrong'
+    });
+}
+if(data){
+    return res.status(201).json({data})
+}
+});
+
+}
 

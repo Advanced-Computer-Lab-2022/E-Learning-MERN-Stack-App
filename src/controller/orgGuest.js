@@ -72,3 +72,4 @@ exports.viewMyCourseRequests = (req, res) => {
         if(requests) return res.status(200).json({requests});
     });
 }
+
