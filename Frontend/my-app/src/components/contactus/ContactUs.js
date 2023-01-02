@@ -1,9 +1,12 @@
-import React, { useState } from 'react'
+import axios from 'axios';
+import React, { useContext, useState } from 'react'
+import UserInfoContext from '../../context/UserInfoContext';
 
 const ContactUs = ({ visible }) => {
 
     const [comments, setComments] = useState(['first comment']);
     const [message, setMessage] = useState('');
+    const { user } = useContext(UserInfoContext);
 
     function addCommentMessage(e) {
         setComments([
@@ -16,6 +19,26 @@ const ContactUs = ({ visible }) => {
         setMessage(e.target.value);
     }
 
+    function handleSubmit(e) {
+        axios.post('http://localhost:8000/api/guest/issueProblem')
+            .then(res => console.log(res))
+            .catch(err => console.log(err));
+    }
+    function handleSubmit2(e) {
+        axios.post('http://localhost:8000/api/orgGuest/issueProblem')
+            .then(res => console.log(res))
+            .catch(err => console.log(err));
+    }
+    function handleSubmit3(e) {
+        axios.post('http://localhost:8000/api/instructor/issueProblem')
+            .then(res => console.log(res))
+            .catch(err => console.log(err));
+    }
+    function handleSubmit4(e) {
+        axios.post('http://localhost:8000/api/admin/issueProblem')
+            .then(res => console.log(res))
+            .catch(err => console.log(err));
+    }
 
 
     if (visible)
@@ -37,7 +60,7 @@ const ContactUs = ({ visible }) => {
                         </div>
                     )
                 } */}
-
+                {/* 
                 <div class="w-full md:w-2/3 mx-auto p-5 bg-white rounded-lg shadow">
                     <div class="flex items-center justify-between">
                         <div class="w-2/3">
@@ -86,20 +109,37 @@ const ContactUs = ({ visible }) => {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> */}
 
                 <div class="mx-auto max-w-lg rounded-lg shadow-md shadow-blue-600/50">
                     <form action="" class="w-full p-4">
                         <div class="mb-2">
-                            <label for="comment" class="text-lg text-gray-600">Add a comment</label>
+                            <label for="comment" class="text-lg text-gray-600">Report a Problem</label>
                             <textarea
                                 class="w-full h-20 p-2 border rounded focus:outline-none focus:ring-gray-300 focus:ring-1"
                                 name="comment"
                                 placeholder="" onChange={e => saveCommentMessge(e)}></textarea>
                         </div>
                         <div>
-                            <button type='button' class=" px-3 py-2 text-sm text-blue-100 bg-blue-600 rounded" onClick={() => addCommentMessage()}>
-                                Comment
+                            <button type='button' class=" px-3 py-2 text-sm text-blue-100 bg-blue-600 rounded" onClick={(e) => {
+                                switch (user.role) {
+                                    case 'individualTrainee':
+                                        handleSubmit(e)
+                                        break;
+                                    case 'corporateTrainee':
+                                        handleSubmit(e)
+                                        break;
+                                    case 'instructor':
+                                        handleSubmit(e)
+                                        break;
+                                    case 'admin':
+                                        handleSubmit(e)
+                                        break;
+                                    default:
+                                }
+                            }
+                            }>
+                                Report Problem
                             </button>
                         </div>
                     </form>
