@@ -1,7 +1,6 @@
 
 # E-Learning
- An E-Learning web application using the MERN stack is a platform for delivering educational content to students over the internet. The e-learning web application will allow students to access course materials, complete quizzes and assessments, and track their progress through their studies. It will also provide instructors with tools to create and manage course content and track student progress. The application will be hosted on GitHub and can be accessed through a web browser.
-  E-Learning is a place for Instructors & Course creators to benefit from their skills, we have all kinds of courses, you can learn how to cook, you can learn about Science, Math, and Programming!
+  Welcome to our E-Learning web application! This application allows students to enroll in online courses and learn at their own pace. With a variety of courses available in a range of subjects, there is something for everyone.
   
 ## Motivation
 Developing a MERN stack web application can be a rewarding and exciting project to undertake. Not only will you have the opportunity to build a fully functional web application from scratch, but you will also have the chance to work with some of the latest and most popular technologies in the industry. The MERN stack (MongoDB, Express, React, and Node.js) provides a strong foundation for your web application, allowing you to focus on building a great user experience and innovative features. Additionally, learning and working with the MERN stack can open up new career opportunities and help you stay up-to-date with the constantly evolving world of web development. Overall, embarking on a MERN stack web application project is a fantastic way to challenge yourself, learn new skills, and create something truly impactful.
