@@ -779,12 +779,12 @@ const CoursePage = ({ navActiveState, setNavActiveState }) => {
             courseObj={courseObj}
             intendedCourse={intendedCourse}
             owned={owned} />
-        {/* <Reviews
+        <Reviews
             visible={true}
-            reviews={intendedCourse.ratingsAndReviews} /> */}
-        {/* <Faqs
+            reviews={courseObj.reviews} />
+        <Faqs
             visible={true}
-            faqs={intendedCourse.faqs} /> */}
+            faqs={courseObj.faqs} />
         <CourseAndInstructorRating
             courseRating={intendedCourse.rating}
             instructorRating={courseObj.instructor.rating}
