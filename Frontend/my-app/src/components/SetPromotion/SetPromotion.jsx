@@ -10,7 +10,8 @@ export default function SetPromotion({ visible }) {
 
     const [toBeSent, setToBeSent] = useState({
         courseId: '',
-        discount: ''
+        discount: '',
+        endDate: ''
     });
 
     const [cookies] = useCookies(['token']);
@@ -37,6 +38,12 @@ export default function SetPromotion({ visible }) {
         setToBeSent({
             ...toBeSent,
             discount: e.target.value / 100
+        })
+    }
+    function handleEndDateChange(e) {
+        setToBeSent({
+            ...toBeSent,
+            endDate: e.target.value
         })
     }
 
@@ -79,6 +86,11 @@ export default function SetPromotion({ visible }) {
                         <label className='tracking-wide text-gray-700 text-xs font-bold mb-2' for='grid-text-1'>Please write a number from 0 to 100</label>
                         <input className='appearance-none w-full bg-white text-gray-700 placeholder:text-gray-800 border border-gray-400 shadow-inner rounded-md py-3 px-4 leading-tight focus:outline-none  focus:border-gray-500' type='number' onClick={(e) => handlePromotionChange(e)} />
                     </div>
+                    <div className='w-1/3 md:w-1/3 px-3 mx-auto text-center'>
+                        <label className='tracking-wide text-gray-700 text-xs font-bold mb-2' for='grid-text-1'>Please type the end date of the discount in the following format: year:mm:dd</label>
+                        <input className='appearance-none w-full bg-white text-gray-700 placeholder:text-gray-800 border border-gray-400 shadow-inner rounded-md py-3 px-4 leading-tight focus:outline-none  focus:border-gray-500' type='number' onClick={(e) => handleEndDateChange(e)} />
+                    </div>
+
                     <button type="button" className="mb-12 mt-12 w/1/3 px-4 py-2 text-base font-semibold text-center text-white transition duration-200 ease-in bg-blue-500 shadow-md hover:text-black hover:bg-white focus:outline-none focus:ring-2" onClick={(e) => {
                         if (user.role === 'admin') handleSubmitIfAdmin();
                         if (user.role === 'instructor') handleSubmitIfInstructor();
