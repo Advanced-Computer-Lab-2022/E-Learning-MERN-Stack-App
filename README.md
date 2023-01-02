@@ -1,12 +1,8 @@
- Project Title:
-  E Learning
-  
-  
- Project Description:
+ ## E Learning
   E Learning is a place for Instructors & Course creators to benefit from their skills, we have all kinds of courses, you can learn how to cook, you can learn about Science, Math, and Programming!
   
   
- How to Install & Run the Project:
+ ## How to Install & Run the Project:
   All you need is a computer, internet and little terminal knowledge to run our project.
   
  First you can download our project as a zip file from the following link -> 
@@ -29,7 +25,6 @@ npm start
 ```
   
  
-How to use the Project:
-	 
- 
- Wrap Up
+## How to use the Project:
+You can sign up easily and buy one of our courses, we offer free courses all the time.
+If you are an Instructor you can send us an email to sign up and be part of our family.
