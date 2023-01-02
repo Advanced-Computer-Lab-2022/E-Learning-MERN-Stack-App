@@ -28,7 +28,7 @@ exports.changePassword = (req, res) => {
             if(result) return res.status(200).json({message:"password changed successfuly"});
         });
     }
-        else if(user.role == "instructor"){
+        else if(user.role == "instructor") {
             Insrtuctor.findOneAndUpdate({userName: req.body.userName}, {password:req.body.password})
             .exec((error, result) => {
                 if(error) return res.status(400).json({error});

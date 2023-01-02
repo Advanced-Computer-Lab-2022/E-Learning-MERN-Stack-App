@@ -27,7 +27,7 @@ const courseSchema = new mongoose.Schema({
                     video: String,
                     title: String,
                  },
-                test:{
+                test:[{
                         idx:Number,
                         quesDesc:String,
                         topicNumber:String,
@@ -37,7 +37,7 @@ const courseSchema = new mongoose.Schema({
                         answer3:String,
                         answer4:String,
                         correctAnswer:Number
-                    },
+                    }],
                 
             } // end section
         ],
@@ -57,10 +57,11 @@ const courseSchema = new mongoose.Schema({
             value:{
                 type:Number,
                 default:0,
-                min:0,
-                max:1
             },
-            endDate:Date,
+            endDate:{
+                type:Date,
+                default:Date.now
+            },
             state:{
                 type:Boolean,
                 default:false
@@ -89,7 +90,7 @@ const courseSchema = new mongoose.Schema({
 currentPrice : {
     type: Number,
     default: function () {
-        return this.price * (1-this.discount);
+        return this.price * (1-this.discount.value);
     }
 }
 },
