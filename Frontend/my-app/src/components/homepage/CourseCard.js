@@ -9,7 +9,7 @@ const CourseCard = ({ course, id }) => {
 
     function getTotalHours() {
         let totalHours = 0;
-        course.sections.forEach(section => {
+        course.sections?.forEach(section => {
             totalHours += section.hours;
         })
         return totalHours;
@@ -17,7 +17,7 @@ const CourseCard = ({ course, id }) => {
 
     function getRating()  {
         let rating = 0;
-        course.ratingsAndReviews.forEach(ratingsAndReview => {
+        course.ratingsAndReviews?.forEach(ratingsAndReview => {
             rating += ratingsAndReview.reviewerRating
         })
         return rating;
@@ -46,7 +46,7 @@ const CourseCard = ({ course, id }) => {
                     ${course.currentPrice}
                 </p>
                 <p className="text-blue-600 text-lg pt-2 font-serif">
-                    {course.discount.value * 100 + '% Discount'}
+                    {course.discount?.value * 100 + '% Discount'}
                 </p>
                 <p className="text-blue-600 text-lg pt-2 font-serif">
                     {`Course Rating: ${getRating()}`}
