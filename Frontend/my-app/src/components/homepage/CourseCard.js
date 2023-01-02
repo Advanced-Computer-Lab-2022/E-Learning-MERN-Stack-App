@@ -7,6 +7,22 @@ const CourseCard = ({ course, id }) => {
     const { setView } = useContext(CurrentViewContext);
     const { setCourseId } = useContext(CourseContext);
 
+    function getTotalHours() {
+        let totalHours = 0;
+        course.sections.forEach(section => {
+            totalHours += section.hours;
+        })
+        return totalHours;
+    }
+
+    function getRating()  {
+        let rating = 0;
+        course.ratingsAndReviews.forEach(ratingsAndReview => {
+            rating += ratingsAndReview.reviewerRating
+        })
+        return rating;
+    }
+
     return (
         <div onClick={
             () => {
@@ -21,13 +37,19 @@ const CourseCard = ({ course, id }) => {
                     {course.title}
                 </p>
                 <p className="text-gray-600 text-lg">
-                    {"Total Hours: " + course.totalHours}
+                    {"Total Hours: " + (getTotalHours())}
                 </p>
                 <p className="text-gray-400 text-xs">
                     {course.description}
                 </p>
                 <p className="text-blue-500 text-xl pt-2 font-medium">
-                    ${course.price}
+                    ${course.currentPrice}
+                </p>
+                <p className="text-blue-600 text-lg pt-2 font-serif">
+                    {course.discount.value * 100 + '% Discount'}
+                </p>
+                <p className="text-blue-600 text-lg pt-2 font-serif">
+                    {`Course Rating: ${getRating()}`}
                 </p>
             </div>
         </div>

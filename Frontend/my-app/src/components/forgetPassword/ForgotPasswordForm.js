@@ -4,11 +4,13 @@ import React, { useState } from 'react'
 
 
 const ForgotPasswordForm = () => {
-    const [userName, setUserName] = useState('');
+    const [user, setUser] = useState({
+        userName: ''
+    });
     const [message, setMessage] = useState('')
 
     function handleSubmit() {
-        axios.post('http://localhost:8000/api/password-reset', userName)
+        axios.post('http://localhost:8000/api/password-reset', user)
             .then(res => {
                 console.log(res);
                 setMessage("an email was sent to you successfully");
@@ -19,7 +21,11 @@ const ForgotPasswordForm = () => {
             });
     }
     function handleChange(e) {
-        setUserName(e.target.value);
+        setUser({
+            ...user,
+            userName: e.target.value
+        });
+        console.log(user);
     }
 
     return (

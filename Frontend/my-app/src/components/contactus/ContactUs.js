@@ -1,49 +1,112 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const ContactUs = ({ visible }) => {
+
+    const [comments, setComments] = useState(['first comment']);
+    const [message, setMessage] = useState('');
+
+    function addCommentMessage(e) {
+        setComments([
+            ...comments,
+            message
+        ])
+    }
+
+    function saveCommentMessge(e) {
+        setMessage(e.target.value);
+    }
+
+
+
     if (visible)
         return (
+            <>
+                {/* {
+                    comments.map(comment =>
+                        <div class="flex items-center justify-center bg-white dark:bg-gray-800">
+                            <div class="bg-white dark:bg-gray-800 text-black dark:text-gray-200 p-4 antialiased flex max-w-lg">
+                                <img class="rounded-full h-8 w-8 mr-2 mt-1 " src="https://picsum.photos/id/1027/200/200" alt='dummyImage' />
+                                <div>
+                                    <div class="bg-gray-100 dark:bg-gray-700 rounded-3xl px-4 pt-2 pb-2.5">
+                                        <div class="font-semibold text-sm leading-relaxed">Jon Doe</div>
+                                        <div class="text-normal leading-snug md:leading-normal"
+                                        >{comment}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    )
+                } */}
 
-            <div className=" h-96 w-full mb-96 mt-52">
-                <div className="w-full flex items-center justify-center my-12 ">
-                    <div className="absolute top-40 bg-white dark:bg-gray-800 shadow rounded-3xl py-16 lg:px-28 px-8">
-                        <p className="md:text-3xl text-xl font-bold leading-7 text-center text-blue-500 dark:text-white">Let’s chat and get a quote!</p>
-                        <div className="md:flex items-center mt-12">
-                            <div className="md:w-72 flex flex-col">
-                                <label className="text-base font-semibold leading-none text-blue-500 dark:text-white">Name</label>
-                                <input tabindex="0" arial-label="Please input name" type="name" className="text-base leading-none text-gray-900 p-3 focus:oultine-none focus:border-blue-500 mt-4 bg-gray-100 border rounded border-gray-200 placeholder-gray-100" />
-                            </div>
-                            <div className="md:w-72 flex flex-col md:ml-6 md:mt-0 mt-4">
-                                <label className="text-base font-semibold leading-none text-blue-500 dark:text-white">Email Address</label>
-                                <input tabindex="0" arial-label="Please input email address" type="name" className="text-base leading-none text-gray-900 p-3 focus:oultine-none focus:border-blue-500 mt-4 bg-gray-100 border rounded border-gray-200 placeholder-gray-100" />
-                            </div>
+                <div class="w-full md:w-2/3 mx-auto p-5 bg-white rounded-lg shadow">
+                    <div class="flex items-center justify-between">
+                        <div class="w-2/3">
+                            <h2 class="section-heading">
+                                Questions and Answer
+                            </h2>
                         </div>
-                        <div className="md:flex items-center mt-8">
-                            <div className="md:w-72 flex flex-col">
-                                <label className="text-base font-semibold leading-none text-blue-500 dark:text-white">Company name</label>
-                                <input tabindex="0" role="input" arial-label="Please input company name" type="name" className="text-base leading-none text-gray-900 p-3 focus:oultine-none focus:border-indigo-700 mt-4 bg-gray-100 border rounded border-gray-200 placeholder-gray-100" placeholder="Please input company name" />
-                            </div>
-                            <div className="md:w-72 flex flex-col md:ml-6 md:mt-0 mt-4">
-                                <label className="text-base font-semibold leading-none text-blue-500 dark:text-white">Country</label>
-                                <input tabindex="0" arial-label="Please input country name" type="name" className="text-base leading-none text-gray-900 p-3 focus:oultine-none focus:border-indigo-700 mt-4 bg-gray-100 border rounded border-gray-200 placeholder-gray-100" placeholder="Please input country name" />
-                            </div>
-                        </div>
+                    </div>
+
+                    <div class="mt-8 space-y-8">
                         <div>
-                            <div className="w-full flex flex-col mt-8">
-                                <label className="text-base font-semibold leading-none text-blue-500 dark:text-white">Message</label>
-                                <textarea tabindex="0" aria-label="leave a message" role="textbox" type="name" className="h-36 text-base leading-none text-gray-900 p-3 focus:oultine-none focus:border-blue-500 mt-4 bg-gray-100 border rounded border-gray-200 placeholder-gray-100 resize-none"></textarea>
+                            <div class="flex items-start">
+                                <div>
+                                    <span class="inline-flex justify-center items-center w-6 h-6 rounded bg-green-500 text-white font-medium text-sm">
+                                        Q
+                                    </span>
+                                </div>
+
+                                <p class="ml-4 md:ml-6">
+                                    Can we have extra parking space for this unit?
+                                </p>
                             </div>
-                        </div>
-                        <div className="flex items-center justify-center w-full">
-                            <button className="mt-9 text-base font-semibold leading-none text-white py-4 px-10 bg-blue-500 rounded hover:bg-blue-800 focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 focus:outline-none">SUBMIT</button>
+
+                            <div class="flex items-start mt-3">
+                                <div>
+                                    <span class="inline-flex justify-center items-center w-6 h-6 rounded bg-gray-200 text-gray-800 font-medium text-sm">
+                                        A
+                                    </span>
+                                </div>
+
+                                <p class="ml-4 md:ml-6 text-gray-800">
+                                    Yes you can get extra parking space but you have to pay extra monthly.
+                                </p>
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-4 md:flex md:items-center mt-8 md:ml-12">
+                                <div class="flex items-center md:ml-8">
+                                    <div class="mr-2 w-6 h-6 overflow-hidden shadow rounded-full border-gray-500">
+                                        <div class="w-full h-full bg-gray-200"></div>
+                                    </div>
+
+                                    <span class="text-sm text-gray-800">
+                                        Jason
+                                    </span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-
-
+                <div class="mx-auto max-w-lg rounded-lg shadow-md shadow-blue-600/50">
+                    <form action="" class="w-full p-4">
+                        <div class="mb-2">
+                            <label for="comment" class="text-lg text-gray-600">Add a comment</label>
+                            <textarea
+                                class="w-full h-20 p-2 border rounded focus:outline-none focus:ring-gray-300 focus:ring-1"
+                                name="comment"
+                                placeholder="" onChange={e => saveCommentMessge(e)}></textarea>
+                        </div>
+                        <div>
+                            <button type='button' class=" px-3 py-2 text-sm text-blue-100 bg-blue-600 rounded" onClick={() => addCommentMessage()}>
+                                Comment
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </>
         )
+
 }
 
 export default ContactUs
