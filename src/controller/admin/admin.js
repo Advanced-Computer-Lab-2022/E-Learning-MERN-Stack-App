@@ -5,6 +5,8 @@ const  Admin  = require("../../models/admin");
 const AdminCourseRequests = require("../../models/adminCourseRequests");
 const jwt = require('jsonwebtoken');
 const Course = require("../../models/course");
+const Probelms = require('../../models/problems');
+
 
 
 
@@ -152,6 +154,28 @@ exports.removePromotions = (req, res) => {
         if(error) return res.status(400).json({message: "error happened"});
         if(removed) return res.status(200).json({message:"error removed"});
 
+    });
+}
+exports.viewAllProblems = (req, res) => {
+    Probelms.find().
+    exec((error, problems) => {
+        if(error) return res.status(400).json({message: "error happened"});
+        if(problems) return res.status(200).json({problems});
+    });
+}
+    exports.viewButNotResolve = (req, res) => {
+        Probelms.findOne({_id:req.body.id}).
+        exec((error, problem) => {
+            if(error) return res.status(400).json({message: "error happened"});
+            if(problem) return res.status(200).json({problem});
+        });
+
+}
+exports.resolveProblem = (req, res) => {
+    Probelms.findOneAndUpdate({_id:req.body.id},{solver:req.user.userName, resolved:true}).
+    exec((error, problems) => {
+        if(error) return res.status(400).json({message: "error happened"});
+        if(problems) return res.status(200).json({problems});
     });
 }
 

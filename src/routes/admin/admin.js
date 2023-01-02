@@ -1,6 +1,7 @@
 const express = require('express');
 const {signup, signin, addOrgGuest, addInstructor, isAdmin, viewAllCourseRequests,
-    setPromotionsOnAll, setSelectedPromotions, removePromotions
+    setPromotionsOnAll, setSelectedPromotions, removePromotions,
+    viewAllProblems, viewButNotResolve, resolveProblem  
 } = require('../../controller/admin/admin');
 const {requireSignin, editInfo} = require('../../commonMiddleWare/index');
 const router = express.Router();
@@ -17,6 +18,9 @@ router.post('/admin/viewAllCourseRequests', requireSignin, isAdmin, viewAllCours
 router.post('/admin/setPromotionsOnAll',requireSignin,isAdmin, setPromotionsOnAll);
 router.post('/admin/setSelectedPromotions',requireSignin,isAdmin, setSelectedPromotions);
 router.post('/admin/removePromotions',requireSignin,isAdmin, removePromotions);
+router.get('/admin/viewAllProblems',requireSignin,isAdmin, viewAllProblems);
+router.get('/admin/viewButNotResolve',requireSignin,isAdmin, viewButNotResolve);
+router.get('/admin/resolveProblem',requireSignin,isAdmin, resolveProblem);
 module.exports = router;
 
 
