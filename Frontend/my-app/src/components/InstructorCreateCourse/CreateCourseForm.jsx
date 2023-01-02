@@ -12,7 +12,7 @@ const CreateCourseForm = () => {
         price: '',
         previewVideoTitle: '',
         previewVideoURL: '',
-        discount: '',
+        // discount: '',
         firstBullet: '',
         secondBullet: '',
         thirdBullet: '',
@@ -20,7 +20,7 @@ const CreateCourseForm = () => {
         secondInclude: '',
         thirdInclude: ''
     });
-    const [errorMessage, setErrorMessage] = useState("");
+    const [message, setMessage] = useState("");
     var api = 'http://localhost:8000/api/instructor/createCourse';
 
     async function handleSubmit(e) {
@@ -31,15 +31,16 @@ const CreateCourseForm = () => {
         })
             .then((response) => {
                 console.log(response);
+                setMessage("Course was Created Successfully");
             })
             .catch((error) => {
                 console.log(error);
                 switch (error.code) {
                     case 'ERR_BAD_REQUEST':
-                        setErrorMessage('Please submit a valid course');
+                        setMessage('Please submit a valid course');
                         break;
                     case 'ERR_NETWORK':
-                        setErrorMessage(`Please make sure you're connected to the internet`);
+                        setMessage(`Please make sure you're connected to the internet`);
                         break;
                     default:
                 }
@@ -140,82 +141,88 @@ const CreateCourseForm = () => {
     }
 
     return (
-        <form className="flex flex-col pt-3 md:pt-8">
-            <div className="flex flex-col pt-4">
-                <div className="flex relative ">
-                    <input type="text" className=" flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Title" onChange={e => handleTitleChange(e)} />
+        <>
+            <form className="flex flex-col pt-3 md:pt-8">
+                <div className="flex flex-col pt-4">
+                    <div className="flex relative ">
+                        <input type="text" className=" flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Title" onChange={e => handleTitleChange(e)} />
+                    </div>
                 </div>
-            </div>
-            <div className="flex flex-col pt-4">
-                <div className="flex relative ">
-                    <input type="text" className=" flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="description" onChange={e => handleDescriptionChange(e)} />
+                <div className="flex flex-col pt-4">
+                    <div className="flex relative ">
+                        <textarea type="text" className=" flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Description" onChange={e => handleDescriptionChange(e)} />
+                    </div>
                 </div>
-            </div>
-            <div className="flex flex-col pt-4">
-                <div className="flex relative ">
-                    <input type="text" className=" flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="category" onChange={e => handleCategoryChange(e)} />
+                <div className="flex flex-col pt-4">
+                    <div className="flex relative ">
+                        <input type="text" className=" flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Category" onChange={e => handleCategoryChange(e)} />
+                    </div>
                 </div>
-            </div>
-            <div className="flex flex-col pt-4">
-                <div className="flex relative ">
-                    <input type="text" className=" flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="price" onChange={e => handlePriceChagne(e)} />
+                <div className="flex flex-col pt-4">
+                    <div className="flex relative ">
+                        <input type="text" className=" flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Price" onChange={e => handlePriceChagne(e)} />
+                    </div>
                 </div>
-            </div>
-            <div className="flex flex-col pt-4">
-                <div className="flex relative ">
-                    <input type="text" className=" flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="previewVideoTitle" onChange={e => handlePreviewVideoTitleChange(e)} />
+                <div className="flex flex-col pt-4">
+                    <div className="flex relative ">
+                        <input type="text" className=" flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Preview Video Title" onChange={e => handlePreviewVideoTitleChange(e)} />
+                    </div>
                 </div>
-            </div>
-            <div className="flex flex-col pt-4">
-                <div className="flex relative ">
-                    <input type="text" className=" flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="previewVideoURL" onChange={e => handlePreviewVideoURLChange(e)} />
+                <div className="flex flex-col pt-4">
+                    <div className="flex relative ">
+                        <input type="text" className=" flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Preview Video URL" onChange={e => handlePreviewVideoURLChange(e)} />
+                    </div>
                 </div>
-            </div>
-            <div className="flex flex-col pt-4">
+                {/* <div className="flex flex-col pt-4">
                 <div className="flex relative ">
-                    <input type="text" className=" flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="discount" onChange={e => handleDiscountChange(e)} />
+                    <input type="text" className=" flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Discount" onChange={e => handleDiscountChange(e)} />
                 </div>
-            </div>
-            <h3>What you will learn bullets</h3>
-            <div className="flex flex-col pt-4">
-                <div className="flex relative ">
-                    <input type="text" className=" flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="firstBullet" onChange={e => handleFirstBulletChange(e)} />
+            </div> */}
+                <p className='text-blue-600 font-medium mt-4'>What you will learn bullets</p>
+                <div className="flex flex-col pt-4">
+                    <div className="flex relative ">
+                        <input type="text" className=" flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="First Bullet" onChange={e => handleFirstBulletChange(e)} />
+                    </div>
                 </div>
-            </div>
-            <div className="flex flex-col pt-4">
-                <div className="flex relative ">
-                    <input type="text" className=" flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="secondBullet" onChange={e => handleSecondBulletChange(e)} />
+                <div className="flex flex-col pt-4">
+                    <div className="flex relative ">
+                        <input type="text" className=" flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Second Bullet" onChange={e => handleSecondBulletChange(e)} />
+                    </div>
                 </div>
-            </div>
-            <div className="flex flex-col pt-4">
-                <div className="flex relative ">
-                    <input type="text" className=" flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="thirdBullet" onChange={e => handleThirdBulletChange(e)} />
+                <div className="flex flex-col pt-4">
+                    <div className="flex relative ">
+                        <input type="text" className=" flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Third Bulelt" onChange={e => handleThirdBulletChange(e)} />
+                    </div>
                 </div>
-            </div>
-            <h3>Course Includes</h3>
-            <div className="flex flex-col pt-4">
-                <div className="flex relative ">
-                    <input type="text" className=" flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="firstInclude" onChange={e => handleFirstIncludeChange(e)} />
+                <p className='text-blue-600 font-medium mt-4'>Course Includes</p>
+                <div className="flex flex-col pt-4">
+                    <div className="flex relative ">
+                        <input type="text" className=" flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="First Include" onChange={e => handleFirstIncludeChange(e)} />
+                    </div>
                 </div>
-            </div>
-            <div className="flex flex-col pt-4">
-                <div className="flex relative ">
-                    <input type="text" className=" flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="secondInclude" onChange={e => handleSecondIncludeChange(e)} />
+                <div className="flex flex-col pt-4">
+                    <div className="flex relative ">
+                        <input type="text" className=" flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Second Include" onChange={e => handleSecondIncludeChange(e)} />
+                    </div>
                 </div>
-            </div>
-            <div className="flex flex-col pt-4">
-                <div className="flex relative ">
-                    <input type="text" className=" flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="thirdInclude" onChange={e => handleThirdIncludeChange(e)} />
+                <div className="flex flex-col pt-4">
+                    <div className="flex relative ">
+                        <input type="text" className=" flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Third Include" onChange={e => handleThirdIncludeChange(e)} />
+                    </div>
                 </div>
-            </div>
-            <button type="button" className="mt-6 w-full px-4 py-2 text-base font-semibold text-center text-white transition duration-200 ease-in bg-blue-500 shadow-md hover:text-black hover:bg-white focus:outline-none focus:ring-2"
-                onClick={e => handleSubmit(e)}>
-                <span className="w-full">
-                    Create a Course
-                </span>
-            </button>
-            <p className="mt-3 text-md text-center text-red-600">{errorMessage}</p>
-        </form >
+                <button type="button" className="mt-6 w-full px-4 py-2 text-base font-semibold text-center text-white transition duration-200 ease-in bg-blue-500 shadow-md hover:text-black hover:bg-white focus:outline-none focus:ring-2"
+                    onClick={e => handleSubmit(e)}>
+                    <span className="w-full">
+                        Create Course
+                    </span>
+                </button>
+            </form >
+            {
+                (message === 'Course was Created Successfully')
+                    ? <p className="mt-3 text-md text-center text-green-600">{message}</p>
+                    : <p className="mt-3 text-md text-center text-red-600">{message}</p>
+            }
+        </>
     )
 }
 
