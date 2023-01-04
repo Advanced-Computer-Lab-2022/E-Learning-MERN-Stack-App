@@ -428,7 +428,17 @@ The sixth function appears to handle a GET request to the /courses/:id route and
 The seventh function appears to handle a POST request to the /enroll route and enrolls either an "individualTrainee" or a "corporateTrainee" user in a specific course, identified by the id field in the request body. The enrollment also includes the price of the course and the userName of the enrolled user. If the enrollment is successful, the function returns a message indicating that the enrollment was successful.
 
 
-    
+## Stripe License
+This project uses Stripe to process payments. By using this project, you agree to be bound by the Stripe Services Agreement.
+
+You can find the full text of the Stripe Services Agreement at the following link:
+
+https://stripe.com/legal
+
+Please make sure to read and understand the Stripe Services Agreement before using this project.
+
+If you have any questions about the Stripe Services Agreement or how it applies to your use of this project, please contact Stripe at support@stripe.com.    
+
 
 ## Contribute
 Thank you for your interest in contributing to our MERN stack web application! We welcome any contributions, big or small, that can help improve the project.
